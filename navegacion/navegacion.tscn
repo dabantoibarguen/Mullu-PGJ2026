@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://cdan5ldacbkr0"]
 
+[ext_resource type="Script" uid="uid://bvag0efhr0rjv" path="res://navegacion/control-navegacion.gd" id="1_pjk8q"]
 [ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_sux3w"]
 [ext_resource type="Script" uid="uid://bqb2l88ll3l8n" path="res://navegacion/navegar.gd" id="2_sux3w"]
 [ext_resource type="PackedScene" uid="uid://1k5g23r5q1s" path="res://navegacion/barco/barco.tscn" id="3_sux3w"]
+[ext_resource type="Shader" uid="uid://nf87gflraaxm" path="res://navegacion/fog.gdshader" id="5_hs310"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjk8q"]
 texture = ExtResource("1_sux3w")
@@ -32,7 +34,11 @@ tile_shape = 3
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_pjk8q")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjk8q"]
+shader = ExtResource("5_hs310")
+
 [node name="Navegacion" type="Node2D" unique_id=61363761]
+script = ExtResource("1_pjk8q")
 
 [node name="OceanMap" type="TileMapLayer" parent="." unique_id=257155743]
 unique_name_in_owner = true
@@ -45,3 +51,6 @@ script = ExtResource("2_sux3w")
 unique_name_in_owner = true
 position = Vector2(-16, 14)
 scale = Vector2(3.9726946, 4.7600613)
+
+[node name="Fog" type="Sprite2D" parent="." unique_id=995127318]
+material = SubResource("ShaderMaterial_pjk8q")

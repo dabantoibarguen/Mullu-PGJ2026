@@ -3,9 +3,11 @@ extends CharacterBody2D
 @onready var target = global_position
 @onready var oceanMap = %OceanMap
 @onready var label = $Label
+@onready var vision = %Vision
+
 var speed = 75
 var cur_coords
-var vision = 2
+var vision_range = 2
 
 
 # Called when the node enters the scene tree for the first time.
