@@ -2,10 +2,13 @@
 
 ## En proceso
 
-| (NAV)  | (PSC) | (BCO) | (RCRS) | (OCN) | (UPG) | (TOWN) | (ENC) | (MISC) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Sistema de navegación | Mecánicas de Pesca | Mecánicas de Buceo | Recursos recolectados | Mecánicas de Océano | Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
+| (NAV)  | (PSC) | (BCO) | (RCRS) |
+| --- | --- | --- | --- |
+| Sistema de navegación | Mecánicas de Pesca | Mecánicas de Buceo | Recursos recolectados |
 
+| (OCN) | (UPG) | (TOWN) | (ENC) | (MISC) |
+| --- | --- | --- | --- | --- |
+|  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
 - (NAV) Rango de visión del barco
