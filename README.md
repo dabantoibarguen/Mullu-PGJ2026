@@ -2,9 +2,9 @@
 
 ## En proceso
 
-| (NAV)  | (PSC) | (BCO)  | (RCRS) | (OCN)  | (UPG) | (TOWN)  | (ENC) | (MISC) |
+| (NAV)  | (PSC) | (BCO) | (RCRS) | (OCN) | (UPG) | (TOWN) | (ENC) | (MISC) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Sistema de navegación | Mecánicas de Pesca | Mecánicas de Buceo | Recursos recolectado | Océano | Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Miscelaneo |
+| Sistema de navegación | Mecánicas de Pesca | Mecánicas de Buceo | Recursos recolectados | Mecánicas de Océano | Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 
 ### Prioridad Alta
@@ -16,12 +16,11 @@
 - (NAV) "Fog of War" en casillas no visibles/visitadas
 - (NAV) Barra de energia y costos claros
 - (NAV) Cambio de "horas" al hacer acciones
-- (NAV) Movimiento fluido (en vez de teletransportar el barco)
 - (NAV) Mostrar acciones posibles
 
 ### Prioridad Baja
 - (NAV) Generación automática de nuevos mapas
-- (NAV) Animación al mover barco
+- (NAV) Animación y fluidez al mover barco
 
 _____________________
 
@@ -32,3 +31,4 @@ _____________________
 - (NAV) Estilo de Hex Grid inicial escogido
 - (NAV) Barco placeholder con movimiento básico
 - (NAV) Click en casillas detectado
+- (NAV) Movimiento fluido con camino hallado por breadth first search
