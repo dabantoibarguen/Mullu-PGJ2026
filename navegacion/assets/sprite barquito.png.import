@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3de0vqe1om4x"
-path="res://.godot/imported/drjamgo_hex_16x16.png-a4032c9d20d8a0deca570ff5adb351fc.ctex"
+uid="uid://c3dw7ai5doxwe"
+path="res://.godot/imported/sprite barquito.png-aec08b417365cd601beb7935a97ba13a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://navegacion/assets/drjamgo_hex_16x16.png"
-dest_files=["res://.godot/imported/drjamgo_hex_16x16.png-a4032c9d20d8a0deca570ff5adb351fc.ctex"]
+source_file="res://navegacion/assets/sprite barquito.png"
+dest_files=["res://.godot/imported/sprite barquito.png-aec08b417365cd601beb7935a97ba13a.ctex"]
 
 [params]
 

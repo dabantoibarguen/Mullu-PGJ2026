@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 @onready var target = global_position
 @onready var oceanMap = %OceanMap
+@onready var label = $Label
 var speed = 75
 var cur_coords
+var vision = 2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cur_coords = oceanMap.local_to_map(global_position)
+	target = oceanMap.map_to_local(cur_coords)
 
 
 func _physics_process(delta):
@@ -15,8 +19,6 @@ func _physics_process(delta):
 	if global_position.distance_to(target)<1:
 		velocity = Vector2(0,0)
 	else:
-		# we've reached current destination, get the next one (if any left)
 		move_and_slide()
-		#if tile_path.size():
-			#tile_position = tile_path.pop_front()
-			#target = world_path.pop_front()
+	label.text = str(cur_coords)
+		
