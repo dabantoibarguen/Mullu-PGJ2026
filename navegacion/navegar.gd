@@ -4,8 +4,8 @@ extends TileMapLayer
 @onready var fog = %SmokeOnTheWater
 
 var source_id = 0 # hard-coded. Keep up to date
-var hovered_cell = Vector2i(-1, -1)
-var unhovered_cell = Vector2i(-1, -1)
+var hovered_cell = Vector2i(99, 99)
+var unhovered_cell = Vector2i(99, 99)
 var path_to_target = []
 var painted_tiles
 
@@ -13,20 +13,22 @@ var moving = false
 
 # Should replace with Data Layers later
 const invalid_tiles = {
-	Vector2i(-1, -1): false, 
-	Vector2i(4, 0): false,
-	Vector2i(6, 2): false
+	Vector2i(-1, -1): "Borde", 
+	Vector2i(4, 0): "Roca",
+	Vector2i(6, 2): "Arena"
+}
+
+const valid_tiles = {
+	Vector2i(6, 0): "Mar alto",
+	Vector2i(4, 2): "Mar bajo"
 }
 
 func _ready() -> void:
 	painted_tiles = get_used_cells()
 	fog.populate_map(painted_tiles)
-	fog.clear_cells(boat.cur_coords, boat.vision_range)
+	fog.clear_cells(boat.cur_coords)
 	
 func find_path(start, target: Vector2i) -> Array[Vector2i]:
-	if(moving):
-		return []
-	moving = true
 	var queue = [start]
 	var came_from = {start: null}
 	var i = 0
@@ -47,13 +49,12 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 			queue.append(next)
 
 	if not came_from.has(target):
-		#moving = false
 		return []
 
 	var path: Array[Vector2i] = []
 	current = target
 
-	while current != null:
+	while current != null and current != start:
 		path.push_front(current)
 		current = came_from[current]
 	
@@ -61,35 +62,61 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	return path
 	
 func _input(ev: InputEvent) -> void:
-	if ev is InputEventMouse:
+	if ev is InputEventMouse and !moving:
 		if ev.is_pressed() and ev.button_index == 1:
+			# A lot of this "could" be obtained from the hovered tiles
+			# But a fast mouse movement would break it all. Playing it safe.
 			var target_coords = local_to_map(get_global_mouse_position())	
 			# Ensure clicked cell is valid
 			if get_cell_atlas_coords(target_coords) not in invalid_tiles:
-				var path = find_path(boat.cur_coords, target_coords)
-				if(path != []):
-					for tile in path:
-						boat.target = map_to_local(tile) # Center of the hex rather than top
-						fog.clear_cells(tile, boat.vision_range)
-						await get_tree().create_timer(0.33).timeout # make this based on the time needed to move
-					moving = false
+				var move_path = find_path(boat.cur_coords, target_coords)
+				var dist = move_path.size()
+				if(0 < dist and dist <= boat.vision_range):
+					moving = true
+					for tile in move_path:
+						boat.target = map_to_local(tile)
+						fog.clear_cells(tile)
+						# make this based on the time needed to move
+						await get_tree().create_timer(0.33).timeout 
 					boat.cur_coords = target_coords
-				#%barco.global_position = map_to_local(coords) + Vector2(0, 7)  # Teleportation, deprecated
+					moving = false
+				else:
+					boat.label.text = "Invalido"
+				
 		else:
 			pass
+
 			
 func _physics_process(_delta: float) -> void:
 	hovered_cell = local_to_map(get_global_mouse_position())
-	var cell_atlas = get_cell_atlas_coords(hovered_cell)
-	if(cell_atlas not in invalid_tiles and hovered_cell != boat.cur_coords):
-		#print(get_cell_alternative_tile(hovered_cell))
-		set_cell(hovered_cell, 0, cell_atlas, 1)
-
-	if hovered_cell != unhovered_cell or hovered_cell == boat.cur_coords:
+	if(moving or fog.get_cell_source_id(hovered_cell) != -1):
 		set_cell(unhovered_cell, 0, get_cell_atlas_coords(unhovered_cell), 0)
-	unhovered_cell = hovered_cell
+		boat.label.text = ""
+		unhovered_cell = hovered_cell
+		return
+	var cell_atlas = get_cell_atlas_coords(hovered_cell)
+	if(!moving and path_to_target == []):
+		# Finding the path ahead of time to get the navigated distance
+		if cell_atlas in invalid_tiles:
+			boat.label.text = (str(invalid_tiles.get(cell_atlas))
+			+ "\nInvalido")
+			return
+		path_to_target = find_path(boat.cur_coords, hovered_cell)
+		if (hovered_cell != boat.cur_coords):
+			if path_to_target.size() <= boat.vision_range:
+				set_cell(hovered_cell, 0, cell_atlas, 1)
+				boat.label.text = (str(valid_tiles.get(cell_atlas)) 
+				+ "\nMovimiento: " + str(path_to_target.size()))
 		
-	
-	
+			else:
+				boat.label.text = (str(valid_tiles.get(cell_atlas))
+				+ "\nMuy lejos")
+				set_cell(hovered_cell, 0, cell_atlas, 2)
+		
+
+	if hovered_cell != unhovered_cell:
+		set_cell(unhovered_cell, 0, get_cell_atlas_coords(unhovered_cell), 0)
+		path_to_target = []
+	unhovered_cell = hovered_cell
 			
 			

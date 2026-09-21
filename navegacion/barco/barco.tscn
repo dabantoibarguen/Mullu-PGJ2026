@@ -29,9 +29,9 @@ zoom = Vector2(4, 4)
 
 [node name="Label" type="Label" parent="." unique_id=74161993]
 z_index = 1
-offset_left = 12.5
-offset_top = -12.000004
-offset_right = 33.5
-offset_bottom = 11.000011
+offset_left = 9.5
+offset_top = -13.000004
+offset_right = 30.5
+offset_bottom = 10.000011
 scale = Vector2(0.2084855, 0.10875016)
 label_settings = SubResource("LabelSettings_0j4b5")
