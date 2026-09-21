@@ -28,8 +28,8 @@ _____________________
 
 ## Domingo 20 de Setiembre
 
-- Github creado
-- Borrador de escena de navegación
-- Estilo de Hex Grid inicial escogido
-- Barco placeholder con movimiento básico
-- Click en casillas detectado
+- (MISC) Github creado
+- (NAV) Borrador de escena de navegación
+- (NAV) Estilo de Hex Grid inicial escogido
+- (NAV) Barco placeholder con movimiento básico
+- (NAV) Click en casillas detectado
