@@ -11,12 +11,12 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (OCN) "Fog of War" en casillas no visibles/visitadas
 - (NAV) Barra de energia y costos claros
 
 ### Prioridad Media
 
 - (OCN) Actualizar resaltado (basado en si la tile esta dentro del rango de movimiento)
+- (NAV) Advertencias al tratar de mover el barco a un lugar invalido
 - (NAV) Mostrar linea de camino desde barco hasta destino
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
@@ -24,7 +24,16 @@
 ### Prioridad Baja
 - (NAV) Generación automática de nuevos mapas
 - (NAV) Animación y fluidez al mover barco
+- (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalido
 - (OCN) Calcular dimensiones de casillas dinámicamente
+- (OCN) Oscurecer tiles fuera del rango de vision, tal vez re-esconder
+
+_____________________
+
+## Lunes 21 de Setiembre
+
+**Completo**
+- (OCN) Fog of War
 
 _____________________
 
