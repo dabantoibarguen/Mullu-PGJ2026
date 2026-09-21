@@ -1,12 +1,12 @@
 # Mullu
 
 ## En proceso
-**(NAV) - Sistema de navegación**
-**(PSC) - Mecánicas de pesca**
-**(BCO) - Mecánicas de buceo**
-**(TOWN) - Sistema de la ciudad**
-**(UPG) - Sistema de mejoras**
-**(MISC) - Miscellaneous**
+**(NAV) - Sistema de navegación**/
+**(PSC) - Mecánicas de pesca**/
+**(BCO) - Mecánicas de buceo**/
+**(TOWN) - Sistema de la ciudad**/
+**(UPG) - Sistema de mejoras**/
+**(MISC) - Miscellaneous**/ 
 
 ### Prioridad Alta
 - (NAV) Rango de visión del barco
