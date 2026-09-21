@@ -54,5 +54,6 @@ texture = ExtResource("3_sux3w")
 position = Vector2(0.5, -3.25)
 shape = SubResource("RectangleShape2D_nlynv")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1879047218]
+[node name="Camera2D" type="Camera2D" parent="TileMapLayer/barco" unique_id=1879047218]
+position = Vector2(0, -3)
 zoom = Vector2(8, 8)
