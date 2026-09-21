@@ -1,11 +1,13 @@
 extends TileMapLayer
 
 @onready var boat = %barco
+@onready var fog = %SmokeOnTheWater
 
 var source_id = 0 # hard-coded. Keep up to date
 var hovered_cell = Vector2i(-1, -1)
 var unhovered_cell = Vector2i(-1, -1)
 var path_to_target = []
+var painted_tiles
 
 var moving = false
 
@@ -17,7 +19,9 @@ const invalid_tiles = {
 }
 
 func _ready() -> void:
-	pass
+	painted_tiles = get_used_cells()
+	fog.populate_map(painted_tiles)
+	fog.clear_cells(boat.cur_coords, boat.vision_range)
 	
 func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	if(moving):
@@ -26,9 +30,10 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	var queue = [start]
 	var came_from = {start: null}
 	var i = 0
-
+	var current
+	
 	while i < queue.size():
-		var current = queue[i]
+		current = queue[i]
 		i += 1
 
 		if current == target:
@@ -46,7 +51,7 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 		return []
 
 	var path: Array[Vector2i] = []
-	var current = target
+	current = target
 
 	while current != null:
 		path.push_front(current)
@@ -65,6 +70,7 @@ func _input(ev: InputEvent) -> void:
 				if(path != []):
 					for tile in path:
 						boat.target = map_to_local(tile) # Center of the hex rather than top
+						fog.clear_cells(tile, boat.vision_range)
 						await get_tree().create_timer(0.33).timeout # make this based on the time needed to move
 					moving = false
 					boat.cur_coords = target_coords
@@ -72,7 +78,7 @@ func _input(ev: InputEvent) -> void:
 		else:
 			pass
 			
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	hovered_cell = local_to_map(get_global_mouse_position())
 	var cell_atlas = get_cell_atlas_coords(hovered_cell)
 	if(cell_atlas not in invalid_tiles and hovered_cell != boat.cur_coords):
