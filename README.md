@@ -11,13 +11,13 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (NAV) Rango de visión del barco
+- (OCN) "Fog of War" en casillas no visibles/visitadas
+- (NAV) Barra de energia y costos claros
 
 ### Prioridad Media
-- (OCN) "Fog of War" en casillas no visibles/visitadas
+
 - (OCN) Actualizar resaltado (basado en si la tile esta dentro del rango de movimiento)
 - (NAV) Mostrar linea de camino desde barco hasta destino
-- (NAV) Barra de energia y costos claros
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
 
