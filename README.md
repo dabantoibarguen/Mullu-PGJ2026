@@ -13,10 +13,10 @@
 ### Prioridad Alta
 - (NAV) Rango de visión del barco
 - (NAV) 5 tipos de casillas distinguibles
-- (NAV) Resaltar casillas navegables
+- (OCN) Resaltar casillas navegables
 
 ### Prioridad Media
-- (NAV) "Fog of War" en casillas no visibles/visitadas
+- (OCN) "Fog of War" en casillas no visibles/visitadas
 - (NAV) Barra de energia y costos claros
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
@@ -24,6 +24,7 @@
 ### Prioridad Baja
 - (NAV) Generación automática de nuevos mapas
 - (NAV) Animación y fluidez al mover barco
+- (OCN) Calcular dimensiones de casillas dinamicamente
 
 _____________________
 
