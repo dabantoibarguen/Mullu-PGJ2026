@@ -18,6 +18,7 @@
 ### Prioridad Media
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
+- (NAV) Crear reloj ciclico
 
 ### Prioridad Baja
 - (NAV) Generación automática de nuevos mapas
