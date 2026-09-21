@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3de0vqe1om4x" path="res://navegacion/assets/drjamgo_hex_16x16.png" id="1_w2mo1"]
 [ext_resource type="Script" uid="uid://bqb2l88ll3l8n" path="res://navegacion/navegar.gd" id="2_sux3w"]
+[ext_resource type="Texture2D" uid="uid://vh4vn1by585k" path="res://navegacion/assets/totora_placeholder.png" id="3_sux3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjk8q"]
 texture = ExtResource("1_w2mo1")
@@ -29,12 +30,29 @@ texture = ExtResource("1_w2mo1")
 tile_shape = 3
 sources/4 = SubResource("TileSetAtlasSource_pjk8q")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
+size = Vector2(7, 4.5)
+
 [node name="Navegacion" type="Node2D" unique_id=61363761]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=257155743]
-tile_map_data = PackedByteArray("AAD/////BAADAAAAAAAAAP7/BAADAAAAAAD///7/BAADAAAAAAD+////BAADAAAAAAD//wAABAADAAAAAAAAAP//BAADAAAAAAAAAAAABAADAAAAAAD///3/BAADAAEAAAAAAP3/BAADAAEAAAABAP3/BAACAAEAAAABAP7/BAADAAEAAAABAP//BAADAAEAAAACAAAABAACAAEAAAABAAAABAADAAEAAAABAAEABAACAAEAAAAAAAEABAADAAEAAAAAAAIABAACAAEAAAD//wEABAADAAEAAAD//wIABAACAAEAAAD+/wEABAADAAEAAAD9/wEABAACAAEAAAD+/wAABAADAAEAAAD9/wAABAACAAEAAAD9////BAADAAEAAAD9//7/BAACAAEAAAD+//7/BAADAAEAAAD+//3/BAADAAEAAAD9//3/BAACAAEAAAACAP7/BAACAAEAAAD+/wIABAACAAEAAAABAAIABAACAAEAAAACAP//BAACAAEAAAD8////BAACAAEAAAD+//z/BAACAAEAAAD///z/BAACAAEAAAAAAPz/BAACAAEAAAABAPz/BAACAAEAAAA=")
+position = Vector2(0, 4)
+tile_map_data = PackedByteArray("AAAAAP7/BAADAAAAAAD///7/BAADAAAAAAD+////BAADAAAAAAD//wAABAADAAAAAAAAAP//BAADAAAAAAAAAAAABAADAAAAAAD///3/BAADAAEAAAAAAP3/BAADAAEAAAABAP3/BAACAAEAAAABAP7/BAADAAEAAAABAP//BAADAAEAAAACAAAABAACAAEAAAABAAAABAADAAEAAAABAAEABAACAAEAAAAAAAEABAADAAEAAAAAAAIABAACAAEAAAD//wEABAADAAEAAAD//wIABAACAAEAAAD+/wEABAADAAEAAAD9/wEABAACAAEAAAD+/wAABAADAAEAAAD9/wAABAACAAEAAAD9////BAADAAEAAAD9//7/BAACAAEAAAD+//7/BAADAAEAAAD+//3/BAADAAEAAAD9//3/BAACAAEAAAACAP7/BAACAAEAAAD+/wIABAACAAEAAAABAAIABAACAAEAAAACAP//BAACAAEAAAD8////BAACAAEAAAD+//z/BAACAAEAAAD///z/BAACAAEAAAAAAPz/BAACAAEAAAABAPz/BAACAAEAAAD/////BAADAAAAAAA=")
 tile_set = SubResource("TileSet_f5k2l")
 script = ExtResource("2_sux3w")
 
+[node name="barco" type="CharacterBody2D" parent="TileMapLayer" unique_id=1140348084]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMapLayer/barco" unique_id=1627802892]
+position = Vector2(0.50000024, -2.7800002)
+scale = Vector2(0.0136718685, 0.014765624)
+texture = ExtResource("3_sux3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/barco" unique_id=1179570815]
+position = Vector2(0.5, -3.25)
+shape = SubResource("RectangleShape2D_nlynv")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1879047218]
-zoom = Vector2(5, 5)
+zoom = Vector2(8, 8)
