@@ -11,11 +11,13 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (NAV) Barra de energia y costos claros
-- (PSC) Empezar escena
+- (NAV) Barra de energia y costos (https://www.youtube.com/watch?v=5poF352bDsQ)
+- (PSC) Crear escena de "pesca" (mar, barco, anzuelo, peces)
 - (BCO) Empezar escena
 
 ### Prioridad Media
+- (PSC) Contar los segundos en los cuales la barra blanca esta en la zona verde
+- (PSC) Invocar el juego de la barra como ventana separada
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
 - (NAV) Crear reloj ciclico
