@@ -10,7 +10,11 @@ var highest_point = position.y
 @export var green_time = 1
 
 var player_h
+var player_y
+
 var green_h
+var green_top
+var green_bottom
 
 func _ready() -> void:
 	timer.wait_time = 1
@@ -42,7 +46,16 @@ func move_green():
 	
 
 func _physics_process(delta: float) -> void:
-	if (player.position.y + player_h) < lowest_point:
+	green_top = green.position.y
+	green_bottom = green_top+green_h
+	player_y = player.position.y
+	print(player_y)
+	if green_top < (player_y + player_h) and player_y < green_bottom:
+		player.color = Color(32.902, 0.0, 16.728, 1.0)
+	else:
+		player.color = Color(255, 255, 255)
+	
+	if (player_y + player_h) < lowest_point:
 		player.position.y += grav * delta * 100
 	else:
 		player.position.y = lowest_point - player_h
