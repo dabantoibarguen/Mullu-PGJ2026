@@ -12,28 +12,32 @@
 
 ### Prioridad Alta
 - (NAV) Barra de energia y costos claros
+- (PSC) Empezar escena
+- (BCO) Empezar escena
 
 ### Prioridad Media
-
-- (OCN) Actualizar resaltado (basado en si la tile esta dentro del rango de movimiento)
-- (NAV) Advertencias al tratar de mover el barco a un lugar invalido
-- (NAV) Mostrar linea de camino desde barco hasta destino
 - (NAV) Cambio de "horas" al hacer acciones
 - (NAV) Mostrar acciones posibles
+- (NAV) Crear reloj ciclico
 
 ### Prioridad Baja
 - (NAV) Generación automática de nuevos mapas
-- (NAV) Animación y fluidez al mover barco
-- (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalido
-- (OCN) Calcular dimensiones de casillas dinámicamente
-- (OCN) Oscurecer tiles fuera del rango de vision, tal vez re-esconder
+- (NAV) Animación y fluidez al mover barco (empezar un movimiento cuando se acabe el anterior)
+- (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalida
+- (NAV) Resolver visión hacia casillas inexplorables. Priorizar rocas tal vez, y una función separada
+- (OCN) Rastro de barco en el agua al moverse (animación, partículas)
+- (OCN) Oscurecer tiles fuera del rango de vision, o re-esconder en humo
+- (MISC) Hallar optimizaciones y ajustar funciones para mejor velocidad
 
 _____________________
 
 ## Lunes 21 de Setiembre
 
 **Completo**
-- (OCN) Fog of War
+- (OCN) Fog of War (mar bloqueado por rocas, pero bloques inalcanzables si se ven. Dificil)
+- (OCN) Resaltado de casillas seleccionables e invalidas
+- (NAV) Mensajes con costo de movimiento y tipo de casilla
+- (NAV) Cálculo de distancia basada en movimiento necesario, no distancia pura
 
 _____________________
 
