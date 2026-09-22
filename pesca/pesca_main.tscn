@@ -1,19 +1,36 @@
 [gd_scene format=3 uid="uid://lgdeu1xt3vf"]
 
 [ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_00iqw"]
+[ext_resource type="Script" uid="uid://bxxkjmfcd08lo" path="res://pesca/pesca_main.gd" id="1_8yp11"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_id21n"]
+radius = 16.0
+height = 80.0
 
 [node name="PescaMain" type="Node2D" unique_id=2099362878]
+script = ExtResource("1_8yp11")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=635142950]
 texture_filter = 1
-repeat_times = 5
+repeat_size = Vector2(120, 100)
+autoscroll = Vector2(10, 80)
+repeat_times = 10
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2136259103]
-scale = Vector2(5, 5)
+position = Vector2(157, 102)
+scale = Vector2(16.625, 16.375)
 texture = ExtResource("1_00iqw")
 hframes = 4
 vframes = 5
 frame = 3
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=703348569]
-zoom = Vector2(8, 8)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=319092636]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2137275740]
+scale = Vector2(19.007551, 10.6202)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=652817617]
+position = Vector2(0, 30)
+scale = Vector2(1.5, 0.54)
+shape = SubResource("CapsuleShape2D_id21n")
