@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lgdeu1xt3vf"]
+
+[ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_00iqw"]
+
+[node name="PescaMain" type="Node2D" unique_id=2099362878]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=635142950]
+texture_filter = 1
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2136259103]
+scale = Vector2(5, 5)
+texture = ExtResource("1_00iqw")
+hframes = 4
+vframes = 5
+frame = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=703348569]
+zoom = Vector2(8, 8)
