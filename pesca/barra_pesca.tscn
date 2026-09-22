@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://m6rpj2c13upr"]
+
+[ext_resource type="Script" uid="uid://bjj0c8kxmqjuq" path="res://pesca/barra_pesca.gd" id="1_s17fj"]
+
+[node name="JuegoPesca" type="Control" unique_id=788184286]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BarraPesca" type="ColorRect" parent="." unique_id=2023071706]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 50.0
+color = Color(1, 0.05490196, 0, 1)
+script = ExtResource("1_s17fj")
+
+[node name="Player" type="ColorRect" parent="BarraPesca" unique_id=1565516077]
+z_index = 1
+layout_mode = 0
+offset_top = 48.0
+offset_right = 10.0
+offset_bottom = 50.0
+color = Color(1, 1, 1, 0.86800003)
+
+[node name="AreaVerde" type="Timer" parent="BarraPesca" unique_id=1055376370]
+
+[node name="GoodArea" type="ColorRect" parent="BarraPesca" unique_id=1378878420]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 10.0
+offset_bottom = 26.0
+color = Color(0.09320182, 0.5281222, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=626093257]
+position = Vector2(5, 26)
+zoom = Vector2(6, 6)
+
+[connection signal="timeout" from="BarraPesca/AreaVerde" to="BarraPesca" method="_on_timer_timeout"]

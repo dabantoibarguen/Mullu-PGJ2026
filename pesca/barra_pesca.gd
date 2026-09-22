@@ -1,0 +1,50 @@
+extends ColorRect
+
+@onready var player = $Player
+@onready var green = $GoodArea
+@onready var timer = $AreaVerde
+
+var lowest_point = position.y + self.size.y
+var highest_point = position.y
+@export var grav = 0.3
+@export var green_time = 1
+
+var player_h
+var green_h
+
+func _ready() -> void:
+	timer.wait_time = 1
+	timer.start()
+	player_h = player.size.y
+	green_h = green.size.y
+
+
+func _on_timer_timeout() -> void:
+	move_green()
+
+func _input(ev: InputEvent) -> void:
+	if ev is InputEventKey and ev.is_pressed():
+		if ev.keycode == KEY_SPACE:
+			if player.position.y - 7 > highest_point:
+				player.position.y -= 7
+			else:
+				player.position.y = highest_point
+
+func move_green():
+	var rand_targ = randf_range(highest_point, lowest_point-green_h)
+	var target = min(green.position.y - rand_targ, size.y/2)
+	var time = 10*green_time
+	print(rand_targ)
+	for i in range(time):
+		green.position.y -= (target)/(time)
+		await get_tree().create_timer(0.08).timeout 
+	await get_tree().create_timer(0.2).timeout 
+	
+
+func _physics_process(delta: float) -> void:
+	if (player.position.y + player_h) < lowest_point:
+		player.position.y += grav * delta * 100
+	else:
+		player.position.y = lowest_point - player_h
+	
+	

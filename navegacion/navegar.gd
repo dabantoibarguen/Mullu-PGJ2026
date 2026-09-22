@@ -3,12 +3,14 @@ extends TileMapLayer
 @onready var boat = %barco
 @onready var fog = %SmokeOnTheWater
 
+var painted_tiles = []
+
 var source_id = 0 # hard-coded. Keep up to date
 var hovered_cell = Vector2i(99, 99)
 var unhovered_cell = Vector2i(99, 99)
-var path_to_target = []
-var painted_tiles
 
+
+var path_to_target = []
 var moving = false
 
 # Should replace with Data Layers later
