@@ -68,13 +68,14 @@ func _input(ev: InputEvent) -> void:
 		if ev.is_pressed() and ev.button_index == 1:
 			# A lot of this "could" be obtained from the hovered tiles
 			# But a fast mouse movement would break it all. Playing it safe.
-			var target_coords = local_to_map(get_global_mouse_position())	
+			var target_coords = local_to_map(get_global_mouse_position())
 			# Ensure clicked cell is valid
 			if get_cell_atlas_coords(target_coords) not in invalid_tiles:
 				var move_path = find_path(boat.cur_coords, target_coords)
 				var dist = move_path.size()
 				if(0 < dist and dist <= boat.vision_range):
 					moving = true
+					$barco/Control/EnergyBar.value-=1	
 					for tile in move_path:
 						boat.target = map_to_local(tile)
 						fog.clear_cells(tile)
