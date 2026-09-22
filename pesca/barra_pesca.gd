@@ -9,6 +9,8 @@ var highest_point = position.y
 @export var grav = 0.3
 @export var green_time = 1
 
+var score = 0
+
 var player_h
 var player_y
 
@@ -38,7 +40,6 @@ func move_green():
 	var rand_targ = randf_range(highest_point, lowest_point-green_h)
 	var target = min(green.position.y - rand_targ, size.y/2)
 	var time = 10*green_time
-	print(rand_targ)
 	for i in range(time):
 		green.position.y -= (target)/(time)
 		await get_tree().create_timer(0.08).timeout 
@@ -49,9 +50,9 @@ func _physics_process(delta: float) -> void:
 	green_top = green.position.y
 	green_bottom = green_top+green_h
 	player_y = player.position.y
-	print(player_y)
 	if green_top < (player_y + player_h) and player_y < green_bottom:
 		player.color = Color(32.902, 0.0, 16.728, 1.0)
+		score += delta # Number of seconds in the green area
 	else:
 		player.color = Color(255, 255, 255)
 	
@@ -59,5 +60,6 @@ func _physics_process(delta: float) -> void:
 		player.position.y += grav * delta * 100
 	else:
 		player.position.y = lowest_point - player_h
+	print(score)
 	
 	
