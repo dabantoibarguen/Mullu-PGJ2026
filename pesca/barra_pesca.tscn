@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://m6rpj2c13upr"]
 
+[ext_resource type="Script" uid="uid://cyxqw7eqt5w8n" path="res://pesca/Juego_Main.gd" id="1_633cc"]
 [ext_resource type="Script" uid="uid://bjj0c8kxmqjuq" path="res://pesca/barra_pesca.gd" id="1_s17fj"]
 
 [node name="JuegoPesca" type="Control" unique_id=788184286]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_633cc")
 
 [node name="BarraPesca" type="ColorRect" parent="." unique_id=2023071706]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 10.0
 offset_bottom = 50.0
@@ -30,9 +33,7 @@ offset_right = 10.0
 offset_bottom = 26.0
 color = Color(0.09320182, 0.5281222, 0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=626093257]
-visible = false
-position = Vector2(5, 26)
-zoom = Vector2(6, 6)
+[node name="Pescando" type="Timer" parent="BarraPesca" unique_id=1453420726]
 
 [connection signal="timeout" from="BarraPesca/AreaVerde" to="BarraPesca" method="_on_timer_timeout"]
+[connection signal="timeout" from="BarraPesca/Pescando" to="BarraPesca" method="_on_pescando_timeout"]

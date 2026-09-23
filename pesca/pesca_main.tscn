@@ -2,10 +2,65 @@
 
 [ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_00iqw"]
 [ext_resource type="Script" uid="uid://bxxkjmfcd08lo" path="res://pesca/pesca_main.gd" id="1_8yp11"]
+[ext_resource type="Texture2D" uid="uid://c84fje55h6q2d" path="res://pesca/assets/whirlpool.png" id="3_l87ni"]
+[ext_resource type="Script" uid="uid://dlpt6ajx836u" path="res://pesca/anzuelo.gd" id="3_u3kmj"]
+[ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/blur.gdshader" id="5_u3kmj"]
+[ext_resource type="PackedScene" uid="uid://m6rpj2c13upr" path="res://pesca/barra_pesca.tscn" id="6_2t0r3"]
+[ext_resource type="Texture2D" uid="uid://b5qyg8qdrnl67" path="res://icon.svg" id="7_2jept"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_id21n"]
+custom_solver_bias = 0.5
 radius = 16.0
 height = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3kmj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hl5a"]
+atlas = ExtResource("3_l87ni")
+region = Rect2(0, 217, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3kmj"]
+atlas = ExtResource("3_l87ni")
+region = Rect2(93, 186, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t0r3"]
+atlas = ExtResource("3_l87ni")
+region = Rect2(31, 186, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jept"]
+atlas = ExtResource("3_l87ni")
+region = Rect2(124, 155, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwaou"]
+atlas = ExtResource("3_l87ni")
+region = Rect2(62, 155, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8yp11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hl5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3kmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t0r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jept")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwaou")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3kmj"]
+shader = ExtResource("5_u3kmj")
+shader_parameter/blur_amount = 2.0
 
 [node name="PescaMain" type="Node2D" unique_id=2099362878]
 script = ExtResource("1_8yp11")
@@ -25,12 +80,95 @@ hframes = 4
 vframes = 5
 frame = 3
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=319092636]
-
-[node name="Area2D" type="Area2D" parent="." unique_id=2137275740]
+[node name="Boat" type="Area2D" parent="." unique_id=158720126]
+position = Vector2(1.0000001, 0)
 scale = Vector2(19.007551, 10.6202)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=652817617]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=652817617]
 position = Vector2(0, 30)
 scale = Vector2(1.5, 0.54)
 shape = SubResource("CapsuleShape2D_id21n")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Boat" unique_id=1603903824]
+offset_left = -24.148298
+offset_top = 30.696222
+offset_right = 22.6752
+offset_bottom = 52.823868
+rotation = 0.7959592
+scale = Vector2(0.7824488, -1.5247557)
+color = Color(0.5493864, 0.17546314, 0.15340152, 1)
+
+[node name="Line" type="Line2D" parent="Boat" unique_id=1405574667]
+unique_name_in_owner = true
+position = Vector2(-0.05261068, 0)
+scale = Vector2(0.052610673, 0.094160184)
+points = PackedVector2Array(85.99999, 306, 0, 77)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Anzuelo" type="CharacterBody2D" parent="." unique_id=1365197455]
+unique_name_in_owner = true
+z_index = 3
+scale = Vector2(0.59369075, 0.953608)
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("3_u3kmj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anzuelo" unique_id=1661852939]
+scale = Vector2(1.0315962, 0.51907533)
+shape = SubResource("CircleShape2D_u3kmj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anzuelo" unique_id=584224302]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1.1920932e-07, 2.3841858e-07)
+rotation = -2.6546457
+scale = Vector2(0.7923895, 0.7867294)
+skew = 0.5532694
+sprite_frames = SubResource("SpriteFrames_8yp11")
+animation = &"new_animation"
+frame_progress = 0.3685472
+
+[node name="FishingArea" type="Polygon2D" parent="." unique_id=549194547]
+unique_name_in_owner = true
+position = Vector2(-563, 302)
+scale = Vector2(500, 500)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(0, 0, 0, -1.2, 2.25, -1.2, 2.25, 0, 2.05, 0, 1.7260001, -0.23000002, 1.128, -0.53800005, 0.568, -0.272, 0.2, 0)
+
+[node name="Spawn" type="Timer" parent="." unique_id=1916346328]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=319092636]
+zoom = Vector2(1.05, 1.05)
+
+[node name="AaronBlur" type="ColorRect" parent="." unique_id=576033772]
+visible = false
+z_index = 4
+material = SubResource("ShaderMaterial_u3kmj")
+custom_minimum_size = Vector2(2000, 2000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JuegoPesca" parent="AaronBlur" unique_id=788184286 instance=ExtResource("6_2t0r3")]
+layout_mode = 0
+offset_left = 1485.9999
+offset_top = 823.00006
+offset_right = 1485.9999
+offset_bottom = 823.00006
+scale = Vector2(4.0816574, 8.129184)
+
+[node name="Icon" type="Sprite2D" parent="AaronBlur" unique_id=1019232935]
+position = Vector2(472.0001, 1228)
+scale = Vector2(0.53125, 0.58593744)
+texture = ExtResource("7_2jept")
+
+[connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
