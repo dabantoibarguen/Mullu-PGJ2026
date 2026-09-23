@@ -11,25 +11,34 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (NAV) Barra de energia y costos (https://www.youtube.com/watch?v=5poF352bDsQ)
-- (PSC) Crear escena de "pesca" (mar, barco, anzuelo, peces)
 - (BCO) Empezar escena
+- (NAV) Mostrar acciones posibles (Agregar pesca, conectar)
+- (PSC) Dar "vidas" (usos de anzuelos). Probar una cantidad de "vida", un success consume 1, un failure consume 2
 
 ### Prioridad Media
-- (PSC) Contar los segundos en los cuales la barra blanca esta en la zona verde
-- (PSC) Invocar el juego de la barra como ventana separada
-- (NAV) Cambio de "horas" al hacer acciones
-- (NAV) Mostrar acciones posibles
-- (NAV) Crear reloj ciclico
+- (PSC) Mostrar silhueta de pescado encontrado antes de atrapar
+- (NAV) Cambio de hora (4 horarios, reloj ciclico)
+- (NAV) Hacer que el barco mire ligeramente hacia donde se esta moviendo
+
 
 ### Prioridad Baja
-- (NAV) Generación automática de nuevos mapas
 - (NAV) Animación y fluidez al mover barco (empezar un movimiento cuando se acabe el anterior)
 - (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalida
-- (NAV) Resolver visión hacia casillas inexplorables. Priorizar rocas tal vez, y una función separada
 - (OCN) Rastro de barco en el agua al moverse (animación, partículas)
 - (OCN) Oscurecer tiles fuera del rango de vision, o re-esconder en humo
-- (MISC) Hallar optimizaciones y ajustar funciones para mejor velocidad
+- (PSC) Diferentes tipos de anzuelos, durabilidad
+_____________________
+
+## Martes 22 de Setiembre
+
+**Diego**
+- (PSC) Anzuelo que se mueve con WASD
+- (PSC) Linea de pesca que sigue al anzuelo
+- (PSC) Area limitada para anzuelo y peces
+- (PSC) Ventana de mini juego para pescar invocada
+
+**Sergio**
+- (NAV) Barra de energia completa
 
 _____________________
 
