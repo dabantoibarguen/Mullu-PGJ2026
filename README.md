@@ -32,9 +32,11 @@ _____________________
 ## Martes 22 de Setiembre
 
 **Diego**
+- (PSC) Escena creada
 - (PSC) Anzuelo que se mueve con WASD
 - (PSC) Linea de pesca que sigue al anzuelo
 - (PSC) Area limitada para anzuelo y peces
+- (PSC) Mini juego de barra que mide el tiempo completo
 - (PSC) Ventana de mini juego para pescar invocada
 
 **Sergio**
