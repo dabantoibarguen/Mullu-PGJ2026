@@ -2,6 +2,7 @@ extends TileMapLayer
 
 @onready var boat = %barco
 @onready var fog = %SmokeOnTheWater
+@onready var nav = get_parent()
 
 var painted_tiles = []
 
@@ -73,16 +74,18 @@ func _input(ev: InputEvent) -> void:
 			if get_cell_atlas_coords(target_coords) not in invalid_tiles:
 				var move_path = find_path(boat.cur_coords, target_coords)
 				var dist = move_path.size()
-				if(0 < dist and dist <= boat.vision_range):
+				if(0 < dist and dist <= boat.vision_range and dist <=nav.energy):
 					moving = true
-					$barco/Control/EnergyBar.value-=1	
 					for tile in move_path:
+						nav.energy-=1	
 						boat.target = map_to_local(tile)
 						fog.clear_cells(tile)
 						# make this based on the time needed to move
 						await get_tree().create_timer(0.33).timeout 
 					boat.cur_coords = target_coords
 					moving = false
+				elif dist > nav.energy:
+					boat.label.text = "Energia insuficiente"
 				else:
 					boat.label.text = "Invalido"
 				

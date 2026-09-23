@@ -89,6 +89,7 @@ offset_bottom = 30.75642
 script = ExtResource("5_bws8q")
 
 [node name="EnergyBar" type="ProgressBar" parent="OceanMap/barco/Control" unique_id=1451966874]
+unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 0
@@ -97,7 +98,8 @@ offset_top = -1.0504061
 offset_right = 19.634085
 offset_bottom = 16.949594
 theme_override_font_sizes/font_size = 10
-value = 100.0
+max_value = 30.0
+value = 30.0
 fill_mode = 1
 
 [node name="SmokeOnTheWater" type="TileMapLayer" parent="." unique_id=1127018933]

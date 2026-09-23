@@ -11,7 +11,6 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (NAV) Barra de energia y costos (https://www.youtube.com/watch?v=5poF352bDsQ)
 - (PSC) Crear escena de "pesca" (mar, barco, anzuelo, peces)
 - (BCO) Empezar escena
 
@@ -30,6 +29,7 @@
 - (OCN) Rastro de barco en el agua al moverse (animación, partículas)
 - (OCN) Oscurecer tiles fuera del rango de vision, o re-esconder en humo
 - (MISC) Hallar optimizaciones y ajustar funciones para mejor velocidad
+- (NAV) Agregar estilo de barra de energía
 
 _____________________
 
@@ -40,6 +40,7 @@ _____________________
 - (OCN) Resaltado de casillas seleccionables e invalidas
 - (NAV) Mensajes con costo de movimiento y tipo de casilla
 - (NAV) Cálculo de distancia basada en movimiento necesario, no distancia pura
+- (NAV) Barra de energia y costos (https://www.youtube.com/watch?v=5poF352bDsQ)
 
 _____________________
 
