@@ -11,6 +11,7 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
+- (PSC) Crear escena de "pesca" (mar, barco, anzuelo, peces)
 - (BCO) Empezar escena
 - (NAV) Mostrar acciones posibles (Agregar pesca, conectar)
 - (PSC) Dar "vidas" (usos de anzuelos). Probar una cantidad de "vida", un success consume 1, un failure consume 2
@@ -26,6 +27,8 @@
 - (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalida
 - (OCN) Rastro de barco en el agua al moverse (animación, partículas)
 - (OCN) Oscurecer tiles fuera del rango de vision, o re-esconder en humo
+- (MISC) Hallar optimizaciones y ajustar funciones para mejor velocidad
+- (NAV) Agregar estilo de barra de energía
 - (PSC) Diferentes tipos de anzuelos, durabilidad
 _____________________
 
@@ -51,6 +54,7 @@ _____________________
 - (OCN) Resaltado de casillas seleccionables e invalidas
 - (NAV) Mensajes con costo de movimiento y tipo de casilla
 - (NAV) Cálculo de distancia basada en movimiento necesario, no distancia pura
+- (NAV) Barra de energia y costos (https://www.youtube.com/watch?v=5poF352bDsQ)
 
 _____________________
 
