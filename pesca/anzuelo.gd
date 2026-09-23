@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		oldpos = global_position - velocity*1
 	else:
 		global_position = oldpos
-	cuerda.remove_point(2)
+	cuerda.remove_point(1)
 	cuerda.add_point(global_position)
 
 	

@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bxxkjmfcd08lo" path="res://pesca/pesca_main.gd" id="1_8yp11"]
 [ext_resource type="Texture2D" uid="uid://c84fje55h6q2d" path="res://pesca/assets/whirlpool.png" id="3_l87ni"]
 [ext_resource type="Script" uid="uid://dlpt6ajx836u" path="res://pesca/anzuelo.gd" id="3_u3kmj"]
-[ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/blur.gdshader" id="5_u3kmj"]
-[ext_resource type="PackedScene" uid="uid://m6rpj2c13upr" path="res://pesca/barra_pesca.tscn" id="6_2t0r3"]
+[ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_u3kmj"]
+[ext_resource type="PackedScene" uid="uid://m6rpj2c13upr" path="res://pesca/overlay/barra_pesca.tscn" id="6_2t0r3"]
 [ext_resource type="Texture2D" uid="uid://b5qyg8qdrnl67" path="res://icon.svg" id="7_2jept"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_id21n"]
@@ -103,7 +103,7 @@ color = Color(0.5493864, 0.17546314, 0.15340152, 1)
 unique_name_in_owner = true
 position = Vector2(-0.05261068, 0)
 scale = Vector2(0.052610673, 0.094160184)
-points = PackedVector2Array(85.99999, 306, 0, 77)
+points = PackedVector2Array(0, 77)
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 

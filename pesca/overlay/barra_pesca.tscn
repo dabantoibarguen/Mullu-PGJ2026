@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://m6rpj2c13upr"]
 
-[ext_resource type="Script" uid="uid://cyxqw7eqt5w8n" path="res://pesca/Juego_Main.gd" id="1_633cc"]
-[ext_resource type="Script" uid="uid://bjj0c8kxmqjuq" path="res://pesca/barra_pesca.gd" id="1_s17fj"]
+[ext_resource type="Script" uid="uid://cyxqw7eqt5w8n" path="res://pesca/overlay/Juego_Main.gd" id="1_633cc"]
+[ext_resource type="Script" uid="uid://bjj0c8kxmqjuq" path="res://pesca/overlay/barra_pesca.gd" id="1_s17fj"]
 
 [node name="JuegoPesca" type="Control" unique_id=788184286]
 layout_mode = 3
