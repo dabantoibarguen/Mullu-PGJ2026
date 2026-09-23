@@ -11,23 +11,23 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (BCO) Empezar escena
-- (NAV) Mostrar acciones posibles (Agregar pesca, conectar)
+- (BCO) Mini juego de recortes (precision tracing minigame)
+- (NAV) Mostrar acciones posibles (Opcion para iniciar pesca o buceo)
 - (PSC) Dar "vidas" (usos de anzuelos). Probar una cantidad de "vida", un success consume 1, un failure consume 2
 
 ### Prioridad Media
 - (PSC) Mostrar silhueta de pescado encontrado antes de atrapar
+- (PSC) Cambiar tamaño de señales en base al tipo de pescado (usa un diccionario)
+- (BCO) Conectar escena principal con mini juego (click a moluscos iluminados)
+- (BCO) Moluscos que aparezcan de manera aleatoria al generar el mapa
 - (NAV) Cambio de hora (4 horarios, reloj ciclico)
-- (NAV) Hacer que el barco mire ligeramente hacia donde se esta moviendo
-
+- (NAV) Hacer que el barco mire horizontalmente hacia donde se esta moviendo
 
 ### Prioridad Baja
+- (NAV) Actualizar mapa fijo (cuando Game Design termine su borrador)
 - (NAV) Animación y fluidez al mover barco (empezar un movimiento cuando se acabe el anterior)
-- (NAV) Mostrar linea hacia tile elegida. Verde para posible, rojo para invalida
 - (OCN) Rastro de barco en el agua al moverse (animación, partículas)
 - (OCN) Oscurecer tiles fuera del rango de vision, o re-esconder en humo
-- (MISC) Hallar optimizaciones y ajustar funciones para mejor velocidad
-- (NAV) Agregar estilo de barra de energía
 - (PSC) Diferentes tipos de anzuelos, durabilidad
 _____________________
 
@@ -40,6 +40,11 @@ _____________________
 - (PSC) Area limitada para anzuelo y peces
 - (PSC) Mini juego de barra que mide el tiempo completo
 - (PSC) Ventana de mini juego para pescar invocada
+- (BCO) Escena iniciada
+- (BCO) Iluminación dinámica debajo del agua
+- (BCO) Separación de movimiento horizontal (barco) y vertical (buzo)
+- (NAV) Barra de energia estilizada
+- (NAV) Linea para mostrar caminos validos/invalidos
 
 **Sergio**
 - (NAV) Barra de energia completa
