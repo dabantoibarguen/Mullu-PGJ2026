@@ -11,7 +11,6 @@
 |  Mecánicas de Océano |  Sistema de mejoras | Sistema de la ciudad | Enciclopedia | Micelaneo |
 
 ### Prioridad Alta
-- (PSC) Crear escena de "pesca" (mar, barco, anzuelo, peces)
 - (BCO) Empezar escena
 - (NAV) Mostrar acciones posibles (Agregar pesca, conectar)
 - (PSC) Dar "vidas" (usos de anzuelos). Probar una cantidad de "vida", un success consume 1, un failure consume 2
