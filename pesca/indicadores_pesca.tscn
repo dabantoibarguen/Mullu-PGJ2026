@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b5dw5n1b5lr3a"]
+
+[ext_resource type="Texture2D" uid="uid://c84fje55h6q2d" path="res://pesca/assets/whirlpool.png" id="1_0m3hy"]
+[ext_resource type="Script" uid="uid://cl10akojqovau" path="res://pesca/indicadores_pesca.gd" id="1_l788x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l788x"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebt4u"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlgdi"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(124, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ayv"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(31, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjkcb"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(93, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubeuq"]
+atlas = ExtResource("1_0m3hy")
+region = Rect2(0, 62, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d46s1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l788x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebt4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlgdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ayv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjkcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubeuq")
+}],
+"loop": 1,
+"name": &"Spin",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlynv"]
+radius = 10.049875
+
+[node name="IndicadorPSC" type="Area2D" unique_id=1538929454]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_l788x")
+
+[node name="IndicadoresPesca" type="AnimatedSprite2D" parent="." unique_id=1784397916]
+sprite_frames = SubResource("SpriteFrames_d46s1")
+animation = &"Spin"
+frame_progress = 0.7500061
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2093929897]
+scale = Vector2(1.1675109, 1.157948)
+shape = SubResource("CircleShape2D_nlynv")
+
+[node name="Borrar" type="Timer" parent="." unique_id=1909226911]
+
+[node name="Atrapar" type="Timer" parent="." unique_id=1965258604]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Borrar" to="." method="_on_borrar_timeout"]
+[connection signal="timeout" from="Atrapar" to="." method="_on_atrapar_timeout"]

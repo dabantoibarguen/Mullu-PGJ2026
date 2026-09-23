@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vh4vn1by585k"
-path="res://.godot/imported/totora_placeholder.png-a9b1b57c5fa9039feb524d21c716e6d5.ctex"
+uid="uid://c84fje55h6q2d"
+path="res://.godot/imported/whirlpool.png-38ffe1ce0acf220b29accc6991387965.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://navegacion/assets/totora_placeholder.png"
-dest_files=["res://.godot/imported/totora_placeholder.png-a9b1b57c5fa9039feb524d21c716e6d5.ctex"]
+source_file="res://pesca/assets/whirlpool.png"
+dest_files=["res://.godot/imported/whirlpool.png-38ffe1ce0acf220b29accc6991387965.ctex"]
 
 [params]
 

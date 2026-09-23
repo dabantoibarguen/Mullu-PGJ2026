@@ -1,10 +1,12 @@
-extends ColorRect
+extends Control
 
+@onready var barra = $BarraPesca
 @onready var player = $Player
 @onready var green = $GoodArea
 @onready var timer = $AreaVerde
+@onready var gameTimer = $Pescando
 
-var lowest_point = position.y + self.size.y
+var lowest_point = position.y + size.y
 var highest_point = position.y
 @export var grav = 0.3
 @export var green_time = 1
@@ -14,15 +16,28 @@ var score = 0
 var player_h
 var player_y
 
+var green_starting
 var green_h
 var green_top
 var green_bottom
 
 func _ready() -> void:
 	timer.wait_time = 1
-	timer.start()
 	player_h = player.size.y
 	green_h = green.size.y
+	green_starting = green.position
+
+func start_fishing(time = 5):
+	score = 0
+	gameTimer.wait_time = time
+	gameTimer.start()
+	green.position = green_starting
+	timer.start()
+	
+func _on_pescando_timeout() -> void:
+	timer.stop()
+	gameTimer.stop()
+	get_tree().current_scene.end_fishing(score)
 
 
 func _on_timer_timeout() -> void:
@@ -60,6 +75,5 @@ func _physics_process(delta: float) -> void:
 		player.position.y += grav * delta * 100
 	else:
 		player.position.y = lowest_point - player_h
-	print(score)
 	
 	
