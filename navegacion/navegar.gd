@@ -9,7 +9,7 @@ var painted_tiles = []
 var source_id = 0 # hard-coded. Keep up to date
 var hovered_cell = Vector2i(99, 99)
 var unhovered_cell = Vector2i(99, 99)
-
+var oldTracer = Line2D.new()
 
 var path_to_target = []
 var moving = false
@@ -76,14 +76,17 @@ func _input(ev: InputEvent) -> void:
 				var dist = move_path.size()
 				if(0 < dist and dist <= boat.vision_range and dist <=nav.energy):
 					moving = true
+					remove_child(oldTracer)
 					for tile in move_path:
-						nav.energy-=1	
+						nav.energy-=1
+						boat.energyText.text = str(nav.energy)	+ "/" + str(30)
 						boat.target = map_to_local(tile)
 						fog.clear_cells(tile)
 						# make this based on the time needed to move
 						await get_tree().create_timer(0.33).timeout 
 					boat.cur_coords = target_coords
 					moving = false
+					path_to_target = []
 				elif dist > nav.energy:
 					boat.label.text = "Energia insuficiente"
 				else:
@@ -102,15 +105,23 @@ func _physics_process(_delta: float) -> void:
 		return
 	var cell_atlas = get_cell_atlas_coords(hovered_cell)
 	if(!moving and path_to_target == []):
+		
 		# Finding the path ahead of time to get the navigated distance
 		if cell_atlas in invalid_tiles:
 			boat.label.text = (str(invalid_tiles.get(cell_atlas))
 			+ "\nInvalido")
 			return
 		path_to_target = find_path(boat.cur_coords, hovered_cell)
+		remove_child(oldTracer)
 		if (hovered_cell != boat.cur_coords):
+			var tracer = Line2D.new()
+			tracer.width = 1.5                    
+			tracer.add_point(map_to_local(boat.cur_coords))
+			for cell in path_to_target:
+				tracer.add_point(map_to_local(cell))
 			if path_to_target.size() <= boat.vision_range:
 				set_cell(hovered_cell, 0, cell_atlas, 1)
+				tracer.default_color = Color.GREEN
 				boat.label.text = (str(valid_tiles.get(cell_atlas)) 
 				+ "\nMovimiento: " + str(path_to_target.size()))
 		
@@ -118,9 +129,11 @@ func _physics_process(_delta: float) -> void:
 				boat.label.text = (str(valid_tiles.get(cell_atlas))
 				+ "\nMuy lejos")
 				set_cell(hovered_cell, 0, cell_atlas, 2)
-		
-
+				tracer.default_color = Color.RED
+			add_child(tracer)
+			oldTracer = tracer
 	if hovered_cell != unhovered_cell:
+		remove_child(oldTracer)
 		set_cell(unhovered_cell, 0, get_cell_atlas_coords(unhovered_cell), 0)
 		path_to_target = []
 	unhovered_cell = hovered_cell

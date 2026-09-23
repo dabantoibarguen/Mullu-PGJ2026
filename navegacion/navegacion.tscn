@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_sux3w"]
 [ext_resource type="Script" uid="uid://bqb2l88ll3l8n" path="res://navegacion/navegar.gd" id="2_sux3w"]
 [ext_resource type="PackedScene" uid="uid://1k5g23r5q1s" path="res://navegacion/barco/barco.tscn" id="3_sux3w"]
-[ext_resource type="Script" uid="uid://b3o4jb5p0ogjk" path="res://navegacion/energy_bar.gd" id="5_bws8q"]
 [ext_resource type="Script" uid="uid://dkc5445skki3v" path="res://navegacion/fog.gd" id="5_hs310"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjk8q"]
@@ -78,29 +77,6 @@ script = ExtResource("2_sux3w")
 unique_name_in_owner = true
 position = Vector2(-16, 14)
 scale = Vector2(3.9726946, 4.7600613)
-
-[node name="Control" type="Control" parent="OceanMap/barco" unique_id=1740812901]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 13.089353
-offset_top = -17.646832
-offset_right = 54.87459
-offset_bottom = 30.75642
-script = ExtResource("5_bws8q")
-
-[node name="EnergyBar" type="ProgressBar" parent="OceanMap/barco/Control" unique_id=1451966874]
-unique_name_in_owner = true
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 0
-offset_left = -12.5859165
-offset_top = -1.0504061
-offset_right = 19.634085
-offset_bottom = 16.949594
-theme_override_font_sizes/font_size = 10
-max_value = 30.0
-value = 30.0
-fill_mode = 1
 
 [node name="SmokeOnTheWater" type="TileMapLayer" parent="." unique_id=1127018933]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b53g80y211pyv"]
 
 [ext_resource type="Texture2D" uid="uid://c3dw7ai5doxwe" path="res://navegacion/assets/sprite barquito.png" id="1_g0wd3"]
-[ext_resource type="Script" uid="uid://c75i60dj4eauu" path="res://buceo/barco.gd" id="1_pt4ny"]
+[ext_resource type="Script" uid="uid://c75i60dj4eauu" path="res://buceo/barco_buzo.gd" id="1_pt4ny"]
 [ext_resource type="Script" uid="uid://by4xk0d8o6tyo" path="res://buceo/buceador.gd" id="3_i0akg"]
 [ext_resource type="Texture2D" uid="uid://be21dmi7l4gci" path="res://buceo/assets/calato.png" id="4_i0akg"]
 [ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="5_5y4bw"]
@@ -25,7 +25,7 @@ fill_from = Vector2(0.5235294, 0.5205882)
 fill_to = Vector2(0.5294118, 0.5176471)
 
 [sub_resource type="Gradient" id="Gradient_i0akg"]
-offsets = PackedFloat32Array(0, 0.43867925)
+offsets = PackedFloat32Array(0, 0.6462264)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i0akg"]
@@ -41,18 +41,18 @@ fill_to = Vector2(1, 1)
 [node name="Ocean" type="ColorRect" parent="." unique_id=434584973]
 light_mask = 2
 z_index = 1
-offset_left = -700.0
-offset_top = -68.0
-offset_right = 700.0
-offset_bottom = 438.0
+offset_left = -698.0
+offset_top = -124.0
+offset_right = 702.0
+offset_bottom = 382.0
 color = Color(0.039729048, 5.896017e-07, 0.28161976, 0.85882354)
 
 [node name="Sky" type="ColorRect" parent="." unique_id=930510104]
 z_index = 2
 offset_left = -700.0
-offset_top = -468.0
+offset_top = -521.0
 offset_right = 700.0
-offset_bottom = -68.0
+offset_bottom = -121.0
 color = Color(0.08943816, 0.52898985, 0.99999994, 0.54901963)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013168477]
@@ -60,7 +60,7 @@ color = Color(0.08943816, 0.52898985, 0.99999994, 0.54901963)
 [node name="Barco" type="CharacterBody2D" parent="." unique_id=1337409153]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(0, -128)
+position = Vector2(0, -184.00002)
 scale = Vector2(1, 1.0045354)
 script = ExtResource("1_pt4ny")
 
@@ -81,7 +81,7 @@ light_mask = 2
 material = SubResource("CanvasItemMaterial_5y4bw")
 position = Vector2(-620.2572, -338.81628)
 scale = Vector2(1, 1.0006611)
-points = PackedVector2Array(620, 400, 620, 775)
+points = PackedVector2Array(620, 400, 620, 820)
 default_color = Color(0.83421105, 0.55367076, 0.21285486, 1)
 
 [node name="Border" type="StaticBody2D" parent="." unique_id=173906715]
@@ -99,7 +99,7 @@ scale = Vector2(0.0926647, -6.399271)
 shape = SubResource("RectangleShape2D_nlynv")
 
 [node name="EdgeCollision2" type="CollisionShape2D" parent="Border" unique_id=276279259]
-position = Vector2(-2.999939, 338)
+position = Vector2(-0.99993885, 337.99997)
 rotation = 1.5707964
 scale = Vector2(0.10219831, 9.83608)
 shape = SubResource("RectangleShape2D_nlynv")
@@ -143,6 +143,7 @@ texture = ExtResource("5_5y4bw")
 [node name="Ocean2" type="PointLight2D" parent="." unique_id=1740315983]
 z_index = -1
 color = Color(4.2114408e-07, 0, 0.31664762, 0.6745098)
+energy = 0.7
 blend_mode = 2
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_nlynv")
@@ -152,7 +153,7 @@ texture_scale = 24.05
 unique_name_in_owner = true
 light_mask = 2
 z_index = 3
-position = Vector2(-3.8146973e-06, -8)
+position = Vector2(1.9999964, -64.00001)
 scale = Vector2(0.86650014, 0.95773953)
 script = ExtResource("3_i0akg")
 
@@ -169,7 +170,7 @@ texture = ExtResource("4_i0akg")
 [node name="PointLight2D" type="PointLight2D" parent="Buceador" unique_id=735538611]
 z_index = 3
 position = Vector2(3.4622083, 36.544388)
-energy = 2.0
+energy = 1.2
 blend_mode = 2
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_i0akg")
