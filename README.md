@@ -14,6 +14,7 @@
 - (BCO) Usar los moluscos para iniciar minijuego
 - (NAV) Cambio de hora (4 horarios, reloj ciclico)
 - (PSC) Dar "vidas" (usos de anzuelos). Probar una cantidad de "vida", un success consume 1, un failure consume 2
+- (MISC) Conectar de regreso a "navegacion" al terminar mini juegos
 
 ### Prioridad Media
 - (PSC) Mostrar silhueta de pescado encontrado antes de atrapar
@@ -21,7 +22,6 @@
 - (BCO) Moluscos que aparezcan de manera aleatoria al generar el map
 - (NAV) Hacer que el barco mire horizontalmente hacia donde se esta moviendo
 - (PSC/BCO) Condicion de "fin" para minijuego
-- (MISC) Conectar de regreso a "navegacion" al terminar mini juegos
 
 ### Prioridad Baja
 - (NAV) Actualizar mapa fijo (cuando Game Design termine su borrador)
