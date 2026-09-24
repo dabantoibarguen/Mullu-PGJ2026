@@ -75,6 +75,7 @@ script = ExtResource("2_sux3w")
 
 [node name="barco" parent="OceanMap" unique_id=1547565363 instance=ExtResource("3_sux3w")]
 unique_name_in_owner = true
+z_index = 2
 position = Vector2(-16, 14)
 scale = Vector2(3.9726946, 4.7600613)
 

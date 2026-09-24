@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://txow8y4ohwro"]
+
+[ext_resource type="Script" uid="uid://11woaaivwiri" path="res://navegacion/confirm.gd" id="1_mrn45"]
+
+[node name="Label" type="Label" unique_id=1604701916]
+z_index = 6
+offset_right = 100.0
+offset_bottom = 23.0
+scale = Vector2(0.9195248, 0.942312)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "¿Quieres "
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_mrn45")
+
+[node name="YES" type="Button" parent="." unique_id=794765082]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 93.0
+offset_bottom = 48.0
+scale = Vector2(0.7488102, 0.7649514)
+theme_override_font_sizes/font_size = 12
+text = "SÍ"
+
+[node name="NO" type="Button" parent="." unique_id=875396328]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 45.999996
+offset_right = 93.0
+offset_bottom = 71.0
+scale = Vector2(0.7488102, 0.7649514)
+theme_override_font_sizes/font_size = 12
+text = "NO"
+
+[connection signal="pressed" from="YES" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="NO" to="." method="_on_no_pressed"]

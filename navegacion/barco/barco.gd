@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 var speed = 75
 var cur_coords
-var vision_range = 2
+var vision_range = 3
 
 
 # Called when the node enters the scene tree for the first time.

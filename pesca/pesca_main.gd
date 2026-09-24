@@ -8,6 +8,7 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var juegoPesca = $AaronBlur/JuegoPesca
 
 var caught_indicator
+
 var triangles: Array[Array] = []
 var triangle_cumulative_weights: PackedFloat32Array = []
 var total_area: float = 0.0

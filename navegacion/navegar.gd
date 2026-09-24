@@ -1,10 +1,16 @@
 extends TileMapLayer
 
+var fishing_particles = preload("res://navegacion/particulas_pesca.tscn")
+var diving_particles = preload("res://navegacion/particulas_buceo.tscn")
+var confirm_popup = preload("res://navegacion/confirm.tscn")
+
 @onready var boat = %barco
 @onready var fog = %SmokeOnTheWater
 @onready var nav = get_parent()
 
 var painted_tiles = []
+var fishing_tiles = []
+var diving_tiles = []
 
 var source_id = 0 # hard-coded. Keep up to date
 var hovered_cell = Vector2i(99, 99)
@@ -13,6 +19,7 @@ var oldTracer = Line2D.new()
 
 var path_to_target = []
 var moving = false
+var standby = false
 
 # Should replace with Data Layers later
 const invalid_tiles = {
@@ -28,6 +35,20 @@ const valid_tiles = {
 
 func _ready() -> void:
 	painted_tiles = get_used_cells()
+	for tile in painted_tiles:
+		var atlas = valid_tiles.get(get_cell_atlas_coords(tile))
+		if atlas == "Mar alto": # or atlas == "Mar bajo"
+			var rand = randi_range(1, 20)
+			if rand == 10:
+				var f_parts = fishing_particles.instantiate()
+				f_parts.global_position = map_to_local(tile)
+				add_child(f_parts)
+				fishing_tiles.append(tile)
+			if rand == 5:
+				var d_parts = diving_particles.instantiate()
+				d_parts.global_position = map_to_local(tile)
+				add_child(d_parts)
+				diving_tiles.append(tile)
 	fog.populate_map(painted_tiles)
 	fog.clear_cells(boat.cur_coords)
 	
@@ -65,7 +86,7 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	return path
 	
 func _input(ev: InputEvent) -> void:
-	if ev is InputEventMouse and !moving:
+	if ev is InputEventMouse and !moving and !standby:
 		if ev.is_pressed() and ev.button_index == 1:
 			# A lot of this "could" be obtained from the hovered tiles
 			# But a fast mouse movement would break it all. Playing it safe.
@@ -83,10 +104,20 @@ func _input(ev: InputEvent) -> void:
 						boat.target = map_to_local(tile)
 						fog.clear_cells(tile)
 						# make this based on the time needed to move
-						await get_tree().create_timer(0.33).timeout 
+						await get_tree().create_timer(0.4).timeout 
 					boat.cur_coords = target_coords
 					moving = false
-					path_to_target = []
+					path_to_target = [] 
+					var pop = confirm_popup.instantiate()
+					if target_coords in fishing_tiles:
+						pop.action = "pescar"
+						standby = true
+						add_child(pop)
+					if target_coords in diving_tiles:
+						pop.action = "bucear"
+						standby = true
+						add_child(pop)
+						#get_tree().change_scene_to_file("res://buceo/buceo.tscn")
 				elif dist > nav.energy:
 					boat.label.text = "Energia insuficiente"
 				else:
@@ -98,9 +129,11 @@ func _input(ev: InputEvent) -> void:
 			
 func _physics_process(_delta: float) -> void:
 	hovered_cell = local_to_map(get_global_mouse_position())
-	if(moving or fog.get_cell_source_id(hovered_cell) != -1):
+	var msg = ""
+	if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1):
 		set_cell(unhovered_cell, 0, get_cell_atlas_coords(unhovered_cell), 0)
-		boat.label.text = ""
+		remove_child(oldTracer)
+		boat.label.text = msg
 		unhovered_cell = hovered_cell
 		return
 	var cell_atlas = get_cell_atlas_coords(hovered_cell)
@@ -108,7 +141,7 @@ func _physics_process(_delta: float) -> void:
 		
 		# Finding the path ahead of time to get the navigated distance
 		if cell_atlas in invalid_tiles:
-			boat.label.text = (str(invalid_tiles.get(cell_atlas))
+			msg += (str(invalid_tiles.get(cell_atlas))
 			+ "\nInvalido")
 			return
 		path_to_target = find_path(boat.cur_coords, hovered_cell)
@@ -122,7 +155,7 @@ func _physics_process(_delta: float) -> void:
 			if path_to_target.size() <= boat.vision_range:
 				set_cell(hovered_cell, 0, cell_atlas, 1)
 				tracer.default_color = Color.GREEN
-				boat.label.text = (str(valid_tiles.get(cell_atlas)) 
+				msg += (str(valid_tiles.get(cell_atlas)) 
 				+ "\nMovimiento: " + str(path_to_target.size()))
 		
 			else:
@@ -132,10 +165,14 @@ func _physics_process(_delta: float) -> void:
 				tracer.default_color = Color.RED
 			add_child(tracer)
 			oldTracer = tracer
+			if hovered_cell in fishing_tiles:
+				msg += "\nZona de Pesca"
+			if hovered_cell in diving_tiles:
+				msg += "\nZona de Buceo"
+			boat.label.text = msg
 	if hovered_cell != unhovered_cell:
+		boat.label.text = msg
 		remove_child(oldTracer)
 		set_cell(unhovered_cell, 0, get_cell_atlas_coords(unhovered_cell), 0)
 		path_to_target = []
 	unhovered_cell = hovered_cell
-			
-			

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://do1vx4b05weqp"]
+
+[ext_resource type="Script" uid="uid://dv5ebs1fpxjv8" path="res://buceo/hand.gd" id="1_e7sr8"]
+[ext_resource type="Script" uid="uid://cvibh4betkyej" path="res://buceo/snip_snap.gd" id="1_ikwup"]
+[ext_resource type="Texture2D" uid="uid://c0wtqy5ilbj1r" path="res://buceo/assets/hand.webp" id="1_yfp2p"]
+[ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="3_qpcpt"]
+
+[node name="SnipGame" type="Node2D" unique_id=1878471672]
+scale = Vector2(6.8148155, 6.293522)
+script = ExtResource("1_ikwup")
+
+[node name="Shape" type="Line2D" parent="." unique_id=1959313782]
+unique_name_in_owner = true
+position = Vector2(-6, 8)
+scale = Vector2(1.6666667, 1)
+points = PackedVector2Array(-12.599998, -21, 3, -35, 16.8, -21, 13.799999, 5, -5.9999995, 5)
+closed = true
+width = 0.5
+default_color = Color(0.8872835, 0.4816215, 0.37979886, 1)
+
+[node name="Hand" type="CharacterBody2D" parent="." unique_id=299055323]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(20.999998, 2)
+scale = Vector2(0.17938957, 0.15256858)
+script = ExtResource("1_e7sr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hand" unique_id=640169112]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_yfp2p")
+
+[node name="PlayerTrail" type="Line2D" parent="." unique_id=968435356]
+unique_name_in_owner = true
+z_index = 1
+width = 0.5
+
+[node name="Integrity" type="ProgressBar" parent="." unique_id=2094679539]
+unique_name_in_owner = true
+modulate = Color(0.8039216, 0, 0.1764706, 1)
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 42.0
+offset_top = -37.000004
+offset_right = 74.22
+offset_bottom = -19.000004
+scale = Vector2(0.6825464, 0.30883816)
+theme_override_font_sizes/font_size = 10
+step = 0.0
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1615371653]
+offset_left = 31.0
+offset_top = -29.0
+offset_right = 58.0
+offset_bottom = -6.0
+scale = Vector2(1.2706146, 0.44354612)
+metadata/_edit_use_anchors_ = true
+
+[node name="Indicator" type="Sprite2D" parent="." unique_id=2138667259]
+unique_name_in_owner = true
+modulate = Color(1, 0.68235296, 0, 1)
+z_index = 2
+scale = Vector2(0.0058054193, 0.008896611)
+texture = ExtResource("3_qpcpt")
