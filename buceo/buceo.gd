@@ -14,6 +14,8 @@ func _input(ev: InputEvent) -> void:
 			snipSnap.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 			buceador.playing = true
 			snipSnap.start()
+		elif ev.is_pressed() and ev.keycode == KEY_E:
+			get_tree().change_scene_to_file("res://navegacion/navegacion.tscn")
 			
 func end_snip(result = false):
 	print(result)

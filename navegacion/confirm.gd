@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_yes_pressed() -> void:
+	get_parent().standby = false
 	if action == "pescar":
 		get_tree().change_scene_to_file("res://pesca/pesca_main.tscn")
 	if action == "bucear":
