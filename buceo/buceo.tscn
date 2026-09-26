@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="5_5y4bw"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_uhecx"]
 [ext_resource type="PackedScene" uid="uid://do1vx4b05weqp" path="res://buceo/snip_game.tscn" id="6_jhcbv"]
+[ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
 offsets = PackedFloat32Array(0, 0.19339623)
@@ -182,3 +183,5 @@ scale = Vector2(0.6867163, 0.71707815)
 [node name="SnipGame" parent="AaronBlur" unique_id=1878471672 instance=ExtResource("6_jhcbv")]
 z_index = 5
 scale = Vector2(10.82, 10)
+
+[node name="CanvasLayer" parent="." unique_id=732940682 instance=ExtResource("8_25cln")]
