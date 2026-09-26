@@ -16,25 +16,25 @@ texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
 0:1/animation_columns = 2
-0:1/animation_speed = 5.5
+0:1/animation_speed = 3.5
 0:1/animation_mode = 1
 0:1/animation_frame_0/duration = 1.0
 0:1/animation_frame_1/duration = 0.7
 0:1/0 = 0
 2:1/animation_columns = 2
-2:1/animation_speed = 5.5
+2:1/animation_speed = 3.5
 2:1/animation_mode = 1
 2:1/animation_frame_0/duration = 1.0
 2:1/animation_frame_1/duration = 0.7
 2:1/0 = 0
 0:2/animation_columns = 2
-0:2/animation_speed = 5.5
+0:2/animation_speed = 3.0
 0:2/animation_mode = 1
 0:2/animation_frame_0/duration = 1.0
 0:2/animation_frame_1/duration = 0.8
 0:2/0 = 0
 2:2/animation_columns = 2
-2:2/animation_speed = 5.0
+2:2/animation_speed = 3.0
 2:2/animation_mode = 1
 2:2/animation_frame_0/duration = 1.0
 2:2/animation_frame_1/duration = 0.8
@@ -101,6 +101,7 @@ tile_set = SubResource("TileSet_nlynv")
 script = ExtResource("5_hs310")
 
 [node name="NavMenu" parent="." unique_id=703825542 instance=ExtResource("6_bws8q")]
+layer = 2
 
 [node name="OceanMap2" type="TileMapLayer" parent="." unique_id=1172204950]
 unique_name_in_owner = true
@@ -108,3 +109,13 @@ tile_map_data = PackedByteArray("AAACAPP/AgAAAAMAAAAAAPH/AgAAAAMAAAD9//L/AgAAAAM
 tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
 script = ExtResource("2_sux3w")
+
+[node name="PescaContainer" type="CanvasLayer" parent="." unique_id=251374233]
+unique_name_in_owner = true
+layer = 3
+
+[node name="BuceoContainer" type="CanvasLayer" parent="." unique_id=77906972]
+unique_name_in_owner = true
+layer = 3
+follow_viewport_enabled = true
+follow_viewport_scale = 0.5

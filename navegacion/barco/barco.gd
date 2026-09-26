@@ -16,6 +16,7 @@ func _ready():
 	cur_coords = oceanMap.local_to_map(global_position)
 	target = oceanMap.map_to_local(cur_coords)
 	energyText.text = "30/30"
+	sprite.play("default")
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(target)

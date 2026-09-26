@@ -1,8 +1,30 @@
 [gd_scene format=3 uid="uid://1k5g23r5q1s"]
 
 [ext_resource type="Script" uid="uid://dkepfco4hu80c" path="res://navegacion/barco/barco.gd" id="1_0j4b5"]
-[ext_resource type="Texture2D" uid="uid://c3dw7ai5doxwe" path="res://navegacion/assets/sprite barquito.png" id="2_0j4b5"]
+[ext_resource type="Texture2D" uid="uid://c3i8jvr4fu61" path="res://navegacion/assets/tiles1.png" id="2_in4ql"]
 [ext_resource type="Script" uid="uid://b3o4jb5p0ogjk" path="res://navegacion/energy_bar.gd" id="3_in4ql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6lay"]
+atlas = ExtResource("2_in4ql")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1don"]
+atlas = ExtResource("2_in4ql")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in4ql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6lay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1don")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
 size = Vector2(7, 4.5)
@@ -32,11 +54,9 @@ outline_color = Color(0, 0, 0, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_0j4b5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2057459263]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1341787732]
 scale = Vector2(0.26878318, 0.17499955)
-texture = ExtResource("2_0j4b5")
-hframes = 4
-vframes = 6
+sprite_frames = SubResource("SpriteFrames_in4ql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1907727545]
 shape = SubResource("RectangleShape2D_nlynv")

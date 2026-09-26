@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var fish_area = %FishingArea
@@ -7,6 +7,8 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var blur = $AaronBlur
 @onready var juegoPesca = $AaronBlur/JuegoPesca
 
+signal resultados_pesca(result)
+
 var caught_indicator
 
 var triangles: Array[Array] = []
@@ -14,10 +16,10 @@ var triangle_cumulative_weights: PackedFloat32Array = []
 var total_area: float = 0.0
 
 func _ready() -> void:
+	print("FUck")
 	timer.wait_time = 1
 	timer.start()
 	triangulate_fish_area()
-
 
 func go_fish(origin):
 	caught_indicator = origin
@@ -81,5 +83,5 @@ func get_random_point() -> Vector2:
 		
 	return p1 + r1 * (p2 - p1) + r2 * (p3 - p1)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
