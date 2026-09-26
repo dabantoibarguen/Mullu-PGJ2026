@@ -36,6 +36,7 @@ func _ready():
 func start_game():
 	indicator.scale = indicator_size
 	integrity_bar.value = integrity
+	integrity_bar.get_theme_stylebox("fill").bg_color = Color("3b6125")
 	helper.clear_points()
 	trail.clear_points()
 	rotation = 0
@@ -104,6 +105,10 @@ func _physics_process(delta: float) -> void:
 		if integrity <= 0.0:
 			end_game(false)
 			return
+		elif integrity <= 33:
+			integrity_bar.get_theme_stylebox("fill").bg_color = Color(0.716, 0.0, 0.0, 1.0)
+		elif integrity <= 66:
+			integrity_bar.get_theme_stylebox("fill").bg_color = Color(0.627, 0.549, 0.0, 1.0)
 
 	if global_position.distance_to(seg_end) <= CORNER_RADIUS:
 		if next_vertex_index < target_points.size():

@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dmpgjq1kutci1"]
+
+[ext_resource type="Texture2D" uid="uid://cnc18lifdcb47" path="res://navegacion/assets/pescao.png" id="1_ux2aw"]
+[ext_resource type="Shader" uid="uid://iycku3vvv3ek" path="res://navegacion/black_border.gdshader" id="1_xufwd"]
+[ext_resource type="Texture2D" uid="uid://h34jgkfrjubu" path="res://navegacion/assets/temp.webp" id="2_8mrxu"]
+[ext_resource type="Texture2D" uid="uid://d4gavmrgakyeu" path="res://navegacion/assets/energyph.png" id="3_hjbyo"]
+[ext_resource type="Texture2D" uid="uid://cdce8a8idjsdw" path="res://navegacion/assets/tempph.webp" id="4_hjbyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4ql"]
+bg_color = Color(0.28235295, 0.2784314, 0.2901961, 0.8745098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv1x1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.8862745)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mrxu"]
+shader = ExtResource("1_xufwd")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xufwd"]
+shader = ExtResource("1_xufwd")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[node name="NavMenu" type="CanvasLayer" unique_id=703825542]
+scale = Vector2(1.1, 1.1)
+transform = Transform2D(1.1, 0, 0, 1.1, 0, 0)
+
+[node name="Nav" type="Button" parent="." unique_id=715979576]
+offset_left = 250.0
+offset_top = 500.9091
+offset_right = 400.0
+offset_bottom = 550.90906
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+text = "Navegar"
+
+[node name="Psc" type="Button" parent="." unique_id=434671278]
+offset_left = 750.0
+offset_top = 500.9091
+offset_right = 900.0
+offset_bottom = 550.90906
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+text = "Bucear"
+
+[node name="Bco" type="Button" parent="." unique_id=63243704]
+offset_left = 500.0
+offset_top = 500.9091
+offset_right = 650.0
+offset_bottom = 550.90906
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+text = "Pescar"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1925910099]
+offset_right = 1200.0
+offset_bottom = 60.0
+color = Color(0.28235295, 0.2784314, 0.2901961, 0.6)
+
+[node name="Pescao" type="Sprite2D" parent="." unique_id=949772439]
+material = SubResource("ShaderMaterial_8mrxu")
+position = Vector2(494.5454, 29.090912)
+scale = Vector2(3.1767285, 2.989501)
+texture = ExtResource("1_ux2aw")
+
+[node name="Temp" type="Sprite2D" parent="." unique_id=1819012353]
+material = SubResource("ShaderMaterial_8mrxu")
+position = Vector2(145.45454, 29.090904)
+scale = Vector2(0.20722221, 0.19977558)
+texture = ExtResource("2_8mrxu")
+
+[node name="Energyph" type="Sprite2D" parent="." unique_id=995618456]
+material = SubResource("ShaderMaterial_8mrxu")
+position = Vector2(319.99997, 29.09092)
+scale = Vector2(0.064737335, 0.06632493)
+texture = ExtResource("3_hjbyo")
+
+[node name="EnergyL" type="Label" parent="." unique_id=487684872]
+offset_left = 334.54556
+offset_top = 17.272724
+offset_right = 355.72748
+offset_bottom = 45.272728
+scale = Vector2(0.8489525, 0.8031336)
+theme_override_colors/font_color = Color(0.09019608, 0.7921569, 0.039215688, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PescaoL" type="Label" parent="." unique_id=126054377]
+offset_left = 519.0908
+offset_top = 17.272724
+offset_right = 540.27277
+offset_bottom = 45.272728
+rotation = -5.5997105e-05
+scale = Vector2(0.8489525, 0.8031336)
+theme_override_colors/font_color = Color(0.47843137, 0.41960785, 0.32156864, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tempph" type="Sprite2D" parent="." unique_id=838061467]
+material = SubResource("ShaderMaterial_xufwd")
+position = Vector2(843.63635, 29.09091)
+scale = Vector2(0.1791027, 0.16637245)
+texture = ExtResource("4_hjbyo")
