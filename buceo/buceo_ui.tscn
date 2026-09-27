@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bs3xrbe6381kf"]
+
+[ext_resource type="Script" uid="uid://cqsgnhh6qw1p7" path="res://buceo/oxygen_control.gd" id="1_2822b"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=732940682]
+
+[node name="OxygenControl" type="Control" parent="." unique_id=1742875160]
+z_index = 8
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2822b")
+
+[node name="OxygenBar" type="ProgressBar" parent="OxygenControl" unique_id=1268160214]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 23.0
+offset_right = 302.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 32
+max_value = 90.0
+
+[node name="OxygenTimer" type="Timer" parent="OxygenControl" unique_id=1880241971]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="OxygenControl/OxygenTimer" to="OxygenControl" method="_on_oxygen_timer_timeout"]
