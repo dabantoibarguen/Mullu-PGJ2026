@@ -30,7 +30,7 @@ color = Color(1, 1, 1, 0.86800003)
 layout_mode = 0
 offset_top = 18.0
 offset_right = 10.0
-offset_bottom = 26.0
+offset_bottom = 28.0
 color = Color(0.09320182, 0.5281222, 0, 1)
 
 [node name="Pescando" type="Timer" parent="BarraPesca" unique_id=1453420726]

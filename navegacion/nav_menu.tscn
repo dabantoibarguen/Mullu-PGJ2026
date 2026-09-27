@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmpgjq1kutci1"]
 
+[ext_resource type="Script" uid="uid://0o5t78kf2epd" path="res://navegacion/nav_menu.gd" id="1_0lkfs"]
 [ext_resource type="Texture2D" uid="uid://cnc18lifdcb47" path="res://navegacion/assets/pescao.png" id="1_ux2aw"]
 [ext_resource type="Shader" uid="uid://iycku3vvv3ek" path="res://navegacion/black_border.gdshader" id="1_xufwd"]
 [ext_resource type="Texture2D" uid="uid://h34jgkfrjubu" path="res://navegacion/assets/temp.webp" id="2_8mrxu"]
@@ -19,8 +20,30 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lkfs"]
+bg_color = Color(0, 0.36078432, 0.0627451, 0.7882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv1x1"]
 bg_color = Color(0.6, 0.6, 0.6, 0.8862745)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asrx5"]
+bg_color = Color(0, 0.53333336, 0.10980392, 0.85490197)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -37,6 +60,7 @@ shader_parameter/outline_color = Color(0, 0, 0, 1)
 [node name="NavMenu" type="CanvasLayer" unique_id=703825542]
 scale = Vector2(1.1, 1.1)
 transform = Transform2D(1.1, 0, 0, 1.1, 0, 0)
+script = ExtResource("1_0lkfs")
 
 [node name="Nav" type="Button" parent="." unique_id=715979576]
 offset_left = 250.0
@@ -45,28 +69,35 @@ offset_right = 400.0
 offset_bottom = 550.90906
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_asrx5")
+toggle_mode = true
 text = "Navegar"
 
-[node name="Psc" type="Button" parent="." unique_id=434671278]
-offset_left = 750.0
-offset_top = 500.9091
-offset_right = 900.0
-offset_bottom = 550.90906
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
-text = "Bucear"
-
-[node name="Bco" type="Button" parent="." unique_id=63243704]
+[node name="Psc" type="Button" parent="." unique_id=63243704]
 offset_left = 500.0
 offset_top = 500.9091
 offset_right = 650.0
 offset_bottom = 550.90906
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0lkfs")
 text = "Pescar"
+
+[node name="Bco" type="Button" parent="." unique_id=434671278]
+offset_left = 750.0
+offset_top = 500.9091
+offset_right = 900.0
+offset_bottom = 550.90906
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0lkfs")
+text = "Bucear"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1925910099]
 offset_right = 1200.0
@@ -102,7 +133,6 @@ theme_override_colors/font_color = Color(0.09019608, 0.7921569, 0.039215688, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
-text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -126,3 +156,7 @@ material = SubResource("ShaderMaterial_xufwd")
 position = Vector2(843.63635, 29.09091)
 scale = Vector2(0.1791027, 0.16637245)
 texture = ExtResource("4_hjbyo")
+
+[connection signal="pressed" from="Nav" to="." method="_on_nav_pressed"]
+[connection signal="pressed" from="Psc" to="." method="_on_psc_pressed"]
+[connection signal="pressed" from="Bco" to="." method="_on_bco_pressed"]

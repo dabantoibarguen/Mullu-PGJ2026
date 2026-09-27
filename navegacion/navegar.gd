@@ -10,9 +10,11 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
+var tile_cost = 2
+# Update with blessings and/or other perks
+
 var painted_tiles = []
 
-var source_id = 2 # hard-coded. Keep up to date
 var hovered_cell = Vector2i(99, 99)
 var unhovered_cell = Vector2i(99, 99)
 var oldTracer = Line2D.new()
@@ -92,8 +94,7 @@ func _input(ev: InputEvent) -> void:
 						moving = true
 						remove_child(oldTracer)
 						for tile in move_path:
-							nav.energy-=1
-							boat.energyText.text = str(nav.energy)	+ "/" + str(30)
+							nav.energy-= tile_cost
 							boat.target = map_to_local(tile)
 							fog.clear_cells(tile)
 							# make this based on the time needed to move
@@ -105,23 +106,7 @@ func _input(ev: InputEvent) -> void:
 						boat.label.text = "Energia insuficiente"
 					else:
 						boat.label.text = "Invalido"
-				
-	elif ev is InputEventKey and ev.is_pressed() and not ev.is_echo():
-		if ev.keycode == KEY_SPACE:
-			move_action = !move_action
-			boat.label.text = ""
-			remove_child(oldTracer)
-			unhovered_cell = hovered_cell
-		elif ev.keycode == KEY_P:
-			var pescar = pesca_game.instantiate()
-			pause_nav()
-			pescar.connect("resultado_pesca", add_fish)
-			nav.add_sibling(pescar)
-		elif ev.keycode == KEY_B:
-			var buceo = buceo_game.instantiate()
-			pause_nav()
-			buceo.connect("resultado_buceo", add_mullu)
-			nav.add_sibling(buceo)
+
 
 func pause_nav():
 	standby = true
@@ -145,17 +130,36 @@ func add_mullu(total_mullu):
 	resume_nav()
 	print(total_mullu)
 
+# ------ Button functions -------
+func navegar():
+	move_action = !move_action
+	boat.label.text = ""
+	remove_child(oldTracer)
+	unhovered_cell = hovered_cell
+
+func pescar():
+	var pescar = pesca_game.instantiate()
+	pause_nav()
+	pescar.connect("resultado_pesca", add_fish)
+	nav.add_sibling(pescar)
+
+func bucear():
+	var buceo = buceo_game.instantiate()
+	pause_nav()
+	buceo.connect("resultado_buceo", add_mullu)
+	nav.add_sibling(buceo)
+
 			
 func _physics_process(_delta: float) -> void:
 	if (move_action):
-		hovered_cell = local_to_map(get_global_mouse_position())
+		hovered_cell = self.local_to_map(get_global_mouse_position())
 		var msg = ""
 		if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1):
 			remove_child(oldTracer)
 			boat.label.text = msg
 			unhovered_cell = hovered_cell
 			return
-		var cell_atlas = get_cell_atlas_coords(hovered_cell)
+		var cell_atlas = self.get_cell_atlas_coords(hovered_cell)
 		if(!moving and path_to_target == []):
 			# Finding the path ahead of time to get the navigated distance
 			if cell_atlas in invalid_tiles:

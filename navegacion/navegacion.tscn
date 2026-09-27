@@ -78,6 +78,22 @@ tile_shape = 3
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_hs310")
 
+[sub_resource type="Gradient" id="Gradient_yl48w"]
+offsets = PackedFloat32Array(0, 0.16981132)
+colors = PackedColorArray(1, 1, 1, 0.39215687, 1, 1, 1, 0.37254903)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nlynv"]
+gradient = SubResource("Gradient_yl48w")
+fill_from = Vector2(0.8352941, 1)
+fill_to = Vector2(0.84117645, 0)
+
+[sub_resource type="Gradient" id="Gradient_0jc1b"]
+offsets = PackedFloat32Array(0, 0.24528302)
+colors = PackedColorArray(1, 1, 1, 0.4, 1, 1, 1, 0.4)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yl48w"]
+gradient = SubResource("Gradient_0jc1b")
+
 [node name="Navegacion" type="Node2D" unique_id=61363761]
 script = ExtResource("1_pjk8q")
 
@@ -109,4 +125,30 @@ unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAACAPP/AgAAAAMAAAAAAPH/AgAAAAMAAAD9//L/AgAAAAMAAAD8//H/AgAAAAMAAAAFAPP/AgAAAAMAAAAGAPP/AgAAAAMAAAAOAPT/AgAAAAMAAAAMAPH/AgAAAAMAAAAOAOD/AgAAAAMAAAAOAN//AgAAAAMAAAAPAN//AgAAAAMAAAAPAN7/AgAAAAMAAAAOAN3/AgAAAAMAAAAMAN7/AgAAAAMAAAD8//T/AgABAAAAAAD///D/AgABAAAAAAAJAPv/AgABAAAAAAACAPn/AgABAAAAAAASAPn/AgABAAAAAAAVAPj/AgABAAAAAAAWAPf/AgABAAAAAAAVAPz/AgABAAAAAAAYAPv/AgABAAAAAAAYAP7/AgABAAAAAAAbAPz/AgABAAAAAAAYAPX/AgABAAAAAAASAO3/AgABAAAAAAAYAOr/AgABAAAAAAACAOz/AgABAAAAAAABAOH/AgAAAAAAAAACAOL/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
-script = ExtResource("2_sux3w")
+
+[node name="MorningLight" type="PointLight2D" parent="." unique_id=993326913]
+position = Vector2(383, -395)
+scale = Vector2(19.859373, 15.187499)
+color = Color(0.12156863, 0.43529412, 0.49019608, 1)
+blend_mode = 2
+range_layer_max = 2
+texture = SubResource("GradientTexture2D_nlynv")
+
+[node name="AfternoonLight" type="PointLight2D" parent="." unique_id=47349244]
+visible = false
+position = Vector2(383, -395)
+scale = Vector2(19.859373, 15.187499)
+color = Color(0.8509804, 0.22745098, 0.11764706, 1)
+blend_mode = 2
+range_layer_max = 2
+texture = SubResource("GradientTexture2D_yl48w")
+
+[node name="NightLight" type="PointLight2D" parent="." unique_id=227851107]
+visible = false
+position = Vector2(383, -395)
+scale = Vector2(19.859373, 15.187499)
+color = Color(0.81130683, 0.8735358, 0.51875484, 1)
+energy = 2.0
+blend_mode = 1
+range_layer_max = 2
+texture = SubResource("GradientTexture2D_nlynv")

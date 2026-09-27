@@ -32,7 +32,7 @@ func _ready() -> void:
 func start_fishing(origin):
 	controlPesca = origin
 	score = 0
-	gameTimer.wait_time = 10
+	gameTimer.wait_time = 17
 	gameTimer.start()
 	green.position = green_starting
 	timer.start()
@@ -57,7 +57,7 @@ func _input(ev: InputEvent) -> void:
 func move_green():
 	var rand_targ = randf_range(highest_point, lowest_point-green_h)
 	var target = min(green.position.y - rand_targ, size.y/2)
-	var time = 10*green_time
+	var time = 17*green_time
 	for i in range(time):
 		green.position.y -= (target)/(time)
 		await get_tree().create_timer(0.08).timeout 
