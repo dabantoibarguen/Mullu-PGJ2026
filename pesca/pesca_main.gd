@@ -6,19 +6,33 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var anzuelo = %Anzuelo
 @onready var blur = $AaronBlur
 @onready var juegoPesca = $AaronBlur/JuegoPesca
+@onready var durLabel = $Durabilidad
 
 signal resultado_pesca(pescado)
 
 var caught_indicator
 
+var pescados = 0
+
+var durabilidad = 5:
+	set(dur):
+		durabilidad = max(0 ,dur)
+		durLabel.text = str(durabilidad)
+		if durabilidad <= 0:
+			resultado_pesca.emit(0)
+			queue_free()
+
+# Limited area polygon calculations
 var triangles = []
 var triangle_cumulative_weights = []
 var total_area = 0.0
 
 func _ready() -> void:
+	durLabel.text = str(durabilidad)
 	timer.wait_time = 1
 	timer.start()
 	triangulate_fish_area()
+
 
 func go_fish(origin):
 	caught_indicator = origin
@@ -28,15 +42,14 @@ func go_fish(origin):
 	
 func end_fishing(score = 0):
 	print("Puntaje: " + str(score))
+	if score < 6:
+		durabilidad -= 2
+	else:
+		pescados += 1 # Dependiendo del pescado
+		durabilidad -= 1
 	blur.visible = false
 	caught_indicator.queue_free()
 	anzuelo.speed = 400
-	
-func _input(ev: InputEvent) -> void:
-	if ev is InputEventKey:
-		if ev.is_pressed() and ev.keycode == KEY_ESCAPE:
-			resultado_pesca.emit(0)
-			queue_free()
 
 func _on_spawn_timeout() -> void:
 	var pos = fish_area.to_global(get_random_point())

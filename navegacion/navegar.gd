@@ -138,12 +138,14 @@ func navegar():
 	unhovered_cell = hovered_cell
 
 func pescar():
+	nav.energy -= 3
 	var pescar = pesca_game.instantiate()
 	pause_nav()
 	pescar.connect("resultado_pesca", add_fish)
 	nav.add_sibling(pescar)
 
 func bucear():
+	nav.energy -= 3
 	var buceo = buceo_game.instantiate()
 	pause_nav()
 	buceo.connect("resultado_buceo", add_mullu)

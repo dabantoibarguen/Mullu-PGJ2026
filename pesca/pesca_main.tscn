@@ -64,7 +64,7 @@ script = ExtResource("1_8yp11")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=635142950]
 texture_filter = 1
-scroll_offset = Vector2(-3, 1)
+scroll_offset = Vector2(826, 241)
 repeat_size = Vector2(120, 100)
 autoscroll = Vector2(10, 80)
 repeat_times = 10
@@ -155,5 +155,19 @@ texture = ExtResource("7_2jept")
 
 [node name="CamaraPesca" type="Camera2D" parent="." unique_id=2036240315]
 position = Vector2(576, 324)
+
+[node name="Durabilidad" type="Label" parent="." unique_id=352204426]
+offset_left = 1048.0
+offset_top = 14.0
+offset_right = 1088.0
+offset_bottom = 72.0
+scale = Vector2(2.347173, 1.7461473)
+theme_override_font_sizes/font_size = 42
+text = "0"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1415150823]
+position = Vector2(1001, 68.99999)
+scale = Vector2(0.52372324, 0.50757456)
+texture = ExtResource("7_2jept")
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]

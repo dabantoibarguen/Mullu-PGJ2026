@@ -10,7 +10,7 @@ var pescado = 0
 var mullu = 0
 
 var temperatura = 0
-var hora = 0
+var hora = "Mañana"
 var profundidad # Sacar esto del tile del barco
 
 var energy: int = 120:
@@ -31,11 +31,13 @@ func _ready() -> void:
 	menu.update_energy(energy)
 
 func cambio_tarde():
+	hora = "Tarde"
 	mLight.visible = false
 	aLight.visible = true
 	nLight.visible = false
 	
 func cambio_noche():
+	hora = "Noche"
 	mLight.visible = false
 	aLight.visible = false
 	nLight.visible = true

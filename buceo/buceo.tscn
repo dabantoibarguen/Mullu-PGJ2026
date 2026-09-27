@@ -142,6 +142,7 @@ hframes = 4
 vframes = 5
 
 [node name="Border" type="StaticBody2D" parent="." unique_id=173906715]
+visible = false
 z_index = 5
 scale = Vector2(1.183381, 1.2888223)
 
