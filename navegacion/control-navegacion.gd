@@ -17,11 +17,11 @@ var energy: int = 120:
 	set(e):
 		energy = e
 		menu.update_energy(e)
-		if(energy <= 40 and hora == 1):
-			hora = 2
+		if(energy <= 40 and hora == "Tarde"):
+			hora = "Noche"
 			cambio_noche()
-		elif(energy <= 80 and hora == 0):
-			hora = 1
+		elif(energy <= 80 and hora == "Mañana"):
+			hora = "Tarde"
 			cambio_tarde()
 # 80-120 mañana
 # 40-79 tarde
@@ -32,15 +32,29 @@ func _ready() -> void:
 
 func cambio_tarde():
 	hora = "Tarde"
+	var tween = create_tween()
+	tween.tween_property(mLight, "energy", 0.0, 2)
+	
+	await tween.finished
 	mLight.visible = false
 	aLight.visible = true
+		
+	var tween2 = create_tween()
+	tween2.tween_property(aLight, "energy", 1.0, 4)
+	
 	nLight.visible = false
 	
 func cambio_noche():
 	hora = "Noche"
 	mLight.visible = false
-	aLight.visible = false
+	
+	var tween = create_tween()
+	tween.tween_property(aLight, "energy", 0.0, 3)
+	await tween.finished
 	nLight.visible = true
+	var tween2 = create_tween().set_parallel(true)
+	tween2.tween_property(nLight, "energy", 0.8, 4)
+	
 
 func menu_nav():
 	main.navegar()

@@ -10,7 +10,7 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
-var tile_cost = 2
+var tile_cost = 10
 # Update with blessings and/or other perks
 var tile_type
 
