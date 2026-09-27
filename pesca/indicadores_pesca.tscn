@@ -57,8 +57,8 @@ animations = [{
 radius = 10.049875
 
 [node name="IndicadorPSC" type="Area2D" unique_id=1538929454]
-z_index = 1
-collision_layer = 2
+process_mode = 3
+input_pickable = false
 script = ExtResource("1_l788x")
 
 [node name="IndicadoresPesca" type="AnimatedSprite2D" parent="." unique_id=1784397916]
@@ -72,7 +72,7 @@ shape = SubResource("CircleShape2D_nlynv")
 
 [node name="Borrar" type="Timer" parent="." unique_id=1909226911]
 
-[node name="Atrapar" type="Timer" parent="." unique_id=1965258604]
+[node name="Atrapar" type="Timer" parent="." unique_id=1532953446]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -6,10 +6,12 @@ extends Control
 @onready var timer = $AreaVerde
 @onready var gameTimer = $Pescando
 
+var controlPesca
+
 var lowest_point = position.y + size.y
 var highest_point = position.y
-@export var grav = 0.3
-@export var green_time = 1
+var grav = 0.3
+var green_time = 1
 
 var score = 0
 
@@ -27,9 +29,10 @@ func _ready() -> void:
 	green_h = green.size.y
 	green_starting = green.position
 
-func start_fishing(time = 5):
+func start_fishing(origin):
+	controlPesca = origin
 	score = 0
-	gameTimer.wait_time = time
+	gameTimer.wait_time = 10
 	gameTimer.start()
 	green.position = green_starting
 	timer.start()
@@ -37,7 +40,7 @@ func start_fishing(time = 5):
 func _on_pescando_timeout() -> void:
 	timer.stop()
 	gameTimer.stop()
-	get_tree().current_scene.end_fishing(score)
+	controlPesca.end_fishing(score)
 
 
 func _on_timer_timeout() -> void:
@@ -46,8 +49,8 @@ func _on_timer_timeout() -> void:
 func _input(ev: InputEvent) -> void:
 	if ev is InputEventKey and ev.is_pressed():
 		if ev.keycode == KEY_SPACE:
-			if player.position.y - 7 > highest_point:
-				player.position.y -= 7
+			if player.position.y - 8 > highest_point:
+				player.position.y -= 8
 			else:
 				player.position.y = highest_point
 

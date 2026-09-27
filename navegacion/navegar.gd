@@ -114,32 +114,35 @@ func _input(ev: InputEvent) -> void:
 			unhovered_cell = hovered_cell
 		elif ev.keycode == KEY_P:
 			var pescar = pesca_game.instantiate()
+			pause_nav()
 			pescar.connect("resultado_pesca", add_fish)
-			standby = true
-			nav.visible = false
-			navMenu.visible = false
-			tree.paused = true
-			boat.camara.enabled = false
-			%PescaContainer.add_child(pescar)
+			nav.add_sibling(pescar)
 		elif ev.keycode == KEY_B:
 			var buceo = buceo_game.instantiate()
+			pause_nav()
 			buceo.connect("resultado_buceo", add_mullu)
-			standby = true
-			nav.visible = false
-			navMenu.visible = false
-			tree.paused = true
-			boat.camara.enabled = false
-			nav.add_child(buceo)
+			nav.add_sibling(buceo)
 
-func add_fish(total_fish):
-	print(total_fish)
-	
-func add_mullu(total_mullu):
+func pause_nav():
+	standby = true
+	nav.visible = false
+	navMenu.visible = false
+	tree.paused = true
+	boat.camara.enabled = false
+
+func resume_nav():
 	standby = false
 	nav.visible = true
 	navMenu.visible = true
 	tree.paused = false
 	boat.camara.enabled = true
+
+func add_fish(total_fish):
+	resume_nav()
+	print(total_fish)
+	
+func add_mullu(total_mullu):
+	resume_nav()
 	print(total_mullu)
 
 			
@@ -154,7 +157,6 @@ func _physics_process(_delta: float) -> void:
 			return
 		var cell_atlas = get_cell_atlas_coords(hovered_cell)
 		if(!moving and path_to_target == []):
-			print("test\n" + str(cell_atlas))
 			# Finding the path ahead of time to get the navigated distance
 			if cell_atlas in invalid_tiles:
 				return

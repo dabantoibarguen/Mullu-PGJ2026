@@ -7,16 +7,15 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var blur = $AaronBlur
 @onready var juegoPesca = $AaronBlur/JuegoPesca
 
-signal resultados_pesca(pescado)
+signal resultado_pesca(pescado)
 
 var caught_indicator
 
-var triangles: Array[Array] = []
-var triangle_cumulative_weights: PackedFloat32Array = []
-var total_area: float = 0.0
+var triangles = []
+var triangle_cumulative_weights = []
+var total_area = 0.0
 
 func _ready() -> void:
-	print("FUck")
 	timer.wait_time = 1
 	timer.start()
 	triangulate_fish_area()
@@ -25,7 +24,7 @@ func go_fish(origin):
 	caught_indicator = origin
 	anzuelo.speed = 0
 	blur.visible = true
-	juegoPesca.start()
+	juegoPesca.start(self)
 	
 func end_fishing(score = 0):
 	print("Puntaje: " + str(score))
@@ -33,13 +32,18 @@ func end_fishing(score = 0):
 	caught_indicator.queue_free()
 	anzuelo.speed = 400
 	
+func _input(ev: InputEvent) -> void:
+	if ev is InputEventKey:
+		if ev.is_pressed() and ev.keycode == KEY_ESCAPE:
+			resultado_pesca.emit(0)
+			queue_free()
 
 func _on_spawn_timeout() -> void:
 	var pos = fish_area.to_global(get_random_point())
-	
 	var indicador = indicador_pesca.instantiate()
+	indicador.player = anzuelo
 	indicador.global_position = pos
-	get_tree().current_scene.add_child(indicador)
+	add_child(indicador)
 
 func triangulate_fish_area() -> void:
 	var vertices = fish_area.polygon

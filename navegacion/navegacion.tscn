@@ -110,12 +110,3 @@ tile_map_data = PackedByteArray("AAACAPP/AgAAAAMAAAAAAPH/AgAAAAMAAAD9//L/AgAAAAM
 tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
 script = ExtResource("2_sux3w")
-
-[node name="PescaContainer" type="CanvasLayer" parent="." unique_id=251374233]
-unique_name_in_owner = true
-layer = 3
-
-[node name="BuceoContainer" type="CanvasLayer" parent="." unique_id=77906972]
-unique_name_in_owner = true
-layer = 3
-follow_viewport_enabled = true
