@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var fish_area = %FishingArea
@@ -7,7 +7,7 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var blur = $AaronBlur
 @onready var juegoPesca = $AaronBlur/JuegoPesca
 
-signal resultados_pesca(result)
+signal resultados_pesca(pescado)
 
 var caught_indicator
 

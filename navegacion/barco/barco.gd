@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var label = $Label
 @onready var energyText = %TotalEnergy
 @onready var sprite = $Sprite2D
+@onready var camara = %CamaraBarco
 
 var speed = 75
 var cur_coords

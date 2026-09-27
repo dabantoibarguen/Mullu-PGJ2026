@@ -93,10 +93,11 @@ texture = ExtResource("3_hjbyo")
 
 [node name="EnergyL" type="Label" parent="." unique_id=487684872]
 offset_left = 334.54556
-offset_top = 17.272724
+offset_top = 7.272727
 offset_right = 355.72748
-offset_bottom = 45.272728
-scale = Vector2(0.8489525, 0.8031336)
+offset_bottom = 35.27273
+rotation = -0.00016798022
+scale = Vector2(1.6881286, 1.4749321)
 theme_override_colors/font_color = Color(0.09019608, 0.7921569, 0.039215688, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
@@ -106,12 +107,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PescaoL" type="Label" parent="." unique_id=126054377]
-offset_left = 519.0908
-offset_top = 17.272724
-offset_right = 540.27277
-offset_bottom = 45.272728
+offset_left = 524.5452
+offset_top = 7.278735
+offset_right = 545.7272
+offset_bottom = 35.27874
 rotation = -5.5997105e-05
-scale = Vector2(0.8489525, 0.8031336)
+scale = Vector2(1.688129, 1.4749321)
 theme_override_colors/font_color = Color(0.47843137, 0.41960785, 0.32156864, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2

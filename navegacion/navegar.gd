@@ -7,6 +7,8 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var boat = %barco
 @onready var fog = %SmokeOnTheWater
 @onready var nav = get_parent()
+@onready var tree = get_tree()
+@onready var navMenu = %NavMenu
 
 var painted_tiles = []
 
@@ -114,13 +116,31 @@ func _input(ev: InputEvent) -> void:
 			var pescar = pesca_game.instantiate()
 			pescar.connect("resultado_pesca", add_fish)
 			standby = true
-			#visible = false
+			nav.visible = false
+			navMenu.visible = false
+			tree.paused = true
+			boat.camara.enabled = false
 			%PescaContainer.add_child(pescar)
 		elif ev.keycode == KEY_B:
 			var buceo = buceo_game.instantiate()
+			buceo.connect("resultado_buceo", add_mullu)
+			standby = true
+			nav.visible = false
+			navMenu.visible = false
+			tree.paused = true
+			boat.camara.enabled = false
+			nav.add_child(buceo)
 
 func add_fish(total_fish):
 	print(total_fish)
+	
+func add_mullu(total_mullu):
+	standby = false
+	nav.visible = true
+	navMenu.visible = true
+	tree.paused = false
+	boat.camara.enabled = true
+	print(total_mullu)
 
 			
 func _physics_process(_delta: float) -> void:

@@ -26,9 +26,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
-size = Vector2(7, 4.5)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikwup"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5647059)
 corner_radius_top_left = 1
@@ -58,10 +55,8 @@ script = ExtResource("1_0j4b5")
 scale = Vector2(0.26878318, 0.17499955)
 sprite_frames = SubResource("SpriteFrames_in4ql")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1907727545]
-shape = SubResource("RectangleShape2D_nlynv")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=319880649]
+[node name="CamaraBarco" type="Camera2D" parent="." unique_id=319880649]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 zoom = Vector2(4, 4)
 

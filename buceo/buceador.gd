@@ -9,6 +9,7 @@ func _ready() -> void:
 	soga.add_point(Vector2(0, -20))
 	soga.add_point(global_position)
 	
+	
 func _physics_process(delta: float) -> void:
 	if playing:
 		return
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	
 	soga.remove_point(1)
+
 	move_and_collide(velocity)
 	soga.add_point(global_position+ Vector2(0, 100))
 	

@@ -62,13 +62,8 @@ animations = [{
 shader = ExtResource("5_u3kmj")
 shader_parameter/blur_amount = 2.0
 
-[node name="PescaMain" type="Control" unique_id=1956370887]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PescaMain" type="CanvasLayer" unique_id=1004852662]
+layer = 3
 script = ExtResource("1_8yp11")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=635142950]
@@ -154,7 +149,6 @@ visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_u3kmj")
 custom_minimum_size = Vector2(2000, 2000)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

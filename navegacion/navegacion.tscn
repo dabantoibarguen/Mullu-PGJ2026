@@ -101,6 +101,7 @@ tile_set = SubResource("TileSet_nlynv")
 script = ExtResource("5_hs310")
 
 [node name="NavMenu" parent="." unique_id=703825542 instance=ExtResource("6_bws8q")]
+unique_name_in_owner = true
 layer = 2
 
 [node name="OceanMap2" type="TileMapLayer" parent="." unique_id=1172204950]
@@ -118,4 +119,3 @@ layer = 3
 unique_name_in_owner = true
 layer = 3
 follow_viewport_enabled = true
-follow_viewport_scale = 0.5
