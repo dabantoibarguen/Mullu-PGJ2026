@@ -19,7 +19,7 @@ var durabilidad = 5:
 		durabilidad = max(0 ,dur)
 		durLabel.text = str(durabilidad)
 		if durabilidad <= 0:
-			resultado_pesca.emit(0)
+			resultado_pesca.emit(pescados)
 			queue_free()
 
 # Limited area polygon calculations

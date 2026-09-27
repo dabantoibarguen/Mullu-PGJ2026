@@ -46,7 +46,9 @@ func menu_nav():
 	main.navegar()
 
 func menu_psc():
+	# Calcular que tipo de pescado basado en: tile atlas (profundidad), hora, temp, y modificadores
 	main.pescar()
 
 func menu_bco():
+	# Calcular que tipo de mullu basado en: tile atlas (profundidad), hora, temp, roca in neighbors?
 	main.bucear()

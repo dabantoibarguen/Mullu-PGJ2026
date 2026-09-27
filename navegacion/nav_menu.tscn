@@ -99,9 +99,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0lkfs")
 text = "Bucear"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1925910099]
+[node name="TopBar" type="ColorRect" parent="." unique_id=1925910099]
 offset_right = 1200.0
 offset_bottom = 60.0
+mouse_filter = 2
 color = Color(0.28235295, 0.2784314, 0.2901961, 0.6)
 
 [node name="Pescao" type="Sprite2D" parent="." unique_id=949772439]

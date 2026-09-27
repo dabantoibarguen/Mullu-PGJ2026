@@ -12,6 +12,7 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 
 var tile_cost = 2
 # Update with blessings and/or other perks
+var tile_type
 
 var painted_tiles = []
 
@@ -20,9 +21,9 @@ var unhovered_cell = Vector2i(99, 99)
 var oldTracer = Line2D.new()
 
 var path_to_target = []
-var moving = false
-var standby = false
 
+var moving = false
+var standby = false # Is this even needed at this point?
 var move_action = false
 
 # Should replace with Data Layers later
@@ -78,7 +79,7 @@ func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	start = target
 	return path
 	
-func _input(ev: InputEvent) -> void:
+func _unhandled_input(ev: InputEvent) -> void:
 	if standby:
 		return
 	if ev is InputEventMouse:
@@ -139,6 +140,8 @@ func navegar():
 
 func pescar():
 	nav.energy -= 3
+	var profundidad = valid_tiles.get(get_cell_atlas_coords(boat.cur_coords))
+	print(profundidad)
 	var pescar = pesca_game.instantiate()
 	pause_nav()
 	pescar.connect("resultado_pesca", add_fish)
@@ -157,7 +160,7 @@ func _physics_process(_delta: float) -> void:
 		hovered_cell = self.local_to_map(get_global_mouse_position())
 		var msg = ""
 		if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1):
-			remove_child(oldTracer)
+			remove_child(oldTracer) # Careful of all the debugging errors woops
 			boat.label.text = msg
 			unhovered_cell = hovered_cell
 			return
