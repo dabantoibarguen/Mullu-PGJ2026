@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://h34jgkfrjubu" path="res://navegacion/assets/temp.webp" id="2_8mrxu"]
 [ext_resource type="Texture2D" uid="uid://d4gavmrgakyeu" path="res://navegacion/assets/energyph.png" id="3_hjbyo"]
 [ext_resource type="Texture2D" uid="uid://cdce8a8idjsdw" path="res://navegacion/assets/tempph.webp" id="4_hjbyo"]
+[ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="7_asrx5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4ql"]
 bg_color = Color(0.28235295, 0.2784314, 0.2901961, 0.8745098)
@@ -157,6 +158,26 @@ material = SubResource("ShaderMaterial_xufwd")
 position = Vector2(843.63635, 29.09091)
 scale = Vector2(0.1791027, 0.16637245)
 texture = ExtResource("4_hjbyo")
+
+[node name="Mullu" type="Sprite2D" parent="." unique_id=1163069178]
+position = Vector2(667.27277, 28.181816)
+scale = Vector2(0.07713038, 0.099116184)
+texture = ExtResource("7_asrx5")
+
+[node name="MulluL" type="Label" parent="." unique_id=875346452]
+offset_left = 692.7269
+offset_top = 7.278734
+offset_right = 713.9089
+offset_bottom = 35.27874
+rotation = -5.5997105e-05
+scale = Vector2(1.688129, 1.4749321)
+theme_override_colors/font_color = Color(0.47843137, 0.41960785, 0.32156864, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Nav" to="." method="_on_nav_pressed"]
 [connection signal="pressed" from="Psc" to="." method="_on_psc_pressed"]

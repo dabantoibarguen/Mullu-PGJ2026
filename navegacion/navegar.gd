@@ -130,6 +130,7 @@ func add_fish(total_fish):
 	
 func add_mullu(total_mullu):
 	resume_nav()
+	navMenu.update_mullu(total_mullu)
 	print(total_mullu)
 
 # ------ Button functions -------
