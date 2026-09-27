@@ -81,21 +81,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AaronBlur" type="ColorRect" parent="." unique_id=2044504712]
-visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_gmgtk")
 custom_minimum_size = Vector2(2000, 2000)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -408.0
-offset_top = -672.0
-offset_right = 1592.0
-offset_bottom = 1328.0
+offset_top = 1.0
+offset_right = 848.0
+offset_bottom = 1353.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0085974, 0.9196818)
 
 [node name="Upg_Ceremonial" parent="AaronBlur" unique_id=1973387419 instance=ExtResource("4_gmgtk")]
+layout_mode = 0
 
 [connection signal="mouse_entered" from="Templo" to="." method="_on_templo_mouse_entered"]
 [connection signal="pressed" from="Templo" to="." method="_on_templo_pressed"]
