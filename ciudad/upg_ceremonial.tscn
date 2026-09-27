@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://chtkfjl3p0f1v"]
+
+[node name="Upg_Ceremonial" type="CanvasLayer" unique_id=1973387419]
+
+[node name="Shi" type="Button" parent="." unique_id=1392743737]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 291.0
+offset_bottom = 96.0
+text = "Shi"
+
+[node name="Shi2" type="Button" parent="." unique_id=977326639]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 291.0
+offset_bottom = 96.0
+text = "Shi"
+
+[node name="Shi3" type="Button" parent="." unique_id=302574226]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 291.0
+offset_bottom = 96.0
+text = "Shi"

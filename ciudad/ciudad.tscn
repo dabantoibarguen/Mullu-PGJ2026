@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://ekhsgwq6utf1"]
+
+[ext_resource type="Script" uid="uid://c8xhaih1ahnxm" path="res://ciudad/ciudad_control.gd" id="1_gmgtk"]
+[ext_resource type="Texture2D" uid="uid://b5qyg8qdrnl67" path="res://icon.svg" id="2_r20d7"]
+[ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="3_r20d7"]
+[ext_resource type="PackedScene" uid="uid://chtkfjl3p0f1v" path="res://ciudad/upg_ceremonial.tscn" id="4_gmgtk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r20d7"]
+texture = ExtResource("2_r20d7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ll8c"]
+texture = ExtResource("2_r20d7")
+modulate_color = Color(0.7647059, 0.7647059, 0.7647059, 0.78039217)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmgtk"]
+texture = ExtResource("2_r20d7")
+modulate_color = Color(0.78039217, 0.78039217, 0.78039217, 0.53333336)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlynv"]
+texture = ExtResource("2_r20d7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5k2l"]
+texture = ExtResource("2_r20d7")
+modulate_color = Color(0.78039217, 0.78039217, 0.78039217, 0.53333336)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmgtk"]
+bg_color = Color(0.6, 0.6, 0.6, 0.42352942)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmgtk"]
+shader = ExtResource("3_r20d7")
+shader_parameter/blur_amount = 2.0
+
+[node name="Ciudad" type="CanvasLayer" unique_id=77375720]
+script = ExtResource("1_gmgtk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1668167481]
+offset_left = -0.99999994
+offset_right = 42.67185
+offset_bottom = 40.0
+scale = Vector2(28.92023, 16.395468)
+
+[node name="Templo" type="Button" parent="." unique_id=1257668782]
+offset_left = 526.0
+offset_top = 50.0
+offset_right = 534.0
+offset_bottom = 58.0
+scale = Vector2(25.050564, 21.263422)
+theme_override_styles/normal = SubResource("StyleBoxTexture_r20d7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gmgtk")
+
+[node name="Abuelo" type="Button" parent="." unique_id=1207870595]
+offset_left = 981.0
+offset_top = 395.0
+offset_right = 989.0
+offset_bottom = 403.0
+scale = Vector2(25.050564, 21.263422)
+theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
+
+[node name="Agua" type="Button" parent="." unique_id=947527740]
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 9.0
+scale = Vector2(29.068201, 81.727234)
+theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
+
+[node name="MainText" type="Label" parent="." unique_id=908198024]
+visible = false
+offset_left = 362.0
+offset_top = 248.0
+offset_right = 862.0
+offset_bottom = 568.0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_gmgtk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AaronBlur" type="ColorRect" parent="." unique_id=2044504712]
+visible = false
+z_index = 4
+material = SubResource("ShaderMaterial_gmgtk")
+custom_minimum_size = Vector2(2000, 2000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -672.0
+offset_right = 1592.0
+offset_bottom = 1328.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upg_Ceremonial" parent="AaronBlur" unique_id=1973387419 instance=ExtResource("4_gmgtk")]
+
+[connection signal="mouse_entered" from="Templo" to="." method="_on_templo_mouse_entered"]
+[connection signal="pressed" from="Templo" to="." method="_on_templo_pressed"]
+[connection signal="mouse_entered" from="Abuelo" to="." method="_on_abuelo_mouse_entered"]
+[connection signal="pressed" from="Abuelo" to="." method="_on_abuelo_pressed"]
+[connection signal="mouse_entered" from="Agua" to="." method="_on_agua_mouse_entered"]
+[connection signal="pressed" from="Agua" to="." method="_on_agua_pressed"]
