@@ -125,6 +125,7 @@ func resume_nav():
 
 func add_fish(total_fish):
 	resume_nav()
+	navMenu.update_fish(total_fish)
 	print(total_fish)
 	
 func add_mullu(total_mullu):

@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var pescaBtn = $Psc
 @onready var buceoBtn = $Bco
 @onready var energyText = $EnergyL
+@onready var fishLabel = $PescaoL
 
 func _ready() -> void:
 	pass
@@ -23,3 +24,6 @@ func time_change(time):
 
 func update_energy(energy):
 	energyText.text = str(energy)
+	
+func update_fish(fish):
+		fishLabel.text = str(fish)
