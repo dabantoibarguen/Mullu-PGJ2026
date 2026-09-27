@@ -17,6 +17,7 @@ var energy: int = 120:
 	set(e):
 		energy = e
 		menu.update_energy(e)
+		# Hacer ciclico, cambiar basado en inicial
 		if(energy <= 40 and hora == "Tarde"):
 			cambio_noche()
 		elif(energy <= 80 and hora == "Mañana"):

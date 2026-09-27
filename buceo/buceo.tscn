@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_uhecx"]
 [ext_resource type="PackedScene" uid="uid://do1vx4b05weqp" path="res://buceo/snip_game.tscn" id="6_jhcbv"]
 [ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
+[ext_resource type="AudioStream" uid="uid://di6ob3w6bri6a" path="res://buceo/assets/Buseo.mp3" id="9_ms8d1"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
 offsets = PackedFloat32Array(0, 0.19339623)
@@ -190,4 +191,10 @@ scale = Vector2(0.6867163, 0.71707815)
 z_index = 5
 scale = Vector2(10.82, 10)
 
+[node name="BGM_Buceo" type="AudioStreamPlayer" parent="." unique_id=923095919]
+stream = ExtResource("9_ms8d1")
+autoplay = true
+parameters/looping = true
+
 [node name="CanvasLayer" parent="." unique_id=732940682 instance=ExtResource("8_25cln")]
+layer = 7

@@ -10,8 +10,9 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
-var tile_cost = 5
 # Update with blessings and/or other perks
+var tile_cost = 2
+
 var tile_type
 
 var painted_tiles = []
@@ -112,6 +113,14 @@ func _unhandled_input(ev: InputEvent) -> void:
 			navegar()
 			var navigationButton = navMenu.navBtn
 			navigationButton.button_pressed = !navigationButton.button_pressed
+		elif ev.keycode == KEY_P:
+			pescar()
+			var pescaButton = navMenu.pescaBtn
+			pescaButton.button_pressed = !pescaButton.button_pressed
+		if ev.keycode == KEY_Q:
+			bucear()
+			var buceoButton = navMenu.buceoBtn
+			buceoButton.button_pressed = !buceoButton.button_pressed
 
 func pause_nav():
 	standby = true
@@ -146,12 +155,11 @@ func navegar():
 
 func pescar():
 	nav.energy -= 3
-	var profundidad = valid_tiles.get(get_cell_atlas_coords(boat.cur_coords))
-	print(profundidad)
-	var pescar = pesca_game.instantiate()
+	#var profundidad = valid_tiles.get(get_cell_atlas_coords(boat.cur_coords))
+	var pesca = pesca_game.instantiate()
 	pause_nav()
-	pescar.connect("resultado_pesca", add_fish)
-	nav.add_sibling(pescar)
+	pesca.connect("resultado_pesca", add_fish)
+	nav.add_sibling(pesca)
 
 func bucear():
 	nav.energy -= 3
@@ -174,9 +182,9 @@ func _physics_process(_delta: float) -> void:
 		if(!moving and path_to_target == []):
 			# Finding the path ahead of time to get the navigated distance
 			if cell_atlas in invalid_tiles:
-				return
 				msg = (str(invalid_tiles.get(cell_atlas))
 				+ "\nInvalido")
+				return
 				#boat.label.text = msg
 			else:
 				path_to_target = find_path(boat.cur_coords, hovered_cell)

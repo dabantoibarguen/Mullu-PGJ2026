@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3i8jvr4fu61" path="res://navegacion/assets/tiles1.png" id="3_yl48w"]
 [ext_resource type="Script" uid="uid://dkc5445skki3v" path="res://navegacion/fog.gd" id="5_hs310"]
 [ext_resource type="PackedScene" uid="uid://dmpgjq1kutci1" path="res://navegacion/nav_menu.tscn" id="6_bws8q"]
+[ext_resource type="AudioStream" uid="uid://bu6m44jcgqj1j" path="res://navegacion/assets/Nubes y el Azul.mp3" id="8_0jc1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jc1b"]
 texture = ExtResource("3_yl48w")
@@ -153,3 +154,8 @@ energy = 0.0
 blend_mode = 1
 range_layer_max = 2
 texture = SubResource("GradientTexture2D_nlynv")
+
+[node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
+stream = ExtResource("8_0jc1b")
+autoplay = true
+parameters/looping = true

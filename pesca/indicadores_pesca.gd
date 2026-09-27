@@ -9,7 +9,7 @@ var entered = false
 func _ready() -> void:
 	catch.wait_time = 1
 	anim.play("Spin")
-	timer.wait_time = 1.5
+	timer.wait_time = 2.5
 	timer.start()
 
 func _on_body_entered(body: Node2D) -> void:
@@ -19,7 +19,6 @@ func _on_body_entered(body: Node2D) -> void:
 	
 
 func _on_body_exited(body: Node2D) -> void:
-	print("What")
 	body.speed = 400
 	timer.paused = false
 	catch.stop()

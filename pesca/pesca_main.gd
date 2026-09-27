@@ -99,6 +99,13 @@ func get_random_point() -> Vector2:
 		r2 = 1.0 - r2
 		
 	return p1 + r1 * (p2 - p1) + r2 * (p3 - p1)
+	
+	
+func _input(ev: InputEvent) -> void:
+	if ev is InputEventKey:
+		if ev.is_pressed() and ev.keycode == KEY_ESCAPE:
+			resultado_pesca.emit(pescados)
+			queue_free()
 
 func _physics_process(_delta: float) -> void:
 	pass

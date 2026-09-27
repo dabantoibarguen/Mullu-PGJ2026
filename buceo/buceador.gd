@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var soga = %Soga
 var playing = false
 
-var speed = 250
+var speed = 175
 
 func _ready() -> void:
 	soga.add_point(Vector2(0, -20))
