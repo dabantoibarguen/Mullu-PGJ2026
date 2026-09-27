@@ -10,7 +10,7 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
-var tile_cost = 10
+var tile_cost = 5
 # Update with blessings and/or other perks
 var tile_type
 
@@ -107,7 +107,11 @@ func _unhandled_input(ev: InputEvent) -> void:
 						boat.label.text = "Energia insuficiente"
 					else:
 						boat.label.text = "Invalido"
-
+	elif ev is InputEventKey and ev.is_pressed():
+		if ev.keycode == KEY_SPACE:
+			navegar()
+			var navigationButton = navMenu.navBtn
+			navigationButton.button_pressed = !navigationButton.button_pressed
 
 func pause_nav():
 	standby = true

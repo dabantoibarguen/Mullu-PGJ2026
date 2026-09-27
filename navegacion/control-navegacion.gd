@@ -10,7 +10,7 @@ var pescado = 0
 var mullu = 0
 
 var temperatura = 0
-var hora = 0
+var hora = "Mañana"
 var profundidad # Sacar esto del tile del barco
 
 var energy: int = 120:
@@ -18,10 +18,8 @@ var energy: int = 120:
 		energy = e
 		menu.update_energy(e)
 		if(energy <= 40 and hora == "Tarde"):
-			hora = "Noche"
 			cambio_noche()
 		elif(energy <= 80 and hora == "Mañana"):
-			hora = "Tarde"
 			cambio_tarde()
 # 80-120 mañana
 # 40-79 tarde
@@ -45,7 +43,7 @@ func cambio_tarde():
 	nLight.visible = false
 	
 func cambio_noche():
-	hora = 2
+	hora = "Noche"
 	mLight.visible = false
 	
 	var tween = create_tween()
