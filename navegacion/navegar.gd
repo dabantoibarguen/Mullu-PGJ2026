@@ -108,7 +108,6 @@ func _unhandled_input(ev: InputEvent) -> void:
 								break
 							else:
 								nav.junto_roca = false
-						print(nav.junto_roca)
 						moving = false
 						path_to_target = [] 
 					elif dist > nav.energy:
@@ -146,7 +145,7 @@ func resume_nav():
 func add_fish(total_fish):
 	resume_nav()
 	nav.pescado += total_fish
-	navMenu.update_fish(nav.total_fish)
+	navMenu.update_fish(nav.pescado)
 	
 func add_mullu(total_mullu):
 	resume_nav()
