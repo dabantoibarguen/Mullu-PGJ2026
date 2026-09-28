@@ -76,7 +76,7 @@ func update_segment():
 func end_game(victory):
 	await get_tree().create_timer(1).timeout 
 	get_parent().remove_child(helper)
-	origin_scene.end_snip()
+	origin_scene.end_snip(victory)
 	# Add way to end the sub mini game with a unique node name
 
 func _physics_process(delta: float) -> void:
@@ -118,7 +118,7 @@ func _physics_process(delta: float) -> void:
 			update_segment()
 		else:
 			indicator.position = Vector2.ZERO
-			indicator.scale = Vector2(0.14, 0.14)
+			indicator.scale = Vector2(0.7, 0.7)
 			integrity = 0
 			end_game(true)
 	

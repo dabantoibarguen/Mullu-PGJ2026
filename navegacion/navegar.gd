@@ -112,7 +112,7 @@ func _unhandled_input(ev: InputEvent) -> void:
 		if ev.keycode == KEY_SPACE:
 			navegar()
 			var navigationButton = navMenu.navBtn
-			navigationButton.button_pressed = !navigationButton.button_pressed
+			navigationButton.button_pressed = !(navigationButton.button_pressed)
 		elif ev.keycode == KEY_P:
 			pescar()
 			var pescaButton = navMenu.pescaBtn
@@ -154,6 +154,7 @@ func navegar():
 	unhovered_cell = hovered_cell
 
 func pescar():
+	#var fish = randomize_fish()
 	nav.energy -= 3
 	#var profundidad = valid_tiles.get(get_cell_atlas_coords(boat.cur_coords))
 	var pesca = pesca_game.instantiate()
@@ -162,12 +163,16 @@ func pescar():
 	nav.add_sibling(pesca)
 
 func bucear():
+	#var mullu = randomize_mullu()
 	nav.energy -= 3
 	var buceo = buceo_game.instantiate()
 	pause_nav()
 	buceo.connect("resultado_buceo", add_mullu)
 	nav.add_sibling(buceo)
 
+func get_profundidad() -> String:
+	return valid_tiles.get(get_cell_atlas_coords(local_to_map(boat.cur_coords)))
+			
 			
 func _physics_process(_delta: float) -> void:
 	if (move_action):

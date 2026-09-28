@@ -9,8 +9,8 @@ extends Node2D
 var pescado = 0
 var mullu = 0
 
-var temperatura = 0
-var hora = "Mañana"
+var temperatura = "Frio" # Mantener actualizado
+var hora = "Mañana" 
 var profundidad # Sacar esto del tile del barco
 
 var energy: int = 120:
@@ -60,8 +60,20 @@ func menu_nav():
 
 func menu_psc():
 	# Calcular que tipo de pescado basado en: tile atlas (profundidad), hora, temp, y modificadores
+	profundidad = main.get_profundidad()
+	var fish = randomize_fish()
 	main.pescar()
 
 func menu_bco():
 	# Calcular que tipo de mullu basado en: tile atlas (profundidad), hora, temp, roca in neighbors?
+	profundidad = main.get_profundidad()
+	var mullu = randomize_mullu()
 	main.bucear()
+
+
+# ------ randomizing functions for pesca/buceo -------
+func randomize_fish() -> String:
+	return ""
+	
+func randomize_mullu() -> String:
+	return ""

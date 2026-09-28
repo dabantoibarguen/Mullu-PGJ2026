@@ -7,6 +7,7 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var blur = $AaronBlur
 @onready var juegoPesca = $AaronBlur/JuegoPesca
 @onready var durLabel = $Durabilidad
+@onready var fish_line = %Line
 
 signal resultado_pesca(pescado)
 
@@ -33,14 +34,32 @@ func _ready() -> void:
 	timer.start()
 	triangulate_fish_area()
 
+func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 50.0):
+	var curve = Curve2D.new()
+	p_end = fish_line.to_local(p_end)
 
-func go_fish(origin):
-	caught_indicator = origin
-	anzuelo.speed = 0
+	var mid_point = (p_start + p_end) / 2.0
+	mid_point.y -= sag_amount
+
+	curve.add_point(p_start)
+	curve.add_point(mid_point)
+	curve.add_point(p_end)
+
+	curve.bake_interval = 15
+	var baked_points = curve.get_baked_points()
+	for point in baked_points:
+		fish_line.add_point(point)
+		await get_tree().create_timer(0.01).timeout
 	blur.visible = true
 	juegoPesca.start(self)
+
+func go_fish(origin):
+	update_fishing_line(Vector2(560, 650), origin.global_position)
+	caught_indicator = origin
+	anzuelo.speed = 0
 	
 func end_fishing(score = 0):
+	fish_line.clear_points()
 	print("Puntaje: " + str(score))
 	if score < 6:
 		durabilidad -= 2

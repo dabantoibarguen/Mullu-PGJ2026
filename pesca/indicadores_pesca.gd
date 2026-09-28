@@ -7,7 +7,7 @@ var player
 var entered = false
 
 func _ready() -> void:
-	catch.wait_time = 1
+	catch.wait_time = 0.8
 	anim.play("Spin")
 	timer.wait_time = 2.5
 	timer.start()
