@@ -19,12 +19,11 @@ func _ready():
 func _physics_process(_delta):
 	var direction = global_position.direction_to(target)
 	velocity = direction.normalized() * speed
-	if(direction[0]>=0 and direction[1]>=0):
-		sprite.flip_h = true
-	elif(direction[0]<0 and direction[1]<0):
-		sprite.flip_h = true
-	else:
+	if(direction[0]>0):
 		sprite.flip_h = false
+	elif(direction[0]<0):
+		sprite.flip_h = true
+
 	if global_position.distance_to(target)<1:
 		velocity = Vector2(0,0)
 	else:

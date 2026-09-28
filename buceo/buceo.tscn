@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dehpkw4mcsmfr" path="res://buceo/buceo.gd" id="1_uhecx"]
 [ext_resource type="Script" uid="uid://by4xk0d8o6tyo" path="res://buceo/buceador.gd" id="3_i0akg"]
-[ext_resource type="Texture2D" uid="uid://be21dmi7l4gci" path="res://buceo/assets/calato.png" id="4_i0akg"]
+[ext_resource type="Texture2D" uid="uid://dr8pvvd52c204" path="res://buceo/assets/buceadora.png" id="3_s3ofk"]
 [ext_resource type="Texture2D" uid="uid://rhinewckhaxl" path="res://buceo/assets/bot.png" id="4_s3ofk"]
 [ext_resource type="Texture2D" uid="uid://dk5gcex5vknf4" path="res://buceo/assets/top 1 v2.png" id="5_s3ofk"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_uhecx"]
@@ -104,12 +104,13 @@ script = ExtResource("3_i0akg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ocean/Buceador" unique_id=980175165]
 position = Vector2(2.30814, 1.0441301)
-scale = Vector2(2.8520248, 3.743855)
+scale = Vector2(4.0171847, 3.5452566)
 shape = SubResource("RectangleShape2D_nlynv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ocean/Buceador" unique_id=1232689344]
-scale = Vector2(-0.3500288, 0.29676843)
-texture = ExtResource("4_i0akg")
+position = Vector2(2.2276878, 0.9792175)
+scale = Vector2(-0.389, -0.389)
+texture = ExtResource("3_s3ofk")
 
 [node name="PointLight2D" type="PointLight2D" parent="Ocean/Buceador" unique_id=735538611]
 z_index = 3
@@ -140,7 +141,8 @@ z_index = 1
 material = SubResource("CanvasItemMaterial_5y4bw")
 position = Vector2(698, 5.9999695)
 scale = Vector2(1.0000001, 1.0051997)
-default_color = Color(0.3764706, 0.23529412, 0.05490196, 1)
+width = 4.0
+default_color = Color(0.3882353, 0.35686275, 0.25882354, 1)
 
 [node name="Fondo" type="CollisionShape2D" parent="Ocean" unique_id=1247053008]
 position = Vector2(693.769, 959.95483)
