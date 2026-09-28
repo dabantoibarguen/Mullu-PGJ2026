@@ -12,6 +12,7 @@ var mullu = 0
 var temperatura = "Frio" # Mantener actualizado
 var hora = "Mañana" 
 var profundidad # Sacar esto del tile del barco
+var junto_roca = false
 
 var energy: int = 120:
 	set(e):
@@ -77,7 +78,8 @@ func randomize_fish():
 	var total_odds = 0
 	var the_fish = ""
 	var size = 0
-	for name in Global.fish_dictionary.keys():
+	var fishes = Global.fish_dictionary.keys()
+	for name in fishes:
 		var met = 0
 		var criteria = Global.fish_dictionary[name]
 		if profundidad in criteria[0]:
@@ -99,4 +101,22 @@ func randomize_fish():
 	return [the_fish, size]
 	
 func randomize_mullu():
+	var mullus = Global.mullu_dictionary.keys()
+	var deep_mullus = [] # max 4
+	var side_mullus = [] # max 7
+	var max_num = 50
+	if profundidad == "Mar Medio":
+		max_num += 20
+	elif profundidad == "Mar Alto":
+		max_num += 40
+	if junto_roca:
+		max_num += 10
+		print("Dwayne Johnson")
+		for i in range(0, 7):
+			var rand = randf_range(0, max_num)
+			print(rand)
+	for i in range(4):
+		var rand = randf_range(0, max_num)
+		print(rand)
+	
 	return ""

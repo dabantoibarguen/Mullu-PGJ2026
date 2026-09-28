@@ -43,9 +43,9 @@ var difficulty_ranges = {
 	0: [0.0, 0.3],
 	1: [0.1, 0.5] ,
 	2: [0.3, 0.8],
-	3: [0.5,1],
+	3: [0.5,1.0],
 	4: [0.7, 1.2], 
-	5: [1, 1.5]
+	5: [1.0, 1.5]
 }
 
 var durabilidad = 5:
@@ -109,7 +109,7 @@ func end_fishing(score):
 	if score < min_time:
 		durabilidad -= 2
 		fish_pic.scale = Vector2(0.2, 0.2)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.5).timeout
 	else:
 		var fish_data = Global.fish_dictionary[fish_name]
 		if !fish_data[-1]:

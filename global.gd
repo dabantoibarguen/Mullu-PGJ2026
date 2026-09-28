@@ -26,7 +26,20 @@ var fish_dictionary = {
 }
 
 var mullu_dictionary = {
+	# "nombre": [RNG Requerido, puntos]
+	"Princeps Adulto": [95, 3],
 	
+	"Princeps Regular": [85, 2],
+	
+	"Princeps Bebe": [85, 2],
+	
+	"Calcifer Bebe": [70, 1],
+	
+	"Calcifer Rojizo": [50, 1],
+	
+	"Calcifer Morado": [50, 1],
+	
+	"Calcifer Regular": [25, 3]
 }
 
 var total_fish = 0
