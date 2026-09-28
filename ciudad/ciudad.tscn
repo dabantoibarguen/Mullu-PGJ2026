@@ -81,6 +81,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AaronBlur" type="ColorRect" parent="." unique_id=2044504712]
+visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_gmgtk")
 custom_minimum_size = Vector2(2000, 2000)

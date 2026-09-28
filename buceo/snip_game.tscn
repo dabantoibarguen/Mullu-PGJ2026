@@ -22,6 +22,7 @@ corner_radius_bottom_left = 1
 corner_detail = 1
 
 [node name="SnipGame" type="Node2D" unique_id=1878471672]
+position = Vector2(0, 88)
 scale = Vector2(6.8148155, 6.293522)
 script = ExtResource("1_ikwup")
 
@@ -56,25 +57,17 @@ z_index = 3
 texture_filter = 1
 texture_repeat = 1
 clip_contents = true
-offset_left = 42.0
-offset_top = -37.000004
-offset_right = 74.22
-offset_bottom = -19.000004
+offset_left = 22.010866
+offset_top = -28.12416
+offset_right = 54.230865
+offset_bottom = -10.124161
 scale = Vector2(0.6796846, 0.4444546)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 10
 theme_override_styles/background = SubResource("StyleBoxFlat_ikwup")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hmh62")
 step = 0.0
 value = 100.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="." unique_id=1615371653]
-offset_left = 31.0
-offset_top = -29.0
-offset_right = 58.0
-offset_bottom = -6.0
-scale = Vector2(1.2706146, 0.44354612)
+show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Indicator" type="Sprite2D" parent="." unique_id=2138667259]

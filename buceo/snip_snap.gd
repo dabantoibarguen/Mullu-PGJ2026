@@ -5,6 +5,6 @@ extends Node2D
 func _ready() -> void:
 	pass
 	
-func start():
+func start(origin):
 	game.integrity = 100
-	game.start_game()
+	game.start_game(origin)
