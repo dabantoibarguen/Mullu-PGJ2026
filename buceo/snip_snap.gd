@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var game = %Hand
+@onready var indic = %Indicator
 
 func _ready() -> void:
 	pass
@@ -8,3 +9,7 @@ func _ready() -> void:
 func start(origin):
 	game.integrity = 100
 	game.start_game(origin)
+
+func update_ind(img, hex):
+	indic.texture = load(img)
+	indic.modulate = Color(hex)

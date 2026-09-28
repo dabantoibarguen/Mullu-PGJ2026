@@ -68,8 +68,8 @@ func menu_psc():
 func menu_bco():
 	# Calcular que tipo de mullu basado en: tile atlas (profundidad), hora, temp, roca in neighbors?
 	profundidad = main.get_profundidad()
-	var mullu = randomize_mullu()
-	main.bucear()
+	var mullu_list = randomize_mullu()
+	main.bucear(mullu_list)
 
 
 # ------ randomizing functions for pesca/buceo -------
@@ -101,22 +101,41 @@ func randomize_fish():
 	return [the_fish, size]
 	
 func randomize_mullu():
-	var mullus = Global.mullu_dictionary.keys()
+	var mullus = Global.mullu_dictionary
 	var deep_mullus = [] # max 4
-	var side_mullus = [] # max 7
+	var mid_mullus = [] # max 7
+	var deep_qty = 3
+	var mid_qty = 5
 	var max_num = 50
 	if profundidad == "Mar Medio":
 		max_num += 20
+		deep_qty += 1
+		mid_qty += 1
 	elif profundidad == "Mar Alto":
 		max_num += 40
+		deep_qty += 2
+		mid_qty += 2
 	if junto_roca:
 		max_num += 10
-		print("Dwayne Johnson")
-		for i in range(0, 7):
+		for i in range(0, mid_qty):
 			var rand = randf_range(0, max_num)
-			print(rand)
-	for i in range(4):
+			#print(rand)
+			for mul in mullus:
+				if rand > mullus[mul][0]:
+					mid_mullus.append(mul)
+					print(mul)
+					break
+			#print("Next mid")
+			#print()
+	for i in range(deep_qty):
 		var rand = randf_range(0, max_num)
-		print(rand)
+		#print(rand)
+		for mul in mullus:
+				if rand > mullus[mul][0]:
+					#print(mul)
+					deep_mullus.append(mul)
+					break
+		#print("Next deep")
+		#print()
 	
-	return ""
+	return [deep_mullus, mid_mullus]

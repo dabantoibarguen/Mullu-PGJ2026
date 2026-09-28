@@ -63,6 +63,7 @@ var triangle_cumulative_weights = []
 var total_area = 0.0
 
 func _ready() -> void:
+	## MAX FISH TO GET = 6 - Difficulty. Use max to end game early
 	fish_pic.texture = load(fish_imgs[fish_name])
 	var fish_data = Global.fish_dictionary[fish_name]
 	if !fish_data[-1]:

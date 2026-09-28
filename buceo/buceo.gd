@@ -13,27 +13,45 @@ var can_escape = false
 
 signal resultado_buceo(mullu)
 
+var deep_spawn
+var mid_spawn
+
 var last_mullu
 
 var mullus = 0
 
 func _ready() -> void:
-	populate_mullu(area_profunda)
-	# if tile has rocks around (use neighbor call)
-	#populate_mullu(area_media)
+	#print(deep_spawn, mid_spawn)
+	populate_mullu()
 	
-func populate_mullu(area):
-	var size = area.shape.size
-	for i in range(5):
-		var x = randf_range(-size.x / 2, size.x / 2)
-		var y = randf_range(-size.y / 2, size.y / 2)
+func populate_mullu():
+	deep_spawn = ["Princeps Regular", "Princeps Adulto","Princeps Bebe", "Calcifer Bebe", "Calcifer Rojizo", "Calcifer Morado", "Calcifer Regular"]
+	var mullu_data = Global.mullu_dictionary
+	var size_mid = area_media.shape.size
+	var size_deep = area_profunda.shape.size
+	for mid_mul in mid_spawn:
+		print(mid_mul)
+		var x = randf_range(-size_mid.x / 2, size_mid.x / 2)
+		var y = randf_range(-size_mid.y / 2, size_mid.y / 2)
 		var spondylus = mullu_scene.instantiate()
 		spondylus.player = buceador
-		spondylus.global_position = (area.global_position + Vector2(x, y))
+		spondylus.scale = mullu_data[mid_mul][4]
+		spondylus.global_position = (area_media.global_position + Vector2(x, y))
 		add_child(spondylus)
+		spondylus.update_pic(mullu_data[mid_mul][3], mullu_data[mid_mul][2], mid_mul)
+	for deep_mul in deep_spawn:
+		var x = randf_range(-size_deep.x / 2, size_deep.x / 2)
+		var y = randf_range(-size_deep.y / 2, size_deep.y / 2)
+		var spondylus = mullu_scene.instantiate()
+		spondylus.player = buceador
+		spondylus.scale = Global.mullu_dictionary[deep_mul][4]
+		spondylus.global_position = (area_profunda.global_position + Vector2(x, y))
+		add_child(spondylus)
+		spondylus.update_pic(mullu_data[deep_mul][3], mullu_data[deep_mul][2], mullu_data[deep_mul][1])
 			
 func start_snip(tipo_mullu):
 	last_mullu = tipo_mullu
+	snipSnap.update_ind(last_mullu.img_s, last_mullu.hex_s)
 	blur.visible = true
 	snipSnap.global_position = camara.get_screen_center_position() + Vector2(0, 50)
 	buceador.playing = true
@@ -41,7 +59,8 @@ func start_snip(tipo_mullu):
 			
 func end_snip(result = false):
 	if result:
-		mullus += 1
+		mullus += last_mullu.points
+	print(mullus)
 	last_mullu.queue_free()
 	blur.visible = false
 	buceador.playing = false
@@ -65,4 +84,3 @@ func pass_out():
 	await get_tree().create_timer(1.5).timeout
 	resultado_buceo.emit(0)
 	queue_free()
-	

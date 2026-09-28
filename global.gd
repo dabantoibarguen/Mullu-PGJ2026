@@ -26,20 +26,20 @@ var fish_dictionary = {
 }
 
 var mullu_dictionary = {
-	# "nombre": [RNG Requerido, puntos]
-	"Princeps Adulto": [95, 3],
+	# "nombre": [RNG Requerido, puntos, img, #hex, scale]
+	"Princeps Adulto": [96, 2, "7A1F3D", "res://buceo/assets/spondulus princeps.png", Vector2(1.4, 1.4)],
 	
-	"Princeps Regular": [85, 2],
+	"Princeps Regular": [87, 2, "ffffff","res://buceo/assets/spondulus princeps.png", Vector2(1, 1)],
 	
-	"Princeps Bebe": [85, 2],
+	"Princeps Bebe": [87, 2, "F07A7F", "res://buceo/assets/spondulus princeps.png", Vector2(0.7, 0.7)],
 	
-	"Calcifer Bebe": [70, 1],
+	"Calcifer Bebe": [74, 1, "F2A65A", "res://buceo/assets/spondulus calcifer.png", Vector2(0.7, 0.7)],
 	
-	"Calcifer Rojizo": [50, 1],
+	"Calcifer Rojizo": [55, 1, "B84A3A", "res://buceo/assets/spondulus calcifer.png", Vector2(1, 1)],
 	
-	"Calcifer Morado": [50, 1],
+	"Calcifer Morado": [55, 1, "744A8C", "res://buceo/assets/spondulus calcifer.png", Vector2(1.4, 1.4)],
 	
-	"Calcifer Regular": [25, 3]
+	"Calcifer Regular": [30, 1, "ffffff", "res://buceo/assets/spondulus calcifer.png", Vector2(1, 1)]
 }
 
 var total_fish = 0

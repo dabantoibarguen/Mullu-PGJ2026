@@ -38,7 +38,8 @@ func _physics_process(delta: float) -> void:
 	
 	if soga.points.size() > 20:
 		for i in range(1, 19, 2):
-			soga.remove_point(i)
+			if i < soga.points.size()-1:
+				soga.remove_point(i)
 	
 	move_and_collide(velocity)
 	soga.add_point(soga.to_local(global_position))

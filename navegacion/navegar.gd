@@ -168,10 +168,11 @@ func pescar(fish_info):
 	pesca.connect("resultado_pesca", add_fish)
 	nav.add_sibling(pesca)
 
-func bucear():
-	#var mullu = randomize_mullu()
+func bucear(mullu_list):
 	nav.energy -= 3
 	var buceo = buceo_game.instantiate()
+	buceo.deep_spawn = mullu_list[0]
+	buceo.mid_spawn = mullu_list[1]
 	pause_nav()
 	buceo.connect("resultado_buceo", add_mullu)
 	nav.add_sibling(buceo)

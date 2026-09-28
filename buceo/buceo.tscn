@@ -24,8 +24,8 @@ fill_to = Vector2(0, 0.15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
 
 [sub_resource type="Gradient" id="Gradient_i0akg"]
-offsets = PackedFloat32Array(0, 0.36792454, 0.7169811)
-colors = PackedColorArray(1, 1, 1, 0.8627451, 1, 1, 1, 0.2784314, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.254717, 0.48584905, 0.7877358)
+colors = PackedColorArray(1, 1, 1, 0.8627451, 1, 1, 1, 0.74509805, 1, 1, 1, 0.3019608, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i0akg"]
 gradient = SubResource("Gradient_i0akg")
