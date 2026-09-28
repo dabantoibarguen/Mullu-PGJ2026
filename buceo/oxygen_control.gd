@@ -9,6 +9,7 @@ var buceo # The buceo scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	oxygen_bar.get_theme_stylebox("fill").bg_color = Color(0.639, 0.639, 0.639, 0.745)
 	oxygen_bar.value = oxygen
 	oxygen = max_oxygen
 	buceo = get_parent().get_parent()

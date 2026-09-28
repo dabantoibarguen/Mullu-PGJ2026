@@ -102,6 +102,13 @@ func _unhandled_input(ev: InputEvent) -> void:
 							# make this based on the time needed to move
 							await get_tree().create_timer(0.4).timeout 
 						boat.cur_coords = target_coords
+						for neighbor in get_surrounding_cells(target_coords):
+							if invalid_tiles.get(get_cell_atlas_coords(neighbor)) == "Roca":
+								nav.junto_roca = true
+								break
+							else:
+								nav.junto_roca = false
+						print(nav.junto_roca)
 						moving = false
 						path_to_target = [] 
 					elif dist > nav.energy:
@@ -138,13 +145,13 @@ func resume_nav():
 
 func add_fish(total_fish):
 	resume_nav()
-	navMenu.update_fish(total_fish)
-	print(total_fish)
+	nav.pescado += total_fish
+	navMenu.update_fish(nav.total_fish)
 	
 func add_mullu(total_mullu):
 	resume_nav()
-	navMenu.update_mullu(total_mullu)
-	print(total_mullu)
+	nav.mullu += total_mullu
+	navMenu.update_mullu(nav.mullu)
 
 # ------ Button functions -------
 func navegar():
