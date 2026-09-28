@@ -44,3 +44,24 @@ var mullu_dictionary = {
 
 var total_fish = 0
 var total_mullu = 0
+
+var blessings = {
+	"Night Vision" : {
+		"label" : "Vision Nocturna",
+		"description" : "Bendición de Shi. Incrementa la visibilidad en la oscuridad.",
+		"enabled" : false,
+		"cost" : 1
+	},
+	"Sacred Sea" : {
+		"label" : "Mar Sagrado",
+		"description" : "Bendición de Shi. El mar será más abundante.",
+		"enabled" : false,
+		"cost" : 1
+	},
+	"Second Wind" : {
+		"label" : 	"Segundo Aliento",
+		"description" : "Bendición de Tacaynamo. Te hace más fácil capturar peces.",
+		"enabled" : false,
+		"cost" : 1
+	}
+}
