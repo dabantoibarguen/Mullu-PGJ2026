@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bubbqmosk6goe"
-path="res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"
+uid="uid://bralte27l3e6b"
+path="res://.godot/imported/pez demoño.png-77195f472813b5e4b4d78bc88bc97d05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pesca/assets/mantarraya epica.png"
-dest_files=["res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"]
+source_file="res://pesca/assets/pez demoño.png"
+dest_files=["res://.godot/imported/pez demoño.png-77195f472813b5e4b4d78bc88bc97d05.ctex"]
 
 [params]
 

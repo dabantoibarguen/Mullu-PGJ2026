@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bubbqmosk6goe"
-path="res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"
+uid="uid://djeqtlrbsvuga"
+path="res://.godot/imported/chita.png-eeec803aa7aae40c96d640e027a86ade.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pesca/assets/mantarraya epica.png"
-dest_files=["res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"]
+source_file="res://pesca/assets/chita.png"
+dest_files=["res://.godot/imported/chita.png-eeec803aa7aae40c96d640e027a86ade.ctex"]
 
 [params]
 

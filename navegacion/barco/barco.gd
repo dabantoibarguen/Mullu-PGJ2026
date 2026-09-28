@@ -14,15 +14,14 @@ var vision_range = 3
 func _ready():
 	cur_coords = oceanMap.local_to_map(global_position)
 	target = oceanMap.map_to_local(cur_coords)
-	sprite.play("default")
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(target)
 	velocity = direction.normalized() * speed
 	if(direction[0]>0):
-		sprite.flip_h = false
-	elif(direction[0]<0):
 		sprite.flip_h = true
+	elif(direction[0]<0):
+		sprite.flip_h = false
 
 	if global_position.distance_to(target)<1:
 		velocity = Vector2(0,0)

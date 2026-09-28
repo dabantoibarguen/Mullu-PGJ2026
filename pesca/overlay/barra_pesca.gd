@@ -13,6 +13,7 @@ var highest_point = position.y
 var grav = 0.3
 var green_time = 1
 var game_time = 17
+var minimum_time = 4
 
 var score = 0
 
@@ -30,12 +31,14 @@ func _ready() -> void:
 	green_h = green.size.y
 	green_starting = green.position
 
-func start_fishing(origin):
+func start_fishing(origin, freq = green_time, min = minimum_time):
 	controlPesca = origin
 	score = 0
 	gameTimer.wait_time = game_time
 	gameTimer.start()
 	green.position = green_starting
+	green_time = freq
+	minimum_time = min
 	timer.start()
 	
 func _on_pescando_timeout() -> void:
@@ -70,10 +73,10 @@ func _physics_process(delta: float) -> void:
 	green_bottom = green_top+green_h
 	player_y = player.position.y
 	if green_top < (player_y + player_h) and player_y < green_bottom:
-		player.color = Color(32.902, 0.0, 16.728, 1.0)
+		player.color = Color("ed9b3f")
 		score += delta # Number of seconds in the green area
 	else:
-		player.color = Color(255, 255, 255)
+		player.color = Color("f5dad5")
 	
 	if (player_y + player_h) < lowest_point:
 		player.position.y += grav * delta * 100
