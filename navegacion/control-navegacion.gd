@@ -9,6 +9,8 @@ extends Node2D
 var pescado = 0
 var mullu = 0
 
+var fished_tiles = []
+
 var temperatura = "Frio" # Mantener actualizado
 var hora = "Mañana" 
 var profundidad # Sacar esto del tile del barco
@@ -68,8 +70,8 @@ func menu_psc():
 func menu_bco():
 	# Calcular que tipo de mullu basado en: tile atlas (profundidad), hora, temp, roca in neighbors?
 	profundidad = main.get_profundidad()
-	var mullu_list = randomize_mullu()
-	main.bucear(mullu_list)
+	var mullu = randomize_mullu()
+	main.bucear(mullu)
 
 
 # ------ randomizing functions for pesca/buceo -------
@@ -99,7 +101,7 @@ func randomize_fish():
 	size += randi_range(0, 40) + (15*possible_fish[the_fish][1]) + 15 
 	# met * 15 + 15 allows for 20% chance per condition met, funny.
 	return [the_fish, size]
-	
+		
 func randomize_mullu():
 	var mullus = Global.mullu_dictionary
 	var deep_mullus = [] # max 4

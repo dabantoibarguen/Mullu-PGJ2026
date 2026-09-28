@@ -160,6 +160,11 @@ func navegar():
 	unhovered_cell = hovered_cell
 
 func pescar(fish_info):
+	if (boat.cur_coords in nav.fished_tiles):
+		return
+	nav.fished_tiles.append(boat.cur_coords)
+	navMenu.pescaBtn.disabled = true
+	print(nav.fished_tiles)
 	nav.energy -= 3
 	var pesca = pesca_game.instantiate()
 	pause_nav()
@@ -226,5 +231,9 @@ func _physics_process(_delta: float) -> void:
 			remove_child(oldTracer)
 			path_to_target = []
 		unhovered_cell = hovered_cell
+		if(boat.cur_coords in nav.fished_tiles):
+			navMenu.pescaBtn.disabled = true
+		else:
+			navMenu.pescaBtn.disabled = false
 	else:
 		pass

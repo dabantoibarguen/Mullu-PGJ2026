@@ -25,7 +25,6 @@ func _ready() -> void:
 	populate_mullu()
 	
 func populate_mullu():
-	deep_spawn = ["Princeps Regular", "Princeps Adulto","Princeps Bebe", "Calcifer Bebe", "Calcifer Rojizo", "Calcifer Morado", "Calcifer Regular"]
 	var mullu_data = Global.mullu_dictionary
 	var size_mid = area_media.shape.size
 	var size_deep = area_profunda.shape.size
