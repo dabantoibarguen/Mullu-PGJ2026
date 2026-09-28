@@ -1,53 +1,20 @@
 [gd_scene format=3 uid="uid://lgdeu1xt3vf"]
 
-[ext_resource type="Texture2D" uid="uid://dullg25naqpyb" path="res://navegacion/assets/hex 1.png" id="1_00iqw"]
 [ext_resource type="Script" uid="uid://bxxkjmfcd08lo" path="res://pesca/pesca_main.gd" id="1_8yp11"]
-[ext_resource type="Texture2D" uid="uid://c84fje55h6q2d" path="res://pesca/assets/whirlpool.png" id="3_l87ni"]
+[ext_resource type="Texture2D" uid="uid://b5r530p35p2q4" path="res://pesca/assets/cursosr.png" id="3_gafaf"]
 [ext_resource type="Script" uid="uid://dlpt6ajx836u" path="res://pesca/anzuelo.gd" id="3_u3kmj"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_u3kmj"]
 [ext_resource type="PackedScene" uid="uid://m6rpj2c13upr" path="res://pesca/overlay/barra_pesca.tscn" id="6_2t0r3"]
-[ext_resource type="Texture2D" uid="uid://b5qyg8qdrnl67" path="res://icon.svg" id="7_2jept"]
-[ext_resource type="Texture2D" uid="uid://6uygg8miyu7p" path="res://pesca/assets/mantarraya epica.png" id="7_hwaou"]
+[ext_resource type="Texture2D" uid="uid://cwyxi73ristwj" path="res://pesca/assets/fondo 1.png" id="8_gafaf"]
+[ext_resource type="Texture2D" uid="uid://cgyftrsj8s526" path="res://pesca/assets/fondo 2.png" id="9_3qcc4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u3kmj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8hl5a"]
-atlas = ExtResource("3_l87ni")
-region = Rect2(0, 217, 31, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3kmj"]
-atlas = ExtResource("3_l87ni")
-region = Rect2(93, 186, 31, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2t0r3"]
-atlas = ExtResource("3_l87ni")
-region = Rect2(31, 186, 31, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jept"]
-atlas = ExtResource("3_l87ni")
-region = Rect2(124, 155, 31, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwaou"]
-atlas = ExtResource("3_l87ni")
-region = Rect2(62, 155, 31, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8yp11"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8hl5a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u3kmj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2t0r3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jept")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwaou")
+"texture": ExtResource("3_gafaf")
 }],
 "loop": 1,
 "name": &"new_animation",
@@ -58,40 +25,26 @@ animations = [{
 shader = ExtResource("5_u3kmj")
 shader_parameter/blur_amount = 2.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5k2l"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": ExtResource("8_gafaf")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_3qcc4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="PescaMain" type="CanvasLayer" unique_id=1004852662]
 process_mode = 3
 layer = 3
+scale = Vector2(1.07, 1.07)
+transform = Transform2D(1.07, 0, 0, 1.07, 0, 0)
 script = ExtResource("1_8yp11")
-
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=635142950]
-texture_filter = 1
-scroll_offset = Vector2(826, 241)
-repeat_size = Vector2(120, 100)
-autoscroll = Vector2(10, 80)
-repeat_times = 10
-ignore_camera_scroll = true
-screen_offset = Vector2(500, 500)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2136259103]
-position = Vector2(157, 102)
-scale = Vector2(16.625, 16.375)
-texture = ExtResource("1_00iqw")
-hframes = 4
-vframes = 5
-frame = 3
-
-[node name="Boat" type="Area2D" parent="." unique_id=158720126]
-position = Vector2(583.00006, 321)
-scale = Vector2(19.007551, 10.6202)
-
-[node name="ColorRect" type="ColorRect" parent="Boat" unique_id=1603903824]
-offset_left = -24.148298
-offset_top = 30.696222
-offset_right = 22.6752
-offset_bottom = 52.823868
-rotation = 0.7959592
-scale = Vector2(0.7824488, -1.5247557)
-color = Color(0.5493864, 0.17546314, 0.15340152, 1)
 
 [node name="Anzuelo" type="CharacterBody2D" parent="." unique_id=1365197455]
 unique_name_in_owner = true
@@ -104,11 +57,10 @@ platform_on_leave = 2
 script = ExtResource("3_u3kmj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anzuelo" unique_id=1661852939]
-scale = Vector2(1.0315962, 0.51907533)
+scale = Vector2(3.1333573, 1.9671433)
 shape = SubResource("CircleShape2D_u3kmj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anzuelo" unique_id=584224302]
-modulate = Color(0, 0, 0, 1)
 position = Vector2(1.1920932e-07, 2.3841858e-07)
 rotation = -2.6546457
 scale = Vector2(0.7923895, 0.7867294)
@@ -122,9 +74,11 @@ unique_name_in_owner = true
 position = Vector2(19, 623)
 scale = Vector2(500, 500)
 color = Color(1, 0, 1, 0)
-polygon = PackedVector2Array(0, 0, 0, -1.2, 1.876, -1.194, 1.8720001, -1.026, 2.244, -1.0300001, 2.25, 0, 2.05, 0, 1.7260001, -0.23000002, 1.128, -0.53800005, 0.568, -0.272, 0.2, 0)
+polygon = PackedVector2Array(0.02181308, -0.09459829, 0.02181308, -1.1712338, 1.8760188, -1.1712338, 1.8760188, -1.0067478, 2.1900373, -1.0067478, 2.1900373, -0.09459829, 1.3676075, -0.09459829, 1.2180748, -0.5880562, 0.93396264, -0.5880562, 0.8143365, -0.09459829)
 
 [node name="Spawn" type="Timer" parent="." unique_id=1916346328]
+wait_time = 1.25
+autostart = true
 
 [node name="AaronBlur" type="ColorRect" parent="." unique_id=576033772]
 visible = false
@@ -149,17 +103,14 @@ offset_right = 1326.9999
 offset_bottom = 687.0
 scale = Vector2(4.9884896, 9.935265)
 
-[node name="Icon" type="TextureRect" parent="AaronBlur" unique_id=1956615466]
+[node name="Silhouette" type="TextureRect" parent="AaronBlur" unique_id=1956615466]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 389.0
-offset_top = 692.0
-offset_right = 1589.0
-offset_bottom = 1342.0
-scale = Vector2(0.71297246, 0.7863665)
-texture = ExtResource("7_hwaou")
-
-[node name="CamaraPesca" type="Camera2D" parent="." unique_id=2036240315]
-position = Vector2(576, 324)
+offset_left = 422.95325
+offset_top = 724.3364
+offset_right = 1152.2025
+offset_bottom = 1224.3364
+scale = Vector2(0.7, 0.772)
 
 [node name="Durabilidad" type="Label" parent="." unique_id=352204426]
 z_index = 3
@@ -178,6 +129,22 @@ offset_top = 21.999992
 offset_right = 1116.0
 offset_bottom = 150.0
 scale = Vector2(0.52372324, 0.50757456)
-texture = ExtResource("7_2jept")
+texture = ExtResource("3_gafaf")
+
+[node name="Boat" type="AnimatedSprite2D" parent="." unique_id=711046447]
+position = Vector2(570.5233, 316.19046)
+sprite_frames = SubResource("SpriteFrames_f5k2l")
+autoplay = "default"
+frame_progress = 0.40772977
+
+[node name="CamaraPesca" type="Camera2D" parent="." unique_id=336498485]
+position = Vector2(577, 326)
+
+[node name="Line" type="Line2D" parent="." unique_id=1945595167]
+unique_name_in_owner = true
+position = Vector2(-43.95697, 0)
+scale = Vector2(1.0820093, 1)
+width = 6.0
+default_color = Color(0.92941177, 0.6627451, 0.39607844, 1)
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]

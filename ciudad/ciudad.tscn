@@ -40,9 +40,9 @@ offset_bottom = 40.0
 scale = Vector2(28.92023, 16.395468)
 
 [node name="Templo" type="Button" parent="." unique_id=1257668782]
-offset_left = 526.0
+offset_left = 353.0
 offset_top = 50.0
-offset_right = 534.0
+offset_right = 361.0
 offset_bottom = 58.0
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_r20d7")
@@ -50,21 +50,21 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gmgtk")
 
 [node name="Abuelo" type="Button" parent="." unique_id=1207870595]
-offset_left = 981.0
-offset_top = 395.0
-offset_right = 989.0
-offset_bottom = 403.0
+offset_left = 984.99994
+offset_top = 362.0
+offset_right = 992.99994
+offset_bottom = 370.0
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
 
-[node name="Agua" type="Button" parent="." unique_id=947527740]
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 11.0
-offset_bottom = 9.0
-scale = Vector2(29.068201, 81.727234)
+[node name="Tienda" type="Button" parent="." unique_id=1477450725]
+offset_left = 818.0
+offset_top = 80.0
+offset_right = 826.0
+offset_bottom = 88.0
+scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
@@ -81,6 +81,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AaronBlur" type="ColorRect" parent="." unique_id=2044504712]
+visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_gmgtk")
 custom_minimum_size = Vector2(2000, 2000)
@@ -101,5 +102,5 @@ layout_mode = 0
 [connection signal="pressed" from="Templo" to="." method="_on_templo_pressed"]
 [connection signal="mouse_entered" from="Abuelo" to="." method="_on_abuelo_mouse_entered"]
 [connection signal="pressed" from="Abuelo" to="." method="_on_abuelo_pressed"]
-[connection signal="mouse_entered" from="Agua" to="." method="_on_agua_mouse_entered"]
-[connection signal="pressed" from="Agua" to="." method="_on_agua_pressed"]
+[connection signal="mouse_entered" from="Tienda" to="." method="_on_abuelo_mouse_entered"]
+[connection signal="pressed" from="Tienda" to="." method="_on_abuelo_pressed"]

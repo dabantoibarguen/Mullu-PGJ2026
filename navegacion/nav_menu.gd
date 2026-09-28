@@ -21,7 +21,9 @@ func _on_bco_pressed() -> void:
 	get_tree().current_scene.menu_bco()
 
 func time_change(time):
-	print(time)
+	print(time) # PENDING
+
+
 
 func update_energy(energy):
 	energyText.text = str(energy)

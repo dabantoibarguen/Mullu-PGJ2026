@@ -108,7 +108,7 @@ script = ExtResource("2_sux3w")
 [node name="barco" parent="OceanMap" unique_id=1547565363 instance=ExtResource("3_sux3w")]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(-47, -34)
+position = Vector2(80, -31)
 scale = Vector2(4, 4)
 
 [node name="SmokeOnTheWater" type="TileMapLayer" parent="." unique_id=1127018933]
@@ -128,7 +128,7 @@ tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
 
 [node name="MorningLight" type="PointLight2D" parent="." unique_id=993326913]
-position = Vector2(383, -395)
+position = Vector2(376.99997, -396)
 scale = Vector2(19.859373, 15.187499)
 color = Color(0.12156863, 0.43529412, 0.49019608, 1)
 blend_mode = 2
@@ -157,5 +157,4 @@ texture = SubResource("GradientTexture2D_nlynv")
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
 stream = ExtResource("8_0jc1b")
-autoplay = true
 parameters/looping = true

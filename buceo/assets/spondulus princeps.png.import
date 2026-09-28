@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bubbqmosk6goe"
-path="res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"
+uid="uid://i5sba231ejdd"
+path="res://.godot/imported/spondulus princeps.png-ad2a3d2dd9aba3c5fd8ee40b9ec00521.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pesca/assets/mantarraya epica.png"
-dest_files=["res://.godot/imported/mantarraya epica.png-e5072a1a7d9bc5666672a92d2b223736.ctex"]
+source_file="res://buceo/assets/spondulus princeps.png"
+dest_files=["res://.godot/imported/spondulus princeps.png-ad2a3d2dd9aba3c5fd8ee40b9ec00521.ctex"]
 
 [params]
 

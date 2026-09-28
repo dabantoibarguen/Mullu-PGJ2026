@@ -13,7 +13,7 @@ var move_speed = 150.0
 var rotation_speed = 3.0
 
 const MAX_STRAY = 10.0
-const CORNER_RADIUS = 7.0
+const CORNER_RADIUS = 8.0
 
 var next_vertex_index = 1
 var seg_start
@@ -25,7 +25,7 @@ var target_points
 
 var oldPos = position
 
-
+var origin_scene
 
 func _ready():
 	helper = Line2D.new()
@@ -33,7 +33,8 @@ func _ready():
 	helper.width = 1
 	indicator_size = indicator.scale
 	
-func start_game():
+func start_game(origin):
+	origin_scene = origin
 	indicator.scale = indicator_size
 	integrity_bar.value = integrity
 	integrity_bar.get_theme_stylebox("fill").bg_color = Color("3b6125")
@@ -73,8 +74,9 @@ func update_segment():
 	helper.add_point(trail.to_local(seg_end))
 		
 func end_game(victory):
-	await get_tree().create_timer(1.5).timeout 
+	await get_tree().create_timer(1).timeout 
 	get_parent().remove_child(helper)
+	origin_scene.end_snip(victory)
 	# Add way to end the sub mini game with a unique node name
 
 func _physics_process(delta: float) -> void:
@@ -116,7 +118,7 @@ func _physics_process(delta: float) -> void:
 			update_segment()
 		else:
 			indicator.position = Vector2.ZERO
-			indicator.scale = Vector2(0.2, 0.2)
+			indicator.scale = Vector2(0.7, 0.7)
 			integrity = 0
 			end_game(true)
 	

@@ -30,16 +30,16 @@ var move_action = false
 # Should replace with Data Layers later
 const invalid_tiles = {
 	Vector2i(-1, -1): "Borde",
+	Vector2i(0, 1): "Mar Profundo",
 	Vector2i(0, 0): "Roca", 
 	Vector2i(1, 0): "Rocas",
 	Vector2i(2, 0): "Arena"
 }
 
 const valid_tiles = {
-	Vector2i(0, 1): "Mar Profundo",
-	Vector2i(0, 2): "Mar Aeropuerto",
-	Vector2i(2, 1): "Marea Alta",
-	Vector2i(2, 2): "Marea Baja"
+	Vector2i(0, 2): "Mar Medio",
+	Vector2i(2, 1): "Mar Alto",
+	Vector2i(2, 2): "Mar Bajo"
 }
 
 func _ready() -> void:
@@ -109,18 +109,18 @@ func _unhandled_input(ev: InputEvent) -> void:
 					else:
 						boat.label.text = "Invalido"
 	elif ev is InputEventKey and ev.is_pressed():
-		if ev.keycode == KEY_SPACE:
+		if ev.keycode == KEY_1:
 			navegar()
 			var navigationButton = navMenu.navBtn
-			navigationButton.button_pressed = !navigationButton.button_pressed
-		elif ev.keycode == KEY_P:
-			pescar()
+			navigationButton.button_pressed = !(navigationButton.button_pressed)
+		if ev.keycode == KEY_2:
+			nav.menu_psc()
 			var pescaButton = navMenu.pescaBtn
-			pescaButton.button_pressed = !pescaButton.button_pressed
-		if ev.keycode == KEY_Q:
-			bucear()
+			pescaButton.button_pressed = !(pescaButton.button_pressed)
+		if ev.keycode == KEY_3:
+			nav.menu_bco()
 			var buceoButton = navMenu.buceoBtn
-			buceoButton.button_pressed = !buceoButton.button_pressed
+			buceoButton.button_pressed = !(buceoButton.button_pressed)
 
 func pause_nav():
 	standby = true
@@ -153,21 +153,29 @@ func navegar():
 	remove_child(oldTracer)
 	unhovered_cell = hovered_cell
 
-func pescar():
+func pescar(fish_info):
 	nav.energy -= 3
-	#var profundidad = valid_tiles.get(get_cell_atlas_coords(boat.cur_coords))
 	var pesca = pesca_game.instantiate()
 	pause_nav()
+	pesca.fish_name = fish_info[0]
+	pesca.fish_size_percentage = fish_info[1]
 	pesca.connect("resultado_pesca", add_fish)
 	nav.add_sibling(pesca)
 
 func bucear():
+	#var mullu = randomize_mullu()
 	nav.energy -= 3
 	var buceo = buceo_game.instantiate()
 	pause_nav()
 	buceo.connect("resultado_buceo", add_mullu)
 	nav.add_sibling(buceo)
 
+func get_profundidad() -> String:
+	var prof = valid_tiles.get(self.get_cell_atlas_coords(boat.cur_coords))
+	if prof:
+		return prof
+	return ""
+			
 			
 func _physics_process(_delta: float) -> void:
 	if (move_action):

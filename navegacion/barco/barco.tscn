@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://1k5g23r5q1s"]
 
 [ext_resource type="Script" uid="uid://dkepfco4hu80c" path="res://navegacion/barco/barco.gd" id="1_0j4b5"]
-[ext_resource type="Texture2D" uid="uid://c3i8jvr4fu61" path="res://navegacion/assets/tiles1.png" id="2_in4ql"]
+[ext_resource type="Texture2D" uid="uid://c7hqnd7x53dyl" path="res://navegacion/assets/sprites barco.png" id="2_0j4b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in4ql"]
+atlas = ExtResource("2_0j4b5")
+region = Rect2(0, 0, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6lay"]
-atlas = ExtResource("2_in4ql")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1don"]
-atlas = ExtResource("2_in4ql")
-region = Rect2(64, 96, 32, 32)
+atlas = ExtResource("2_0j4b5")
+region = Rect2(32, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_in4ql"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l6lay")
+"texture": SubResource("AtlasTexture_in4ql")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q1don")
+"texture": SubResource("AtlasTexture_l6lay")
 }],
 "loop": 1,
 "name": &"default",
@@ -27,6 +27,7 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_0j4b5"]
 line_spacing = 2.0
+font_size = 20
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -35,8 +36,9 @@ scale = Vector2(2, 2)
 script = ExtResource("1_0j4b5")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1341787732]
-scale = Vector2(0.26878318, 0.17499955)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_in4ql")
+autoplay = "default"
 
 [node name="CamaraBarco" type="Camera2D" parent="." unique_id=319880649]
 unique_name_in_owner = true
@@ -44,10 +46,11 @@ scale = Vector2(2, 2)
 zoom = Vector2(4, 4)
 
 [node name="Label" type="Label" parent="." unique_id=74161993]
+visible = false
 z_index = 6
-offset_left = -36.5
-offset_top = -16.0
-offset_right = 61.828186
-offset_bottom = 29.97694
-scale = Vector2(0.2084855, 0.10875016)
+offset_left = -71.5
+offset_top = -25.5
+offset_right = 26.828186
+offset_bottom = 20.47694
+scale = Vector2(1.908, 1)
 label_settings = SubResource("LabelSettings_0j4b5")

@@ -1,43 +1,65 @@
 [gd_scene format=3 uid="uid://b53g80y211pyv"]
 
-[ext_resource type="Texture2D" uid="uid://c3dw7ai5doxwe" path="res://navegacion/assets/sprite barquito.png" id="1_g0wd3"]
 [ext_resource type="Script" uid="uid://dehpkw4mcsmfr" path="res://buceo/buceo.gd" id="1_uhecx"]
 [ext_resource type="Script" uid="uid://by4xk0d8o6tyo" path="res://buceo/buceador.gd" id="3_i0akg"]
-[ext_resource type="Texture2D" uid="uid://be21dmi7l4gci" path="res://buceo/assets/calato.png" id="4_i0akg"]
-[ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="5_5y4bw"]
+[ext_resource type="Texture2D" uid="uid://dr8pvvd52c204" path="res://buceo/assets/buceadora.png" id="3_s3ofk"]
+[ext_resource type="Texture2D" uid="uid://rhinewckhaxl" path="res://buceo/assets/bot.png" id="4_s3ofk"]
+[ext_resource type="Texture2D" uid="uid://dk5gcex5vknf4" path="res://buceo/assets/top 1 v2.png" id="5_s3ofk"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_uhecx"]
 [ext_resource type="PackedScene" uid="uid://do1vx4b05weqp" path="res://buceo/snip_game.tscn" id="6_jhcbv"]
+[ext_resource type="Texture2D" uid="uid://cluldcc7brrls" path="res://buceo/assets/top 2 v2.png" id="6_r4nwo"]
 [ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
 [ext_resource type="AudioStream" uid="uid://di6ob3w6bri6a" path="res://buceo/assets/Buseo.mp3" id="9_ms8d1"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
-offsets = PackedFloat32Array(0, 0.19339623)
+offsets = PackedFloat32Array(0, 0.2783019, 0.5660377, 0.8207547)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0.7764706, 1, 1, 1, 0.43137255)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nlynv"]
 gradient = SubResource("Gradient_5y4bw")
 fill = 1
-fill_from = Vector2(0.5235294, 0.5205882)
-fill_to = Vector2(0.5294118, 0.5176471)
+fill_from = Vector2(0.5235294, 1)
+fill_to = Vector2(0, 0.15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
 
 [sub_resource type="Gradient" id="Gradient_i0akg"]
-offsets = PackedFloat32Array(0, 0.6462264)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.36792454, 0.7169811)
+colors = PackedColorArray(1, 1, 1, 0.8627451, 1, 1, 1, 0.2784314, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i0akg"]
 gradient = SubResource("Gradient_i0akg")
 width = 128
 height = 128
 fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
+fill_from = Vector2(0.5058824, 0.33235294)
+fill_to = Vector2(0.67941177, 0.5470588)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5y4bw"]
 particles_animation = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25cln"]
+size = Vector2(1125, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5k2l"]
+size = Vector2(1130, 450)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlynv"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": ExtResource("5_s3ofk")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_r4nwo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ofk"]
 shader = ExtResource("5_uhecx")
@@ -56,11 +78,12 @@ offset_left = -698.0
 offset_top = -124.0
 offset_right = 702.0
 offset_bottom = 876.0
-color = Color(0.039729048, 5.896017e-07, 0.28161976, 0.85882354)
+scale = Vector2(0.9988916, 1.0750506)
+color = Color(0.0627451, 0.08627451, 0.15294118, 1)
 
 [node name="Ocean2" type="PointLight2D" parent="Ocean" unique_id=1740315983]
 z_index = -1
-position = Vector2(665, 474)
+position = Vector2(665.00006, 474.9302)
 scale = Vector2(0.9463964, 0.8007577)
 color = Color(4.2114408e-07, 0, 0.31664762, 0.6745098)
 energy = 0.7
@@ -74,23 +97,25 @@ texture_scale = 24.05
 unique_name_in_owner = true
 light_mask = 2
 z_index = 3
-position = Vector2(700, 80)
+position = Vector2(699, 54)
 rotation = 3.1415927
 motion_mode = 1
 script = ExtResource("3_i0akg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ocean/Buceador" unique_id=980175165]
 position = Vector2(2.30814, 1.0441301)
-scale = Vector2(2.81324, 5.4174476)
+scale = Vector2(4.0171847, 3.5452566)
 shape = SubResource("RectangleShape2D_nlynv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ocean/Buceador" unique_id=1232689344]
-scale = Vector2(-0.41295758, 0.3877511)
-texture = ExtResource("4_i0akg")
+position = Vector2(2.2276878, 0.9792175)
+scale = Vector2(-0.389, -0.389)
+texture = ExtResource("3_s3ofk")
 
 [node name="PointLight2D" type="PointLight2D" parent="Ocean/Buceador" unique_id=735538611]
 z_index = 3
-position = Vector2(1, 1)
+position = Vector2(-4.780067, 128.4151)
+scale = Vector2(1.091, 1)
 energy = 1.2
 blend_mode = 2
 range_layer_max = 5
@@ -101,28 +126,37 @@ texture_scale = 5.0
 
 [node name="CamaraBuceo" type="Camera2D" parent="Ocean/Buceador" unique_id=1013168477]
 unique_name_in_owner = true
-position = Vector2(0, 2)
+position = Vector2(0.2254713, 18.65283)
 scale = Vector2(1.154068, 1.0441253)
+zoom = Vector2(1.2, 1.2)
 limit_left = -580
-limit_top = -300
+limit_top = -600
 limit_right = 580
-limit_bottom = 750
-
-[node name="Spondylus" type="Sprite2D" parent="Ocean" unique_id=702101121]
-light_mask = 2
-visibility_layer = 2
-z_index = 1
-position = Vector2(551.00006, 816)
-scale = Vector2(0.14516129, 0.17777778)
-texture = ExtResource("5_5y4bw")
+limit_bottom = 970
 
 [node name="Soga" type="Line2D" parent="Ocean" unique_id=836562560]
 unique_name_in_owner = true
 light_mask = 2
+z_index = 1
 material = SubResource("CanvasItemMaterial_5y4bw")
 position = Vector2(698, 5.9999695)
 scale = Vector2(1.0000001, 1.0051997)
-default_color = Color(0.83421105, 0.55367076, 0.21285486, 1)
+width = 4.0
+default_color = Color(0.3882353, 0.35686275, 0.25882354, 1)
+
+[node name="Fondo" type="CollisionShape2D" parent="Ocean" unique_id=1247053008]
+position = Vector2(693.769, 959.95483)
+shape = SubResource("RectangleShape2D_25cln")
+
+[node name="Medio" type="CollisionShape2D" parent="Ocean" unique_id=359650421]
+position = Vector2(695.7712, 701.36237)
+shape = SubResource("RectangleShape2D_f5k2l")
+
+[node name="Bot" type="Sprite2D" parent="Ocean" unique_id=1203494586]
+light_mask = 2
+position = Vector2(691.7667, 220.45474)
+scale = Vector2(1.2192572, 0.9757969)
+texture = ExtResource("4_s3ofk")
 
 [node name="Sky" type="ColorRect" parent="." unique_id=930510104]
 z_index = 2
@@ -130,17 +164,14 @@ offset_left = -700.0
 offset_top = -521.0
 offset_right = 700.0
 offset_bottom = -121.0
-color = Color(0.08943816, 0.52898985, 0.99999994, 0.54901963)
+color = Color(0.09019608, 0.5294118, 1, 0)
 
-[node name="Barco" type="Sprite2D" parent="Sky" unique_id=2054792724]
-z_index = 2
-position = Vector2(706.7428, 347.22986)
-rotation = 0.14901593
-scale = Vector2(8.053053, 4.8086205)
-skew = -0.0013231039
-texture = ExtResource("1_g0wd3")
-hframes = 4
-vframes = 5
+[node name="Barco y Mar" type="AnimatedSprite2D" parent="Sky" unique_id=100675855]
+position = Vector2(701, 381)
+scale = Vector2(1.2100694, 1.1574074)
+sprite_frames = SubResource("SpriteFrames_nlynv")
+autoplay = "default"
+frame_progress = 0.25812364
 
 [node name="Border" type="StaticBody2D" parent="." unique_id=173906715]
 visible = false
@@ -148,25 +179,25 @@ z_index = 5
 scale = Vector2(1.183381, 1.2888223)
 
 [node name="EdgeCollision3" type="CollisionShape2D" parent="Border" unique_id=1816044028]
-position = Vector2(-490, 100)
+position = Vector2(-500.26135, 207.94174)
 rotation = 3.1415925
-scale = Vector2(0.4, 50)
+scale = Vector2(0.4, 55)
 shape = SubResource("RectangleShape2D_nlynv")
 
 [node name="EdgeCollision" type="CollisionShape2D" parent="Border" unique_id=28228223]
-position = Vector2(489.276, 99.315475)
+position = Vector2(498.5717, 207.94179)
 rotation = 3.1415925
-scale = Vector2(0.40018138, 50.022675)
+scale = Vector2(0.40018138, 55)
 shape = SubResource("RectangleShape2D_nlynv")
 
-[node name="EdgeCollision2" type="CollisionShape2D" parent="Border" unique_id=276279259]
-position = Vector2(0, 600)
+[node name="Top" type="CollisionShape2D" parent="Border" unique_id=2096641603]
+position = Vector2(0, -120)
 rotation = 1.5707964
 scale = Vector2(3, 50)
 shape = SubResource("RectangleShape2D_nlynv")
 
-[node name="EdgeCollision4" type="CollisionShape2D" parent="Border" unique_id=2096641603]
-position = Vector2(0, -120)
+[node name="Bottom" type="CollisionShape2D" parent="Border" unique_id=276279259]
+position = Vector2(2.5351095, 776.67804)
 rotation = 1.5707964
 scale = Vector2(3, 50)
 shape = SubResource("RectangleShape2D_nlynv")
@@ -193,7 +224,6 @@ scale = Vector2(10.82, 10)
 
 [node name="BGM_Buceo" type="AudioStreamPlayer" parent="." unique_id=923095919]
 stream = ExtResource("9_ms8d1")
-autoplay = true
 parameters/looping = true
 
 [node name="CanvasLayer" parent="." unique_id=732940682 instance=ExtResource("8_25cln")]
