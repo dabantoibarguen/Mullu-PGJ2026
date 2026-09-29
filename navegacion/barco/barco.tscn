@@ -31,6 +31,9 @@ font_size = 20
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j4b5"]
+radius = 5.0
+
 [node name="barco" type="CharacterBody2D" unique_id=1547565363]
 scale = Vector2(2, 2)
 script = ExtResource("1_0j4b5")
@@ -54,3 +57,7 @@ offset_right = 26.828186
 offset_bottom = 20.47694
 scale = Vector2(1.908, 1)
 label_settings = SubResource("LabelSettings_0j4b5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754130129]
+position = Vector2(0.5, -1.5)
+shape = SubResource("CircleShape2D_0j4b5")

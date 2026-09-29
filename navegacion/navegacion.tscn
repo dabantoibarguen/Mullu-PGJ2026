@@ -51,6 +51,12 @@ tile_shape = 3
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_qyhsc")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlynv"]
+size = Vector2(766.1128, 943.47034)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmmsk"]
+size = Vector2(379.82178, 958.3496)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hs310"]
 texture = ExtResource("1_sux3w")
 texture_region_size = Vector2i(32, 32)
@@ -112,6 +118,22 @@ z_index = 2
 position = Vector2(80, -31)
 scale = Vector2(3, 3)
 
+[node name="CorrienteC" type="Area2D" parent="OceanMap" unique_id=1560836425]
+position = Vector2(624, -280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OceanMap/CorrienteC" unique_id=788495912]
+position = Vector2(-436.06308, -163.73318)
+rotation = 0.092663385
+shape = SubResource("RectangleShape2D_nlynv")
+
+[node name="CorrienteF" type="Area2D" parent="OceanMap" unique_id=1817102948]
+position = Vector2(624, -280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OceanMap/CorrienteF" unique_id=1265360098]
+position = Vector2(137.37146, -114.27963)
+rotation = 0.092663385
+shape = SubResource("RectangleShape2D_nmmsk")
+
 [node name="SmokeOnTheWater" type="TileMapLayer" parent="." unique_id=1127018933]
 unique_name_in_owner = true
 visible = false
@@ -130,6 +152,7 @@ tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
 
 [node name="MorningLight" type="PointLight2D" parent="." unique_id=993326913]
+visible = false
 position = Vector2(376.99997, -396)
 scale = Vector2(19.859373, 15.187499)
 color = Color(0.12156863, 0.43529412, 0.49019608, 1)
@@ -169,3 +192,6 @@ volume_db = -8.0
 autoplay = true
 playback_type = 1
 parameters/looping = true
+
+[connection signal="body_entered" from="OceanMap/CorrienteC" to="OceanMap" method="_on_corriente_c_body_entered"]
+[connection signal="body_entered" from="OceanMap/CorrienteF" to="OceanMap" method="_on_corriente_f_body_entered"]

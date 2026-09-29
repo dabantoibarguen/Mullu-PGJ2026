@@ -31,9 +31,6 @@ var energy = max_energy:
 			cambio_noche()
 		elif(energy <= (float(2)/3*max_energy) and hora == "Mañana"):
 			cambio_tarde()
-# 80-120 mañana
-# 40-79 tarde
-# 0-39 noche
 
 func _ready() -> void:
 	if (Global.blessings.get("Vigor").get("enabled")==true):

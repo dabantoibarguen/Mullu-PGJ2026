@@ -299,3 +299,13 @@ func _physics_process(_delta: float) -> void:
 			navMenu.pescaBtn.disabled = true
 	else:
 		pass
+
+
+func _on_corriente_c_body_entered(body: Node2D) -> void:
+	nav.temperatura = "Caliente"
+	print(nav.temperatura)
+
+
+func _on_corriente_f_body_entered(body: Node2D) -> void:
+	nav.temperatura = "Frio"
+	print(nav.temperatura)
