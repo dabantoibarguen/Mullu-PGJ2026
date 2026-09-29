@@ -9,6 +9,10 @@ var buceo # The buceo scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.blessings.get("Nado").get("enabled") == true:
+		max_oxygen += 30
+		oxygen_bar.value +=30
+		oxygen_bar.max_value +=30
 	oxygen_bar.get_theme_stylebox("fill").bg_color = Color(0.639, 0.639, 0.639, 0.745)
 	oxygen_bar.value = oxygen
 	oxygen = max_oxygen

@@ -9,6 +9,8 @@ var pull_back = false
 var speed = 175
 
 func _ready() -> void:
+	if Global.blessings.get("Nado").get("enabled") == true:
+		speed = 225
 	soga.add_point(Vector2(0, -200))
 	soga.add_point(to_local(global_position))
 	soga.add_point(global_position)
