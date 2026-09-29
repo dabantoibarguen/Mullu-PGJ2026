@@ -29,6 +29,8 @@ var green_bottom
 
 func _ready() -> void:
 	player_h = player.size.y
+	if Global.blessings.get("Second Wind").get("enabled") == true:
+		green.size.y = green.size.y * 1.2
 	green_h = green.size.y
 	green_starting = green.position
 	half = ((lowest_point-(green_h))/2)

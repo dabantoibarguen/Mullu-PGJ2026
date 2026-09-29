@@ -11,6 +11,7 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var spawner = $Spawn
 signal resultado_pesca(pescado)
 
+
 var caught_indicator
 
 var pescados = 0
@@ -134,6 +135,9 @@ func end_fishing(score):
 		fish_pic.position.y -= 80
 		fish_pic.scale = Vector2(1.3, 1.3)
 		pescados += puntos # Dependiendo del pescado, asi funca??
+		if (Global.blessings.get("Pico").get("enabled")==true):
+			if(randi_range(1, 10)==10):
+				pescados += puntos
 		durabilidad -= 1
 	await get_tree().create_timer(1.5).timeout
 	blur.visible = false
