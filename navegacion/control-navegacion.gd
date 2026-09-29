@@ -20,17 +20,22 @@ var hora = "Mañana"
 var profundidad # Sacar esto del tile del barco
 var junto_roca = false
 
-var energy: int = 150:
+var max_energy = 150
+
+var energy = max_energy:
 	set(e):
 		energy = e
 		menu.update_energy(e)
 		# Hacer ciclico, cambiar basado en inicial
-		if(energy <= 50 and hora == "Tarde"):
+		if(energy <= (float(1)/3*max_energy) and hora == "Tarde"):
 			cambio_noche()
-		elif(energy <= 100 and hora == "Mañana"):
+		elif(energy <= (float(2)/3*max_energy) and hora == "Mañana"):
 			cambio_tarde()
 
 func _ready() -> void:
+	if (Global.blessings.get("Vigor").get("enabled")==true):
+		max_energy+=30
+		energy = max_energy
 	var tween = create_tween()
 	tween.tween_property($BGM_Nav, "volume_db", 0.0, 0.5)
 	if Global.tutorial:
