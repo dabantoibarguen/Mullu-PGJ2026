@@ -6,6 +6,10 @@ extends Node2D
 @onready var aLight = $AfternoonLight
 @onready var nLight = $NightLight
 
+@onready var map_temprano = %"Mapa Temprano"
+@onready var map_tarde = %"Mapa Tarde"
+@onready var map_noche = %"Mapa Noche"
+
 var pescado = 0
 var mullu = 0
 
@@ -34,6 +38,7 @@ func _ready() -> void:
 
 func cambio_tarde():
 	hora = "Tarde"
+	#main.tile_map_data = map_tarde.tile_map_data
 	var tween = create_tween()
 	tween.tween_property(mLight, "energy", 0.0, 2)
 	
@@ -47,6 +52,7 @@ func cambio_tarde():
 	nLight.visible = false
 	
 func cambio_noche():
+	#main.tile_map_data = map_noche.tile_map_data
 	hora = "Noche"
 	mLight.visible = false
 	
