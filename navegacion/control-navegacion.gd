@@ -29,9 +29,6 @@ var energy: int = 150:
 			cambio_noche()
 		elif(energy <= 100 and hora == "Mañana"):
 			cambio_tarde()
-# 80-120 mañana
-# 40-79 tarde
-# 0-39 noche
 
 func _ready() -> void:
 	var tween = create_tween()

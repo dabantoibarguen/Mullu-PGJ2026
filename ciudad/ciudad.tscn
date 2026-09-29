@@ -83,7 +83,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rfn37")
 theme_override_styles/hover = SubResource("StyleBoxTexture_no0j8")
 
 [node name="Tienda" type="Button" parent="." unique_id=1477450725]
-visible = false
 offset_left = 382.0
 offset_top = 264.0
 offset_right = 398.806
