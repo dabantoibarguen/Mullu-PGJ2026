@@ -1,5 +1,24 @@
 # Mullu
 
+_____________________
+
+- Tutorial (WIP), go Global.gd -> tutorial = false
+- FIX THE ENERGY MANAGEMENT INSIDE NAVIGATION (cuando este en 0 te manda a la ciudad, algun mensaje de resumen del dia facil)
+**- Temperaturas**
+- Sistema de cambio de tiles en función de la hora del día (casi completo, controlado dentro de control navegacion al cambiar de hora)
+- Actualizar bendiciones (y que funcionen)
+- Casa Abuelo (historias y pasar al siguiente dia)
+- Cuota de pescados minimos (ir subiendo dentro de Global)
+- Title Screen (cambiar la foto y el boton maximo. Boton de "controles"?)
+- Ver peces (y tamaños) capturados. Mullus tambien?
+- Boss Fights
+
+_LOW LOW Prio_
+- Pause menu
+- Settings menu
+- Menu de "Controles" (lit una foto con los controles de google docs o algo facil de leer. Uno para navegacion, pesca y buceo. La ciudad no creo que necesite)
+
+
 ## En proceso
 
 | (NAV)  | (PSC) | (BCO) | (RCRS) |
@@ -31,6 +50,11 @@
 - (PSC) Diferentes tipos de peces
 - (BCO) Texturas de piedras con parallax
 - (BCO) Distintos tipos de moluscos (gracias Gomita)
+
+_____________________
+
+## Jueves 24 - Lunes 28
+Demasiado para anotarlo. Se actualizara después.
 
 _____________________
 
