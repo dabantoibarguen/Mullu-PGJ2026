@@ -40,7 +40,7 @@ func populate_mullu():
 		spondylus.scale = mullu_data[mid_mul][4]
 		spondylus.global_position = (area_media.global_position + Vector2(x, y))
 		add_child(spondylus)
-		spondylus.update_pic(mullu_data[mid_mul][3], mullu_data[mid_mul][2], mid_mul[1])
+		spondylus.update_pic(mullu_data[mid_mul][3], mullu_data[mid_mul][2], mullu_data[mid_mul][1])
 	for deep_mul in deep_spawn:
 		var x = randf_range(-size_deep.x / 2, size_deep.x / 2)
 		var y = randf_range(-size_deep.y / 2, size_deep.y / 2)

@@ -55,6 +55,13 @@ func _ready() -> void:
 
 func cambio_tarde():
 	hora = "Tarde"
+	var tween5 = create_tween()
+	tween5.tween_property($BGM_Nav, "volume_db", -80.0, 0.5)
+	
+	var tween6 = create_tween()
+	tween5.tween_property($BGM_NavTarde, "volume_db", -8.0, 0.5)
+	
+	
 	main.tile_map_data = map_tarde.tile_map_data
 	var tween = create_tween()
 	tween.tween_property(mLight, "energy", 0.0, 2)

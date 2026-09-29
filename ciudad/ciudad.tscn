@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ct47lkfp7usyh" path="res://ciudad/assets/templo crop.png" id="3_xd2wj"]
 [ext_resource type="PackedScene" uid="uid://chtkfjl3p0f1v" path="res://ciudad/upg_ceremonial.tscn" id="4_gmgtk"]
 [ext_resource type="Texture2D" uid="uid://cwlrhhke4wcj1" path="res://ciudad/assets/tienda crop.png" id="5_no0j8"]
+[ext_resource type="PackedScene" uid="uid://cfmu0iyfr0hgt" path="res://ciudad/upg_barco.tscn" id="8_no0j8"]
 [ext_resource type="AudioStream" uid="uid://qvep8iw1mrfr" path="res://ciudad/assets/Main Theme _ City.mp3" id="8_owc2c"]
 [ext_resource type="AudioStream" uid="uid://b1dr2ky1ix81v" path="res://title_screen/assets/Boat (Night).mp3" id="9_xd2wj"]
 
@@ -112,6 +113,11 @@ grow_vertical = 2
 scale = Vector2(1.0085974, 0.9196818)
 
 [node name="Upg_Ceremonial" parent="AaronBlur" unique_id=1973387419 instance=ExtResource("4_gmgtk")]
+visible = false
+layout_mode = 0
+
+[node name="Upg_Barco" parent="AaronBlur" unique_id=1167157061 instance=ExtResource("8_no0j8")]
+visible = false
 layout_mode = 0
 
 [node name="BGM_Main" type="AudioStreamPlayer" parent="." unique_id=894466556]

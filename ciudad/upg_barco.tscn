@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cfmu0iyfr0hgt"]
 
 [ext_resource type="Script" uid="uid://dpv6j3vwgkius" path="res://ciudad/upg_barco.gd" id="1_uvy3v"]
+[ext_resource type="Texture2D" uid="uid://dbmudtnwc0221" path="res://navegacion/assets/couter peces.png" id="2_md55t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id60v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i03nw"]
@@ -12,10 +13,7 @@ content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.6, 0.6, 0.6, 0.47843137)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
-bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
-
-[node name="Upg_Ceremonial" type="Control" unique_id=1167157061]
+[node name="Upg_Barco" type="Control" unique_id=1167157061]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uvy3v")
@@ -23,70 +21,37 @@ script = ExtResource("1_uvy3v")
 [node name="Shi" type="Label" parent="." unique_id=109475915]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 188.0
-offset_top = 37.0
-offset_right = 348.0
-offset_bottom = 104.0
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 249.0
+offset_bottom = 187.0
 theme_override_font_sizes/font_size = 48
-text = "Shi"
+text = "Anzuelos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tac" type="Label" parent="." unique_id=1886499017]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 460.0
-offset_top = 34.0
-offset_right = 726.0
-offset_bottom = 101.0
+offset_left = -16.0
+offset_top = 380.0
+offset_right = 250.0
+offset_bottom = 447.0
 theme_override_font_sizes/font_size = 48
-text = "Tacaynamo"
+text = "Remo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pel" type="Label" parent="." unique_id=234547607]
-custom_minimum_size = Vector2(160, 60)
+[node name="Remo mejorado" type="Button" parent="." unique_id=1938558611]
 layout_mode = 0
-offset_left = 820.0
-offset_top = 39.0
-offset_right = 1015.0
-offset_bottom = 106.0
-theme_override_font_sizes/font_size = 48
-text = "Pelícano"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sacred Sea" type="Button" parent="." unique_id=977326639]
-layout_mode = 0
-offset_left = 188.5
-offset_top = 120.0
-offset_right = 320.5
-offset_bottom = 168.0
-scale = Vector2(1.3038232, 1.2490723)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_id60v")
-
-[node name="Label" type="Label" parent="Sacred Sea" unique_id=1305200361]
-visible = false
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = -35.280853
-offset_top = 57.642784
-offset_right = 164.71915
-offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
-
-[node name="Night Vision" type="Button" parent="." unique_id=1392743737]
-layout_mode = 0
-offset_left = 188.5
-offset_top = 400.0
-offset_right = 320.5
-offset_bottom = 448.0
+offset_left = 328.0
+offset_top = 383.99994
+offset_right = 460.0
+offset_bottom = 431.99994
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Night Vision" unique_id=187630099]
+[node name="Label" type="Label" parent="Remo mejorado" unique_id=1916819651]
 visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
@@ -94,20 +59,20 @@ offset_left = -35.280853
 offset_top = 57.642784
 offset_right = 164.71915
 offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
+autowrap_mode = 3
 
-[node name="Second Wind" type="Button" parent="." unique_id=2056458639]
+[node name="Anzuelo 1" type="Button" parent="." unique_id=355126303]
 layout_mode = 0
-offset_left = 502.0
-offset_top = 120.0
-offset_right = 634.0
-offset_bottom = 168.0
+offset_left = 328.0
+offset_top = 127.99999
+offset_right = 460.0
+offset_bottom = 176.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Second Wind" unique_id=1302118099]
+[node name="Label" type="Label" parent="Anzuelo 1" unique_id=424887265]
 visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
@@ -115,20 +80,20 @@ offset_left = -35.280853
 offset_top = 57.642784
 offset_right = 164.71915
 offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
+autowrap_mode = 3
 
-[node name="Vigor" type="Button" parent="." unique_id=425116258]
+[node name="Anzuelo 2" type="Button" parent="." unique_id=1223419396]
 layout_mode = 0
-offset_left = 502.0
-offset_top = 400.0
-offset_right = 634.0
-offset_bottom = 448.0
+offset_left = 560.0
+offset_top = 127.99999
+offset_right = 692.0
+offset_bottom = 176.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Vigor" unique_id=572595678]
+[node name="Label" type="Label" parent="Anzuelo 2" unique_id=1970102155]
 visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
@@ -136,20 +101,20 @@ offset_left = -35.280853
 offset_top = 57.642784
 offset_right = 164.71915
 offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
+autowrap_mode = 3
 
-[node name="Pico" type="Button" parent="." unique_id=862244987]
+[node name="Anzuelo 3" type="Button" parent="." unique_id=1246919416]
 layout_mode = 0
-offset_left = 829.5
-offset_top = 120.0
-offset_right = 961.5
-offset_bottom = 168.0
+offset_left = 780.0
+offset_top = 127.99999
+offset_right = 912.0
+offset_bottom = 176.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Pico" unique_id=1444262762]
+[node name="Label" type="Label" parent="Anzuelo 3" unique_id=1339908029]
 visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
@@ -157,28 +122,7 @@ offset_left = -35.280853
 offset_top = 57.642784
 offset_right = 164.71915
 offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
-
-[node name="Nado" type="Button" parent="." unique_id=1938558611]
-layout_mode = 0
-offset_left = 829.5
-offset_top = 400.0
-offset_right = 961.5
-offset_bottom = 448.0
-scale = Vector2(1.3038232, 1.2490723)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
-
-[node name="Label" type="Label" parent="Nado" unique_id=1916819651]
-visible = false
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = -35.280853
-offset_top = 57.642784
-offset_right = 164.71915
-offset_bottom = 91.642784
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 3
 
@@ -191,14 +135,31 @@ offset_bottom = 79.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 text = "SALIR"
 
-[connection signal="pressed" from="Night Vision" to="." method="_on_night_vision_pressed"]
-[connection signal="pressed" from="Night Vision" to="Night Vision" method="_on_pressed"]
-[connection signal="pressed" from="Second Wind" to="." method="_on_night_vision_pressed"]
-[connection signal="pressed" from="Second Wind" to="Second Wind" method="_on_pressed"]
-[connection signal="pressed" from="Vigor" to="." method="_on_night_vision_pressed"]
-[connection signal="pressed" from="Vigor" to="Vigor" method="_on_pressed"]
-[connection signal="pressed" from="Pico" to="." method="_on_night_vision_pressed"]
-[connection signal="pressed" from="Pico" to="Pico" method="_on_pressed"]
-[connection signal="pressed" from="Nado" to="." method="_on_night_vision_pressed"]
-[connection signal="pressed" from="Nado" to="Nado" method="_on_pressed"]
+[node name="CounterPescados" type="TextureRect" parent="." unique_id=1264897241]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 75.007996
+offset_bottom = 45.0
+scale = Vector2(2.9761906, 3.1666667)
+texture = ExtResource("2_md55t")
+
+[node name="Label" type="Label" parent="CounterPescados" unique_id=1007701214]
+layout_mode = 0
+offset_left = 18.815998
+offset_top = 0.9473696
+offset_right = 41.816
+offset_bottom = 20.947369
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Remo mejorado" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Remo mejorado" to="Remo mejorado" method="_on_pressed"]
+[connection signal="pressed" from="Anzuelo 1" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Anzuelo 1" to="Anzuelo 1" method="_on_pressed"]
+[connection signal="pressed" from="Anzuelo 2" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Anzuelo 2" to="Anzuelo 2" method="_on_pressed"]
+[connection signal="pressed" from="Anzuelo 3" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Anzuelo 3" to="Anzuelo 3" method="_on_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

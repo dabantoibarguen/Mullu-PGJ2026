@@ -30,7 +30,9 @@ func _ready() -> void:
 		
 
 func _on_templo_pressed() -> void:
-	blur.visible = true
+	if blur:
+		blur.visible = true
+		$AaronBlur/Upg_Ceremonial.visible = true
 
 
 func _on_abuelo_pressed() -> void:
@@ -39,7 +41,9 @@ func _on_abuelo_pressed() -> void:
 
 
 func _on_tienda_pressed() -> void:
-	pass # Replace with function body.
+	if blur:
+		blur.visible = true
+		$AaronBlur/Upg_Barco.visible = true
 
 
 func _on_templo_mouse_entered() -> void:

@@ -127,7 +127,6 @@ func end_fishing(score):
 		if !fish_data[-1]:
 			fish_pic.self_modulate = Color(1, 1, 1, 1)
 			fish_data[-1] = true
-		fish_pic.position.y -= 80
 		fish_pic.scale = Vector2(1.3, 1.3)
 		pescados += puntos # Dependiendo del pescado, asi funca??
 		if (Global.blessings.get("Pico").get("enabled")==true):

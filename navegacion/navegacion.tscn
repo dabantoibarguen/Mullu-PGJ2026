@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3i8jvr4fu61" path="res://navegacion/assets/tiles1.png" id="3_yl48w"]
 [ext_resource type="Script" uid="uid://dkc5445skki3v" path="res://navegacion/fog.gd" id="5_hs310"]
 [ext_resource type="PackedScene" uid="uid://dmpgjq1kutci1" path="res://navegacion/nav_menu.tscn" id="6_bws8q"]
-[ext_resource type="AudioStream" uid="uid://bu6m44jcgqj1j" path="res://navegacion/assets/Nubes y el Azul.mp3" id="8_0jc1b"]
+[ext_resource type="AudioStream" uid="uid://grpdi0e3wl53" path="res://navegacion/assets/Boat (Day).mp3" id="8_qyhsc"]
 [ext_resource type="AudioStream" uid="uid://btag2j1f07hdu" path="res://navegacion/assets/Sonidos de mar para navegar.mp3" id="9_qyhsc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyhsc"]
@@ -230,7 +230,18 @@ blend_mode = 1
 range_layer_max = 9
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
-stream = ExtResource("8_0jc1b")
+stream = ExtResource("8_qyhsc")
+autoplay = true
+parameters/looping = true
+
+[node name="BGM_NavTarde" type="AudioStreamPlayer" parent="." unique_id=989481842]
+stream = ExtResource("8_qyhsc")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="BGM_NavNoche" type="AudioStreamPlayer" parent="." unique_id=78474743]
+stream = ExtResource("8_qyhsc")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
