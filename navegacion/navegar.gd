@@ -10,6 +10,7 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
+
 # Update with blessings and/or other perks
 var tile_cost = 2
 
@@ -115,6 +116,11 @@ func _unhandled_input(ev: InputEvent) -> void:
 						path_to_target = [] 
 						if Global.tutorial:
 							check_tutorial()
+						else:
+							if(nav.energy <=0):
+								Global.total_fish += nav.pescado
+								Global.total_mullu += nav.mullu
+								get_tree().change_scene_to_file("res://ciudad/ciudad.tscn")
 					elif dist > nav.energy:
 						boat.label.text = "Energia insuficiente"
 					else:
