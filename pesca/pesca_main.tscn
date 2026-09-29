@@ -138,6 +138,7 @@ scale = Vector2(0.52372324, 0.50757456)
 texture = ExtResource("3_gafaf")
 
 [node name="Boat" type="AnimatedSprite2D" parent="." unique_id=711046447]
+light_mask = 3
 position = Vector2(570.5233, 316.19046)
 sprite_frames = SubResource("SpriteFrames_f5k2l")
 autoplay = "default"

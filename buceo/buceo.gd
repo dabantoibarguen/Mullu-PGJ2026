@@ -8,6 +8,7 @@ var mullu_scene = preload("res://buceo/spondylus.tscn")
 @onready var camara = %CamaraBuceo
 @onready var area_profunda = $Ocean/Fondo
 @onready var area_media = $Ocean/Medio
+@onready var moreLight = $Ocean/Buceador/BetterLight
 
 var can_escape = false
 
@@ -22,6 +23,8 @@ var mullus = 0
 
 func _ready() -> void:
 	#print(deep_spawn, mid_spawn)
+	if (Global.blessings.get("Night Vision").get("enabled")==true):
+		moreLight.visible = true
 	populate_mullu()
 	
 func populate_mullu():

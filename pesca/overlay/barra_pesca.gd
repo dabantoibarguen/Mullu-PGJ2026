@@ -10,6 +10,8 @@ var controlPesca
 
 var lowest_point = position.y + size.y
 var highest_point = position.y
+var half
+
 var grav = 0.3
 var green_time = 1
 var game_time = 17
@@ -29,6 +31,7 @@ func _ready() -> void:
 	player_h = player.size.y
 	green_h = green.size.y
 	green_starting = green.position
+	half = ((lowest_point-(green_h))/2)
 
 func start_fishing(origin, freq = green_time, min = minimum_time):
 	controlPesca = origin
@@ -36,7 +39,7 @@ func start_fishing(origin, freq = green_time, min = minimum_time):
 	gameTimer.wait_time = game_time
 	gameTimer.start()
 	green.position = green_starting
-	green_time = 1
+	green_time = freq
 	timer.wait_time = freq
 	minimum_time = min
 	timer.start()
@@ -60,12 +63,14 @@ func _input(ev: InputEvent) -> void:
 
 func move_green():
 	var rand_targ = randf_range(highest_point, lowest_point-(green_h))
-	var target = min(green.position.y - rand_targ, size.y/2)
-	var time = int(game_time*green_time)
+	rand_targ = clamp(rand_targ, green.position.y - half, green.position.y + half)
+	#var target = min(green.position.y - rand_targ, size.y/2)
+	var time = green_time*10
 	for i in range(time):
-		green.position.y = clamp(green.position.y - (target)/(time), highest_point, lowest_point-(green_h))
-		await get_tree().create_timer(0.1).timeout 
-	await get_tree().create_timer(0.3).timeout 
+		green.position.y += float(rand_targ - green.position.y)/(time)
+		green.position.y = clamp(green.position.y, highest_point, lowest_point - green_h)
+		await get_tree().create_timer(0.06).timeout 
+	#await get_tree().create_timer(0.2).timeout 
 	
 
 func _physics_process(delta: float) -> void:

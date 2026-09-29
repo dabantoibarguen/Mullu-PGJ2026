@@ -34,7 +34,8 @@ func _on_templo_pressed() -> void:
 
 
 func _on_abuelo_pressed() -> void:
-	pass
+	Global.fish_quota = int(Global.fish_quota * 1.3)
+	get_tree().change_scene_to_file("res://navegacion/navegacion.tscn")
 
 
 func _on_tienda_pressed() -> void:

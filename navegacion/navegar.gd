@@ -10,6 +10,9 @@ var confirm_popup = preload("res://navegacion/confirm.tscn")
 @onready var tree = get_tree()
 @onready var navMenu = %NavMenu
 
+@onready var hot = $CorrienteC
+@onready var cold = $CorrienteF
+@onready var temper = $Ideal
 
 # Update with blessings and/or other perks
 var tile_cost = 2
@@ -47,6 +50,24 @@ func _ready() -> void:
 	painted_tiles = get_used_cells()
 	fog.populate_map(painted_tiles)
 	fog.clear_cells(boat.cur_coords)
+	update_temperatura()
+	
+	
+func update_temperatura():
+	if boat in temper.get_overlapping_bodies():
+		nav.temperatura = "Temperado"
+		navMenu.tempBall.modulate = Color("#ffffff")
+	elif boat in hot.get_overlapping_bodies():
+		nav.temperatura = "Caliente"
+		navMenu.tempBall.modulate = Color("#ff6600")
+	elif boat in cold.get_overlapping_bodies():
+		nav.temperatura = "Frio"
+		navMenu.tempBall.modulate = Color("#00bfff")
+	else:
+		nav.temperatura = "Temperado"
+		if navMenu.tempBall:
+			navMenu.tempBall.modulate = Color("#ffffff")
+	
 	
 func find_path(start, target: Vector2i) -> Array[Vector2i]:
 	var queue = [start]
@@ -93,7 +114,7 @@ func _unhandled_input(ev: InputEvent) -> void:
 				if get_cell_atlas_coords(target_coords) not in invalid_tiles:
 					var move_path = find_path(boat.cur_coords, target_coords)
 					var dist = move_path.size()
-					if(0 < dist and dist <= boat.vision_range and dist <=nav.energy):
+					if(0 < dist and dist <= boat.vision_range and dist <=nav.energy and move_path.size() * tile_cost <= nav.energy):
 						moving = true
 						if oldTracer:
 							remove_child(oldTracer)
@@ -102,7 +123,7 @@ func _unhandled_input(ev: InputEvent) -> void:
 							boat.target = map_to_local(tile)
 							fog.clear_cells(tile)
 							# make this based on the time needed to move
-							await get_tree().create_timer(0.45).timeout 
+							await get_tree().create_timer(0.55).timeout 
 						boat.cur_coords = target_coords
 						for neighbor in get_surrounding_cells(target_coords):
 							if invalid_tiles.get(get_cell_atlas_coords(neighbor)) == "Roca":
@@ -111,16 +132,14 @@ func _unhandled_input(ev: InputEvent) -> void:
 							else:
 								nav.junto_roca = false
 						moving = false
-						navMenu.pescaBtn.disabled = false
-						#navMenu.buceoBtn.disabled = false
 						path_to_target = [] 
+						update_temperatura()
 						if Global.tutorial:
 							check_tutorial()
 						else:
 							if(nav.energy <=0):
-								Global.total_fish += nav.pescado
-								Global.total_mullu += nav.mullu
-								get_tree().change_scene_to_file("res://ciudad/ciudad.tscn")
+								end_navigation()
+								
 					elif dist > nav.energy:
 						boat.label.text = "Energia insuficiente"
 					else:
@@ -138,25 +157,76 @@ func _unhandled_input(ev: InputEvent) -> void:
 			nav.menu_bco()
 			var buceoButton = navMenu.buceoBtn
 			buceoButton.button_pressed = !(buceoButton.button_pressed)
+		if ev.keycode == KEY_ESCAPE:
+			display_summary()
+
+func end_navigation():
+	move_action = false
+	var dialogue = Global.dialogo.instantiate()
+	Global.total_fish += nav.pescado - Global.fish_quota
+	Global.total_mullu += nav.mullu
+	if Global.total_fish < 0:
+		dialogue.type = "Game Over"
+		add_child(dialogue)
+		dialogue.new_text([
+			[[], "RESULTADOS DEL DÍA
+			\nPuntaje de Pesca: " + str(nav.pescado) +
+		"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
+		"\nTotal Extra: " + "0" +
+		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
+		"\n\nNo capturaste suficiente..."]
+	])
+	else:
+		dialogue.type = "Resumen Final"
+		add_child(dialogue)
+		dialogue.new_text([
+			[[], "RESULTADOS DEL DÍA
+			\nPuntaje de Pesca: " + str(nav.pescado) +
+		"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
+		"\nTotal Extra: " + str(Global.total_fish) +
+		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
+		"\n\n¡Buen trabajo!"]
+	])
+
+func display_summary():
+	var dialogue = Global.dialogo.instantiate()
+	dialogue.type = "Resumen"
+	add_child(dialogue)
+	Global.total_fish += nav.pescado - Global.fish_quota
+	Global.total_mullu += nav.mullu
+	dialogue.new_text([
+		[[], "RESUMEN ACTUAL" +
+		"\nPuntos Requeridos: " + str(Global.fish_quota) +
+		"\n\nPuntaje de Pesca: " + str(nav.pescado) +
+
+		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
+		"\n\n¡Tu puedes!"]
+	])
 
 func pause_nav():
 	standby = true
-	nav.visible = false
+	visible = false
 	navMenu.visible = false
 	tree.paused = true
 	boat.camara.enabled = false
 
 func resume_nav():
 	standby = false
-	nav.visible = true
+	visible = true
 	navMenu.visible = true
 	tree.paused = false
 	boat.camara.enabled = true
 
 func add_fish(total_fish):
 	resume_nav()
+
+	if (Global.blessings.get("Sacred Sea").get("enabled")==true):
+		total_fish = total_fish*1.10
 	nav.pescado += total_fish
+	
 	navMenu.update_fish(nav.pescado)
+	if nav.energy <= 0:
+		end_navigation()
 	if Global.tutorial:
 		check_tutorial()
 	
@@ -164,6 +234,10 @@ func add_mullu(total_mullu):
 	resume_nav()
 	nav.mullu += total_mullu
 	navMenu.update_mullu(nav.mullu)
+	if nav.energy <= 0:
+		end_navigation()
+	if Global.tutorial:
+		check_tutorial()
 
 # ------ Button functions -------
 func navegar():
@@ -173,13 +247,22 @@ func navegar():
 	if oldTracer:
 		remove_child(oldTracer)
 	unhovered_cell = hovered_cell
+	if move_action:
+		navMenu.pescaBtn.disabled = true
+		navMenu.buceoBtn.disabled = true
+	else:
+		navMenu.pescaBtn.disabled = false
+		navMenu.buceoBtn.disabled = false
+		
 
 func pescar(fish_info):
-	if (boat.cur_coords in nav.fished_tiles) or (Global.tutorial and Global.tutorial_index in [2, 4, 5]):
+	if nav.energy < 4 or move_action or (Global.tutorial and Global.tutorial_index in [2, 4, 5]):
+		return
+	if (boat.cur_coords in nav.fished_tiles):
+		print("Tell the player you cannot fish here")
 		return
 	nav.fished_tiles.append(boat.cur_coords)
 	navMenu.pescaBtn.disabled = true
-	#print(nav.fished_tiles)
 	nav.energy -= 4
 	var pesca = pesca_game.instantiate()
 	pause_nav()
@@ -190,8 +273,13 @@ func pescar(fish_info):
 	check_tutorial()
 
 func bucear(mullu_list):
-	if Global.tutorial and Global.tutorial_index in [2, 3, 4]:
+	if nav.energy < 4 or move_action or Global.tutorial and Global.tutorial_index in [2, 3, 4]:
 		return
+	if (boat.cur_coords in nav.dived_tiles):
+		print("Tell the player you cannot fish here")
+		return
+	nav.dived_tiles.append(boat.cur_coords)
+	navMenu.buceoBtn.disabled = true
 	nav.energy -= 4
 	var buceo = buceo_game.instantiate()
 	buceo.deep_spawn = mullu_list[0]
@@ -224,7 +312,7 @@ func check_tutorial():
 		dialogue.new_text([
    	[["Ninan"], "¡Ahí! Me parece que vi un pez"],
   	[["Rumi"], "¡Silencio! Si haces mucho ruido lo vas a espantar…"],
-	[[], "Instrucciones:\n- Haz clic en el boton \"Pescar\" o presiona la Tecla \"2\" para iniciar el minijuego de pesca.\n\n	¡Pescar también te costará energía, pero es importante para ayudar a tu pueblo!"]
+	[[], "Instrucciones:\n- Haz clic en el boton \"Pescar\" o presiona la Tecla \"2\" para iniciar el minijuego de pesca. No podrás pescar en una misma casilla hasta que cambie la hora, ni cuando estes en modo de navegación.\n\n	¡Pescar también te costará energía, pero es importante para ayudar a tu pueblo!"]
 	])
 	elif Global.tutorial_index == 3:
 		dialogue.new_text([
@@ -258,7 +346,7 @@ func _physics_process(_delta: float) -> void:
 		var msg = ""
 		if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1) and oldTracer:
 			remove_child(oldTracer) # Careful of all the debugging errors woops
-			boat.label.text = msg
+			#boat.label.text = msg
 			unhovered_cell = hovered_cell
 			return
 		var cell_atlas = self.get_cell_atlas_coords(hovered_cell)
@@ -279,13 +367,9 @@ func _physics_process(_delta: float) -> void:
 					tracer.add_point(map_to_local(boat.cur_coords))
 					for cell in path_to_target:
 						tracer.add_point(map_to_local(cell))
-					if path_to_target.size() <= boat.vision_range:
+					if path_to_target.size() <= boat.vision_range and path_to_target.size() * tile_cost <= nav.energy:
 						tracer.default_color = Color.GREEN
-						msg = (str(valid_tiles.get(cell_atlas)) 
-						+ "\nMovimiento: " + str(path_to_target.size()))
 					else:
-						msg = (str(valid_tiles.get(cell_atlas))
-						+ "\nMuy lejos")
 						tracer.default_color = Color.RED
 					add_child(tracer)
 					oldTracer = tracer
@@ -295,17 +379,8 @@ func _physics_process(_delta: float) -> void:
 			remove_child(oldTracer)
 			path_to_target = []
 		unhovered_cell = hovered_cell
-		if(boat.cur_coords in nav.fished_tiles):
-			navMenu.pescaBtn.disabled = true
 	else:
-		pass
-
-
-func _on_corriente_c_body_entered(body: Node2D) -> void:
-	nav.temperatura = "Caliente"
-	print(nav.temperatura)
-
-
-func _on_corriente_f_body_entered(body: Node2D) -> void:
-	nav.temperatura = "Frio"
-	print(nav.temperatura)
+		if(nav.energy < 4 or boat.cur_coords in nav.fished_tiles):
+			navMenu.pescaBtn.disabled = true
+		if(nav.energy < 4 or boat.cur_coords in nav.dived_tiles):
+			navMenu.buceoBtn.disabled = true

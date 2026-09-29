@@ -58,6 +58,7 @@ radius = 10.049875
 
 [node name="IndicadorPSC" type="Area2D" unique_id=1538929454]
 process_mode = 3
+scale = Vector2(1.8356992, 1.8344907)
 input_pickable = false
 script = ExtResource("1_l788x")
 

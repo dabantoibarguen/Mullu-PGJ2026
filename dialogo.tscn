@@ -40,6 +40,7 @@ offset_left = 22.0
 offset_top = 30.0
 offset_right = 910.0
 offset_bottom = 130.0
+scale = Vector2(1.033462, 0.8944743)
 theme_override_font_sizes/font_size = 29
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldw4h")
 autowrap_mode = 2
@@ -47,7 +48,8 @@ script = ExtResource("1_7648e")
 metadata/_edit_use_anchors_ = true
 
 [node name="Abuelo" type="Sprite2D" parent="Dialogo" unique_id=79047469]
-position = Vector2(1062, 519)
+position = Vector2(1050.8368, 580.22906)
+scale = Vector2(0.9676214, 1.1179751)
 texture = ExtResource("2_kkome")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Abuelo" unique_id=860548658]
@@ -61,7 +63,8 @@ color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ninan" type="Sprite2D" parent="Dialogo" unique_id=330605708]
-position = Vector2(1062, 119)
+position = Vector2(1050.8368, 133.03903)
+scale = Vector2(0.9676214, 1.1179751)
 texture = ExtResource("3_s555q")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Ninan" unique_id=872145635]
@@ -75,7 +78,8 @@ color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
 [node name="Rumi" type="Sprite2D" parent="Dialogo" unique_id=1899226050]
-position = Vector2(1062, 313)
+position = Vector2(1050.8368, 349.9262)
+scale = Vector2(0.9676214, 1.1179751)
 texture = ExtResource("4_cmdfd")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Rumi" unique_id=1876669205]
@@ -91,33 +95,37 @@ metadata/_edit_use_anchors_ = true
 [node name="Forward" type="Button" parent="Dialogo" unique_id=431770065]
 z_index = 1
 layout_mode = 0
-offset_left = 457.0
-offset_top = 545.0
-offset_right = 529.0
-offset_bottom = 612.0
+offset_left = 442.20297
+offset_top = 609.29645
+offset_right = 514.203
+offset_bottom = 676.29645
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = ">"
 
 [node name="Back" type="Button" parent="Dialogo" unique_id=469017663]
 z_index = 1
 layout_mode = 0
-offset_left = 357.0
-offset_top = 545.0
-offset_right = 429.0
-offset_bottom = 612.0
+offset_left = 345.44086
+offset_top = 609.29645
+offset_right = 417.44086
+offset_bottom = 676.29645
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "<"
 
 [node name="Continue" type="Button" parent="Dialogo" unique_id=748626546]
 visible = false
 z_index = 1
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 0
-offset_left = 790.0
-offset_top = 505.0
-offset_right = 1108.0
-offset_bottom = 601.0
-theme_override_font_sizes/font_size = 64
+offset_left = 648.30634
+offset_top = 561.2235
+offset_right = 1133.3064
+offset_bottom = 657.2235
+theme_override_font_sizes/font_size = 56
 text = "Continuar"
+autowrap_mode = 2
 
 [connection signal="pressed" from="Dialogo/Forward" to="Dialogo" method="_on_forward_pressed"]
 [connection signal="pressed" from="Dialogo/Back" to="Dialogo" method="_on_back_pressed"]

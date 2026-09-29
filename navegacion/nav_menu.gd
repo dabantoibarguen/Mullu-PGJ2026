@@ -3,9 +3,12 @@ extends CanvasLayer
 @onready var navBtn = $Nav
 @onready var pescaBtn = $Psc
 @onready var buceoBtn = $Bco
+
 @onready var energyText = $EnergyL
 @onready var fishLabel = $PescaoL
 @onready var mulluLabel = $MulluL
+
+@onready var tempBall = $Temp
 
 func _ready() -> void:
 	pass
@@ -33,3 +36,7 @@ func update_fish(fish):
 		
 func update_mullu(mullu):
 		mulluLabel.text = str(mullu)
+
+
+func _on_volver_pressed() -> void:
+	get_tree().current_scene.main.end_navigation()

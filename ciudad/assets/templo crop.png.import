@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp2asrw3gl4mf"
-path="res://.godot/imported/tienda.png-dfdc80bf15e568b680991cc42b0b77ec.ctex"
+uid="uid://ct47lkfp7usyh"
+path="res://.godot/imported/templo crop.png-18f500286605c7a7ebd13faf66668aa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ciudad/assets/tienda.png"
-dest_files=["res://.godot/imported/tienda.png-dfdc80bf15e568b680991cc42b0b77ec.ctex"]
+source_file="res://ciudad/assets/templo crop.png"
+dest_files=["res://.godot/imported/templo crop.png-18f500286605c7a7ebd13faf66668aa9.ctex"]
 
 [params]
 

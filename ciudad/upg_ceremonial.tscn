@@ -6,16 +6,13 @@
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i03nw"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
 bg_color = Color(0.6, 0.6, 0.6, 0.47843137)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
-bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylopp"]
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
 [node name="Upg_Ceremonial" type="Control" unique_id=1167157061]
@@ -68,15 +65,15 @@ offset_bottom = 168.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_id60v")
 
-[node name="Label" type="Label" parent="Sacred Sea" unique_id=2090626045]
+[node name="Label" type="Label" parent="Sacred Sea" unique_id=1305200361]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 2
 
@@ -89,36 +86,36 @@ offset_bottom = 448.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Night Vision" unique_id=69915046]
+[node name="Label" type="Label" parent="Night Vision" unique_id=187630099]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 2
 
-[node name="Second Wind" type="Button" parent="." unique_id=302574226]
+[node name="Second Wind" type="Button" parent="." unique_id=2056458639]
 layout_mode = 0
 offset_left = 502.0
 offset_top = 120.0
 offset_right = 634.0
 offset_bottom = 168.0
 scale = Vector2(1.3038232, 1.2490723)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ylopp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Second Wind" unique_id=66969479]
+[node name="Label" type="Label" parent="Second Wind" unique_id=1302118099]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 2
 
@@ -131,15 +128,15 @@ offset_bottom = 448.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Vigor" unique_id=1683530066]
+[node name="Label" type="Label" parent="Vigor" unique_id=572595678]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 2
 
@@ -152,15 +149,15 @@ offset_bottom = 168.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Pico" unique_id=635913542]
+[node name="Label" type="Label" parent="Pico" unique_id=1444262762]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
 autowrap_mode = 2
 
@@ -173,17 +170,17 @@ offset_bottom = 448.0
 scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 
-[node name="Label" type="Label" parent="Nado" unique_id=688992793]
+[node name="Label" type="Label" parent="Nado" unique_id=1916819651]
 visible = false
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -32.97992
-offset_top = 55.240997
-offset_right = 167.02008
-offset_bottom = 78.241
-theme_override_font_sizes/font_size = 10
+offset_left = -35.280853
+offset_top = 57.642784
+offset_right = 164.71915
+offset_bottom = 91.642784
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="Exit" type="Button" parent="." unique_id=1377109336]
 layout_mode = 0
@@ -196,6 +193,8 @@ text = "SALIR"
 
 [connection signal="pressed" from="Night Vision" to="." method="_on_night_vision_pressed"]
 [connection signal="pressed" from="Night Vision" to="Night Vision" method="_on_pressed"]
+[connection signal="pressed" from="Second Wind" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Second Wind" to="Second Wind" method="_on_pressed"]
 [connection signal="pressed" from="Vigor" to="." method="_on_night_vision_pressed"]
 [connection signal="pressed" from="Vigor" to="Vigor" method="_on_pressed"]
 [connection signal="pressed" from="Pico" to="." method="_on_night_vision_pressed"]

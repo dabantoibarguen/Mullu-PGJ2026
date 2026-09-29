@@ -1,46 +1,37 @@
 [gd_scene format=3 uid="uid://ekhsgwq6utf1"]
 
-[ext_resource type="Texture2D" uid="uid://b7u5m7c3ho35s" path="res://ciudad/assets/fondo.png" id="1_4v5ga"]
+[ext_resource type="Texture2D" uid="uid://c7p1s6bw43kd" path="res://ciudad/assets/fondo.png" id="1_4v5ga"]
 [ext_resource type="Script" uid="uid://c8xhaih1ahnxm" path="res://ciudad/ciudad_control.gd" id="1_gmgtk"]
-[ext_resource type="Texture2D" uid="uid://yv5vtflqxen8" path="res://ciudad/assets/templo.png" id="3_d62el"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="3_r20d7"]
+[ext_resource type="Texture2D" uid="uid://dd6dy238rkf52" path="res://ciudad/assets/casa crop.png" id="3_rfn37"]
+[ext_resource type="Texture2D" uid="uid://ct47lkfp7usyh" path="res://ciudad/assets/templo crop.png" id="3_xd2wj"]
 [ext_resource type="PackedScene" uid="uid://chtkfjl3p0f1v" path="res://ciudad/upg_ceremonial.tscn" id="4_gmgtk"]
-[ext_resource type="Texture2D" uid="uid://dmlmgqpe43sdr" path="res://ciudad/assets/casa.png" id="4_owc2c"]
-[ext_resource type="Texture2D" uid="uid://cp2asrw3gl4mf" path="res://ciudad/assets/tienda.png" id="4_rfn37"]
+[ext_resource type="Texture2D" uid="uid://cwlrhhke4wcj1" path="res://ciudad/assets/tienda crop.png" id="5_no0j8"]
 [ext_resource type="AudioStream" uid="uid://qvep8iw1mrfr" path="res://ciudad/assets/Main Theme _ City.mp3" id="8_owc2c"]
 [ext_resource type="AudioStream" uid="uid://b1dr2ky1ix81v" path="res://title_screen/assets/Boat (Night).mp3" id="9_xd2wj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r20d7"]
-texture = ExtResource("3_d62el")
-modulate_color = Color(1, 1, 1, 0.15686275)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfn37"]
-load_path = "res://.godot/imported/templo.png-0309d614c1ec22a1439d5437f4e6fbbc.ctex"
+texture = ExtResource("3_xd2wj")
+modulate_color = Color(1, 1, 1, 0.19607843)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owc2c"]
-texture = SubResource("CompressedTexture2D_rfn37")
+texture = ExtResource("3_xd2wj")
 modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfn37"]
-texture = ExtResource("4_owc2c")
-modulate_color = Color(1, 1, 1, 0.15686275)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xd2wj"]
-load_path = "res://.godot/imported/casa.png-f03893968d33ef36d8993671a1c7e3dc.ctex"
+texture = ExtResource("3_rfn37")
+modulate_color = Color(1, 1, 1, 0.19607843)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_no0j8"]
-texture = SubResource("CompressedTexture2D_xd2wj")
+texture = ExtResource("3_rfn37")
 modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlynv"]
-texture = ExtResource("4_rfn37")
-modulate_color = Color(1, 1, 1, 0.15686275)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_owc2c"]
-load_path = "res://.godot/imported/tienda.png-dfdc80bf15e568b680991cc42b0b77ec.ctex"
+texture = ExtResource("5_no0j8")
+modulate_color = Color(1, 1, 1, 0.19607843)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xd2wj"]
-texture = SubResource("CompressedTexture2D_owc2c")
+texture = ExtResource("5_no0j8")
 modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmgtk"]
@@ -64,29 +55,30 @@ texture = ExtResource("1_4v5ga")
 expand_mode = 1
 
 [node name="Templo" type="Button" parent="." unique_id=1257668782]
-offset_left = 38.0
-offset_top = 30.000002
-offset_right = 61.991478
-offset_bottom = 38.65336
+offset_left = 36.0
+offset_top = 32.0
+offset_right = 59.911636
+offset_bottom = 40.418213
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_r20d7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_r20d7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_owc2c")
 
 [node name="Abuelo" type="Button" parent="." unique_id=1207870595]
-offset_top = 311.0
-offset_right = 18.402779
-offset_bottom = 325.15576
+offset_left = -3.0
+offset_top = 316.0
+offset_right = 15.961649
+offset_bottom = 329.63846
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_rfn37")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_rfn37")
 theme_override_styles/hover = SubResource("StyleBoxTexture_no0j8")
 
 [node name="Tienda" type="Button" parent="." unique_id=1477450725]
-offset_left = 382.0
+offset_left = 385.0
 offset_top = 264.0
-offset_right = 398.806
-offset_bottom = 275.38104
+offset_right = 401.64633
+offset_bottom = 275.6632
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nlynv")

@@ -6,14 +6,15 @@ extends Node2D
 @onready var aLight = $AfternoonLight
 @onready var nLight = $NightLight
 
-#@onready var map_temprano = %"Mapa Temprano"
-#@onready var map_tarde = %"Mapa Tarde"
-#@onready var map_noche = %"Mapa Noche"
+@onready var map_temprano = %"Mapa Temprano"
+@onready var map_tarde = %"Mapa Tarde"
+@onready var map_noche = %"Mapa Noche"
 
 var pescado = 0
 var mullu = 0
 
 var fished_tiles = []
+var dived_tiles = []
 
 var temperatura = "Frio" # Mantener actualizado
 var hora = "Mañana" 
@@ -25,7 +26,7 @@ var max_energy = 150
 var energy = max_energy:
 	set(e):
 		energy = e
-		menu.update_energy(e)
+		menu.update_energy(max(e, 0))
 		# Hacer ciclico, cambiar basado en inicial
 		if(energy <= (float(1)/3*max_energy) and hora == "Tarde"):
 			cambio_noche()
@@ -50,33 +51,37 @@ func _ready() -> void:
 		menu.pescaBtn.disabled = true
 		menu.buceoBtn.disabled = true
 	menu.update_energy(energy)
+	
 
 func cambio_tarde():
 	hora = "Tarde"
-	#main.tile_map_data = map_tarde.tile_map_data
+	main.tile_map_data = map_tarde.tile_map_data
 	var tween = create_tween()
 	tween.tween_property(mLight, "energy", 0.0, 2)
 	
+	aLight.visible = true
+	var tween2 = create_tween()
+	tween2.tween_property(aLight, "energy", 1.3, 4)
 	await tween.finished
 	mLight.visible = false
-	aLight.visible = true
-		
-	var tween2 = create_tween()
-	tween2.tween_property(aLight, "energy", 1.0, 4)
-	
-	nLight.visible = false
+	#nLight.visible = false
 	
 func cambio_noche():
-	#main.tile_map_data = map_noche.tile_map_data
+	main.tile_map_data = map_noche.tile_map_data
 	hora = "Noche"
+	if (Global.blessings.get("Night Vision").get("enabled")==false):
+		main.boat.vision_range = 1
 	mLight.visible = false
 	
 	var tween = create_tween()
-	tween.tween_property(aLight, "energy", 0.0, 3)
-	await tween.finished
+	tween.tween_property(aLight, "energy", 0.0, 2)
+	
 	nLight.visible = true
 	var tween2 = create_tween().set_parallel(true)
-	tween2.tween_property(nLight, "energy", 0.8, 4)
+	tween2.tween_property(nLight, "energy", 2.1, 4)
+	
+	await tween.finished
+	aLight.visible = false
 	
 
 func menu_nav():
@@ -129,7 +134,11 @@ func randomize_mullu():
 	var mid_mullus = [] # max 7
 	var deep_qty = 3
 	var mid_qty = 5
-	var max_num = 50
+	var max_num = 45
+	if temperatura == "Caliente":
+		max_num += 5
+	elif temperatura == "Frio":
+		max_num -= 5
 	if profundidad == "Mar Medio":
 		max_num += 20
 		deep_qty += 1
@@ -142,23 +151,20 @@ func randomize_mullu():
 		max_num += 10
 		for i in range(0, mid_qty):
 			var rand = randf_range(0, max_num)
-			#print(rand)
+
 			for mul in mullus:
 				if rand > mullus[mul][0]:
 					mid_mullus.append(mul)
-					print(mul)
+
 					break
-			#print("Next mid")
-			#print()
+
+
 	for i in range(deep_qty):
 		var rand = randf_range(0, max_num)
-		#print(rand)
+
 		for mul in mullus:
 				if rand > mullus[mul][0]:
-					#print(mul)
+
 					deep_mullus.append(mul)
 					break
-		#print("Next deep")
-		#print()
-	
 	return [deep_mullus, mid_mullus]

@@ -11,18 +11,30 @@ var is_typing: bool = false
 @onready var block = %Blocker
 
 var faces = []
-
 var guion = []
+
+var mode = ""
 
 var cur_index = 0
 
 func _ready() -> void:
 	grab_focus()
 	faces = [$Abuelo, $Ninan, $Rumi]
-	back.disabled = true
 
 func start():
-	new_dialogue(guion[cur_index])
+	if guion != []:
+		new_dialogue(guion[cur_index])
+		forward.disabled = false
+	if guion.size() <= 1 or mode == "Resumen":
+		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		siguiente.text = "CERRAR"
+		siguiente.visible = true
+	if mode == "Resumen Final":
+		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		siguiente.text = "Volver al pueblo"
+	if mode == "Game Over":
+		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		siguiente.text = "Intenta otra vez"
 
 func new_dialogue(dialogue):
 	var chars = dialogue[0]
@@ -87,9 +99,18 @@ func _on_back_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
-	if Global.tutorial_index in [1, 2, 3, 4]:
-		block.visible = false
-		queue_free()
-	Global.tutorial_index += 1
-	print(Global.tutorial_index)
+	if Global.tutorial:
+		if Global.tutorial_index in [1, 2, 3, 4]:
+			block.visible = false
+			get_parent().queue_free()
+		Global.tutorial_index += 1
+		print(Global.tutorial_index)
+	if mode == "Resumen":
+		get_parent().queue_free()
+	if mode == "Resumen Final":
+		get_parent().queue_free()
+		get_tree().change_scene_to_file("res://ciudad/ciudad.tscn")
+	if mode == "Game Over":
+		get_parent().queue_free()
+		get_tree().reload_current_scene()
 	

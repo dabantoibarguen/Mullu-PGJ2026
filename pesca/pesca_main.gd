@@ -20,6 +20,8 @@ var fish_size_percentage
 var puntos
 var max_catch = 6
 
+var fishing = false
+
 # Para mini juego de barra
 var freq
 var min_time
@@ -84,6 +86,9 @@ func _ready() -> void:
 	triangulate_fish_area()
 
 func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 50.0):
+	if fishing:
+		return
+	fishing = true
 	var curve = Curve2D.new()
 	p_end = fish_line.to_local(p_end)
 
@@ -113,6 +118,7 @@ func go_fish(origin):
 	
 func end_fishing(score):
 	spawner.start()
+	var fishing = false
 	fish_line.clear_points()
 	if score < min_time:
 		%Bad.play()
@@ -125,6 +131,7 @@ func end_fishing(score):
 		if !fish_data[-1]:
 			fish_pic.self_modulate = Color(1, 1, 1, 1)
 			fish_data[-1] = true
+		fish_pic.position.y -= 80
 		fish_pic.scale = Vector2(1.3, 1.3)
 		pescados += puntos # Dependiendo del pescado, asi funca??
 		durabilidad -= 1
@@ -196,6 +203,7 @@ func _input(ev: InputEvent) -> void:
 		if ev.is_pressed() and ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
 			pescados = int(pescados)
 			resultado_pesca.emit(pescados)
+			get_viewport().set_input_as_handled()
 			queue_free()
 
 func _physics_process(_delta: float) -> void:
