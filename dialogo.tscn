@@ -20,6 +20,7 @@ layer = 10
 script = ExtResource("1_s555q")
 
 [node name="Blocker" type="Control" parent="." unique_id=201050157]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,17 +29,19 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_kkome")
+metadata/_edit_use_anchors_ = true
 
 [node name="Dialogo" type="Label" parent="." unique_id=1562575410]
 custom_minimum_size = Vector2(860, 0)
 offset_left = 22.0
-offset_top = 7.0
+offset_top = 103.0
 offset_right = 910.0
-offset_bottom = 107.0
+offset_bottom = 203.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldw4h")
 autowrap_mode = 2
 script = ExtResource("1_7648e")
+metadata/_edit_use_anchors_ = true
 
 [node name="Abuelo" type="Sprite2D" parent="Dialogo" unique_id=79047469]
 position = Vector2(1022, 519)
@@ -83,30 +86,33 @@ color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
 [node name="Forward" type="Button" parent="Dialogo" unique_id=431770065]
+z_index = 1
 layout_mode = 0
 offset_left = 457.0
-offset_top = 561.0
+offset_top = 457.0
 offset_right = 529.0
-offset_bottom = 628.0
+offset_bottom = 524.0
 theme_override_font_sizes/font_size = 32
 text = ">"
 
 [node name="Back" type="Button" parent="Dialogo" unique_id=469017663]
+z_index = 1
 layout_mode = 0
 offset_left = 357.0
-offset_top = 561.0
+offset_top = 457.0
 offset_right = 429.0
-offset_bottom = 628.0
+offset_bottom = 524.0
 theme_override_font_sizes/font_size = 32
 text = "<"
 
 [node name="Continue" type="Button" parent="Dialogo" unique_id=748626546]
 visible = false
+z_index = 1
 layout_mode = 0
 offset_left = 790.0
-offset_top = 521.0
+offset_top = 417.0
 offset_right = 1108.0
-offset_bottom = 617.0
+offset_bottom = 513.0
 theme_override_font_sizes/font_size = 64
 text = "Continuar"
 

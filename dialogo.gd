@@ -8,6 +8,7 @@ var is_typing: bool = false
 @onready var back = $Back
 @onready var forward = $Forward
 @onready var siguiente = $Continue
+@onready var block = %Blocker
 
 var faces = []
 
@@ -49,6 +50,11 @@ func _process(delta: float) -> void:
 			is_typing = false
 
 func _input(ev: InputEvent) -> void:
+	if ev is InputEventMouse and ev.is_pressed():
+		if ev.button_mask == MOUSE_BUTTON_RIGHT:
+			is_typing = false
+			current_char_count = total_characters
+			visible_characters = total_characters
 	if ev is InputEventKey and ev.is_pressed():
 		if ev.keycode == KEY_RIGHT and cur_index < guion.size()-1:
 			next()
@@ -80,5 +86,9 @@ func _on_back_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
+	if Global.tutorial_index == 1:
+		block.visible = !(block.visible)
+		queue_free()
 	Global.tutorial_index += 1
-	queue_free()
+	print(Global.tutorial_index)
+	

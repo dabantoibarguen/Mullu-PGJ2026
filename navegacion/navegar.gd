@@ -109,6 +109,8 @@ func _unhandled_input(ev: InputEvent) -> void:
 							else:
 								nav.junto_roca = false
 						moving = false
+						navMenu.pescaBtn.disabled = false
+						navMenu.buceoBtn.disabled = false
 						path_to_target = [] 
 					elif dist > nav.energy:
 						boat.label.text = "Energia insuficiente"
@@ -160,7 +162,7 @@ func navegar():
 	unhovered_cell = hovered_cell
 
 func pescar(fish_info):
-	if (boat.cur_coords in nav.fished_tiles):
+	if (boat.cur_coords in nav.fished_tiles) or Global.tutorial_index in [2, 4]:
 		return
 	nav.fished_tiles.append(boat.cur_coords)
 	navMenu.pescaBtn.disabled = true
@@ -174,6 +176,8 @@ func pescar(fish_info):
 	nav.add_sibling(pesca)
 
 func bucear(mullu_list):
+	if Global.tutorial_index in [2, 3]:
+		return
 	nav.energy -= 4
 	var buceo = buceo_game.instantiate()
 	buceo.deep_spawn = mullu_list[0]
@@ -188,8 +192,15 @@ func get_profundidad() -> String:
 		return prof
 	return ""
 			
-			
 func _physics_process(_delta: float) -> void:
+	if Global.tutorial_index == 2:
+		navMenu.pescaBtn.disabled = true
+		navMenu.buceoBtn.disabled = true
+	elif Global.tutorial_index == 3:
+		navMenu.navBtn.disabled = true
+		navMenu.pescaBtn.disabled = false
+		navMenu.buceoBtn.disabled = true
+			
 	if (move_action):
 		hovered_cell = self.local_to_map(get_global_mouse_position())
 		var msg = ""
@@ -233,7 +244,5 @@ func _physics_process(_delta: float) -> void:
 		unhovered_cell = hovered_cell
 		if(boat.cur_coords in nav.fished_tiles):
 			navMenu.pescaBtn.disabled = true
-		else:
-			navMenu.pescaBtn.disabled = false
 	else:
 		pass
