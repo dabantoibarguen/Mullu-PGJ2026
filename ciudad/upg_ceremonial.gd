@@ -5,7 +5,7 @@ var blessings = Global.blessings
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mullu_counter.text = Global.total_mullu
+	mullu_counter.text = str(Global.total_mullu)
 	var children = self.get_children()
 	for child in children:
 		if child.name not in blessings:
@@ -24,7 +24,7 @@ func _ready() -> void:
 func _on_button_pressed(child, data) -> void:
 	if Global.total_mullu >= data.get("cost"):
 		Global.total_mullu -= data.get("cost")
-		mullu_counter.text = Global.total_mullu
+		mullu_counter.text = str(Global.total_mullu)
 		Global.blessings.get(child.name)["enabled"] = true
 		child.disabled = true
 	

@@ -2,7 +2,7 @@ extends Node
 
 var dialogo = preload("res://dialogo.tscn")
 
-var tutorial = false
+var tutorial = true
 var tutorial_index = 0:
 	set(i):
 		tutorial_index = i

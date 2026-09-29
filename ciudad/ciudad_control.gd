@@ -43,17 +43,20 @@ func _on_tienda_pressed() -> void:
 
 
 func _on_templo_mouse_entered() -> void:
-	textBox.visible = true
+	if textBox:
+		textBox.visible = true
 	textBox.text = templo.name + "\n(bendiciones)"
 
 
 func _on_abuelo_mouse_entered() -> void:
-	textBox.visible = true
+	if textBox:
+		textBox.visible = true
 	textBox.text = abuelo.name + "\n(acabar el día)"
 
 
 func _on_tienda_mouse_entered() -> void:
-	textBox.visible = true
+	if textBox:
+		textBox.visible = true
 	textBox.text = tienda.name + "\n(mejorar su barco)"
 
 func _input(event: InputEvent) -> void:
