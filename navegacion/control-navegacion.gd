@@ -34,6 +34,9 @@ var energy: int = 150:
 # 0-39 noche
 
 func _ready() -> void:
+	if Global.tutorial:
+		var dialogue = Global.dialogo.instantiate()
+		add_child(dialogue)
 	menu.update_energy(energy)
 
 func cambio_tarde():

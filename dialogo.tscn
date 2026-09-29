@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bktr4p6i84au0"]
+
+[ext_resource type="Script" uid="uid://w5cbcvno2fi1" path="res://dialogo.gd" id="1_7648e"]
+[ext_resource type="Script" uid="uid://bqk518q7jt2hl" path="res://blocker.gd" id="1_kkome"]
+[ext_resource type="Texture2D" uid="uid://dkualxx0w5b5t" path="res://title_screen/assets/abuelo.png" id="2_kkome"]
+[ext_resource type="Texture2D" uid="uid://dr6jn1jq2u618" path="res://title_screen/assets/niña4.png" id="3_s555q"]
+[ext_resource type="Texture2D" uid="uid://bl7ycu8ehgwjx" path="res://title_screen/assets/niño.png" id="4_cmdfd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldw4h"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
+shadow_color = Color(0, 0, 0, 0.78039217)
+
+[node name="Dialogos" type="CanvasLayer" unique_id=1475865745]
+layer = 10
+
+[node name="Blocker" type="Control" parent="." unique_id=201050157]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_kkome")
+
+[node name="Dialogo" type="Label" parent="." unique_id=1562575410]
+custom_minimum_size = Vector2(860, 0)
+offset_left = 22.0
+offset_top = 7.0
+offset_right = 910.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ldw4h")
+autowrap_mode = 2
+script = ExtResource("1_7648e")
+
+[node name="Abuelo" type="Sprite2D" parent="Dialogo" unique_id=79047469]
+position = Vector2(1022, 519)
+texture = ExtResource("2_kkome")
+
+[node name="ColorRect" type="ColorRect" parent="Dialogo/Abuelo" unique_id=860548658]
+z_index = -1
+offset_left = -104.0
+offset_top = -118.0
+offset_right = 73.0
+offset_bottom = 43.0
+scale = Vector2(1.1437867, 1.1956502)
+color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ninan" type="Sprite2D" parent="Dialogo" unique_id=330605708]
+position = Vector2(1022, 119)
+texture = ExtResource("3_s555q")
+
+[node name="ColorRect" type="ColorRect" parent="Dialogo/Ninan" unique_id=872145635]
+z_index = -1
+offset_left = -104.0
+offset_top = -118.0
+offset_right = 73.0
+offset_bottom = 43.0
+scale = Vector2(1.1437867, 1.1956502)
+color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
+metadata/_edit_use_anchors_ = true
+
+[node name="Rumi" type="Sprite2D" parent="Dialogo" unique_id=1899226050]
+position = Vector2(1022, 313)
+texture = ExtResource("4_cmdfd")
+
+[node name="ColorRect" type="ColorRect" parent="Dialogo/Rumi" unique_id=1876669205]
+z_index = -1
+offset_left = -104.0
+offset_top = -118.0
+offset_right = 73.0
+offset_bottom = 43.0
+scale = Vector2(1.1437867, 1.1956502)
+color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
+metadata/_edit_use_anchors_ = true
+
+[node name="Forward" type="Button" parent="Dialogo" unique_id=431770065]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 561.0
+offset_right = 529.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 32
+text = ">"
+
+[node name="Back" type="Button" parent="Dialogo" unique_id=469017663]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 561.0
+offset_right = 429.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="Continue" type="Button" parent="Dialogo" unique_id=748626546]
+visible = false
+layout_mode = 0
+offset_left = 790.0
+offset_top = 521.0
+offset_right = 1108.0
+offset_bottom = 617.0
+theme_override_font_sizes/font_size = 64
+text = "Continuar"
+
+[connection signal="pressed" from="Dialogo/Forward" to="Dialogo" method="_on_forward_pressed"]
+[connection signal="pressed" from="Dialogo/Back" to="Dialogo" method="_on_back_pressed"]
+[connection signal="pressed" from="Dialogo/Continue" to="Dialogo" method="_on_continue_pressed"]

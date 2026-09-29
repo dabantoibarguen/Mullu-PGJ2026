@@ -1,5 +1,16 @@
 extends Node
 
+var dialogo = preload("res://dialogo.tscn")
+
+var tutorial = true
+var tutorial_index = 0:
+	set(i):
+		tutorial_index = i
+		match i:
+			1: get_tree().change_scene_to_file("res://navegacion/navegacion.tscn")
+			2: print("oh my ga")
+				
+		
 var fish_dictionary = {
 	# "nombre": [[profundidad(es)], [temperatura(s)], tamaño min, tamaño max,
 	#             dificultad, [hora], punto min, punto max capturado?]

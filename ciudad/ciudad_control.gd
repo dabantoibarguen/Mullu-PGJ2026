@@ -7,8 +7,10 @@ extends CanvasLayer
 @onready var blur = $AaronBlur
 
 func _ready() -> void:
-	pass
-
+	if Global.tutorial:
+		textBox.visible = false
+		var dialogue = Global.dialogo.instantiate()
+		add_child(dialogue)
 
 func _on_templo_pressed() -> void:
 	blur.visible = true
