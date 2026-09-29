@@ -1,9 +1,11 @@
 extends Control
 
+@onready var mullu_counter = $CounterMullus/Label
 var blessings = Global.blessings
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mullu_counter.text = Global.total_mullu
 	var children = self.get_children()
 	for child in children:
 		if child.name not in blessings:
@@ -18,66 +20,11 @@ func _ready() -> void:
 		child.mouse_exited.connect(_on_mouse_exited.bind(child))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-
-
-#extends Node
-#
-#var fish_dictionary = {
-	## "nombre": [[profundidad(es)], [temperatura(s)], tamaño min, tamaño max,
-	##             dificultad, [hora, marea (opcional), capturado?]
-	#"anchoveta": [["Mar bajo", "Mar Aeropuerto"], ["Frio"], 12, 20,
-					#1, ["Mañana"], false],
-					#
-	#"tiburón toyo": [["Mar medio", "Mar Profundo"], ["Frio"], 60, 120,
-					#4, ["Noche"], false], # Crear Madrugada?
-#
-	#"mantarraya": [["Mar bajo"], ["Temperada", "Caliente"], 100, 220,
-					#5, ["Mediodía"], false],
-#
-	#"chita": [["Mar bajo"], ["Frio", "Temperada"], 20, 40,
-					#3, ["Mañana"], false],
-#
-	#"pez diablo": [["Mar medio"], ["Temperada"], 12, 27,
-					#4, ["Tarde"], false],
-#
-	#"cangrejo": [["Mar bajo"], ["Frio", "Temperado"], 6, 10,
-					#2, ["Mañana", "Marea baja"], false],
-#
-	#"pez globo": [["Mar profundo"], ["Temperado", "Caliente"], 18, 44,
-					#3, ["Mañana", "Marea baja"], false],
-	#
-#}
-#
-#var mullu_dictionary = {
-	#
-#}
-#
-#var total_fish = 0
-#var total_mullu = 0
-#
-#var blessings = {
-	#"Night Vision" : {
-		#"label" : "Vision Nocturna",
-		#"description" : "Bendición de Shi. Incrementa la visibilidad en la oscuridad.",
-		#"enabled" : false,
-		#"price" : 1
-	#},
-	#"Sacred Sea" : {
-		#"label" : "Mar Sagrado",
-		#"description" : "Bendición de Shi. El mar será más abundante.",
-		#"enabled" : false,
-		#"price" : 1
-	#} 
-#}
 
 func _on_button_pressed(child, data) -> void:
 	if Global.total_mullu >= data.get("cost"):
 		Global.total_mullu -= data.get("cost")
+		mullu_counter.text = Global.total_mullu
 		Global.blessings.get(child.name)["enabled"] = true
 		child.disabled = true
 	

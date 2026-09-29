@@ -228,7 +228,6 @@ color = Color(0.8439675, 0.9006358, 0.5795142, 1)
 energy = 0.0
 blend_mode = 1
 range_layer_max = 9
-ertexture = SubResource("GradientTexture2D_nlynv")
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
 stream = ExtResource("8_0jc1b")

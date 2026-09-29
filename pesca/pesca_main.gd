@@ -21,8 +21,6 @@ var fish_size_percentage
 var puntos
 var max_catch = 6
 
-var fishing = false
-
 # Para mini juego de barra
 var freq
 var min_time
@@ -87,9 +85,6 @@ func _ready() -> void:
 	triangulate_fish_area()
 
 func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 50.0):
-	if fishing:
-		return
-	fishing = true
 	var curve = Curve2D.new()
 	p_end = fish_line.to_local(p_end)
 
@@ -111,6 +106,7 @@ func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 5
 		%BGM_Pescar.play()
 	juegoPesca.start(self, freq, min_time)
 
+
 func go_fish(origin):
 	spawner.stop()
 	update_fishing_line(Vector2(560, 650), origin.global_position)
@@ -119,7 +115,6 @@ func go_fish(origin):
 	
 func end_fishing(score):
 	spawner.start()
-	var fishing = false
 	fish_line.clear_points()
 	if score < min_time:
 		%Bad.play()

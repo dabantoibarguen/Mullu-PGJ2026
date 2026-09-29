@@ -2,7 +2,7 @@ extends Node
 
 var dialogo = preload("res://dialogo.tscn")
 
-var tutorial = true
+var tutorial = false
 var tutorial_index = 0:
 	set(i):
 		tutorial_index = i
@@ -12,7 +12,7 @@ var tutorial_index = 0:
 var fish_quota = 250
 
 var total_fish = 0
-var total_mullu = 0	
+var total_mullu = 30
 	
 var fish_dictionary = {
 	# "nombre": [[profundidad(es)], [temperatura(s)], tamaño min, tamaño max,
@@ -87,7 +87,7 @@ var blessings = {
 	"Night Vision" : {
 		"label" : "Vision Nocturna",
 		"description" : "Bendición de Shi, diosa de la luna. Mejora la visibilidad en las profundidades.",
-		"enabled" : true,
+		"enabled" : false,
 		"cost" : 3
 	},
 	"Sacred Sea" : {

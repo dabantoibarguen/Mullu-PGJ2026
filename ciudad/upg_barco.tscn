@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://chtkfjl3p0f1v"]
+[gd_scene format=3 uid="uid://cfmu0iyfr0hgt"]
 
-[ext_resource type="Script" uid="uid://d25ul77gl8hg8" path="res://ciudad/upg_ceremonial.gd" id="1_i03nw"]
-[ext_resource type="Texture2D" uid="uid://d4cnojpspey6d" path="res://navegacion/assets/counter mullus.png" id="2_i03nw"]
+[ext_resource type="Script" uid="uid://dpv6j3vwgkius" path="res://ciudad/upg_barco.gd" id="1_uvy3v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id60v"]
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
@@ -14,16 +13,12 @@ content_margin_bottom = 12.0
 bg_color = Color(0.6, 0.6, 0.6, 0.47843137)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
 [node name="Upg_Ceremonial" type="Control" unique_id=1167157061]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_i03nw")
+script = ExtResource("1_uvy3v")
 
 [node name="Shi" type="Label" parent="." unique_id=109475915]
 custom_minimum_size = Vector2(160, 60)
@@ -195,25 +190,6 @@ offset_right = 1188.0
 offset_bottom = 79.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
 text = "SALIR"
-
-[node name="CounterMullus" type="TextureRect" parent="." unique_id=324555644]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 24.0
-offset_right = 75.007996
-offset_bottom = 45.0
-scale = Vector2(2.9761906, 3.1666667)
-texture = ExtResource("2_i03nw")
-
-[node name="Label" type="Label" parent="CounterMullus" unique_id=922234700]
-layout_mode = 0
-offset_left = 18.815998
-offset_top = 0.9473696
-offset_right = 41.816
-offset_bottom = 20.947369
-theme_override_font_sizes/font_size = 12
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="Night Vision" to="." method="_on_night_vision_pressed"]
 [connection signal="pressed" from="Night Vision" to="Night Vision" method="_on_pressed"]
