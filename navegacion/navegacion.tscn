@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dkc5445skki3v" path="res://navegacion/fog.gd" id="5_hs310"]
 [ext_resource type="PackedScene" uid="uid://dmpgjq1kutci1" path="res://navegacion/nav_menu.tscn" id="6_bws8q"]
 [ext_resource type="AudioStream" uid="uid://bu6m44jcgqj1j" path="res://navegacion/assets/Nubes y el Azul.mp3" id="8_0jc1b"]
+[ext_resource type="AudioStream" uid="uid://btag2j1f07hdu" path="res://navegacion/assets/Sonidos de mar para navegar.mp3" id="9_qyhsc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jc1b"]
 texture = ExtResource("3_yl48w")
@@ -81,7 +82,7 @@ sources/2 = SubResource("TileSetAtlasSource_hs310")
 
 [sub_resource type="Gradient" id="Gradient_yl48w"]
 offsets = PackedFloat32Array(0, 0.16981132)
-colors = PackedColorArray(1, 1, 1, 0.39215687, 1, 1, 1, 0.37254903)
+colors = PackedColorArray(1, 1, 1, 0.39215687, 1, 1, 1, 0.21568628)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nlynv"]
 gradient = SubResource("Gradient_yl48w")
@@ -120,6 +121,7 @@ script = ExtResource("5_hs310")
 [node name="NavMenu" parent="." unique_id=703825542 instance=ExtResource("6_bws8q")]
 unique_name_in_owner = true
 layer = 2
+visible = false
 
 [node name="OceanMap2" type="TileMapLayer" parent="." unique_id=1172204950]
 unique_name_in_owner = true
@@ -157,4 +159,12 @@ texture = SubResource("GradientTexture2D_nlynv")
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
 stream = ExtResource("8_0jc1b")
+autoplay = true
+parameters/looping = true
+
+[node name="Sea_Effects" type="AudioStreamPlayer" parent="." unique_id=729750173]
+stream = ExtResource("9_qyhsc")
+volume_db = -8.0
+autoplay = true
+playback_type = 1
 parameters/looping = true

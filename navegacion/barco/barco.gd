@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var camara = %CamaraBarco
 
-var speed = 75
+var speed = 58
 var cur_coords
 var vision_range = 3
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btag2j1f07hdu"
+path="res://.godot/imported/Sonidos de mar para navegar.mp3-4418d5e0a8c92c22e1f4a270b5247927.mp3str"
+
+[deps]
+
+source_file="res://navegacion/assets/Sonidos de mar para navegar.mp3"
+dest_files=["res://.godot/imported/Sonidos de mar para navegar.mp3-4418d5e0a8c92c22e1f4a270b5247927.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var templo = $Templo
-@onready var agua = $Agua
+@onready var tienda = $Tienda
 @onready var abuelo = $Abuelo
 @onready var textBox = $MainText
 @onready var blur = $AaronBlur
@@ -18,23 +18,23 @@ func _on_abuelo_pressed() -> void:
 	pass
 
 
-func _on_agua_pressed() -> void:
-	pass
+func _on_tienda_pressed() -> void:
+	pass # Replace with function body.
+
 
 func _on_templo_mouse_entered() -> void:
 	textBox.visible = true
-	textBox.text = templo.name
-
+	textBox.text = templo.name + "\n(bendiciones)"
 
 
 func _on_abuelo_mouse_entered() -> void:
 	textBox.visible = true
-	textBox.text = abuelo.name
+	textBox.text = abuelo.name + "\n(acabar el día)"
 
 
-func _on_agua_mouse_entered() -> void:
+func _on_tienda_mouse_entered() -> void:
 	textBox.visible = true
-	textBox.text = agua.name
+	textBox.text = tienda.name + "\n(mejorar su barco)"
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():

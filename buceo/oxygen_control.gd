@@ -17,9 +17,11 @@ func _ready() -> void:
 func _on_oxygen_timer_timeout() -> void:
 	buceo.update_escape()
 	escapeButton.disabled = !buceo.can_escape
-	oxygen -= 1
+	oxygen -= 1.1
 	oxygen_bar.value = oxygen
 	if oxygen <= max_oxygen/3:
+		if !%Hearbeat.playing:
+			%Hearbeat.play()
 		oxygen_bar.get_theme_stylebox("fill").bg_color = Color(0.716, 0.0, 0.0, 1.0)
 	if oxygen <= 0:
 		buceo.pass_out()

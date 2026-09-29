@@ -105,6 +105,7 @@ func _physics_process(delta: float) -> void:
 		integrity -= damage_rate * delta * (current_drift/MAX_STRAY)
 		integrity_bar.value = integrity
 		if integrity <= 0.0:
+			%Bad.play()
 			end_game(false)
 			return
 		elif integrity <= 33:
@@ -120,6 +121,7 @@ func _physics_process(delta: float) -> void:
 			indicator.position = Vector2.ZERO
 			indicator.scale = Vector2(0.7, 0.7)
 			integrity = 0
+			%Good.play()
 			end_game(true)
 	
 	if global_position != oldPos:

@@ -1,27 +1,45 @@
 [gd_scene format=3 uid="uid://ekhsgwq6utf1"]
 
+[ext_resource type="Texture2D" uid="uid://b7u5m7c3ho35s" path="res://ciudad/assets/fondo.png" id="1_4v5ga"]
 [ext_resource type="Script" uid="uid://c8xhaih1ahnxm" path="res://ciudad/ciudad_control.gd" id="1_gmgtk"]
-[ext_resource type="Texture2D" uid="uid://b5qyg8qdrnl67" path="res://icon.svg" id="2_r20d7"]
+[ext_resource type="Texture2D" uid="uid://yv5vtflqxen8" path="res://ciudad/assets/templo.png" id="3_d62el"]
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="3_r20d7"]
 [ext_resource type="PackedScene" uid="uid://chtkfjl3p0f1v" path="res://ciudad/upg_ceremonial.tscn" id="4_gmgtk"]
+[ext_resource type="Texture2D" uid="uid://dmlmgqpe43sdr" path="res://ciudad/assets/casa.png" id="4_owc2c"]
+[ext_resource type="Texture2D" uid="uid://cp2asrw3gl4mf" path="res://ciudad/assets/tienda.png" id="4_rfn37"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r20d7"]
-texture = ExtResource("2_r20d7")
+texture = ExtResource("3_d62el")
+modulate_color = Color(1, 1, 1, 0.15686275)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ll8c"]
-texture = ExtResource("2_r20d7")
-modulate_color = Color(0.7647059, 0.7647059, 0.7647059, 0.78039217)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfn37"]
+load_path = "res://.godot/imported/templo.png-0309d614c1ec22a1439d5437f4e6fbbc.ctex"
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmgtk"]
-texture = ExtResource("2_r20d7")
-modulate_color = Color(0.78039217, 0.78039217, 0.78039217, 0.53333336)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owc2c"]
+texture = SubResource("CompressedTexture2D_rfn37")
+modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfn37"]
+texture = ExtResource("4_owc2c")
+modulate_color = Color(1, 1, 1, 0.15686275)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xd2wj"]
+load_path = "res://.godot/imported/casa.png-f03893968d33ef36d8993671a1c7e3dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_no0j8"]
+texture = SubResource("CompressedTexture2D_xd2wj")
+modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlynv"]
-texture = ExtResource("2_r20d7")
+texture = ExtResource("4_rfn37")
+modulate_color = Color(1, 1, 1, 0.15686275)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5k2l"]
-texture = ExtResource("2_r20d7")
-modulate_color = Color(0.78039217, 0.78039217, 0.78039217, 0.53333336)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_owc2c"]
+load_path = "res://.godot/imported/tienda.png-dfdc80bf15e568b680991cc42b0b77ec.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xd2wj"]
+texture = SubResource("CompressedTexture2D_owc2c")
+modulate_color = Color(0.078431375, 0.20392157, 0.33333334, 0.5882353)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmgtk"]
 bg_color = Color(0.6, 0.6, 0.6, 0.42352942)
@@ -33,52 +51,57 @@ shader_parameter/blur_amount = 2.0
 [node name="Ciudad" type="CanvasLayer" unique_id=77375720]
 script = ExtResource("1_gmgtk")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1668167481]
-offset_left = -0.99999994
-offset_right = 42.67185
-offset_bottom = 40.0
-scale = Vector2(28.92023, 16.395468)
+[node name="Fondo" type="TextureRect" parent="." unique_id=682576528]
+z_index = -1
+offset_left = -2.0
+offset_top = -7.0
+offset_right = 1163.0
+offset_bottom = 618.0
+scale = Vector2(1.053178, 1.0492384)
+texture = ExtResource("1_4v5ga")
+expand_mode = 1
 
 [node name="Templo" type="Button" parent="." unique_id=1257668782]
-offset_left = 353.0
-offset_top = 50.0
-offset_right = 361.0
-offset_bottom = 58.0
+offset_left = 38.0
+offset_top = 30.000002
+offset_right = 61.991478
+offset_bottom = 38.65336
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_r20d7")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
-theme_override_styles/hover = SubResource("StyleBoxTexture_gmgtk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r20d7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_owc2c")
 
 [node name="Abuelo" type="Button" parent="." unique_id=1207870595]
-offset_left = 984.99994
-offset_top = 362.0
-offset_right = 992.99994
-offset_bottom = 370.0
+offset_top = 311.0
+offset_right = 18.402779
+offset_bottom = 325.15576
 scale = Vector2(25.050564, 21.263422)
-theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
-theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rfn37")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rfn37")
+theme_override_styles/hover = SubResource("StyleBoxTexture_no0j8")
 
 [node name="Tienda" type="Button" parent="." unique_id=1477450725]
-offset_left = 818.0
-offset_top = 80.0
-offset_right = 826.0
-offset_bottom = 88.0
+visible = false
+offset_left = 382.0
+offset_top = 264.0
+offset_right = 398.806
+offset_bottom = 275.38104
 scale = Vector2(25.050564, 21.263422)
 theme_override_styles/normal = SubResource("StyleBoxTexture_nlynv")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_1ll8c")
-theme_override_styles/hover = SubResource("StyleBoxTexture_f5k2l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nlynv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xd2wj")
 
 [node name="MainText" type="Label" parent="." unique_id=908198024]
-visible = false
-offset_left = 362.0
-offset_top = 248.0
-offset_right = 862.0
-offset_bottom = 568.0
-theme_override_font_sizes/font_size = 64
+offset_left = 760.0
+offset_top = 8.0
+offset_right = 1213.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_gmgtk")
+text = "Vuelvan a la casa de su abuelo para terminar el dia"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="AaronBlur" type="ColorRect" parent="." unique_id=2044504712]
 visible = false
@@ -102,5 +125,5 @@ layout_mode = 0
 [connection signal="pressed" from="Templo" to="." method="_on_templo_pressed"]
 [connection signal="mouse_entered" from="Abuelo" to="." method="_on_abuelo_mouse_entered"]
 [connection signal="pressed" from="Abuelo" to="." method="_on_abuelo_pressed"]
-[connection signal="mouse_entered" from="Tienda" to="." method="_on_abuelo_mouse_entered"]
-[connection signal="pressed" from="Tienda" to="." method="_on_abuelo_pressed"]
+[connection signal="mouse_entered" from="Tienda" to="." method="_on_tienda_mouse_entered"]
+[connection signal="pressed" from="Tienda" to="." method="_on_tienda_pressed"]

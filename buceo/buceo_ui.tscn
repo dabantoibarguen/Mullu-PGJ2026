@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs3xrbe6381kf"]
 
 [ext_resource type="Script" uid="uid://cqsgnhh6qw1p7" path="res://buceo/oxygen_control.gd" id="1_2822b"]
+[ext_resource type="AudioStream" uid="uid://bmbs641xknmib" path="res://buceo/assets/Heart Beat.mp3" id="2_tfj6s"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=732940682]
 
@@ -38,6 +39,11 @@ offset_right = 1095.0
 offset_bottom = 124.0
 theme_override_font_sizes/font_size = 24
 text = "ESCAPAR"
+
+[node name="Hearbeat" type="AudioStreamPlayer" parent="." unique_id=1418073414]
+unique_name_in_owner = true
+stream = ExtResource("2_tfj6s")
+parameters/looping = true
 
 [connection signal="timeout" from="OxygenControl/OxygenTimer" to="OxygenControl" method="_on_oxygen_timer_timeout"]
 [connection signal="pressed" from="OxygenControl/EscapeBtn" to="OxygenControl" method="_on_escape_btn_pressed"]

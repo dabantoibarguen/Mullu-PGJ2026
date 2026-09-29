@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://dmpgjq1kutci1"]
 
 [ext_resource type="Script" uid="uid://0o5t78kf2epd" path="res://navegacion/nav_menu.gd" id="1_0lkfs"]
-[ext_resource type="Texture2D" uid="uid://cnc18lifdcb47" path="res://navegacion/assets/pescao.png" id="1_ux2aw"]
 [ext_resource type="Shader" uid="uid://iycku3vvv3ek" path="res://navegacion/black_border.gdshader" id="1_xufwd"]
 [ext_resource type="Texture2D" uid="uid://h34jgkfrjubu" path="res://navegacion/assets/temp.webp" id="2_8mrxu"]
-[ext_resource type="Texture2D" uid="uid://d4gavmrgakyeu" path="res://navegacion/assets/energyph.png" id="3_hjbyo"]
-[ext_resource type="Texture2D" uid="uid://cdce8a8idjsdw" path="res://navegacion/assets/tempph.webp" id="4_hjbyo"]
-[ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="7_asrx5"]
+[ext_resource type="Texture2D" uid="uid://dbmudtnwc0221" path="res://navegacion/assets/couter peces.png" id="3_asrx5"]
+[ext_resource type="Texture2D" uid="uid://d4cnojpspey6d" path="res://navegacion/assets/counter mullus.png" id="4_0lkfs"]
+[ext_resource type="Texture2D" uid="uid://bgbtrfyjhwdnk" path="res://navegacion/assets/counter energia ese no.png" id="7_l84c0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4ql"]
 bg_color = Color(0.28235295, 0.2784314, 0.2901961, 0.8745098)
@@ -22,7 +21,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lkfs"]
-bg_color = Color(0, 0.36078432, 0.0627451, 0.7882353)
+bg_color = Color(0.078431375, 0.20392157, 0.33333334, 0.7882353)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -40,7 +39,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asrx5"]
-bg_color = Color(0, 0.53333336, 0.10980392, 0.85490197)
+bg_color = Color(0.24587724, 0.48483324, 0.7335536, 0.90588236)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -51,10 +50,6 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mrxu"]
-shader = ExtResource("1_xufwd")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xufwd"]
 shader = ExtResource("1_xufwd")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
@@ -69,6 +64,7 @@ offset_top = 500.9091
 offset_right = 400.0
 offset_bottom = 550.90906
 tooltip_text = "Presiona \"1\""
+theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
@@ -83,6 +79,7 @@ offset_top = 500.9091
 offset_right = 651.8182
 offset_bottom = 550.90906
 tooltip_text = "Presiona \"2\""
+theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
@@ -96,6 +93,7 @@ offset_top = 500.9091
 offset_right = 900.0
 offset_bottom = 550.90906
 tooltip_text = "Presiona \"3\""
+theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
@@ -111,76 +109,71 @@ color = Color(0.28235295, 0.2784314, 0.2901961, 0.6)
 
 [node name="Pescao" type="Sprite2D" parent="." unique_id=949772439]
 material = SubResource("ShaderMaterial_8mrxu")
-position = Vector2(494.5454, 29.090912)
-scale = Vector2(3.1767285, 2.989501)
-texture = ExtResource("1_ux2aw")
+position = Vector2(569.1952, 28.727283)
+scale = Vector2(2.3451436, 2.3058167)
+texture = ExtResource("3_asrx5")
+
+[node name="Mullus" type="Sprite2D" parent="." unique_id=175524056]
+material = SubResource("ShaderMaterial_8mrxu")
+position = Vector2(832.98846, 28.727283)
+scale = Vector2(2.3451436, 2.3058167)
+texture = ExtResource("4_0lkfs")
 
 [node name="Temp" type="Sprite2D" parent="." unique_id=1819012353]
 material = SubResource("ShaderMaterial_8mrxu")
-position = Vector2(145.45454, 29.090904)
+position = Vector2(79.99998, 28.181822)
 scale = Vector2(0.20722221, 0.19977558)
 texture = ExtResource("2_8mrxu")
 
-[node name="Energyph" type="Sprite2D" parent="." unique_id=995618456]
-material = SubResource("ShaderMaterial_8mrxu")
-position = Vector2(319.99997, 29.09092)
-scale = Vector2(0.064737335, 0.06632493)
-texture = ExtResource("3_hjbyo")
-
 [node name="EnergyL" type="Label" parent="." unique_id=487684872]
-offset_left = 334.54556
-offset_top = 7.272727
-offset_right = 355.72748
-offset_bottom = 35.27273
+z_index = 2
+offset_left = 283.636
+offset_top = 6.9
+offset_right = 304.8179
+offset_bottom = 34.900005
 rotation = -0.00016798022
 scale = Vector2(1.6881286, 1.4749321)
-theme_override_colors/font_color = Color(0.09019608, 0.7921569, 0.039215688, 1)
+theme_override_colors/font_color = Color(0.92941177, 0.85490197, 0.84313726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PescaoL" type="Label" parent="." unique_id=126054377]
-offset_left = 524.5452
-offset_top = 7.278735
-offset_right = 545.7272
-offset_bottom = 35.27874
+offset_left = 574.807
+offset_top = 6.9
+offset_right = 595.98895
+offset_bottom = 34.9
 rotation = -5.5997105e-05
 scale = Vector2(1.688129, 1.4749321)
-theme_override_colors/font_color = Color(0.47843137, 0.41960785, 0.32156864, 1)
+theme_override_colors/font_color = Color(0.92941177, 0.85490197, 0.84313726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Tempph" type="Sprite2D" parent="." unique_id=838061467]
-material = SubResource("ShaderMaterial_xufwd")
-position = Vector2(843.63635, 29.09091)
-scale = Vector2(0.1791027, 0.16637245)
-texture = ExtResource("4_hjbyo")
-
-[node name="Mullu" type="Sprite2D" parent="." unique_id=1163069178]
-position = Vector2(667.27277, 28.181816)
-scale = Vector2(0.07713038, 0.099116184)
-texture = ExtResource("7_asrx5")
 
 [node name="MulluL" type="Label" parent="." unique_id=875346452]
-offset_left = 692.7269
-offset_top = 7.278734
-offset_right = 713.9089
-offset_bottom = 35.27874
+offset_left = 836.62463
+offset_top = 6.8999996
+offset_right = 857.8066
+offset_bottom = 34.90001
 rotation = -5.5997105e-05
 scale = Vector2(1.688129, 1.4749321)
-theme_override_colors/font_color = Color(0.47843137, 0.41960785, 0.32156864, 1)
+theme_override_colors/font_color = Color(0.92941177, 0.85490197, 0.84313726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Energia" type="Sprite2D" parent="." unique_id=488905928]
+position = Vector2(290.9091, 29.232958)
+scale = Vector2(2.4211025, 2.3760822)
+texture = ExtResource("7_l84c0")
 
 [connection signal="pressed" from="Nav" to="." method="_on_nav_pressed"]
 [connection signal="pressed" from="Psc" to="." method="_on_psc_pressed"]

@@ -9,7 +9,7 @@ var pull_back = false
 var speed = 175
 
 func _ready() -> void:
-	soga.add_point(Vector2(0, -20))
+	soga.add_point(Vector2(0, -200))
 	soga.add_point(to_local(global_position))
 	soga.add_point(global_position)
 	
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if pull_back:
 		var pos = global_position
-		velocity = pos.direction_to(Vector2(0, -150)) * delta * pos.distance_to(Vector2(0, -150))*1.5
+		velocity = pos.direction_to(Vector2(0, -200)) * delta * pos.distance_to(Vector2(0, -200))*1.5
 		for i in range(1, soga.points.size()-2):
 			soga.remove_point(i)
 		soga.add_point(soga.to_local(global_position))

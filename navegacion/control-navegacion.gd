@@ -16,14 +16,14 @@ var hora = "Mañana"
 var profundidad # Sacar esto del tile del barco
 var junto_roca = false
 
-var energy: int = 120:
+var energy: int = 150:
 	set(e):
 		energy = e
 		menu.update_energy(e)
 		# Hacer ciclico, cambiar basado en inicial
-		if(energy <= 40 and hora == "Tarde"):
+		if(energy <= 50 and hora == "Tarde"):
 			cambio_noche()
-		elif(energy <= 80 and hora == "Mañana"):
+		elif(energy <= 100 and hora == "Mañana"):
 			cambio_tarde()
 # 80-120 mañana
 # 40-79 tarde

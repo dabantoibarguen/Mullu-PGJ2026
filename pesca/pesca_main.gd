@@ -8,7 +8,7 @@ var indicador_pesca = preload("res://pesca/indicadores_pesca.tscn")
 @onready var durLabel = $Durabilidad
 @onready var fish_line = %Line
 @onready var fish_pic = %Silhouette
-
+@onready var spawner = $Spawn
 signal resultado_pesca(pescado)
 
 var caught_indicator
@@ -18,6 +18,7 @@ var pescados = 0
 var fish_name
 var fish_size_percentage
 var puntos
+var max_catch = 6
 
 # Para mini juego de barra
 var freq
@@ -55,6 +56,7 @@ var durabilidad = 5:
 		if durabilidad <= 0:
 			pescados = int(pescados)
 			resultado_pesca.emit(pescados)
+			await get_tree().create_timer(1.0).timeout
 			queue_free()
 
 # Limited area polygon calculations
@@ -63,9 +65,9 @@ var triangle_cumulative_weights = []
 var total_area = 0.0
 
 func _ready() -> void:
-	## MAX FISH TO GET = 6 - Difficulty. Use max to end game early
 	fish_pic.texture = load(fish_imgs[fish_name])
 	var fish_data = Global.fish_dictionary[fish_name]
+	max_catch -= fish_data[4]
 	if !fish_data[-1]:
 		fish_pic.self_modulate = Color(0, 0, 0, 1)
 	else:
@@ -76,9 +78,9 @@ func _ready() -> void:
 	var diff_r = difficulty_ranges[fish_data[4]]
 	var x = lerp(diff_r[0], diff_r[1], size_float)
 	freq = 2 - x
-	min_time = 2.5 + 7*x
-	print(freq)
-	print(min_time)
+	min_time = 5 + 6*x
+	#print(freq)
+	#print(min_time)
 	triangulate_fish_area()
 
 func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 50.0):
@@ -94,36 +96,48 @@ func update_fishing_line(p_start: Vector2, p_end: Vector2, sag_amount: float = 5
 
 	curve.bake_interval = 15
 	var baked_points = curve.get_baked_points()
+	%Swoosh.play()
 	for point in baked_points:
 		fish_line.add_point(point)
 		await get_tree().create_timer(0.01).timeout
 	blur.visible = true
+	if !%BGM_Pescar.playing:
+		%BGM_Pescar.play()
 	juegoPesca.start(self, freq, min_time)
 
 func go_fish(origin):
+	spawner.stop()
 	update_fishing_line(Vector2(560, 650), origin.global_position)
 	caught_indicator = origin
 	anzuelo.speed = 0
 	
 func end_fishing(score):
+	spawner.start()
 	fish_line.clear_points()
 	if score < min_time:
+		%Bad.play()
 		durabilidad -= 2
 		fish_pic.scale = Vector2(0.2, 0.2)
-		await get_tree().create_timer(1.5).timeout
 	else:
+		%Good.play()
+		max_catch -= 1
 		var fish_data = Global.fish_dictionary[fish_name]
 		if !fish_data[-1]:
 			fish_pic.self_modulate = Color(1, 1, 1, 1)
 			fish_data[-1] = true
 		fish_pic.scale = Vector2(1.3, 1.3)
-		await get_tree().create_timer(1.5).timeout
 		pescados += puntos # Dependiendo del pescado, asi funca??
 		durabilidad -= 1
+	await get_tree().create_timer(1.5).timeout
 	blur.visible = false
 	fish_pic.scale = Vector2(0.7, 0.7)
+	if max_catch == 0:
+		pescados = int(pescados)
+		resultado_pesca.emit(pescados)
+		queue_free()
 	caught_indicator.queue_free()
 	anzuelo.speed = 400
+	
 
 func _on_spawn_timeout() -> void:
 	var pos = fish_area.to_global(get_random_point())

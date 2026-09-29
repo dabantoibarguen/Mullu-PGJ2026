@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://d25ul77gl8hg8" path="res://ciudad/upg_ceremonial.gd" id="1_i03nw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id60v"]
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id60v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i03nw"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0.47843137)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smjbo"]
 bg_color = Color(0.38431373, 0.69411767, 0, 0.80784315)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylopp"]
@@ -16,97 +23,183 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_i03nw")
 
-[node name="Night Vision" type="Button" parent="." unique_id=1392743737]
+[node name="Shi" type="Label" parent="." unique_id=109475915]
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 163.0
-offset_top = 48.0
-offset_right = 291.0
-offset_bottom = 96.0
-theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
-text = "Vision Nocturna"
+offset_left = 188.0
+offset_top = 37.0
+offset_right = 348.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 48
+text = "Shi"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Night Vision" unique_id=1539956297]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="Night Vision" unique_id=69915046]
-visible = false
+[node name="Tac" type="Label" parent="." unique_id=1886499017]
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 9.0
-offset_top = 46.0
-offset_right = 56.0
-offset_bottom = 69.0
-text = "aaaaa"
+offset_left = 460.0
+offset_top = 34.0
+offset_right = 726.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 48
+text = "Tacaynamo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pel" type="Label" parent="." unique_id=234547607]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 0
+offset_left = 820.0
+offset_top = 39.0
+offset_right = 1015.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 48
+text = "Pelícano"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sacred Sea" type="Button" parent="." unique_id=977326639]
 layout_mode = 0
-offset_left = 302.0
-offset_top = 210.0
-offset_right = 430.0
-offset_bottom = 258.0
+offset_left = 188.5
+offset_top = 120.0
+offset_right = 320.5
+offset_bottom = 168.0
+scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_id60v")
-text = "Shi"
 
-[node name="MarginContainer" type="MarginContainer" parent="Sacred Sea" unique_id=709148345]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="Sacred Sea" unique_id=1933451887]
+[node name="Label" type="Label" parent="Sacred Sea" unique_id=2090626045]
 visible = false
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 0
-offset_left = 22.0
-offset_top = 45.0
-offset_right = 69.0
-offset_bottom = 68.0
-text = "aaaaa"
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
+
+[node name="Night Vision" type="Button" parent="." unique_id=1392743737]
+layout_mode = 0
+offset_left = 188.5
+offset_top = 400.0
+offset_right = 320.5
+offset_bottom = 448.0
+scale = Vector2(1.3038232, 1.2490723)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
+
+[node name="Label" type="Label" parent="Night Vision" unique_id=69915046]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
 
 [node name="Second Wind" type="Button" parent="." unique_id=302574226]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 82.0
-offset_right = 638.0
-offset_bottom = 130.0
+offset_left = 502.0
+offset_top = 120.0
+offset_right = 634.0
+offset_bottom = 168.0
+scale = Vector2(1.3038232, 1.2490723)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ylopp")
-text = "Shi"
 
-[node name="MarginContainer" type="MarginContainer" parent="Second Wind" unique_id=2129275090]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="Second Wind" unique_id=45550639]
+[node name="Label" type="Label" parent="Second Wind" unique_id=66969479]
 visible = false
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 0
-offset_left = -5.0
-offset_top = 55.0
-offset_right = 42.0
-offset_bottom = 78.0
-text = "aaaaa"
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
+
+[node name="Vigor" type="Button" parent="." unique_id=425116258]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 400.0
+offset_right = 634.0
+offset_bottom = 448.0
+scale = Vector2(1.3038232, 1.2490723)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
+
+[node name="Label" type="Label" parent="Vigor" unique_id=1683530066]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
+
+[node name="Pico" type="Button" parent="." unique_id=862244987]
+layout_mode = 0
+offset_left = 829.5
+offset_top = 120.0
+offset_right = 961.5
+offset_bottom = 168.0
+scale = Vector2(1.3038232, 1.2490723)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
+
+[node name="Label" type="Label" parent="Pico" unique_id=635913542]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
+
+[node name="Nado" type="Button" parent="." unique_id=1938558611]
+layout_mode = 0
+offset_left = 829.5
+offset_top = 400.0
+offset_right = 961.5
+offset_bottom = 448.0
+scale = Vector2(1.3038232, 1.2490723)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
+
+[node name="Label" type="Label" parent="Nado" unique_id=688992793]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = -32.97992
+offset_top = 55.240997
+offset_right = 167.02008
+offset_bottom = 78.241
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i03nw")
+autowrap_mode = 2
+
+[node name="Exit" type="Button" parent="." unique_id=1377109336]
+layout_mode = 0
+offset_left = 1113.0
+offset_top = 31.0
+offset_right = 1188.0
+offset_bottom = 79.0
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smjbo")
+text = "SALIR"
 
 [connection signal="pressed" from="Night Vision" to="." method="_on_night_vision_pressed"]
 [connection signal="pressed" from="Night Vision" to="Night Vision" method="_on_pressed"]
+[connection signal="pressed" from="Vigor" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Vigor" to="Vigor" method="_on_pressed"]
+[connection signal="pressed" from="Pico" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Pico" to="Pico" method="_on_pressed"]
+[connection signal="pressed" from="Nado" to="." method="_on_night_vision_pressed"]
+[connection signal="pressed" from="Nado" to="Nado" method="_on_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

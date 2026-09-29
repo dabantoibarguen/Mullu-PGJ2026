@@ -100,7 +100,7 @@ func _unhandled_input(ev: InputEvent) -> void:
 							boat.target = map_to_local(tile)
 							fog.clear_cells(tile)
 							# make this based on the time needed to move
-							await get_tree().create_timer(0.4).timeout 
+							await get_tree().create_timer(0.45).timeout 
 						boat.cur_coords = target_coords
 						for neighbor in get_surrounding_cells(target_coords):
 							if invalid_tiles.get(get_cell_atlas_coords(neighbor)) == "Roca":
@@ -164,8 +164,8 @@ func pescar(fish_info):
 		return
 	nav.fished_tiles.append(boat.cur_coords)
 	navMenu.pescaBtn.disabled = true
-	print(nav.fished_tiles)
-	nav.energy -= 3
+	#print(nav.fished_tiles)
+	nav.energy -= 4
 	var pesca = pesca_game.instantiate()
 	pause_nav()
 	pesca.fish_name = fish_info[0]
@@ -174,7 +174,7 @@ func pescar(fish_info):
 	nav.add_sibling(pesca)
 
 func bucear(mullu_list):
-	nav.energy -= 3
+	nav.energy -= 4
 	var buceo = buceo_game.instantiate()
 	buceo.deep_spawn = mullu_list[0]
 	buceo.mid_spawn = mullu_list[1]

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cws1ka2tfw1sx"]
+
+[ext_resource type="Script" uid="uid://ciqe6nrb8q8hy" path="res://title_screen/title.gd" id="1_dm118"]
+[ext_resource type="Texture2D" uid="uid://cg1sbvus74gy4" path="res://title_screen/assets/title 1.png" id="1_sayff"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlynv"]
+bg_color = Color(0.5764706, 0.14117648, 0.101960786, 1)
+
+[node name="Title" type="Node2D" unique_id=576535341]
+script = ExtResource("1_dm118")
+
+[node name="Title1" type="Sprite2D" parent="." unique_id=585018747]
+position = Vector2(611, 328.00003)
+scale = Vector2(1.0762867, 1.0199203)
+texture = ExtResource("1_sayff")
+
+[node name="Button" type="Button" parent="." unique_id=181618538]
+offset_left = 244.0
+offset_top = 354.0
+offset_right = 904.0
+offset_bottom = 590.0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlynv")
+text = "EMPEZAR PARTIDA"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

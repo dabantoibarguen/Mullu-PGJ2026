@@ -48,19 +48,37 @@ var total_mullu = 0
 var blessings = {
 	"Night Vision" : {
 		"label" : "Vision Nocturna",
-		"description" : "Bendición de Shi. Incrementa la visibilidad en la oscuridad.",
+		"description" : "Bendición de Shi. Mejora la visibilidad en las profundidades.",
 		"enabled" : false,
 		"cost" : 1
 	},
 	"Sacred Sea" : {
 		"label" : "Mar Sagrado",
-		"description" : "Bendición de Shi. El mar será más abundante.",
+		"description" : "Bendición de Shi. El mar será más abundante en algunos lugares.",
 		"enabled" : false,
 		"cost" : 1
 	},
 	"Second Wind" : {
 		"label" : 	"Segundo Aliento",
 		"description" : "Bendición de Tacaynamo. Te hace más fácil capturar peces.",
+		"enabled" : false,
+		"cost" : 1
+	},
+	"Vigor" : {
+		"label" : 	"Cuerpo Vigoroso",
+		"description" : "Bendición de Tacaynamo. Amuenta tu energia al navegar.",
+		"enabled" : false,
+		"cost" : 1
+	},
+	"Pico" : {
+		"label" : 	"Pico de Pelícano",
+		"description" : "Bendicion de Pelícano. Te da la oportunidad de atrapar más peces.",
+		"enabled" : false,
+		"cost" : 1
+	},
+	"Nado" : {
+		"label" : 	"Segundo Aliento",
+		"description" : "Bendición de Pelícano. Te ayudara a explorar las aguas profundas.",
 		"enabled" : false,
 		"cost" : 1
 	}

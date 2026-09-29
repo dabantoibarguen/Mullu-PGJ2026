@@ -29,7 +29,7 @@ func populate_mullu():
 	var size_mid = area_media.shape.size
 	var size_deep = area_profunda.shape.size
 	for mid_mul in mid_spawn:
-		print(mid_mul)
+		#print(mid_mul)
 		var x = randf_range(-size_mid.x / 2, size_mid.x / 2)
 		var y = randf_range(-size_mid.y / 2, size_mid.y / 2)
 		var spondylus = mullu_scene.instantiate()
@@ -59,7 +59,7 @@ func start_snip(tipo_mullu):
 func end_snip(result = false):
 	if result:
 		mullus += last_mullu.points
-	print(mullus)
+	#print(mullus)
 	last_mullu.queue_free()
 	blur.visible = false
 	buceador.playing = false
@@ -71,15 +71,17 @@ func update_escape():
 		can_escape = false
 
 func escape_safely():
+	$Border/Top.set_deferred("disabled", true)
 	buceador.pull_back = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.2).timeout
 	resultado_buceo.emit(mullus)
 	queue_free()
 
 func pass_out():
 	blur.visible = false
 	buceador.sprite.flip_v = true
+	$Border/Top.set_deferred("disabled", true)
 	buceador.pull_back = true
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.6).timeout
 	resultado_buceo.emit(0)
 	queue_free()

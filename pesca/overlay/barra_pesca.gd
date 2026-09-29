@@ -26,7 +26,6 @@ var green_top
 var green_bottom
 
 func _ready() -> void:
-	timer.wait_time = 1
 	player_h = player.size.y
 	green_h = green.size.y
 	green_starting = green.position
@@ -37,7 +36,8 @@ func start_fishing(origin, freq = green_time, min = minimum_time):
 	gameTimer.wait_time = game_time
 	gameTimer.start()
 	green.position = green_starting
-	green_time = freq
+	green_time = 1
+	timer.wait_time = freq
 	minimum_time = min
 	timer.start()
 	
@@ -59,13 +59,13 @@ func _input(ev: InputEvent) -> void:
 				player.position.y = highest_point
 
 func move_green():
-	var rand_targ = randf_range(highest_point, lowest_point-green_h)
+	var rand_targ = randf_range(highest_point, lowest_point-(green_h))
 	var target = min(green.position.y - rand_targ, size.y/2)
-	var time = game_time*green_time
+	var time = int(game_time*green_time)
 	for i in range(time):
-		green.position.y -= (target)/(time)
-		await get_tree().create_timer(0.08).timeout 
-	await get_tree().create_timer(0.2).timeout 
+		green.position.y = clamp(green.position.y - (target)/(time), highest_point, lowest_point-(green_h))
+		await get_tree().create_timer(0.1).timeout 
+	await get_tree().create_timer(0.3).timeout 
 	
 
 func _physics_process(delta: float) -> void:

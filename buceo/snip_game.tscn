@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c0wtqy5ilbj1r" path="res://buceo/assets/hand.webp" id="1_yfp2p"]
 [ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="3_qpcpt"]
 [ext_resource type="Texture2D" uid="uid://i5sba231ejdd" path="res://buceo/assets/spondulus princeps.png" id="5_hmh62"]
+[ext_resource type="AudioStream" uid="uid://5abegv86k44f" path="res://pesca/assets/BADer.mp3" id="6_uivri"]
+[ext_resource type="AudioStream" uid="uid://dcs53n85r1565" path="res://pesca/assets/GOOD .mp3" id="7_quta0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikwup"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5647059)
@@ -84,3 +86,11 @@ z_index = 1
 position = Vector2(-3.815217, -0.15889287)
 scale = Vector2(0.03555569, 0.03555569)
 texture = ExtResource("5_hmh62")
+
+[node name="Bad" type="AudioStreamPlayer" parent="." unique_id=73565491]
+unique_name_in_owner = true
+stream = ExtResource("6_uivri")
+
+[node name="Good" type="AudioStreamPlayer" parent="." unique_id=2062499420]
+unique_name_in_owner = true
+stream = ExtResource("7_quta0")

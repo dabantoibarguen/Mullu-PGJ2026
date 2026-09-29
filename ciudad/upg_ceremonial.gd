@@ -6,6 +6,8 @@ var blessings = Global.blessings
 func _ready() -> void:
 	var children = self.get_children()
 	for child in children:
+		if child.name not in blessings:
+			continue
 		var data = blessings.get(child.name)
 		child.text = data.get("label")
 		if data.get("enabled") == true:
@@ -84,3 +86,7 @@ func _on_mouse_entered(child) -> void:
 	
 func _on_mouse_exited(child) -> void:
 	child.get_node("Label").visible=false
+
+
+func _on_exit_pressed() -> void:
+	get_parent().get_parent().blur.visible = false

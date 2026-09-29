@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://do1vx4b05weqp" path="res://buceo/snip_game.tscn" id="6_jhcbv"]
 [ext_resource type="Texture2D" uid="uid://cluldcc7brrls" path="res://buceo/assets/top 2 v2.png" id="6_r4nwo"]
 [ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
-[ext_resource type="AudioStream" uid="uid://di6ob3w6bri6a" path="res://buceo/assets/Buseo.mp3" id="9_ms8d1"]
+[ext_resource type="AudioStream" uid="uid://b4ile62cy36fk" path="res://buceo/assets/Diving.mp3" id="9_s3ofk"]
+[ext_resource type="AudioStream" uid="uid://vi81yri01p3e" path="res://buceo/assets/Mar Buseo.mp3" id="11_r4nwo"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
 offsets = PackedFloat32Array(0, 0.2783019, 0.5660377, 0.8207547)
@@ -223,8 +224,16 @@ z_index = 5
 scale = Vector2(10.82, 10)
 
 [node name="BGM_Buceo" type="AudioStreamPlayer" parent="." unique_id=923095919]
-stream = ExtResource("9_ms8d1")
+stream = ExtResource("9_s3ofk")
+volume_db = -7.0
+autoplay = true
 parameters/looping = true
 
 [node name="CanvasLayer" parent="." unique_id=732940682 instance=ExtResource("8_25cln")]
 layer = 7
+
+[node name="Sea_Effects" type="AudioStreamPlayer" parent="." unique_id=792771958]
+stream = ExtResource("11_r4nwo")
+autoplay = true
+playback_type = 1
+parameters/looping = true
