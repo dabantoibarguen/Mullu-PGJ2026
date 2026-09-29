@@ -11,6 +11,8 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if Global.tutorial_index == 3:
+		return
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	# Rotate the sprite smoothly every frame
 	rotate(deg_to_rad(-67 * delta))

@@ -12,11 +12,12 @@ var is_typing: bool = false
 
 var faces = []
 
-var guion
+var guion = []
 
 var cur_index = 0
 
 func _ready() -> void:
+	grab_focus()
 	faces = [$Abuelo, $Ninan, $Rumi]
 	back.disabled = true
 
@@ -86,8 +87,8 @@ func _on_back_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
-	if Global.tutorial_index == 1:
-		block.visible = !(block.visible)
+	if Global.tutorial_index in [1, 2, 3, 4]:
+		block.visible = false
 		queue_free()
 	Global.tutorial_index += 1
 	print(Global.tutorial_index)

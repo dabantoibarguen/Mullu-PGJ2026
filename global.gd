@@ -8,7 +8,6 @@ var tutorial_index = 0:
 		tutorial_index = i
 		match i:
 			1: get_tree().change_scene_to_file("res://navegacion/navegacion.tscn")
-			2: print("oh my ga")
 		
 var fish_dictionary = {
 	# "nombre": [[profundidad(es)], [temperatura(s)], tamaño min, tamaño max,

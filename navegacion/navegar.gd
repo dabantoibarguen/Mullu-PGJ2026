@@ -94,7 +94,8 @@ func _unhandled_input(ev: InputEvent) -> void:
 					var dist = move_path.size()
 					if(0 < dist and dist <= boat.vision_range and dist <=nav.energy):
 						moving = true
-						remove_child(oldTracer)
+						if oldTracer:
+							remove_child(oldTracer)
 						for tile in move_path:
 							nav.energy-= tile_cost
 							boat.target = map_to_local(tile)
@@ -110,8 +111,10 @@ func _unhandled_input(ev: InputEvent) -> void:
 								nav.junto_roca = false
 						moving = false
 						navMenu.pescaBtn.disabled = false
-						navMenu.buceoBtn.disabled = false
+						#navMenu.buceoBtn.disabled = false
 						path_to_target = [] 
+						if Global.tutorial:
+							check_tutorial()
 					elif dist > nav.energy:
 						boat.label.text = "Energia insuficiente"
 					else:
@@ -148,6 +151,8 @@ func add_fish(total_fish):
 	resume_nav()
 	nav.pescado += total_fish
 	navMenu.update_fish(nav.pescado)
+	if Global.tutorial:
+		check_tutorial()
 	
 func add_mullu(total_mullu):
 	resume_nav()
@@ -156,13 +161,15 @@ func add_mullu(total_mullu):
 
 # ------ Button functions -------
 func navegar():
+	if Global.tutorial and Global.tutorial_index in [3, 4, 5]:
+		return
 	move_action = !move_action
-	boat.label.text = ""
-	remove_child(oldTracer)
+	if oldTracer:
+		remove_child(oldTracer)
 	unhovered_cell = hovered_cell
 
 func pescar(fish_info):
-	if (boat.cur_coords in nav.fished_tiles) or Global.tutorial_index in [2, 4]:
+	if (boat.cur_coords in nav.fished_tiles) or (Global.tutorial and Global.tutorial_index in [2, 4, 5]):
 		return
 	nav.fished_tiles.append(boat.cur_coords)
 	navMenu.pescaBtn.disabled = true
@@ -174,9 +181,10 @@ func pescar(fish_info):
 	pesca.fish_size_percentage = fish_info[1]
 	pesca.connect("resultado_pesca", add_fish)
 	nav.add_sibling(pesca)
+	check_tutorial()
 
 func bucear(mullu_list):
-	if Global.tutorial_index in [2, 3]:
+	if Global.tutorial and Global.tutorial_index in [2, 3, 4]:
 		return
 	nav.energy -= 4
 	var buceo = buceo_game.instantiate()
@@ -185,6 +193,7 @@ func bucear(mullu_list):
 	pause_nav()
 	buceo.connect("resultado_buceo", add_mullu)
 	nav.add_sibling(buceo)
+	check_tutorial()
 
 func get_profundidad() -> String:
 	var prof = valid_tiles.get(self.get_cell_atlas_coords(boat.cur_coords))
@@ -192,19 +201,56 @@ func get_profundidad() -> String:
 		return prof
 	return ""
 			
-func _physics_process(_delta: float) -> void:
+			
+# ------- TUTORIAL-----------
+
+func check_tutorial():
+	if !Global.tutorial:
+		return
+	move_action = false
+	var dialogue = Global.dialogo.instantiate()
+	add_child(dialogue)
 	if Global.tutorial_index == 2:
-		navMenu.pescaBtn.disabled = true
-		navMenu.buceoBtn.disabled = true
-	elif Global.tutorial_index == 3:
+		navMenu.navBtn.button_pressed = false
 		navMenu.navBtn.disabled = true
 		navMenu.pescaBtn.disabled = false
 		navMenu.buceoBtn.disabled = true
+		dialogue.new_text([
+   	[["Ninan"], "¡Ahí! Me parece que vi un pez"],
+  	[["Rumi"], "¡Silencio! Si haces mucho ruido lo vas a espantar…"],
+	[[], "Instrucciones:\n- Haz clic en el boton \"Pescar\" o presiona la Tecla \"2\" para iniciar el minijuego de pesca.\n\n	¡Pescar también te costará energía, pero es importante para ayudar a tu pueblo!"]
+	])
+	elif Global.tutorial_index == 3:
+		dialogue.new_text([
+  [["Rumi"], "¡Yo me encargo de esto!"],
+  [[], "Instrucciones de Pesca:\nUsa las flechas o las teclas WASD para mover el indicador. Puedes acabar el juego antes con la tecla \"Escape\". Mantén el indicador encima de un objetivo al menos un segundo para lanzar la soga\n\nInstrucciones de Captura:\nCuando tu soga alcance a tu objetivo, empezará un minijuego de precisión.\nUsa la barra espaciadora para hacer subir la linea blanca e intenta mantenerla en el espacio escurridizo la mayor cantidad de tiempo posible ¡Buena suerte!"]
+	])
+	elif Global.tutorial_index == 4:
+		navMenu.navBtn.disabled = true
+		navMenu.pescaBtn.disabled = true
+		navMenu.buceoBtn.disabled = false
+		var txt = [
+  	[["Rumi"], "Dejemos este lugar por ahora. El abuelo nos advirtió sobre respetar el balance. También sería bueno explorar un poco…"],
+  	[["Ninan"], "¡Espera! Amarra esa soga a mi cintura primero. Quiero intentar algo antes de irnos."],
+  	[[], "Instrucciones:\nHaz clic en el botón \"Bucear\" o presiona la tecla \"3\" para iniciar el minijuego de buceo.\n\nBucear te costará energía, pero podrás recolectar el precioso Mullu en las profundidades."]
+		]
+		if nav.pescado > 0:
+			txt.push_front([["Rumi"], "¡Excelente!"])
+		else:
+			txt.push_front([["Rumi"], "Eso pudo salir mejor."])
+		dialogue.new_text(txt)
+	elif Global.tutorial_index == 5:
+		Global.tutorial = false
+		remove_child(dialogue)
+		navMenu.navBtn.disabled = false
+		navMenu.pescaBtn.disabled = true
+		navMenu.buceoBtn.disabled = false
 			
+func _physics_process(_delta: float) -> void:
 	if (move_action):
 		hovered_cell = self.local_to_map(get_global_mouse_position())
 		var msg = ""
-		if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1):
+		if(standby or moving or fog.get_cell_source_id(hovered_cell) != -1) and oldTracer:
 			remove_child(oldTracer) # Careful of all the debugging errors woops
 			boat.label.text = msg
 			unhovered_cell = hovered_cell
@@ -219,7 +265,8 @@ func _physics_process(_delta: float) -> void:
 				#boat.label.text = msg
 			else:
 				path_to_target = find_path(boat.cur_coords, hovered_cell)
-				remove_child(oldTracer)
+				if oldTracer:
+					remove_child(oldTracer)
 				if (hovered_cell != boat.cur_coords):
 					var tracer = Line2D.new()
 					tracer.width = 1.5                    

@@ -16,6 +16,7 @@ bg_color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 shadow_color = Color(0, 0, 0, 0.78039217)
 
 [node name="Dialogos" type="CanvasLayer" unique_id=1475865745]
+process_mode = 3
 layer = 10
 script = ExtResource("1_s555q")
 
@@ -33,18 +34,20 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Dialogo" type="Label" parent="." unique_id=1562575410]
 custom_minimum_size = Vector2(860, 0)
+anchors_preset = -1
+anchor_right = 0.035590276
 offset_left = 22.0
-offset_top = 103.0
+offset_top = 30.0
 offset_right = 910.0
-offset_bottom = 203.0
-theme_override_font_sizes/font_size = 32
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 29
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldw4h")
 autowrap_mode = 2
 script = ExtResource("1_7648e")
 metadata/_edit_use_anchors_ = true
 
 [node name="Abuelo" type="Sprite2D" parent="Dialogo" unique_id=79047469]
-position = Vector2(1022, 519)
+position = Vector2(1062, 519)
 texture = ExtResource("2_kkome")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Abuelo" unique_id=860548658]
@@ -58,7 +61,7 @@ color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ninan" type="Sprite2D" parent="Dialogo" unique_id=330605708]
-position = Vector2(1022, 119)
+position = Vector2(1062, 119)
 texture = ExtResource("3_s555q")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Ninan" unique_id=872145635]
@@ -72,7 +75,7 @@ color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
 [node name="Rumi" type="Sprite2D" parent="Dialogo" unique_id=1899226050]
-position = Vector2(1022, 313)
+position = Vector2(1062, 313)
 texture = ExtResource("4_cmdfd")
 
 [node name="ColorRect" type="ColorRect" parent="Dialogo/Rumi" unique_id=1876669205]
@@ -89,9 +92,9 @@ metadata/_edit_use_anchors_ = true
 z_index = 1
 layout_mode = 0
 offset_left = 457.0
-offset_top = 457.0
+offset_top = 545.0
 offset_right = 529.0
-offset_bottom = 524.0
+offset_bottom = 612.0
 theme_override_font_sizes/font_size = 32
 text = ">"
 
@@ -99,9 +102,9 @@ text = ">"
 z_index = 1
 layout_mode = 0
 offset_left = 357.0
-offset_top = 457.0
+offset_top = 545.0
 offset_right = 429.0
-offset_bottom = 524.0
+offset_bottom = 612.0
 theme_override_font_sizes/font_size = 32
 text = "<"
 
@@ -110,9 +113,9 @@ visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 790.0
-offset_top = 417.0
+offset_top = 505.0
 offset_right = 1108.0
-offset_bottom = 513.0
+offset_bottom = 601.0
 theme_override_font_sizes/font_size = 64
 text = "Continuar"
 

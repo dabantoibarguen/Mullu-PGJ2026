@@ -140,6 +140,8 @@ func end_fishing(score):
 	
 
 func _on_spawn_timeout() -> void:
+	if Global.tutorial_index == 3:
+		return
 	var pos = fish_area.to_global(get_random_point())
 	var indicador = indicador_pesca.instantiate()
 	indicador.player = anzuelo
@@ -191,7 +193,7 @@ func get_random_point() -> Vector2:
 	
 func _input(ev: InputEvent) -> void:
 	if ev is InputEventKey:
-		if ev.is_pressed() and ev.keycode == KEY_ESCAPE:
+		if ev.is_pressed() and ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
 			pescados = int(pescados)
 			resultado_pesca.emit(pescados)
 			queue_free()
