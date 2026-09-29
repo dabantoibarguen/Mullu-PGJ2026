@@ -11,33 +11,23 @@ var is_typing: bool = false
 
 var faces = []
 
-var guion = [
-  [["Ninan"], "¡Rumi! Tienes que seguirme. El abuelo acaba de regresar del mar, pero parece que se encontró con algo y está herido."],
-  [["Rumi"], "Eso no es posible. Nuestro abuelo es el mejor pescador, es imposible que algo le haya pasa…"],
-  [["Ninan"], "No hay tiempo para esto Rumi ¡tenemos que ir!"],
-  [["Ninan", "Rumi"], "¡ABUELO! ¡TU BRAZO ESTÁ HERIDO! ¿QUÉ PASÓ?"],
-  [["Abuelo"], "Queridos nietos. No se preocupen, todo está bien. Les contaré mi historia… Estaba pescando en el mar y estaba ya bastante adentro, cuando el agua empieza a oscurecer. Entonces el viento empezó a soplar con fuerza y vi como varias aves se dirigían a la costa y los peces se resguardaban en las profundidades. Entonces supe que se avecinaba una tormenta. Pensé en regresar, pero entonces vi a la distancia una isla que no conocía. Cometí el error de ir a explorarla e ignoré las señales."],
-  [["Rumi"], "Abuelo, tu siempre nos dices que debemos tener cuidado con el mar. ¿Por qué no te fuiste?"],
-  [["Abuelo"], "Fui arrogante. Pensé que tendría el tiempo y la habilidad de salirme con la mía. Al llegar pude ver un pez enorme, como ningún otro, pero en ese instante la tormenta se desató. Intenté regresar pero el oleaje era muy fuerte. Una de las olas arremetió contra el remo y así fue como me hice estas heridas."],
-  [["Ninan"], "Ese pez, ¿qué tan grande era?"],
-  [["Abuelo"], "Más grande que un totora. Pero eso no importa ahora, cuando me recupere iré a buscarlo. Hasta entonces, ustedes deberán hacerse cargo de la pesca."],
-  [["Rumi"], "No te preocupes abuelo, nosotros nos haremos cargo. No te defraudaremos."]
-]
+var guion
 
 var cur_index = 0
 
 func _ready() -> void:
 	faces = [$Abuelo, $Ninan, $Rumi]
-	new_dialogue(guion[cur_index])
 	back.disabled = true
 
+func start():
+	new_dialogue(guion[cur_index])
 
 func new_dialogue(dialogue):
 	var chars = dialogue[0]
 	var face_qty = 0
 	for face in faces:
 		if face.name in chars:
-			face.position.y = 119.0 + 119 * (2*face_qty)
+			face.position.y = 115.0 + 115 * (2*face_qty)
 			face.visible = true
 			face_qty += 1
 		else:

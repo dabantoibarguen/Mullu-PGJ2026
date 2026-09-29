@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ciqe6nrb8q8hy" path="res://title_screen/title.gd" id="1_dm118"]
 [ext_resource type="Texture2D" uid="uid://cg1sbvus74gy4" path="res://title_screen/assets/title 1.png" id="1_sayff"]
+[ext_resource type="AudioStream" uid="uid://qvep8iw1mrfr" path="res://ciudad/assets/Main Theme _ City.mp3" id="3_dsiwd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlynv"]
 bg_color = Color(0.5764706, 0.14117648, 0.101960786, 1)
@@ -22,5 +23,11 @@ offset_bottom = 590.0
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlynv")
 text = "EMPEZAR PARTIDA"
+
+[node name="BGM_Main" type="AudioStreamPlayer" parent="." unique_id=1814788558]
+stream = ExtResource("3_dsiwd")
+volume_db = -8.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

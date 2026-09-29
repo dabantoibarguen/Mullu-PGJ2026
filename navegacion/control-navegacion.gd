@@ -34,9 +34,14 @@ var energy: int = 150:
 # 0-39 noche
 
 func _ready() -> void:
+	var tween = create_tween()
+	tween.tween_property($BGM_Nav, "volume_db", 0.0, 0.5)
 	if Global.tutorial:
 		var dialogue = Global.dialogo.instantiate()
 		add_child(dialogue)
+		dialogue.new_text([
+  [["Ninan"], "¡Hermano! Finalmente estamos en el mar. ¿Qué hacemos?"],
+  [["Rumi"], "Lo primero es movernos. ¡Ayúdame con el remo!"],])
 	menu.update_energy(energy)
 
 func cambio_tarde():

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w5cbcvno2fi1" path="res://dialogo.gd" id="1_7648e"]
 [ext_resource type="Script" uid="uid://bqk518q7jt2hl" path="res://blocker.gd" id="1_kkome"]
+[ext_resource type="Script" uid="uid://bg7qp2i7yiog2" path="res://dialogue-control.gd" id="1_s555q"]
 [ext_resource type="Texture2D" uid="uid://dkualxx0w5b5t" path="res://title_screen/assets/abuelo.png" id="2_kkome"]
 [ext_resource type="Texture2D" uid="uid://dr6jn1jq2u618" path="res://title_screen/assets/niña4.png" id="3_s555q"]
 [ext_resource type="Texture2D" uid="uid://bl7ycu8ehgwjx" path="res://title_screen/assets/niño.png" id="4_cmdfd"]
@@ -16,6 +17,7 @@ shadow_color = Color(0, 0, 0, 0.78039217)
 
 [node name="Dialogos" type="CanvasLayer" unique_id=1475865745]
 layer = 10
+script = ExtResource("1_s555q")
 
 [node name="Blocker" type="Control" parent="." unique_id=201050157]
 layout_mode = 3

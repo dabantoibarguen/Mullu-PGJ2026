@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1dr2ky1ix81v"
+path="res://.godot/imported/Boat (Night).mp3-e31803c264e00832a058f10570e580fe.mp3str"
+
+[deps]
+
+source_file="res://title_screen/assets/Boat (Night).mp3"
+dest_files=["res://.godot/imported/Boat (Night).mp3-e31803c264e00832a058f10570e580fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

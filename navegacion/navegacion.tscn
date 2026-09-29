@@ -156,6 +156,7 @@ texture = SubResource("GradientTexture2D_nlynv")
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
 stream = ExtResource("8_0jc1b")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 

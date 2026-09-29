@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmlmgqpe43sdr" path="res://ciudad/assets/casa.png" id="4_owc2c"]
 [ext_resource type="Texture2D" uid="uid://cp2asrw3gl4mf" path="res://ciudad/assets/tienda.png" id="4_rfn37"]
 [ext_resource type="AudioStream" uid="uid://qvep8iw1mrfr" path="res://ciudad/assets/Main Theme _ City.mp3" id="8_owc2c"]
+[ext_resource type="AudioStream" uid="uid://b1dr2ky1ix81v" path="res://title_screen/assets/Boat (Night).mp3" id="9_xd2wj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r20d7"]
 texture = ExtResource("3_d62el")
@@ -122,9 +123,14 @@ scale = Vector2(1.0085974, 0.9196818)
 [node name="Upg_Ceremonial" parent="AaronBlur" unique_id=1973387419 instance=ExtResource("4_gmgtk")]
 layout_mode = 0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=894466556]
+[node name="BGM_Main" type="AudioStreamPlayer" parent="." unique_id=894466556]
 stream = ExtResource("8_owc2c")
 autoplay = true
+parameters/looping = true
+
+[node name="AbueloHerido" type="AudioStreamPlayer" parent="." unique_id=1393429034]
+stream = ExtResource("9_xd2wj")
+volume_db = -80.0
 parameters/looping = true
 
 [connection signal="mouse_entered" from="Templo" to="." method="_on_templo_mouse_entered"]
