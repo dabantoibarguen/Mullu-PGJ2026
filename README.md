@@ -2,6 +2,9 @@
 
 _____________________
 
+# Link
+## https://dabantoibarguen.itch.io/mullu
+
 - Tutorial (WIP), go Global.gd -> tutorial = false
 - FIX THE ENERGY MANAGEMENT INSIDE NAVIGATION (cuando este en 0 te manda a la ciudad, algun mensaje de resumen del dia facil)
 **- Temperaturas**
