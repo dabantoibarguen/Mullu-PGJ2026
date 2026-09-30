@@ -140,8 +140,16 @@ func randomize_fish():
 		if rand < possible_fish[fish][0]:
 			the_fish = fish
 			break
-	size += randi_range(0, 40) + (15*possible_fish[the_fish][1]) + 15 
+	size = randi_range(0, 40) + (15*possible_fish[the_fish][1]) + 15 
 	# met * 15 + 15 allows for 20% chance per condition met, funny.
+	if Global.skilltree.get("Anzuelo 3").get("enabled") == true:
+		size = size*1.3
+	elif Global.skilltree.get("Anzuelo 2").get("enabled") == true:
+		size = size*1.2
+	elif Global.skilltree.get("Anzuelo 1").get("enabled") == true:
+		size = size*1.1
+	if size>100:
+		size=100
 	return [the_fish, size]
 		
 func randomize_mullu():

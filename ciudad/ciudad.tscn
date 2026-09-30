@@ -86,7 +86,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_nlynv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xd2wj")
 
 [node name="MainText" type="Label" parent="." unique_id=908198024]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(375, 0)
 offset_left = 760.0
 offset_top = 8.0
 offset_right = 1213.0

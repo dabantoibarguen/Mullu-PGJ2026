@@ -163,8 +163,21 @@ func _unhandled_input(ev: InputEvent) -> void:
 			display_controls()
 
 func end_navigation():
-	move_action = false
 	var dialogue = Global.dialogo.instantiate()
+	if nav.energy > 0 and nav.pescado < Global.fish_quota:
+		dialogue.type = "Resumen"
+		add_child(dialogue)
+		dialogue.new_text([
+			[[], "RESULTADOS ACTUALES
+			\nPuntaje de Pesca: " + str(nav.pescado) +
+		"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
+		"\nPuntaje de Mullu: " + str(nav.mullu) +
+		"\n\nAun necesitas: " + str(Global.fish_quota - nav.pescado) + " puntos de pesca."+
+		"\n¡No te rindas!"]
+	])
+	return
+	
+	move_action = false
 	Global.total_fish += nav.pescado - Global.fish_quota
 	Global.total_mullu += nav.mullu
 	if nav.pescado < 0:
