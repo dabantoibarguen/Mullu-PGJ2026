@@ -40,3 +40,7 @@ func update_mullu(mullu):
 
 func _on_volver_pressed() -> void:
 	get_tree().current_scene.main.end_navigation()
+
+
+func _on_controles_pressed() -> void:
+	get_tree().current_scene.main.display_controls()

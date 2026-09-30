@@ -43,8 +43,8 @@ func _ready() -> void:
 		var dialogue = Global.dialogo.instantiate()
 		add_child(dialogue)
 		dialogue.new_text([
-	[["Ninan"], "¡Hermano! Finalmente estamos en el mar. ¿Qué hacemos?"],
-	[["Rumi"], "Lo primero es movernos. ¡Ayúdame con el remo!"],
+	[["Laia"], "¡Hermano! Finalmente estamos en el mar. ¿Qué hacemos?"],
+	[["Mitso"], "Lo primero es movernos. ¡Ayúdame con el remo!"],
 	[[], "Instrucciones:\n- Haz clic en el boton \"Navegar\" o presiona la Tecla \"1\" para iniciar el modo de navegación.\n\n	Podras ver las casillas navegables conectadas con una línea verde. Haz clic a la casilla a la cual desees moverte ¡pero recuerda que cada casilla te costara energía!"]
 		])
 		menu.navBtn.disabled = false
@@ -52,6 +52,9 @@ func _ready() -> void:
 		menu.buceoBtn.disabled = true
 	menu.update_energy(energy)
 	
+	
+func arreglar_musica():
+	pass
 
 func cambio_tarde():
 	hora = "Tarde"

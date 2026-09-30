@@ -27,9 +27,10 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed(child, data) -> void:
+	fish_counter.text = str(Global.total_fish)
 	if Global.total_fish >= data.get("cost"):
 		Global.total_fish -= data.get("cost")
-		fish_counter.text = str(Global.total_mullu)
+		fish_counter.text = str(Global.total_fish)
 		Global.skilltree.get(child.name)["enabled"] = true
 		child.disabled = true
 	
@@ -41,6 +42,7 @@ func _on_mouse_exited(child) -> void:
 
 
 func _on_exit_pressed() -> void:
+	self.visible = false
 	get_parent().get_parent().blur.visible = false
 
 

@@ -79,9 +79,9 @@ text = "Navegar"
 
 [node name="Volver" type="Button" parent="." unique_id=1802885235]
 z_index = 4
-offset_left = 913.63666
+offset_left = 906.3639
 offset_top = 5.4545455
-offset_right = 1085.6367
+offset_right = 1078.364
 offset_bottom = 55.454514
 tooltip_text = "Presiona \"1\""
 theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
@@ -92,6 +92,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_asrx5")
 toggle_mode = true
 text = "Volver al pueblo"
+
+[node name="Controles" type="Button" parent="." unique_id=1066569691]
+z_index = 4
+offset_left = 760.00024
+offset_top = 5.4545455
+offset_right = 890.00024
+offset_bottom = 55.454544
+tooltip_text = "Presiona \"1\""
+theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_asrx5")
+toggle_mode = true
+text = "Controles"
 
 [node name="Psc" type="Button" parent="." unique_id=63243704]
 offset_left = 501.81818
@@ -129,18 +145,18 @@ color = Color(0.28235295, 0.2784314, 0.2901961, 0.6)
 
 [node name="Pescao" type="TextureRect" parent="." unique_id=447390552]
 material = SubResource("ShaderMaterial_8mrxu")
-offset_left = 450.9091
+offset_left = 356.36356
 offset_top = 5.4545455
-offset_right = 492.9091
+offset_right = 398.36356
 offset_bottom = 27.454546
 scale = Vector2(3.4632041, 2.2394621)
 texture = ExtResource("3_asrx5")
 
 [node name="Mullus" type="TextureRect" parent="." unique_id=778485603]
 material = SubResource("ShaderMaterial_8mrxu")
-offset_left = 711.81793
+offset_left = 588.1814
 offset_top = 5.454546
-offset_right = 753.81793
+offset_right = 630.1814
 offset_bottom = 27.454546
 scale = Vector2(2.941953, 2.3058167)
 texture = ExtResource("4_0lkfs")
@@ -148,9 +164,9 @@ texture = ExtResource("4_0lkfs")
 [node name="EnergyL" type="Label" parent="." unique_id=487684872]
 z_index = 2
 custom_minimum_size = Vector2(35, 0)
-offset_left = 274.5454
+offset_left = 209.09085
 offset_top = 7.9999995
-offset_right = 309.5454
+offset_right = 244.0909
 offset_bottom = 36.000004
 rotation = -0.00016798022
 scale = Vector2(1.6881286, 1.4749321)
@@ -164,9 +180,9 @@ vertical_alignment = 1
 
 [node name="PescaoL" type="Label" parent="." unique_id=126054377]
 custom_minimum_size = Vector2(30, 0)
-offset_left = 516.3638
-offset_top = 8.454543
-offset_right = 559.94214
+offset_left = 421.81836
+offset_top = 8.454542
+offset_right = 465.39685
 offset_bottom = 36.465363
 rotation = -5.5997105e-05
 scale = Vector2(1.688129, 1.4749321)
@@ -179,9 +195,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MulluL" type="Label" parent="." unique_id=875346452]
-offset_left = 771.81824
-offset_top = 7.999999
-offset_right = 804.81824
+offset_left = 648.1821
+offset_top = 7.9999986
+offset_right = 681.1821
 offset_bottom = 36.000008
 rotation = -5.5997105e-05
 scale = Vector2(1.688129, 1.4749321)
@@ -194,23 +210,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Energia" type="TextureRect" parent="." unique_id=1145415029]
-offset_left = 230.90927
+offset_left = 165.45473
 offset_top = 5.0
-offset_right = 272.90927
+offset_right = 207.45473
 offset_bottom = 27.0
 scale = Vector2(2.6111493, 2.191529)
 texture = ExtResource("7_l84c0")
 expand_mode = 1
 
 [node name="Temp" type="TextureRect" parent="." unique_id=561308685]
-offset_left = 65.454544
-offset_top = -5.4545465
-offset_right = 556.8024
+offset_left = 24.545454
+offset_top = -5.454546
+offset_right = 515.89343
 offset_bottom = 340.38803
 scale = Vector2(0.20722221, 0.19977558)
 texture = ExtResource("2_8mrxu")
 
 [connection signal="pressed" from="Nav" to="." method="_on_nav_pressed"]
 [connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="Controles" to="." method="_on_controles_pressed"]
 [connection signal="pressed" from="Psc" to="." method="_on_psc_pressed"]
 [connection signal="pressed" from="Bco" to="." method="_on_bco_pressed"]

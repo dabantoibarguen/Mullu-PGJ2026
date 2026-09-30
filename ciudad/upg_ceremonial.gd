@@ -36,4 +36,5 @@ func _on_mouse_exited(child) -> void:
 
 
 func _on_exit_pressed() -> void:
+	self.visible = false
 	get_parent().get_parent().blur.visible = false

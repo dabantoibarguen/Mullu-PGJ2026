@@ -62,12 +62,12 @@ scale = Vector2(1.1437867, 1.1956502)
 color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
-[node name="Ninan" type="Sprite2D" parent="Dialogo" unique_id=330605708]
+[node name="Laia" type="Sprite2D" parent="Dialogo" unique_id=330605708]
 position = Vector2(1050.8368, 133.03903)
 scale = Vector2(0.9676214, 1.1179751)
 texture = ExtResource("3_s555q")
 
-[node name="ColorRect" type="ColorRect" parent="Dialogo/Ninan" unique_id=872145635]
+[node name="ColorRect" type="ColorRect" parent="Dialogo/Laia" unique_id=872145635]
 z_index = -1
 offset_left = -104.0
 offset_top = -118.0
@@ -77,12 +77,12 @@ scale = Vector2(1.1437867, 1.1956502)
 color = Color(0.05490196, 0.05490196, 0.05490196, 0.7529412)
 metadata/_edit_use_anchors_ = true
 
-[node name="Rumi" type="Sprite2D" parent="Dialogo" unique_id=1899226050]
+[node name="Mitso" type="Sprite2D" parent="Dialogo" unique_id=1899226050]
 position = Vector2(1050.8368, 349.9262)
 scale = Vector2(0.9676214, 1.1179751)
 texture = ExtResource("4_cmdfd")
 
-[node name="ColorRect" type="ColorRect" parent="Dialogo/Rumi" unique_id=1876669205]
+[node name="ColorRect" type="ColorRect" parent="Dialogo/Mitso" unique_id=1876669205]
 z_index = -1
 offset_left = -104.0
 offset_top = -118.0

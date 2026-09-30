@@ -163,35 +163,11 @@ func _unhandled_input(ev: InputEvent) -> void:
 			display_controls()
 
 func end_navigation():
-	var dialogue = Global.dialogo.instantiate()
-	if nav.energy > 0 and nav.pescado < Global.fish_quota:
-		dialogue.type = "Resumen"
-		add_child(dialogue)
-		dialogue.new_text([
-			[[], "RESULTADOS ACTUALES
-			\nPuntaje de Pesca: " + str(nav.pescado) +
-		"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
-		"\nPuntaje de Mullu: " + str(nav.mullu) +
-		"\n\nAun necesitas: " + str(Global.fish_quota - nav.pescado) + " puntos de pesca."+
-		"\n¡No te rindas!"]
-	])
-	return
-	
 	move_action = false
-	Global.total_fish += nav.pescado - Global.fish_quota
-	Global.total_mullu += nav.mullu
-	if nav.pescado < 0:
-		dialogue.type = "Game Over"
-		add_child(dialogue)
-		dialogue.new_text([
-			[[], "RESULTADOS DEL DÍA
-			\nPuntaje de Pesca: " + str(nav.pescado) +
-		"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
-		"\nTotal Extra: " + "0" +
-		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
-		"\n\nNo capturaste suficiente..."]
-	])
-	else:
+	var dialogue = Global.dialogo.instantiate()
+	if nav.pescado > Global.fish_quota:
+		Global.total_fish += nav.pescado - Global.fish_quota
+		Global.total_mullu += nav.mullu
 		dialogue.type = "Resumen Final"
 		add_child(dialogue)
 		dialogue.new_text([
@@ -201,7 +177,35 @@ func end_navigation():
 		"\nTotal Extra: " + str(Global.total_fish) +
 		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
 		"\n\n¡Buen trabajo!"]
-	])
+		])
+		return
+	
+	if nav.pescado < Global.fish_quota:
+		if nav.energy > 0:
+			dialogue.type = "Resumen"
+			add_child(dialogue)
+			dialogue.new_text([
+				[[], "RESULTADOS ACTUALES
+				\nPuntaje de Pesca: " + str(nav.pescado) +
+			"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
+			"\nPuntaje de Mullu: " + str(nav.mullu) +
+			"\n\nAun necesitas: " + str(Global.fish_quota - nav.pescado) + " puntos de pesca."+
+			"\n¡No te rindas!"]
+			])
+		else:
+			dialogue.type = "Game Over"
+			add_child(dialogue)
+			dialogue.new_text([
+			[[], "RESULTADOS DEL DÍA
+			\nPuntaje de Pesca: " + str(nav.pescado) +
+			"\nPuntos de Pesca Requeridos: " + str(Global.fish_quota) +
+			"\nTotal Extra: " + "0" +
+			"\n\nPuntaje de Mullu: " + str(nav.mullu) +
+			"\n\nNo capturaste suficiente..."]
+			])
+	
+	
+	
 
 func display_controls():
 	var dialogue = Global.dialogo.instantiate()
@@ -211,7 +215,7 @@ func display_controls():
 		[[],
 		"Controles de Navegación: \n
 Esc = Abrir el menú de puntuación requerida \n
-Tab = Abrir el menú de controles \n
+Tab = Abrir el menú de controles (¡funciona en Pesca y Buceo!) \n\n
 Mouse 1 = Seleccionar botones / Seleccionar casillas \n
 1 = Opcion de Navegar\n
 2 = Opcion de Pescar\n
@@ -249,7 +253,7 @@ func resume_nav():
 
 func add_fish(total_fish):
 	resume_nav()
-
+	nav.arreglar_musica()
 	if (Global.blessings.get("Sacred Sea").get("enabled")==true):
 		total_fish = total_fish*1.10
 	nav.pescado += total_fish
@@ -262,6 +266,7 @@ func add_fish(total_fish):
 	
 func add_mullu(total_mullu):
 	resume_nav()
+	nav.arreglar_musica()
 	nav.mullu += total_mullu
 	navMenu.update_mullu(nav.mullu)
 	if nav.energy <= 0:
@@ -277,7 +282,7 @@ func navegar():
 	if oldTracer:
 		remove_child(oldTracer)
 	unhovered_cell = hovered_cell
-	if move_action:
+	if move_action or Global.tutorial_index < 3:
 		navMenu.pescaBtn.disabled = true
 		navMenu.buceoBtn.disabled = true
 	else:
@@ -340,13 +345,13 @@ func check_tutorial():
 		navMenu.pescaBtn.disabled = false
 		navMenu.buceoBtn.disabled = true
 		dialogue.new_text([
-   	[["Ninan"], "¡Ahí! Me parece que vi un pez"],
-  	[["Rumi"], "¡Silencio! Si haces mucho ruido lo vas a espantar…"],
+   	[["Laia"], "¡Ahí! Me parece que vi un pez"],
+  	[["Mitso"], "¡Silencio! Si haces mucho ruido lo vas a espantar…"],
 	[[], "Instrucciones:\n- Haz clic en el boton \"Pescar\" o presiona la Tecla \"2\" para iniciar el minijuego de pesca. No podrás pescar en una misma casilla hasta que cambie la hora, ni cuando estes en modo de navegación.\n\n	¡Pescar también te costará energía, pero es importante para ayudar a tu pueblo!"]
 	])
 	elif Global.tutorial_index == 3:
 		dialogue.new_text([
-  [["Rumi"], "¡Yo me encargo de esto!"],
+  [["Mitso"], "¡Yo me encargo de esto!"],
   [[], "Instrucciones de Pesca:\nUsa las flechas o las teclas WASD para mover el indicador. Puedes acabar el juego antes con la tecla \"Escape\". Mantén el indicador encima de un objetivo al menos un segundo para lanzar la soga\n\nInstrucciones de Captura:\nCuando tu soga alcance a tu objetivo, empezará un minijuego de precisión.\nUsa la barra espaciadora para hacer subir la linea blanca e intenta mantenerla en el espacio escurridizo la mayor cantidad de tiempo posible ¡Buena suerte!"]
 	])
 	elif Global.tutorial_index == 4:
@@ -354,14 +359,14 @@ func check_tutorial():
 		navMenu.pescaBtn.disabled = true
 		navMenu.buceoBtn.disabled = false
 		var txt = [
-  	[["Rumi"], "Dejemos este lugar por ahora. El abuelo nos advirtió sobre respetar el balance. También sería bueno explorar un poco…"],
-  	[["Ninan"], "¡Espera! Amarra esa soga a mi cintura primero. Quiero intentar algo antes de irnos."],
+  	[["Mitso"], "Dejemos este lugar por ahora. El abuelo nos advirtió sobre respetar el balance. También sería bueno explorar un poco…"],
+  	[["Laia"], "¡Espera! Amarra esa soga a mi cintura primero. Quiero intentar algo antes de irnos."],
   	[[], "Instrucciones:\nHaz clic en el botón \"Bucear\" o presiona la tecla \"3\" para iniciar el minijuego de buceo.\n\nBucear te costará energía, pero podrás recolectar el precioso Mullu en las profundidades."]
 		]
 		if nav.pescado > 0:
-			txt.push_front([["Rumi"], "¡Excelente!"])
+			txt.push_front([["Mitso"], "¡Excelente!"])
 		else:
-			txt.push_front([["Rumi"], "Eso pudo salir mejor."])
+			txt.push_front([["Mitso"], "Eso pudo salir mejor."])
 		dialogue.new_text(txt)
 	elif Global.tutorial_index == 5:
 		Global.tutorial = false

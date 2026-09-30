@@ -19,9 +19,11 @@ var cur_index = 0
 
 func _ready() -> void:
 	grab_focus()
-	faces = [$Abuelo, $Ninan, $Rumi]
+	faces = [$Abuelo, $Laia, $Mitso]
 
 func start():
+	if guion == [] or guion.size() == 0:
+		get_parent().queue_free()
 	if guion != []:
 		new_dialogue(guion[cur_index])
 		forward.disabled = false
@@ -102,18 +104,18 @@ func _on_back_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
-	if Global.tutorial:
+	if mode == "Resumen":
+		get_parent().queue_free()
+	elif mode == "Resumen Final":
+		get_parent().queue_free()
+		get_tree().change_scene_to_file("res://ciudad/ciudad.tscn")
+	elif mode == "Game Over":
+		get_parent().queue_free()
+		get_tree().reload_current_scene()
+	elif Global.tutorial:
 		if Global.tutorial_index in [1, 2, 3, 4]:
 			block.visible = false
 			get_parent().queue_free()
 		Global.tutorial_index += 1
 		print(Global.tutorial_index)
-	if mode in "Resumen":
-		get_parent().queue_free()
-	if mode == "Resumen Final":
-		get_parent().queue_free()
-		get_tree().change_scene_to_file("res://ciudad/ciudad.tscn")
-	if mode == "Game Over":
-		get_parent().queue_free()
-		get_tree().reload_current_scene()
 	
