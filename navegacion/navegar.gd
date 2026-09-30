@@ -159,13 +159,15 @@ func _unhandled_input(ev: InputEvent) -> void:
 			buceoButton.button_pressed = !(buceoButton.button_pressed)
 		if ev.keycode == KEY_ESCAPE:
 			display_summary()
+		if ev.keycode == KEY_TAB:
+			display_controls()
 
 func end_navigation():
 	move_action = false
 	var dialogue = Global.dialogo.instantiate()
 	Global.total_fish += nav.pescado - Global.fish_quota
 	Global.total_mullu += nav.mullu
-	if Global.total_fish < 0:
+	if nav.pescado < 0:
 		dialogue.type = "Game Over"
 		add_child(dialogue)
 		dialogue.new_text([
@@ -187,6 +189,21 @@ func end_navigation():
 		"\n\nPuntaje de Mullu: " + str(nav.mullu) +
 		"\n\n¡Buen trabajo!"]
 	])
+
+func display_controls():
+	var dialogue = Global.dialogo.instantiate()
+	dialogue.type = "Resumen"
+	add_child(dialogue)
+	dialogue.new_text([
+		[[],
+		"Controles de Navegación: \n
+Esc = Abrir el menú de puntuación requerida \n
+Tab = Abrir el menú de controles \n
+Mouse 1 = Seleccionar botones / Seleccionar casillas \n
+1 = Opcion de Navegar\n
+2 = Opcion de Pescar\n
+3 = Opcion de Buceo"]
+		])
 
 func display_summary():
 	var dialogue = Global.dialogo.instantiate()

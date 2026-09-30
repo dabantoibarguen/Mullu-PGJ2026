@@ -56,10 +56,11 @@ func _ready() -> void:
 func cambio_tarde():
 	hora = "Tarde"
 	var tween5 = create_tween()
-	tween5.tween_property($BGM_Nav, "volume_db", -80.0, 0.5)
+	tween5.tween_property($BGM_Nav, "volume_db", -80.0, 6)
 	
+	$BGM_NavTarde.play()
 	var tween6 = create_tween()
-	tween5.tween_property($BGM_NavTarde, "volume_db", -8.0, 0.5)
+	tween6.tween_property($BGM_NavTarde, "volume_db", 0.0, 1)
 	
 	
 	main.tile_map_data = map_tarde.tile_map_data
@@ -75,6 +76,14 @@ func cambio_tarde():
 	
 func cambio_noche():
 	main.tile_map_data = map_noche.tile_map_data
+	
+	var tween5 = create_tween()
+	tween5.tween_property($BGM_NavTarde, "volume_db", -80.0, 6)
+	
+	$BGM_NavNoche.play()
+	var tween6 = create_tween()
+	tween6.tween_property($BGM_NavNoche, "volume_db", 0.0, 1)
+	
 	hora = "Noche"
 	if (Global.blessings.get("Night Vision").get("enabled")==false):
 		main.boat.vision_range = 1
@@ -162,9 +171,7 @@ func randomize_mullu():
 			for mul in mullus:
 				if rand > mullus[mul][0]:
 					mid_mullus.append(mul)
-
 					break
-
 
 	for i in range(deep_qty):
 		var rand = randf_range(0, max_num)

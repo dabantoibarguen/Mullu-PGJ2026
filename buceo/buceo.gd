@@ -88,3 +88,27 @@ func pass_out():
 	await get_tree().create_timer(1.6).timeout
 	resultado_buceo.emit(0)
 	queue_free()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		if event.keycode == KEY_TAB:
+			display_controls()
+			
+func display_controls():
+	var dialogue = Global.dialogo.instantiate()
+	dialogue.type = "Resumen"
+	add_child(dialogue)
+	dialogue.new_text([
+		[[],
+		"Controles de Buceo (Exploración): \n
+WASD = Movimiento para el buceador \n
+Mouse 1 = \n- Seleccionar Mullu (a distancia apropiada) 
+\n - Presionar Escapar (a distancia apropiada)
+\n\n Siguiente pagina para los controles de recorte"],
+[[],
+		"Controles de Buceo (Recorte): \n
+A / Flecha Izquierda = Rotar mano hacia la izquierda \n
+D / Flecha Derecha = Rotar mano hacia la derecha \n
+W / Flecha Arriba = Avanzar mano en la dirección apuntada \n
+S / Flecha Abajo = Retroceder mano en la dirección opuesta"]
+		])

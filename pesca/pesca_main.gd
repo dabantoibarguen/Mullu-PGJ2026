@@ -195,14 +195,27 @@ func get_random_point() -> Vector2:
 		
 	return p1 + r1 * (p2 - p1) + r2 * (p3 - p1)
 	
-	
 func _input(ev: InputEvent) -> void:
-	if ev is InputEventKey:
-		if ev.is_pressed() and ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
+	if ev is InputEventKey and ev.is_pressed():
+		if ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
 			pescados = int(pescados)
 			resultado_pesca.emit(pescados)
 			get_viewport().set_input_as_handled()
 			queue_free()
+		if ev.keycode == KEY_TAB:
+			display_controls()
+			
+func display_controls():
+	var dialogue = Global.dialogo.instantiate()
+	dialogue.type = "Resumen"
+	add_child(dialogue)
+	dialogue.new_text([
+		[[],
+		"Controles de Pesca: \n
+Esc = Volver a Navegación/terminar el juego \n
+WASD = Movimiento para el indicador de anzuelo \n
+Espacio = Subir la barra del jugador (durante modo de captura)"]
+		])
 
 func _physics_process(_delta: float) -> void:
 	pass

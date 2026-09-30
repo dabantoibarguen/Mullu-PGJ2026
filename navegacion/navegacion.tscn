@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://dkc5445skki3v" path="res://navegacion/fog.gd" id="5_hs310"]
 [ext_resource type="PackedScene" uid="uid://dmpgjq1kutci1" path="res://navegacion/nav_menu.tscn" id="6_bws8q"]
 [ext_resource type="AudioStream" uid="uid://grpdi0e3wl53" path="res://navegacion/assets/Boat (Day).mp3" id="8_qyhsc"]
+[ext_resource type="AudioStream" uid="uid://4gesl7kdtgn6" path="res://navegacion/assets/Boat (Afternoon).mp3" id="9_nhagd"]
 [ext_resource type="AudioStream" uid="uid://btag2j1f07hdu" path="res://navegacion/assets/Sonidos de mar para navegar.mp3" id="9_qyhsc"]
+[ext_resource type="AudioStream" uid="uid://cd3b0a15b26we" path="res://navegacion/assets/Boat (Night).mp3" id="10_5yxcr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyhsc"]
 texture = ExtResource("3_yl48w")
@@ -98,6 +100,13 @@ colors = PackedColorArray(1, 1, 1, 0.4, 1, 1, 1, 0.4)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yl48w"]
 gradient = SubResource("Gradient_0jc1b")
+
+[sub_resource type="Gradient" id="Gradient_nhagd"]
+offsets = PackedFloat32Array(0, 0.38679245)
+colors = PackedColorArray(0, 0, 0, 0.05882353, 1, 1, 1, 0.2784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nhagd"]
+gradient = SubResource("Gradient_nhagd")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nmmsk"]
 texture = ExtResource("3_yl48w")
@@ -204,7 +213,6 @@ tile_set = SubResource("TileSet_f5k2l")
 occlusion_enabled = false
 
 [node name="MorningLight" type="PointLight2D" parent="." unique_id=993326913]
-visible = false
 position = Vector2(398.49997, -510)
 scale = Vector2(88.83105, -112.918884)
 color = Color(0.12156863, 0.43529412, 0.49019608, 1)
@@ -222,28 +230,29 @@ range_layer_max = 9
 texture = SubResource("GradientTexture2D_yl48w")
 
 [node name="NightLight" type="PointLight2D" parent="." unique_id=227851107]
+visible = false
 position = Vector2(407, -510.50006)
 scale = Vector2(102.647255, 196.92056)
 color = Color(0.8439675, 0.9006358, 0.5795142, 1)
 energy = 0.0
 blend_mode = 1
 range_layer_max = 9
+texture = SubResource("GradientTexture2D_nhagd")
 
 [node name="BGM_Nav" type="AudioStreamPlayer" parent="." unique_id=1603502697]
 stream = ExtResource("8_qyhsc")
+volume_db = -8.0
 autoplay = true
 parameters/looping = true
 
 [node name="BGM_NavTarde" type="AudioStreamPlayer" parent="." unique_id=989481842]
-stream = ExtResource("8_qyhsc")
+stream = ExtResource("9_nhagd")
 volume_db = -80.0
-autoplay = true
 parameters/looping = true
 
 [node name="BGM_NavNoche" type="AudioStreamPlayer" parent="." unique_id=78474743]
-stream = ExtResource("8_qyhsc")
+stream = ExtResource("10_5yxcr")
 volume_db = -80.0
-autoplay = true
 parameters/looping = true
 
 [node name="Sea_Effects" type="AudioStreamPlayer" parent="." unique_id=729750173]

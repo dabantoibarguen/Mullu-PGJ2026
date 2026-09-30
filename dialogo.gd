@@ -26,13 +26,16 @@ func start():
 		new_dialogue(guion[cur_index])
 		forward.disabled = false
 	if guion.size() <= 1 or mode == "Resumen":
+		typing_speed = 70
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		siguiente.text = "CERRAR"
 		siguiente.visible = true
 	if mode == "Resumen Final":
+		typing_speed = 50
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		siguiente.text = "Volver al pueblo"
 	if mode == "Game Over":
+		typing_speed = 40
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		siguiente.text = "Intenta otra vez"
 
@@ -105,7 +108,7 @@ func _on_continue_pressed() -> void:
 			get_parent().queue_free()
 		Global.tutorial_index += 1
 		print(Global.tutorial_index)
-	if mode == "Resumen":
+	if mode in "Resumen":
 		get_parent().queue_free()
 	if mode == "Resumen Final":
 		get_parent().queue_free()

@@ -2,7 +2,7 @@ extends Node
 
 var dialogo = preload("res://dialogo.tscn")
 
-var tutorial = true
+var tutorial = false
 var tutorial_index = 0:
 	set(i):
 		tutorial_index = i
@@ -104,19 +104,19 @@ var blessings = {
 	},
 	"Vigor" : {
 		"label" :     "Cuerpo Vigoroso",
-		"description" : "Bendición de Tacaynamo, el fundador. Amuenta tu energia al navegar.",
+		"description" : "Bendición de Tacaynamo, el fundador. Aumenta tu energia al navegar.",
 		"enabled" : false,
 		"cost" : 3
 	},
 	"Pico" : {
 		"label" :     "Pico de Pelícano",
-		"description" : "Bendicion de Pelícano. Te da la oportunidad de atrapar más peces.",
+		"description" : "Bendicion del Pelícano, el ave rey. Te da la oportunidad de atrapar más peces.",
 		"enabled" : false,
 		"cost" : 3
 	},
 	"Nado" : {
 		"label" : "Buceo Sagrado",
-		"description" : "Bendición de Pelícano. Te ayudara a explorar las aguas profundas.",
+		"description" : "Bendición del Pelícano, el ave rey. Te ayudara a explorar las aguas profundas.",
 		"enabled" : false,
 		"cost" : 3
 	}
