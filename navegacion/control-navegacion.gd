@@ -9,6 +9,8 @@ extends Node2D
 @onready var map_temprano = %"Mapa Temprano"
 @onready var map_tarde = %"Mapa Tarde"
 @onready var map_noche = %"Mapa Noche"
+@onready var bgm = $BGM_Nav
+@onready var sfx = $Sea_Effects
 
 var pescado = 0
 var mullu = 0
@@ -34,6 +36,10 @@ var energy = max_energy:
 			cambio_tarde()
 
 func _ready() -> void:
+	var nav_stream = load("res://navegacion/assets/Boat (Day).mp3")
+	if nav_stream:
+		bgm.stream = nav_stream
+		bgm.play()
 	if (Global.blessings.get("Vigor").get("enabled")==true):
 		max_energy+=30
 		energy = max_energy
@@ -51,21 +57,12 @@ func _ready() -> void:
 		menu.pescaBtn.disabled = true
 		menu.buceoBtn.disabled = true
 	menu.update_energy(energy)
-	
-	
-func arreglar_musica():
-	pass
+
 
 func cambio_tarde():
+	
 	hora = "Tarde"
-	var tween5 = create_tween()
-	tween5.tween_property($BGM_Nav, "volume_db", -80.0, 6)
-	
-	$BGM_NavTarde.play()
-	var tween6 = create_tween()
-	tween6.tween_property($BGM_NavTarde, "volume_db", 0.0, 1)
-	
-	
+	# Change tilemap and lighting with crossfade
 	main.tile_map_data = map_tarde.tile_map_data
 	var tween = create_tween()
 	tween.tween_property(mLight, "energy", 0.0, 2)
@@ -73,23 +70,32 @@ func cambio_tarde():
 	aLight.visible = true
 	var tween2 = create_tween()
 	tween2.tween_property(aLight, "energy", 1.3, 4)
+	
+	# Start music fade out
+	var nav_stream = load("res://navegacion/assets/Boat (Afternoon).mp3")
+	var tween5 = create_tween()
+	tween5.tween_property(bgm, "volume_db", -40.0, 2)
+	
+	# Lasts for both the light change and the music change
 	await tween.finished
+
 	mLight.visible = false
 	#nLight.visible = false
 	
-func cambio_noche():
-	main.tile_map_data = map_noche.tile_map_data
-	
-	var tween5 = create_tween()
-	tween5.tween_property($BGM_NavTarde, "volume_db", -80.0, 6)
-	
-	$BGM_NavNoche.play()
+	# Update background music with fade out and fade in
+	bgm.stream = nav_stream	
 	var tween6 = create_tween()
-	tween6.tween_property($BGM_NavNoche, "volume_db", 0.0, 1)
+	tween6.tween_property(bgm, "volume_db", 0.0, 1)
+	bgm.play()
 	
+	
+func cambio_noche():
 	hora = "Noche"
 	if (Global.blessings.get("Night Vision").get("enabled")==false):
 		main.boat.vision_range = 1
+	
+	main.tile_map_data = map_noche.tile_map_data
+	
 	mLight.visible = false
 	
 	var tween = create_tween()
@@ -99,10 +105,20 @@ func cambio_noche():
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(nLight, "energy", 2.1, 4)
 	
+	# Audio changes
+	var nav_stream = load("res://navegacion/assets/Boat (Night).mp3")
+	
+	var tween5 = create_tween()
+	tween5.tween_property(bgm, "volume_db", -40.0, 2)
+	
 	await tween.finished
 	aLight.visible = false
 	
-
+	bgm.stream = nav_stream	
+	var tween6 = create_tween()
+	tween6.tween_property(bgm, "volume_db", 0.0, 1)
+	bgm.play()
+	
 func menu_nav():
 	main.navegar()
 
@@ -115,8 +131,8 @@ func menu_psc():
 func menu_bco():
 	# Calcular que tipo de mullu basado en: tile atlas (profundidad), hora, temp, roca in neighbors?
 	profundidad = main.get_profundidad()
-	var mullu = randomize_mullu()
-	main.bucear(mullu)
+	var rand_mullu = randomize_mullu()
+	main.bucear(rand_mullu)
 
 
 # ------ randomizing functions for pesca/buceo -------
@@ -126,9 +142,9 @@ func randomize_fish():
 	var the_fish = ""
 	var size = 0
 	var fishes = Global.fish_dictionary.keys()
-	for name in fishes:
+	for f_name in fishes:
 		var met = 0
-		var criteria = Global.fish_dictionary[name]
+		var criteria = Global.fish_dictionary[f_name]
 		if profundidad in criteria[0]:
 			met += 1
 		if temperatura in criteria[1]:
@@ -136,8 +152,8 @@ func randomize_fish():
 		if hora in criteria[5]:
 			met += 1
 		if met >= 1:
-			total_odds += (6 - criteria[4]) * (met/2)
-			possible_fish[name] = [total_odds, met]
+			total_odds += (6 - criteria[4]) * (float(met)/2)
+			possible_fish[f_name] = [total_odds, met]
 	var rand = randf_range(0, total_odds)
 	for fish in possible_fish.keys():
 		if rand < possible_fish[fish][0]:

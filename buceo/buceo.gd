@@ -8,7 +8,7 @@ var mullu_scene = preload("res://buceo/spondylus.tscn")
 @onready var camara = %CamaraBuceo
 @onready var area_profunda = $Ocean/Fondo
 @onready var area_media = $Ocean/Medio
-@onready var moreLight = $Ocean/Buceador/BetterLight
+@onready var m_click = $CanvasLayer/Click
 
 var can_escape = false
 
@@ -24,8 +24,12 @@ var mullus = 0
 func _ready() -> void:
 	#print(deep_spawn, mid_spawn)
 	if (Global.blessings.get("Night Vision").get("enabled")==true):
-		moreLight.visible = true
+		$Ocean/Buceador/BetterLight.visible = true
+	print(deep_spawn)
+	if Global.tutorial and deep_spawn.size() < 2:
+		deep_spawn.append("Calcifer Regular")
 	populate_mullu()
+	
 	
 func populate_mullu():
 	var mullu_data = Global.mullu_dictionary
@@ -63,6 +67,7 @@ func end_snip(result = false):
 	if result:
 		mullus += last_mullu.points
 	#print(mullus)
+	m_click.visible = false
 	last_mullu.queue_free()
 	blur.visible = false
 	buceador.playing = false

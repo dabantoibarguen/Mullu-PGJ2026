@@ -10,13 +10,15 @@ var hex_s
 func _ready() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	if(dist<90):
 		catchable = true
+		get_parent().m_click.visible = true
 	else:
+		if catchable:
+			get_parent().m_click.visible = false
 		catchable = false
-
 
 func _on_foto_pressed() -> void:
 	if catchable:

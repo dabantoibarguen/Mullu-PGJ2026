@@ -57,12 +57,15 @@ func update_temperatura():
 	if boat in temper.get_overlapping_bodies():
 		nav.temperatura = "Temperado"
 		navMenu.tempBall.modulate = Color("#ffffff")
+		navMenu.tempBall.tooltip_text = "Temperatura: Temperado"
 	elif boat in hot.get_overlapping_bodies():
 		nav.temperatura = "Caliente"
 		navMenu.tempBall.modulate = Color("#ff6600")
+		navMenu.tempBall.tooltip_text = "Temperatura: Caliente"
 	elif boat in cold.get_overlapping_bodies():
 		nav.temperatura = "Frio"
 		navMenu.tempBall.modulate = Color("#00bfff")
+		navMenu.tempBall.tooltip_text = "Temperatura: Frío"
 	else:
 		nav.temperatura = "Temperado"
 		if navMenu.tempBall:
@@ -204,9 +207,6 @@ func end_navigation():
 			"\n\nNo capturaste suficiente..."]
 			])
 	
-	
-	
-
 func display_controls():
 	var dialogue = Global.dialogo.instantiate()
 	dialogue.type = "Resumen"
@@ -253,7 +253,6 @@ func resume_nav():
 
 func add_fish(total_fish):
 	resume_nav()
-	nav.arreglar_musica()
 	if (Global.blessings.get("Sacred Sea").get("enabled")==true):
 		total_fish = total_fish*1.10
 	nav.pescado += total_fish
@@ -266,7 +265,13 @@ func add_fish(total_fish):
 	
 func add_mullu(total_mullu):
 	resume_nav()
-	nav.arreglar_musica()
+	
+	# Audio
+	var sfx_stream = load("res://navegacion/assets/Sonidos de mar para navegar.mp3")
+	nav.sfx.stream = sfx_stream
+	nav.sfx.play()
+	
+	# Mullu score update
 	nav.mullu += total_mullu
 	navMenu.update_mullu(nav.mullu)
 	if nav.energy <= 0:
@@ -282,7 +287,7 @@ func navegar():
 	if oldTracer:
 		remove_child(oldTracer)
 	unhovered_cell = hovered_cell
-	if move_action or Global.tutorial_index < 3:
+	if move_action or (Global.tutorial and Global.tutorial_index < 3):
 		navMenu.pescaBtn.disabled = true
 		navMenu.buceoBtn.disabled = true
 	else:
@@ -308,7 +313,7 @@ func pescar(fish_info):
 	check_tutorial()
 
 func bucear(mullu_list):
-	if nav.energy < 4 or move_action or Global.tutorial and Global.tutorial_index in [2, 3, 4]:
+	if nav.energy < 4 or move_action or (Global.tutorial and Global.tutorial_index in [2, 3, 4]):
 		return
 	if (boat.cur_coords in nav.dived_tiles):
 		print("Tell the player you cannot fish here")
@@ -316,6 +321,13 @@ func bucear(mullu_list):
 	nav.dived_tiles.append(boat.cur_coords)
 	navMenu.buceoBtn.disabled = true
 	nav.energy -= 4
+	
+	# Audio
+	var sfx_stream = load("res://buceo/assets/Mar Buseo.mp3")
+	nav.sfx.stream = sfx_stream
+	nav.sfx.play()
+	
+	# Diving scene instance
 	var buceo = buceo_game.instantiate()
 	buceo.deep_spawn = mullu_list[0]
 	buceo.mid_spawn = mullu_list[1]

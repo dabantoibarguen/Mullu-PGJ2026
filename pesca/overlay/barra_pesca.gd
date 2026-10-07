@@ -1,10 +1,11 @@
 extends Control
 
-@onready var barra = $BarraPesca
 @onready var player = $Player
 @onready var green = $GoodArea
 @onready var timer = $AreaVerde
 @onready var gameTimer = $Pescando
+@onready var req = $Required
+@onready var actuales = $Actual
 
 var controlPesca
 
@@ -12,12 +13,23 @@ var lowest_point = position.y + size.y
 var highest_point = position.y
 var half
 
-var grav = 0.3
+var grav = 2.5
 var green_time = 1
 var game_time = 17
 var minimum_time = 4
+var active = true
 
-var score = 0
+var score = 0:
+	set(s):
+		if active:
+			if s <= 0.5 * minimum_time:
+				actuales.add_theme_color_override("font_color", Color(0.716, 0.0, 0.0, 1.0))
+			elif s < minimum_time:
+				actuales.add_theme_color_override("font_color",  Color(0.627, 0.549, 0.0, 1.0))
+			else:
+				actuales.add_theme_color_override("font_color",  Color("008300ff"))
+			score = s
+			actuales.text = "Actual: " + str(snapped(s, 0.01))
 
 var player_h
 var player_y
@@ -35,7 +47,7 @@ func _ready() -> void:
 	green_starting = green.position
 	half = ((lowest_point-(green_h))/2)
 
-func start_fishing(origin, freq = green_time, min = minimum_time):
+func start_fishing(origin, freq = green_time, min_t = minimum_time):
 	controlPesca = origin
 	score = 0
 	gameTimer.wait_time = game_time
@@ -43,10 +55,12 @@ func start_fishing(origin, freq = green_time, min = minimum_time):
 	green.position = green_starting
 	green_time = freq
 	timer.wait_time = freq
-	minimum_time = min
+	minimum_time = snapped(min_t, 0.01)
+	req.text += " " + str(minimum_time)
 	timer.start()
 	
 func _on_pescando_timeout() -> void:
+	active = false
 	timer.stop()
 	gameTimer.stop()
 	controlPesca.end_fishing(score)
@@ -56,10 +70,10 @@ func _on_timer_timeout() -> void:
 	move_green()
 
 func _input(ev: InputEvent) -> void:
-	if ev is InputEventKey and ev.is_pressed():
+	if active and ev is InputEventKey and ev.is_pressed():
 		if ev.keycode == KEY_SPACE:
-			if player.position.y - 8 > highest_point:
-				player.position.y -= 8
+			if player.position.y - 75 > highest_point:
+				player.position.y -= 75
 			else:
 				player.position.y = highest_point
 

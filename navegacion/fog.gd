@@ -29,7 +29,7 @@ func clear_cells(pos):
 
 	while queue_index < queue.size():
 		var current: Vector2i = queue[queue_index]
-		var atlas = %OceanMap.get_cell_atlas_coords(current)
+		#var atlas = %OceanMap.get_cell_atlas_coords(current)
 		queue_index += 1
 		
 		var tile_distance = %OceanMap.find_path(pos, current).size()

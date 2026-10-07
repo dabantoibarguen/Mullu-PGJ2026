@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://de3ceajghuhl0" path="res://pesca/overlay/blur.gdshader" id="5_u3kmj"]
 [ext_resource type="PackedScene" uid="uid://m6rpj2c13upr" path="res://pesca/overlay/barra_pesca.tscn" id="6_2t0r3"]
 [ext_resource type="Texture2D" uid="uid://cwyxi73ristwj" path="res://pesca/assets/fondo 1.png" id="8_gafaf"]
-[ext_resource type="AudioStream" uid="uid://btag2j1f07hdu" path="res://navegacion/assets/Sonidos de mar para navegar.mp3" id="8_hwaou"]
 [ext_resource type="Texture2D" uid="uid://cgyftrsj8s526" path="res://pesca/assets/fondo 2.png" id="9_3qcc4"]
 [ext_resource type="AudioStream" uid="uid://bxuc7anfgbd3j" path="res://pesca/assets/Swoosh de soga para pescar.mp3" id="9_gafaf"]
 [ext_resource type="AudioStream" uid="uid://c3u864umfj2wm" path="res://pesca/assets/Reel.mp3" id="9_lv16h"]
@@ -30,6 +29,7 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3kmj"]
 shader = ExtResource("5_u3kmj")
 shader_parameter/blur_amount = 2.0
+shader_parameter/darkness = 0.7
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f5k2l"]
 animations = [{
@@ -101,39 +101,55 @@ offset_bottom = 1328.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JuegoPesca" parent="AaronBlur" unique_id=788184286 instance=ExtResource("6_2t0r3")]
-layout_mode = 0
-offset_left = 1326.9999
-offset_top = 687.0
-offset_right = 1326.9999
-offset_bottom = 687.0
-scale = Vector2(4.9884896, 9.935265)
-
 [node name="Silhouette" type="TextureRect" parent="AaronBlur" unique_id=1956615466]
 unique_name_in_owner = true
+custom_maximum_size = Vector2(800, 600)
 layout_mode = 0
 offset_left = 422.95325
 offset_top = 724.3364
 offset_right = 1152.2025
 offset_bottom = 1224.3364
 scale = Vector2(0.7, 0.772)
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="AaronBlur" unique_id=1138757374]
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 0
+offset_left = 1125.757
+offset_top = 1172.9346
+offset_right = 1375.757
+offset_bottom = 1231.9346
+theme_override_font_sizes/font_size = 20
+text = "¡Presiona espacio y mantente en la zona azul!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="JuegoPesca" parent="AaronBlur" unique_id=788184286 instance=ExtResource("6_2t0r3")]
+layout_mode = 0
+offset_left = 1230.4298
+offset_top = 694.4299
+offset_right = 1230.4298
+offset_bottom = 694.4299
+scale = Vector2(0.83969414, 0.78763515)
 
 [node name="Durabilidad" type="Label" parent="." unique_id=352204426]
 z_index = 3
-offset_left = 1069.0
-offset_top = 6.0000005
-offset_right = 1109.0
-offset_bottom = 64.0
+offset_left = 1046.729
+offset_top = 15.887854
+offset_right = 1086.729
+offset_bottom = 73.887856
 scale = Vector2(2.347173, 1.7461473)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 42
 text = "0"
 
 [node name="Icon" type="TextureRect" parent="." unique_id=2100903658]
 z_index = 3
-offset_left = 988.0
-offset_top = 21.999992
-offset_right = 1116.0
-offset_bottom = 150.0
+offset_left = 971.9625
+offset_top = 37.383175
+offset_right = 1099.9625
+offset_bottom = 165.38318
 scale = Vector2(0.52372324, 0.50757456)
 texture = ExtResource("3_gafaf")
 
@@ -154,23 +170,14 @@ scale = Vector2(1.0820093, 1)
 width = 6.0
 default_color = Color(0.92941177, 0.6627451, 0.39607844, 1)
 
-[node name="Sea_Effects" type="AudioStreamPlayer" parent="." unique_id=1948712673]
-stream = ExtResource("8_hwaou")
-volume_db = -8.0
-autoplay = true
-playback_type = 1
-parameters/looping = true
-
 [node name="BGM_Pescar" type="AudioStreamPlayer" parent="." unique_id=637935105]
 unique_name_in_owner = true
 stream = ExtResource("9_sb6jh")
-playback_type = 1
 parameters/looping = true
 
 [node name="Reel" type="AudioStreamPlayer" parent="." unique_id=1636289759]
 stream = ExtResource("9_lv16h")
 autoplay = true
-playback_type = 1
 parameters/looping = false
 
 [node name="Swoosh" type="AudioStreamPlayer" parent="." unique_id=754593550]

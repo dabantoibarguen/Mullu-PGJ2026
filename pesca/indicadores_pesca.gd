@@ -32,7 +32,7 @@ func _on_atrapar_timeout() -> void:
 	timer.stop()
 	catch.stop()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	if(dist<15):
 		if !entered:

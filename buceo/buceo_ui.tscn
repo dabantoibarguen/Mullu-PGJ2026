@@ -18,9 +18,9 @@ unique_name_in_owner = true
 z_index = 5
 layout_mode = 0
 offset_left = 71.0
-offset_top = 20.0
+offset_top = 35.0
 offset_right = 301.0
-offset_bottom = 108.0
+offset_bottom = 123.0
 theme_override_font_sizes/font_size = 32
 max_value = 120.0
 step = 0.0
@@ -34,11 +34,27 @@ autostart = true
 custom_minimum_size = Vector2(175, 80)
 layout_mode = 0
 offset_left = 920.0
-offset_top = 44.0
+offset_top = 35.0
 offset_right = 1095.0
-offset_bottom = 124.0
+offset_bottom = 115.0
+tooltip_text = "Acabar el buceo.
+Acercate al barco para escapar"
 theme_override_font_sizes/font_size = 24
 text = "ESCAPAR"
+
+[node name="Aviso" type="Label" parent="OxygenControl" unique_id=663732362]
+visible = false
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 0
+offset_left = 346.0
+offset_top = 35.0
+offset_right = 846.0
+offset_bottom = 128.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "¡Vuelve al barco para no perder lo que obtuviste!"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Hearbeat" type="AudioStreamPlayer" parent="." unique_id=1418073414]
 unique_name_in_owner = true

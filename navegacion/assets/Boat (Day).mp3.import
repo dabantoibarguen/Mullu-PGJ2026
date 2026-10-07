@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Boat (Day).mp3-1dc9f53cc1cb796cbf1a395d66a21e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cluldcc7brrls" path="res://buceo/assets/top 2 v2.png" id="6_r4nwo"]
 [ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
 [ext_resource type="AudioStream" uid="uid://b4ile62cy36fk" path="res://buceo/assets/Diving.mp3" id="9_s3ofk"]
-[ext_resource type="AudioStream" uid="uid://vi81yri01p3e" path="res://buceo/assets/Mar Buseo.mp3" id="11_r4nwo"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
 offsets = PackedFloat32Array(0, 0.2783019, 0.5660377, 0.8207547)
@@ -65,6 +64,7 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ofk"]
 shader = ExtResource("5_uhecx")
 shader_parameter/blur_amount = 2.0
+shader_parameter/darkness = 0.5
 
 [node name="Buceo" type="CanvasLayer" unique_id=804903244]
 process_mode = 3
@@ -78,7 +78,7 @@ z_index = 1
 offset_left = -698.0
 offset_top = -124.0
 offset_right = 702.0
-offset_bottom = 876.0
+offset_bottom = 976.0
 scale = Vector2(0.9988916, 1.0750506)
 color = Color(0.0627451, 0.08627451, 0.15294118, 1)
 
@@ -246,8 +246,12 @@ parameters/looping = true
 [node name="CanvasLayer" parent="." unique_id=732940682 instance=ExtResource("8_25cln")]
 layer = 7
 
-[node name="Sea_Effects" type="AudioStreamPlayer" parent="." unique_id=792771958]
-stream = ExtResource("11_r4nwo")
-autoplay = true
-playback_type = 1
-parameters/looping = true
+[node name="Click" type="Label" parent="CanvasLayer" unique_id=1117979876]
+visible = false
+offset_left = 500.0
+offset_top = 585.0
+offset_right = 721.0
+offset_bottom = 619.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Hazle click al mullu"

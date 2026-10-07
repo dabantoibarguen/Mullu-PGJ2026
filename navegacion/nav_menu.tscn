@@ -83,7 +83,6 @@ offset_left = 906.3639
 offset_top = 5.4545455
 offset_right = 1078.364
 offset_bottom = 55.454514
-tooltip_text = "Presiona \"1\""
 theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
@@ -99,7 +98,7 @@ offset_left = 760.00024
 offset_top = 5.4545455
 offset_right = 890.00024
 offset_bottom = 55.454544
-tooltip_text = "Presiona \"1\""
+tooltip_text = "Presiona \"Escape\""
 theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
@@ -114,7 +113,8 @@ offset_left = 501.81818
 offset_top = 500.9091
 offset_right = 651.8182
 offset_bottom = 550.90906
-tooltip_text = "Presiona \"2\""
+tooltip_text = "Presiona \"2\"
+Invalido durante \"Navegar\""
 theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
@@ -128,7 +128,8 @@ offset_left = 750.0
 offset_top = 500.9091
 offset_right = 900.0
 offset_bottom = 550.90906
-tooltip_text = "Presiona \"3\""
+tooltip_text = "Presiona \"3\"
+Invalido durante \"Navegar\""
 theme_override_colors/font_color = Color(0.93333334, 0.85882354, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_in4ql")
@@ -136,6 +137,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_0lkfs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gv1x1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0lkfs")
 text = "Bucear"
+autowrap_mode = 2
 
 [node name="TopBar" type="ColorRect" parent="." unique_id=1925910099]
 offset_right = 1200.0
@@ -224,6 +226,7 @@ offset_top = -5.454546
 offset_right = 515.89343
 offset_bottom = 340.38803
 scale = Vector2(0.20722221, 0.19977558)
+tooltip_text = "Temperatura: Temperado"
 texture = ExtResource("2_8mrxu")
 
 [connection signal="pressed" from="Nav" to="." method="_on_nav_pressed"]
