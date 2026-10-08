@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://dkepfco4hu80c" path="res://navegacion/barco/barco.gd" id="1_0j4b5"]
 [ext_resource type="Texture2D" uid="uid://c7hqnd7x53dyl" path="res://navegacion/assets/sprites barco.png" id="2_0j4b5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j4b5"]
+atlas = ExtResource("2_0j4b5")
+region = Rect2(1, 0, 32, 35)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_in4ql"]
 atlas = ExtResource("2_0j4b5")
-region = Rect2(0, 0, 32, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6lay"]
-atlas = ExtResource("2_0j4b5")
-region = Rect2(32, 0, 32, 40)
+region = Rect2(33, 0, 32, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_in4ql"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_in4ql")
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_0j4b5")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6lay")
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_in4ql")
 }],
 "loop": 1,
 "name": &"default",
@@ -42,6 +42,7 @@ script = ExtResource("1_0j4b5")
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_in4ql")
 autoplay = "default"
+frame_progress = 0.7807747
 
 [node name="CamaraBarco" type="Camera2D" parent="." unique_id=319880649]
 unique_name_in_owner = true

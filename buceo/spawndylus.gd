@@ -5,14 +5,18 @@ var catchable = false
 var points
 var img_s
 var hex_s
+var mullu_name
+
 @onready var btn = $Foto
+
+var playing = false
 
 func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
-	if(dist<90):
+	if(dist<90) and !playing:
 		catchable = true
 		get_parent().m_click.visible = true
 	else:

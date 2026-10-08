@@ -160,7 +160,7 @@ func _unhandled_input(ev: InputEvent) -> void:
 			nav.menu_bco()
 			var buceoButton = navMenu.buceoBtn
 			buceoButton.button_pressed = !(buceoButton.button_pressed)
-		if ev.keycode == KEY_ESCAPE:
+		if ev.keycode == KEY_SHIFT:
 			display_summary()
 		if ev.keycode == KEY_TAB:
 			display_controls()
@@ -214,12 +214,12 @@ func display_controls():
 	dialogue.new_text([
 		[[],
 		"Controles de Navegación: \n
-Esc = Abrir el menú de puntuación requerida \n
-Tab = Abrir el menú de controles (¡funciona en Pesca y Buceo!) \n\n
-Mouse 1 = Seleccionar botones / Seleccionar casillas \n
-1 = Opcion de Navegar\n
-2 = Opcion de Pescar\n
-3 = Opcion de Buceo"]
+SHIFT = Abrir el menú de puntuación requerida
+TAB = Abrir el menú de controles (funciona durante Pesca y Buceo) \n
+Mouse 1 = Seleccionar botones / Seleccionar casillas
+Tecla 1 = Opcion de Navegar
+Tecla 2 = Opcion de Pescar (invalida durante \'Navegar\')
+Tecla 3 = Opcion de Buceo (invalida durante \'Navegar\')"]
 		])
 
 func display_summary():
@@ -358,13 +358,20 @@ func check_tutorial():
 		navMenu.buceoBtn.disabled = true
 		dialogue.new_text([
    	[["Laia"], "¡Ahí! Me parece que vi un pez"],
+	
   	[["Mitso"], "¡Silencio! Si haces mucho ruido lo vas a espantar…"],
+	
 	[[], "Instrucciones:\n- Haz clic en el boton \"Pescar\" o presiona la Tecla \"2\" para iniciar el minijuego de pesca. No podrás pescar en una misma casilla hasta que cambie la hora, ni cuando estes en modo de navegación.\n\n	¡Pescar también te costará energía, pero es importante para ayudar a tu pueblo!"]
 	])
 	elif Global.tutorial_index == 3:
 		dialogue.new_text([
   [["Mitso"], "¡Yo me encargo de esto!"],
-  [[], "Instrucciones de Pesca:\nUsa las flechas o las teclas WASD para mover el indicador. Puedes acabar el juego antes con la tecla \"Escape\". Mantén el indicador encima de un objetivo al menos un segundo para lanzar la soga\n\nInstrucciones de Captura:\nCuando tu soga alcance a tu objetivo, empezará un minijuego de precisión.\nUsa la barra espaciadora para hacer subir la linea blanca e intenta mantenerla en el espacio escurridizo la mayor cantidad de tiempo posible ¡Buena suerte!"]
+
+  [[], "Instrucciones de Pesca:
+	Usa las flechas o las teclas WASD para mover el indicador. Puedes acabar el juego antes con la tecla \"Escape\". Mantén el indicador encima de un objetivo al menos un segundo para lanzar la soga
+	\nInstrucciones de Captura:
+	Cuando tu soga alcance a tu objetivo, empezará un minijuego de precisión.
+	Usa la barra espaciadora para elevar la linea blanca y mantenla en el espacio azul la mayor cantidad de tiempo posible ¡Buena suerte!"]
 	])
 	elif Global.tutorial_index == 4:
 		navMenu.navBtn.disabled = true
@@ -372,7 +379,9 @@ func check_tutorial():
 		navMenu.buceoBtn.disabled = false
 		var txt = [
   	[["Mitso"], "Dejemos este lugar por ahora. El abuelo nos advirtió sobre respetar el balance. También sería bueno explorar un poco…"],
+	
   	[["Laia"], "¡Espera! Amarra esa soga a mi cintura primero. Quiero intentar algo antes de irnos."],
+	
   	[[], "Instrucciones:\nHaz clic en el botón \"Bucear\" o presiona la tecla \"3\" para iniciar el minijuego de buceo.\n\nBucear te costará energía, pero podrás recolectar el precioso Mullu en las profundidades."]
 		]
 		if nav.pescado > 0:
@@ -381,6 +390,20 @@ func check_tutorial():
 			txt.push_front([["Mitso"], "Eso pudo salir mejor."])
 		dialogue.new_text(txt)
 	elif Global.tutorial_index == 5:
+		dialogue.new_text([
+  [["Laia"], "¡Es mi turno!"],
+
+  [[], "Instrucciones de Buceo:
+	Usa las flechas o las teclas WASD para mover a Laia. 
+	Puedes acabar el juego haciendo click al botón de \"Escapar\" cuando estés cerca al barco. Si te quedas sin oxígeno volveras con las manos vacías. 
+	\nTrata de hallar el Mullu en las profundidades y hazle clic cuando este suficientemente cerca."],
+	
+  [[], "Instrucciones de Recorte:
+	Usa las flechas izquierda/derecha o las teclas A/D para girar la mano.
+	Usa las flechas arriba/abajo o las teclas W/S para mover la mano hacia adelante o atrás.
+	¡Si te alejas mucho de la linea se empezará a romper el mullu!"]
+	])
+	elif Global.tutorial_index == 6:
 		Global.tutorial = false
 		remove_child(dialogue)
 		navMenu.navBtn.disabled = false

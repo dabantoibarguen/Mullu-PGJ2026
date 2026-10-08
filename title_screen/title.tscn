@@ -27,8 +27,8 @@ bg_color = Color(0.5764706, 0.14117648, 0.101960786, 1)
 script = ExtResource("1_dm118")
 
 [node name="Title1" type="AnimatedSprite2D" parent="." unique_id=1365750077]
-position = Vector2(611, 328.00003)
-scale = Vector2(1.0762867, 1.0199203)
+position = Vector2(576, 325)
+scale = Vector2(1.0016564, 1.006053)
 sprite_frames = SubResource("SpriteFrames_nlynv")
 autoplay = "default"
 
@@ -47,7 +47,7 @@ volume_db = -8.0
 autoplay = true
 parameters/looping = true
 
-[node name="Screenshot20260929At8_19_33Pm" type="Sprite2D" parent="." unique_id=1759364082]
+[node name="LogoPGJ" type="Sprite2D" parent="." unique_id=1759364082]
 position = Vector2(1066, 103)
 scale = Vector2(0.088380784, 0.105852656)
 texture = ExtResource("5_mpet3")

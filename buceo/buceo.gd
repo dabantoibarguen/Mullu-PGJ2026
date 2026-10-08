@@ -22,12 +22,12 @@ var last_mullu
 var mullus = 0
 
 func _ready() -> void:
-	#print(deep_spawn, mid_spawn)
 	if (Global.blessings.get("Night Vision").get("enabled")==true):
 		$Ocean/Buceador/BetterLight.visible = true
-	print(deep_spawn)
 	if Global.tutorial and deep_spawn.size() < 2:
 		deep_spawn.append("Calcifer Regular")
+	deep_spawn = Global.mullu_dictionary.keys() # FOR TESTING ALL POSSIBLE MULLU
+	print(deep_spawn)
 	populate_mullu()
 	
 	
@@ -42,6 +42,7 @@ func populate_mullu():
 		var spondylus = mullu_scene.instantiate()
 		spondylus.player = buceador
 		spondylus.scale = mullu_data[mid_mul][4]
+		spondylus.mullu_name = mid_mul
 		spondylus.global_position = (area_media.global_position + Vector2(x, y))
 		add_child(spondylus)
 		spondylus.update_pic(mullu_data[mid_mul][3], mullu_data[mid_mul][2], mullu_data[mid_mul][1])
@@ -51,17 +52,20 @@ func populate_mullu():
 		var spondylus = mullu_scene.instantiate()
 		spondylus.player = buceador
 		spondylus.scale = Global.mullu_dictionary[deep_mul][4]
+		spondylus.mullu_name = deep_mul
 		spondylus.global_position = (area_profunda.global_position + Vector2(x, y))
 		add_child(spondylus)
 		spondylus.update_pic(mullu_data[deep_mul][3], mullu_data[deep_mul][2], mullu_data[deep_mul][1])
 			
 func start_snip(tipo_mullu):
 	last_mullu = tipo_mullu
+	tipo_mullu.playing = true
+	m_click.visible = false
 	snipSnap.update_ind(last_mullu.img_s, last_mullu.hex_s)
 	blur.visible = true
 	snipSnap.global_position = camara.get_screen_center_position() + Vector2(0, 50)
 	buceador.playing = true
-	snipSnap.start(self)
+	snipSnap.start(self, tipo_mullu.mullu_name)
 			
 func end_snip(result = false):
 	if result:
@@ -81,16 +85,18 @@ func update_escape():
 func escape_safely():
 	$Border/Top.set_deferred("disabled", true)
 	buceador.pull_back = true
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(1.3).timeout
 	resultado_buceo.emit(mullus)
 	queue_free()
 
 func pass_out():
+	if buceador.pull_back:
+		return
 	blur.visible = false
 	buceador.sprite.flip_v = true
 	$Border/Top.set_deferred("disabled", true)
 	buceador.pull_back = true
-	await get_tree().create_timer(1.6).timeout
+	await get_tree().create_timer(1.7).timeout
 	resultado_buceo.emit(0)
 	queue_free()
 

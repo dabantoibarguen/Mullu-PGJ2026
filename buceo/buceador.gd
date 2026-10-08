@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		soga.add_point(soga.to_local(global_position))
 		move_and_collide(velocity)
 		return
-	elif playing:
+	elif playing or Global.tutorial_index == 5:
 		return
 	
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -35,8 +35,11 @@ func _physics_process(delta: float) -> void:
 	elif(direction[0]<0):
 		sprite.flip_h = false
 
-	
-	velocity = direction * speed * delta
+	# Slows down closer to the bottom
+	if global_position.y < 450:
+		velocity = direction * speed * delta * 1.2
+	else:
+		velocity = direction * speed * delta
 	
 	if soga.points.size() > 20:
 		for i in range(1, 19, 2):

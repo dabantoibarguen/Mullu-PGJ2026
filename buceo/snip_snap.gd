@@ -6,9 +6,9 @@ extends Node2D
 func _ready() -> void:
 	pass
 	
-func start(origin):
+func start(origin, tipo_mullu):
 	game.integrity = 100
-	game.start_game(origin)
+	game.start_game(origin, tipo_mullu)
 
 func update_ind(img, hex):
 	indic.texture = load(img)

@@ -195,7 +195,7 @@ func get_random_point() -> Vector2:
 		
 	return p1 + r1 * (p2 - p1) + r2 * (p3 - p1)
 	
-func _input(ev: InputEvent) -> void:
+func _unhandled_input(ev: InputEvent) -> void:
 	if ev is InputEventKey and ev.is_pressed():
 		if ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
 			pescados = int(pescados)

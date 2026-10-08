@@ -37,9 +37,10 @@ color = Color(0.078431375, 0.20392157, 0.33333334, 1)
 
 [node name="Required" type="Label" parent="BarraPesca" unique_id=792041904]
 layout_mode = 0
-offset_left = 72.0
-offset_right = 112.0
-offset_bottom = 23.0
+offset_left = -280.0
+offset_top = 16.0
+offset_right = -103.0
+offset_bottom = 61.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
@@ -47,10 +48,10 @@ text = "Requerido: "
 
 [node name="Actual" type="Label" parent="BarraPesca" unique_id=67457556]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 64.0
-offset_right = 271.0
-offset_bottom = 131.0
+offset_left = -280.0
+offset_top = 80.0
+offset_right = -81.0
+offset_bottom = 147.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32

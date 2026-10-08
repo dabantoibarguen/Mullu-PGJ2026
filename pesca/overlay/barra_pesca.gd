@@ -48,6 +48,7 @@ func _ready() -> void:
 	half = ((lowest_point-(green_h))/2)
 
 func start_fishing(origin, freq = green_time, min_t = minimum_time):
+	active = true
 	controlPesca = origin
 	score = 0
 	gameTimer.wait_time = game_time

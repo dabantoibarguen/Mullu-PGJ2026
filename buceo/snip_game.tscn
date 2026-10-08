@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dv5ebs1fpxjv8" path="res://buceo/hand.gd" id="1_e7sr8"]
 [ext_resource type="Script" uid="uid://cvibh4betkyej" path="res://buceo/snip_snap.gd" id="1_ikwup"]
 [ext_resource type="Texture2D" uid="uid://c0wtqy5ilbj1r" path="res://buceo/assets/hand.webp" id="1_yfp2p"]
-[ext_resource type="Texture2D" uid="uid://bfhjpn5mjqlbx" path="res://buceo/assets/spondylus.png" id="3_qpcpt"]
 [ext_resource type="Texture2D" uid="uid://i5sba231ejdd" path="res://buceo/assets/spondulus princeps.png" id="5_hmh62"]
 [ext_resource type="AudioStream" uid="uid://5abegv86k44f" path="res://pesca/assets/BADer.mp3" id="6_uivri"]
 [ext_resource type="AudioStream" uid="uid://dcs53n85r1565" path="res://pesca/assets/GOOD .mp3" id="7_quta0"]
@@ -25,15 +24,12 @@ corner_radius_bottom_left = 1
 corner_detail = 1
 
 [node name="SnipGame" type="Node2D" unique_id=1878471672]
-position = Vector2(0, 88)
-scale = Vector2(6.8148155, 6.293522)
 script = ExtResource("1_ikwup")
 
 [node name="Shape" type="Line2D" parent="." unique_id=1959313782]
 unique_name_in_owner = true
 position = Vector2(-6, 8)
 scale = Vector2(1.6666667, 1)
-points = PackedVector2Array(-12.599998, -21, 3, -35, 16.8, -21, 13.799999, 5, -5.9999995, 5)
 closed = true
 width = 0.5
 default_color = Color(0.8872835, 0.4816215, 0.37979886, 1)
@@ -60,9 +56,9 @@ z_index = 3
 texture_filter = 1
 texture_repeat = 1
 clip_contents = true
-offset_left = 27.733692
+offset_left = 32.733692
 offset_top = -28.759735
-offset_right = 59.953693
+offset_right = 64.95369
 offset_bottom = -10.759735
 scale = Vector2(0.6796846, 0.4444546)
 theme_override_constants/outline_size = 2
@@ -72,13 +68,6 @@ step = 0.0
 value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
-
-[node name="OldIndicator" type="Sprite2D" parent="." unique_id=2138667259]
-visible = false
-modulate = Color(1, 0.68235296, 0, 1)
-z_index = 2
-scale = Vector2(0.0058054193, 0.008896611)
-texture = ExtResource("3_qpcpt")
 
 [node name="Indicator" type="Sprite2D" parent="." unique_id=1205760124]
 unique_name_in_owner = true
@@ -94,3 +83,13 @@ stream = ExtResource("6_uivri")
 [node name="Good" type="AudioStreamPlayer" parent="." unique_id=2062499420]
 unique_name_in_owner = true
 stream = ExtResource("7_quta0")
+
+[node name="Instructions" type="Label" parent="." unique_id=1802964063]
+offset_left = 29.000002
+offset_top = -19.0
+offset_right = 200.0
+offset_bottom = 30.0
+scale = Vector2(0.16860873, 0.19765562)
+theme_override_font_sizes/font_size = 16
+text = "(Girar)  ← & → / A & D 
+(Mover)  ↑ & ↓ / W & S"
