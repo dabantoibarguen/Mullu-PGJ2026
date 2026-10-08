@@ -57,7 +57,7 @@ func start_fishing(origin, freq = green_time, min_t = minimum_time):
 	green_time = freq
 	timer.wait_time = freq
 	minimum_time = snapped(min_t, 0.01)
-	req.text += " " + str(minimum_time)
+	req.text = "Requerido: " + str(minimum_time)
 	timer.start()
 	
 func _on_pescando_timeout() -> void:
