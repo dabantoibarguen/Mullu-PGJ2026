@@ -19,9 +19,9 @@ script = ExtResource("1_s17fj")
 [node name="Player" type="ColorRect" parent="BarraPesca" unique_id=1565516077]
 z_index = 1
 layout_mode = 0
-offset_top = 586.0
+offset_top = 592.0
 offset_right = 50.0
-offset_bottom = 596.0
+offset_bottom = 602.0
 color = Color(0.9607843, 0.85490197, 0.8352941, 1)
 
 [node name="AreaVerde" type="Timer" parent="BarraPesca" unique_id=1055376370]
@@ -36,26 +36,26 @@ color = Color(0.078431375, 0.20392157, 0.33333334, 1)
 [node name="Pescando" type="Timer" parent="BarraPesca" unique_id=1453420726]
 
 [node name="Required" type="Label" parent="BarraPesca" unique_id=792041904]
+visible = false
 layout_mode = 0
 offset_left = -280.0
-offset_top = 16.0
+offset_top = 104.0
 offset_right = -103.0
-offset_bottom = 61.0
+offset_bottom = 149.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "Requerido: "
 
 [node name="Actual" type="Label" parent="BarraPesca" unique_id=67457556]
 layout_mode = 0
-offset_left = -280.0
+offset_left = 72.0
 offset_top = 80.0
-offset_right = -81.0
-offset_bottom = 147.0
+offset_right = 112.0
+offset_bottom = 168.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Actual: 0"
+theme_override_font_sizes/font_size = 64
+text = "0"
 
 [connection signal="timeout" from="BarraPesca/AreaVerde" to="BarraPesca" method="_on_timer_timeout"]
 [connection signal="timeout" from="BarraPesca/Pescando" to="BarraPesca" method="_on_pescando_timeout"]

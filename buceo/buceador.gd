@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	# If oxygen runs out or the player escapes safely
 	if pull_back:
 		var pos = global_position
 		velocity = pos.direction_to(Vector2(0, -200)) * delta * pos.distance_to(Vector2(0, -200))*1.5
@@ -29,6 +30,13 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	# Mouse/mobile controls
+	var mouse_pos = get_global_mouse_position()
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and global_position.distance_to(mouse_pos) > 3:
+		direction = global_position.direction_to(mouse_pos)
+	
+	
 	
 	if(direction[0]>0):
 		sprite.flip_h = true

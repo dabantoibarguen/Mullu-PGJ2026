@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://cqsgnhh6qw1p7" path="res://buceo/oxygen_control.gd" id="1_2822b"]
 [ext_resource type="AudioStream" uid="uid://bmbs641xknmib" path="res://buceo/assets/Heart Beat.mp3" id="2_tfj6s"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v5xr"]
+bg_color = Color(0.23137255, 0.38039216, 0.14509805, 0.5647059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67qdr"]
+bg_color = Color(0.16078432, 0.27058825, 0.09411765, 0.83137256)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfj6s"]
+bg_color = Color(0.29803923, 0.48235294, 0.19215687, 0.6039216)
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=732940682]
 
 [node name="OxygenControl" type="Control" parent="." unique_id=1742875160]
@@ -17,10 +26,10 @@ script = ExtResource("1_2822b")
 unique_name_in_owner = true
 z_index = 5
 layout_mode = 0
-offset_left = 71.0
-offset_top = 35.0
-offset_right = 301.0
-offset_bottom = 123.0
+offset_left = 957.0
+offset_top = 25.0
+offset_right = 1115.0
+offset_bottom = 76.0
 theme_override_font_sizes/font_size = 32
 max_value = 120.0
 step = 0.0
@@ -31,16 +40,18 @@ wait_time = 0.5
 autostart = true
 
 [node name="EscapeBtn" type="Button" parent="OxygenControl" unique_id=1586297608]
-custom_minimum_size = Vector2(175, 80)
 layout_mode = 0
-offset_left = 920.0
-offset_top = 35.0
-offset_right = 1095.0
-offset_bottom = 115.0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = 155.0
+offset_bottom = 76.0
 tooltip_text = "Acabar el buceo.
 Acercate al barco para escapar"
 theme_override_font_sizes/font_size = 24
-text = "ESCAPAR"
+theme_override_styles/normal = SubResource("StyleBoxFlat_5v5xr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_67qdr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tfj6s")
+text = "Volver"
 
 [node name="Aviso" type="Label" parent="OxygenControl" unique_id=663732362]
 visible = false

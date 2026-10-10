@@ -9,6 +9,7 @@ var mullu_scene = preload("res://buceo/spondylus.tscn")
 @onready var area_profunda = $Ocean/Fondo
 @onready var area_media = $Ocean/Medio
 @onready var m_click = $CanvasLayer/Click
+@onready var m_label = $CanvasLayer/MulluL
 
 var can_escape = false
 
@@ -19,14 +20,18 @@ var mid_spawn
 
 var last_mullu
 
-var mullus = 0
+var mullus = 0:
+	set(m):
+		mullus = m
+		m_label.text = str(m)
+		
 
 func _ready() -> void:
 	if (Global.blessings.get("Night Vision").get("enabled")==true):
 		$Ocean/Buceador/BetterLight.visible = true
 	if Global.tutorial and deep_spawn.size() < 2:
 		deep_spawn.append("Calcifer Regular")
-	deep_spawn = Global.mullu_dictionary.keys() # FOR TESTING ALL POSSIBLE MULLU
+	#deep_spawn = Global.mullu_dictionary.keys() # FOR TESTING ALL POSSIBLE MULLU
 	print(deep_spawn)
 	populate_mullu()
 	
@@ -70,11 +75,12 @@ func start_snip(tipo_mullu):
 func end_snip(result = false):
 	if result:
 		mullus += last_mullu.points
-	#print(mullus)
+	# print(mullus)
 	m_click.visible = false
 	last_mullu.queue_free()
 	blur.visible = false
 	buceador.playing = false
+	
 	
 func update_escape():
 	if buceador.global_position.distance_to(Vector2(0, -150)) < 225:
@@ -82,23 +88,21 @@ func update_escape():
 	else:
 		can_escape = false
 
-func escape_safely():
+func end_buceo():
 	$Border/Top.set_deferred("disabled", true)
 	buceador.pull_back = true
-	await get_tree().create_timer(1.3).timeout
+	await get_tree().create_timer(1.5).timeout
 	resultado_buceo.emit(mullus)
 	queue_free()
 
 func pass_out():
 	if buceador.pull_back:
 		return
-	blur.visible = false
+	blur.visible = false # Must happen first to interrupt the game
+	can_escape = false
 	buceador.sprite.flip_v = true
-	$Border/Top.set_deferred("disabled", true)
-	buceador.pull_back = true
-	await get_tree().create_timer(1.7).timeout
-	resultado_buceo.emit(0)
-	queue_free()
+	mullus = 0
+	end_buceo()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():

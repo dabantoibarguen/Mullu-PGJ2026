@@ -21,6 +21,7 @@ func _ready() -> void:
 func _on_oxygen_timer_timeout() -> void:
 	buceo.update_escape()
 	escapeButton.disabled = !buceo.can_escape
+	
 	oxygen -= 1.1
 	oxygen_bar.value = oxygen
 	if oxygen <= float(max_oxygen)/3:
@@ -34,4 +35,4 @@ func _on_oxygen_timer_timeout() -> void:
 
 
 func _on_escape_btn_pressed() -> void:
-	buceo.escape_safely()
+	buceo.end_buceo()

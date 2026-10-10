@@ -14,7 +14,10 @@ signal resultado_pesca(pescado)
 
 var caught_indicator
 
-var pescados = 0
+var pescados = 0:
+	set(p):
+		pescados = p
+		$PescaoL.text = str(p)
 
 var fish_name
 var fish_size_percentage
@@ -55,10 +58,7 @@ var durabilidad = 5:
 		durabilidad = max(0 ,dur)
 		durLabel.text = str(durabilidad)
 		if durabilidad <= 0:
-			pescados = int(pescados)
-			resultado_pesca.emit(pescados)
-			await get_tree().create_timer(1.0).timeout
-			queue_free()
+			salir()
 
 # Limited area polygon calculations
 var triangles = []
@@ -118,6 +118,7 @@ func end_fishing(score):
 	fish_line.clear_points()
 	if score < min_time:
 		%Bad.play()
+		await get_tree().create_timer(1.0).timeout
 		durabilidad -= 2
 		fish_pic.scale = Vector2(0.2, 0.2)
 	else:
@@ -127,19 +128,17 @@ func end_fishing(score):
 		if !fish_data[-1]:
 			fish_pic.self_modulate = Color(1, 1, 1, 1)
 			fish_data[-1] = true
-		fish_pic.scale = Vector2(1.3, 1.3)
-		pescados += puntos # Dependiendo del pescado, asi funca??
+		fish_pic.scale = Vector2(1.25, 1.25)
+		pescados += int(round(puntos)) # Dependiendo del pescado, asi funca??
 		if (Global.blessings.get("Pico").get("enabled")==true):
 			if(randi_range(1, 10)==10):
-				pescados += puntos
+				pescados += int(round(puntos))
+		await get_tree().create_timer(1.3).timeout
 		durabilidad -= 1
-	await get_tree().create_timer(1.5).timeout
 	blur.visible = false
 	fish_pic.scale = Vector2(0.7, 0.7)
 	if max_catch == 0:
-		pescados = int(pescados)
-		resultado_pesca.emit(pescados)
-		queue_free()
+		salir()
 	caught_indicator.queue_free()
 	anzuelo.speed = 400
 	
@@ -198,10 +197,7 @@ func get_random_point() -> Vector2:
 func _unhandled_input(ev: InputEvent) -> void:
 	if ev is InputEventKey and ev.is_pressed():
 		if ev.keycode == KEY_ESCAPE and !Global.tutorial_index == 3:
-			pescados = int(pescados)
-			resultado_pesca.emit(pescados)
-			get_viewport().set_input_as_handled()
-			queue_free()
+			salir()
 		if ev.keycode == KEY_TAB:
 			display_controls()
 			
@@ -216,6 +212,14 @@ Esc = Volver a Navegación/terminar el juego \n
 WASD = Movimiento para el indicador de anzuelo \n
 Espacio = Subir la barra del jugador (durante modo de captura)"]
 		])
+		
+func salir():
+	resultado_pesca.emit(pescados)
+	queue_free()
 
 func _physics_process(_delta: float) -> void:
 	pass
+
+
+func _on_escape_btn_pressed() -> void:
+	salir()

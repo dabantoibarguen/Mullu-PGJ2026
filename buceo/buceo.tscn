@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cluldcc7brrls" path="res://buceo/assets/top 2 v2.png" id="6_r4nwo"]
 [ext_resource type="PackedScene" uid="uid://bs3xrbe6381kf" path="res://buceo/buceo_ui.tscn" id="8_25cln"]
 [ext_resource type="AudioStream" uid="uid://b4ile62cy36fk" path="res://buceo/assets/Diving.mp3" id="9_s3ofk"]
+[ext_resource type="Shader" uid="uid://iycku3vvv3ek" path="res://navegacion/black_border.gdshader" id="11_4mguf"]
+[ext_resource type="Texture2D" uid="uid://d4cnojpspey6d" path="res://navegacion/assets/counter mullus.png" id="12_t4fwk"]
 
 [sub_resource type="Gradient" id="Gradient_5y4bw"]
 offsets = PackedFloat32Array(0, 0.2783019, 0.5660377, 0.8207547)
@@ -65,6 +67,10 @@ animations = [{
 shader = ExtResource("5_uhecx")
 shader_parameter/blur_amount = 2.0
 shader_parameter/darkness = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2r1o2"]
+shader = ExtResource("11_4mguf")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [node name="Buceo" type="CanvasLayer" unique_id=804903244]
 process_mode = 3
@@ -232,6 +238,7 @@ offset_bottom = 1445.0001
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6867163, 0.71707815)
+mouse_filter = 1
 
 [node name="SnipGame" parent="AaronBlur" unique_id=1878471672 instance=ExtResource("6_jhcbv")]
 z_index = 5
@@ -255,3 +262,27 @@ offset_bottom = 619.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Hazle click al mullu"
+
+[node name="Mullus" type="TextureRect" parent="CanvasLayer" unique_id=1903411827]
+material = SubResource("ShaderMaterial_2r1o2")
+offset_left = 32.0
+offset_top = 577.0
+offset_right = 74.00003
+offset_bottom = 599.0
+scale = Vector2(2.941953, 2.3058167)
+texture = ExtResource("12_t4fwk")
+
+[node name="MulluL" type="Label" parent="CanvasLayer" unique_id=1747193160]
+offset_left = 91.0
+offset_top = 580.5454
+offset_right = 124.0
+offset_bottom = 608.5454
+rotation = -5.5997105e-05
+scale = Vector2(1.688129, 1.4749321)
+theme_override_colors/font_color = Color(0.92941177, 0.85490197, 0.84313726, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

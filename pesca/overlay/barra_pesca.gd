@@ -22,14 +22,15 @@ var active = true
 var score = 0:
 	set(s):
 		if active:
+			score = s
 			if s <= 0.5 * minimum_time:
 				actuales.add_theme_color_override("font_color", Color(0.716, 0.0, 0.0, 1.0))
 			elif s < minimum_time:
 				actuales.add_theme_color_override("font_color",  Color(0.627, 0.549, 0.0, 1.0))
 			else:
 				actuales.add_theme_color_override("font_color",  Color("008300ff"))
-			score = s
-			actuales.text = "Actual: " + str(snapped(s, 0.01))
+				exit_juego_fishing()
+			actuales.text = str(snapped(s, 0.01))
 
 var player_h
 var player_y
@@ -49,6 +50,7 @@ func _ready() -> void:
 
 func start_fishing(origin, freq = green_time, min_t = minimum_time):
 	active = true
+	player.position.y = lowest_point - player_h
 	controlPesca = origin
 	score = 0
 	gameTimer.wait_time = game_time
@@ -61,6 +63,9 @@ func start_fishing(origin, freq = green_time, min_t = minimum_time):
 	timer.start()
 	
 func _on_pescando_timeout() -> void:
+	exit_juego_fishing()
+
+func exit_juego_fishing():
 	active = false
 	timer.stop()
 	gameTimer.stop()
@@ -70,13 +75,20 @@ func _on_pescando_timeout() -> void:
 func _on_timer_timeout() -> void:
 	move_green()
 
+func move_player():
+	if player.position.y - 75 > highest_point:
+		player.position.y -= 75
+	else:
+		player.position.y = highest_point
+
 func _input(ev: InputEvent) -> void:
-	if active and ev is InputEventKey and ev.is_pressed():
-		if ev.keycode == KEY_SPACE:
-			if player.position.y - 75 > highest_point:
-				player.position.y -= 75
-			else:
-				player.position.y = highest_point
+	if active:
+		if ev is InputEventMouse:
+			if ev.button_mask == MOUSE_BUTTON_LEFT:
+				move_player()
+		if ev is InputEventKey and ev.is_pressed():
+			if ev.keycode == KEY_SPACE:
+				move_player()
 
 func move_green():
 	var rand_targ = randf_range(highest_point, lowest_point-(green_h))

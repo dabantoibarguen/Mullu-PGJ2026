@@ -23,6 +23,9 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 corner_detail = 1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uivri"]
+radius = 7.0
+
 [node name="SnipGame" type="Node2D" unique_id=1878471672]
 script = ExtResource("1_ikwup")
 
@@ -33,17 +36,6 @@ scale = Vector2(1.6666667, 1)
 closed = true
 width = 0.5
 default_color = Color(0.8872835, 0.4816215, 0.37979886, 1)
-
-[node name="Hand" type="CharacterBody2D" parent="." unique_id=299055323]
-unique_name_in_owner = true
-z_index = 2
-position = Vector2(20.999998, 2)
-scale = Vector2(0.17938957, 0.15256858)
-script = ExtResource("1_e7sr8")
-
-[node name="Sprite2D" type="Sprite2D" parent="Hand" unique_id=640169112]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_yfp2p")
 
 [node name="PlayerTrail" type="Line2D" parent="." unique_id=968435356]
 unique_name_in_owner = true
@@ -93,3 +85,23 @@ scale = Vector2(0.16860873, 0.19765562)
 theme_override_font_sizes/font_size = 16
 text = "(Girar)  ← & → / A & D 
 (Mover)  ↑ & ↓ / W & S"
+
+[node name="Hand" type="CharacterBody2D" parent="." unique_id=299055323]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(19.000002, 8)
+scale = Vector2(0.17938957, 0.15256858)
+input_pickable = true
+script = ExtResource("1_e7sr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hand" unique_id=640169112]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_yfp2p")
+
+[node name="Detection" type="Area2D" parent="Hand" unique_id=1449486439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Detection" unique_id=1645606374]
+shape = SubResource("CircleShape2D_uivri")
+
+[connection signal="mouse_entered" from="Hand/Detection" to="Hand" method="_on_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Hand/Detection" to="Hand" method="_on_detection_mouse_exited"]

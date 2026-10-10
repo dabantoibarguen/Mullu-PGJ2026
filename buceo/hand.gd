@@ -12,8 +12,8 @@ var indicator_size
 var move_speed = 150.0
 var rotation_speed = 4.0
 
-const MAX_STRAY = 10.0
-const CORNER_RADIUS = 8.0
+const MAX_STRAY = 8.0
+const CORNER_RADIUS = 6.0
 
 var next_vertex_index = 1
 var seg_start
@@ -21,9 +21,13 @@ var seg_end
 
 var damage_rate = 30.0
 var integrity = 0
+
 var target_points
 
 var oldPos = position
+
+var selected = false
+var mouse_offset = Vector2.ZERO
 
 var origin_scene
 
@@ -200,13 +204,22 @@ func end_game(victory):
 	origin_scene.end_snip(victory)
 	# Add way to end the sub mini game with a unique node name
 
+
+
 func _physics_process(delta: float) -> void:
 	if integrity <= 0:
 		return
+	
+	var mouse_pos = get_global_mouse_position()
+	if selected and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		global_position = get_global_mouse_position()
 		
+	
+	# Left and right inputs
 	var rotation_dir = Input.get_axis("ui_left", "ui_right")
 	global_rotation += rotation_dir * rotation_speed * delta
 	
+	# Forwards or backwards
 	if Input.is_action_pressed("ui_up"):
 		velocity = Vector2.UP.rotated(rotation) * move_speed * delta
 	elif Input.is_action_pressed("ui_down"):
@@ -217,7 +230,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_collide(velocity)
 	
-
+	# Keep the tracer and integrity detection going
 	var closest_point = Geometry2D.get_closest_point_to_segment(global_position, seg_start, seg_end)
 	var current_drift = global_position.distance_to(closest_point)
 	trail.default_color = Color("008300ff")
@@ -233,6 +246,7 @@ func _physics_process(delta: float) -> void:
 			integrity_bar.get_theme_stylebox("fill").bg_color = Color(0.716, 0.0, 0.0, 1.0)
 		elif integrity <= 66:
 			integrity_bar.get_theme_stylebox("fill").bg_color = Color(0.627, 0.549, 0.0, 1.0)
+		
 
 	if global_position.distance_to(seg_end) <= CORNER_RADIUS:
 		if next_vertex_index < target_points.size():
@@ -241,7 +255,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			indicator.position = Vector2.ZERO
 			indicator.scale = Vector2(0.6, 0.6)
-			integrity = 0
+			integrity = 0 # SUPER IMPORTANT TO STOP THE GAME
 			%Good.play()
 			end_game(true)
 	
@@ -249,3 +263,10 @@ func _physics_process(delta: float) -> void:
 		trail.add_point(trail.to_local(global_position))
 		oldPos = global_position
 			
+
+func _on_detection_mouse_entered() -> void:
+	selected = true
+
+
+func _on_detection_mouse_exited() -> void:
+	selected = false

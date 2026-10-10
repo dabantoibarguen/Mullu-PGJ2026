@@ -13,3 +13,7 @@ func start(origin, tipo_mullu):
 func update_ind(img, hex):
 	indic.texture = load(img)
 	indic.modulate = Color(hex)
+
+
+func _on_detection_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.
