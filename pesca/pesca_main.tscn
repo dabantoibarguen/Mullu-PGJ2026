@@ -140,8 +140,8 @@ scale = Vector2(0.83969414, 0.78763515)
 
 [node name="Boat" type="AnimatedSprite2D" parent="." unique_id=711046447]
 light_mask = 3
-position = Vector2(538.3177, 303.73828)
-scale = Vector2(0.9345794, 0.9345794)
+position = Vector2(538.3177, 302.80374)
+scale = Vector2(0.93457925, 0.9345793)
 sprite_frames = SubResource("SpriteFrames_f5k2l")
 autoplay = "default"
 frame_progress = 0.40772977

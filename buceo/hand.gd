@@ -12,8 +12,8 @@ var indicator_size
 var move_speed = 150.0
 var rotation_speed = 4.0
 
-const MAX_STRAY = 8.0
-const CORNER_RADIUS = 6.0
+const MAX_STRAY = 10.0
+const CORNER_RADIUS = 9.0
 
 var next_vertex_index = 1
 var seg_start

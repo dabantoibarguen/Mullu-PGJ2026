@@ -19,6 +19,8 @@ var game_time = 17
 var minimum_time = 4
 var active = true
 
+var move_lock = false
+
 var score = 0:
 	set(s):
 		if active:
@@ -76,19 +78,22 @@ func _on_timer_timeout() -> void:
 	move_green()
 
 func move_player():
-	if player.position.y - 75 > highest_point:
-		player.position.y -= 75
+	if player.position.y - green_h > highest_point:
+		player.position.y -= green_h
 	else:
 		player.position.y = highest_point
+	move_lock = true
 
 func _input(ev: InputEvent) -> void:
-	if active:
+	if active and ev.is_pressed() and !move_lock:
 		if ev is InputEventMouse:
 			if ev.button_mask == MOUSE_BUTTON_LEFT:
 				move_player()
-		if ev is InputEventKey and ev.is_pressed():
+		if ev is InputEventKey:
 			if ev.keycode == KEY_SPACE:
 				move_player()
+		await get_tree().create_timer(0.12).timeout
+		move_lock = false
 
 func move_green():
 	var rand_targ = randf_range(highest_point, lowest_point-(green_h))

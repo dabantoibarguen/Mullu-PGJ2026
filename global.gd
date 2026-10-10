@@ -1,13 +1,14 @@
 extends Node
 
 var dialogo = preload("res://dialogo.tscn")
+var navegar_scn = preload("res://navegacion/navegacion.tscn")
 
 var tutorial = true
 var tutorial_index = 0:
 	set(i):
 		tutorial_index = i
 		match i:
-			1: get_tree().change_scene_to_file("res://navegacion/navegacion.tscn")
+			1: get_tree().change_scene_to_packed(navegar_scn)
 		
 var fish_quota = 250
 

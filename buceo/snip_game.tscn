@@ -24,7 +24,7 @@ corner_radius_bottom_left = 1
 corner_detail = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uivri"]
-radius = 7.0
+radius = 11.1489105
 
 [node name="SnipGame" type="Node2D" unique_id=1878471672]
 script = ExtResource("1_ikwup")
@@ -77,14 +77,19 @@ unique_name_in_owner = true
 stream = ExtResource("7_quta0")
 
 [node name="Instructions" type="Label" parent="." unique_id=1802964063]
-offset_left = 29.000002
+offset_left = 25.999998
 offset_top = -19.0
-offset_right = 200.0
-offset_bottom = 30.0
+offset_right = 240.0
+offset_bottom = 160.0
 scale = Vector2(0.16860873, 0.19765562)
 theme_override_font_sizes/font_size = 16
-text = "(Girar)  ← & → / A & D 
-(Mover)  ↑ & ↓ / W & S"
+text = "Teclas:
+(Girar)  ← & → / A & D 
+(Mover)  ↑ & ↓ / W & S
+
+Mouse/Mobil
+Presiona y arrastra la mano
+"
 
 [node name="Hand" type="CharacterBody2D" parent="." unique_id=299055323]
 unique_name_in_owner = true
